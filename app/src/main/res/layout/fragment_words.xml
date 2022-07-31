@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.words.WordsFragment">
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/cv_on_study"
+        style="@style/neumorph_CardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="184dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="@+id/cv_practice"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/cv_practice"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="24dp">
+
+            <ImageView
+                android:id="@+id/v_on_study_message"
+                style="@style/Theme.ImproveVocabulary"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="14dp"
+                android:src="@drawable/ic_btn_words_message"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_on_study"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="@string/on_study"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/v_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_guideline"
+                android:layout_width="320dp"
+                android:layout_height="1dp"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/ic_line_300"
+                app:layout_constraintBottom_toTopOf="@+id/tv_on_study_count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_on_study" />
+
+            <TextView
+                android:id="@+id/tv_on_study_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="12"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_guideline" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </soup.neumorphism.NeumorphCardView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_begin="375dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/cv_practice"
+        style="@style/neumorph_CardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="184dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.05">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="@string/studied"
+                android:textSize="30sp" />
+
+            <View
+                android:layout_width="320dp"
+                android:layout_height="1dp"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/ic_line_300" />
+
+            <TextView
+                android:id="@+id/tv_practice_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="340"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    </soup.neumorphism.NeumorphCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

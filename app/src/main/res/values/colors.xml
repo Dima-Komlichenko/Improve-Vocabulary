@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF5722</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="orange">#B06520</color>
+
+    <!-- Background app -->
+    <color name="background_light">#CFCFCF</color>
+    <color name="background_dark">#222222</color>
+
+    <!-- Background neumorph button on light theme-->
+    <color name="background_button_on_light_theme">#CBCBCB</color>
+    <color name="background_button_on_dark_theme">#2C2C2C</color>
+
+    <!-- Status bar -->
+    <color name="status_bar_light">#A8A8A8</color>
+    <color name="status_bar_dark">#818181</color>
+
+    <!-- Text-->
+    <color name="text_light">#818181</color>
+    <color name="text_dark">#515151</color>
+    <color name="non_clicable_light_string">#3F3F3F</color>
+    <color name="non_clicable_dark_string">#B5B5B5</color>
+
+    <!-- Shadow on light theme -->
+    <color name="light_shadow_on_light_theme">#E6EDEDED</color>
+    <color name="dark_shadow_on_light_theme">#8D8D8D</color>
+
+    <!-- Shadow on dark theme -->
+    <color name="light_shadow_on_dark_theme">#32FFFFFF</color>
+    <color name="dark_shadow_on_dark_theme">#80000000</color>
+
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Improve Vocabulary</string>
+
+    <string name="title_words">Слова</string>
+    <string name="title_tests">Тести</string>
+    <string name="title_settings">Налаштування</string>
+
+    <string name="on_study">На вивченні</string>
+    <string name="studied">Вивчені</string>
+
+    <string name="test">Тест</string>
+    <string name="practice">Практика</string>
+
+    <!-- Налаштування -->
+    <string name="app_theme">Тема додатку</string>
+    <string name="language_interface">Мова інтерфейсу</string>
+    <string name="suggest_repetition_of_words">Пропонувати повторення слів</string>
+    <string name="clear_dictionary">Очистити словник</string>
+
+    <!-- Тема додатку -->
+    <string-array name="app_themes">
+        <item>Системна</item>
+        <item>Світла</item>
+        <item>Темна</item>
+    </string-array>
+
+    <!-- Мова інтерфейсу -->
+    <string-array name="app_languages">
+        <item>Англійська</item>
+        <item>Російська</item>
+        <item>Українська</item>
+    </string-array>
+</resources>

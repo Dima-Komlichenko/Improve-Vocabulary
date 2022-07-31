@@ -1,0 +1,25 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.ImproveVocabulary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand -->
+        <item name="colorPrimary">@color/orange</item>
+        <!-- Status bar -->
+        <item name="android:statusBarColor" >@color/status_bar_light</item>
+        <!-- Background -->
+        <item name="android:colorBackground">@color/background_dark</item>
+        <!-- Text -->
+        <item name="android:textColor">@color/text_light</item>
+        <!-- Font -->
+        <item name="fontFamily">@font/roboto</item>
+
+    </style>
+
+    <style name="neumorph_CardButton" parent="@style/Widget.Neumorph.Button">
+        <item name="neumorph_lightSource">leftTop</item>
+        <item name="neumorph_shadowColorLight">@color/light_shadow_on_dark_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
+        <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
+
+    </style>
+
+</resources>
