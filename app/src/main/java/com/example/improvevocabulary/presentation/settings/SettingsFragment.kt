@@ -24,21 +24,19 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
 
-        viewModel =
-            ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
+        //use di to inicialialize viewModel
 
 
-        viewModel.load() // load data from storage to viewModel
-        setSpinnerLanguageValue()
+        //viewModel.load() // load data from storage to viewModel
+        //setSpinnerLanguageValue()
 
 
-        changeAppLanguageHandler()
+        //changeAppLanguageHandler()
 
-        viewModel.language.observe(viewLifecycleOwner) {
-            viewModel.saveLanguage((it)) // save the data into storage (sharedPrefs)
-        }
-        // start app with right language somewhere more base place
-        // restart app with right language during saving language into storage (sharedPrefs)
+        //viewModel.language.observe(viewLifecycleOwner) {
+        //    viewModel.saveLanguage((it))
+        //}
         return binding.root
     }
 

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -34,6 +35,10 @@ android {
     }
 }
 
+var daggerVersion = "2.43.1"
+var dagger = "com.google.dagger:dagger:$daggerVersion"
+var daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -53,4 +58,7 @@ dependencies {
 
     //Neumorphism
     implementation 'com.github.fornewid:neumorphism:0.3.2'
+
+    implementation(dagger)
+    kapt(daggerCompiler)
 }
