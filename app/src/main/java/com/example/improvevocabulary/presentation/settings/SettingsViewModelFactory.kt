@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.usecase.GetLanguageUseCase
 import com.example.domain.usecase.SaveLanguageUseCase
+import dagger.Provides
+import javax.inject.Inject
 
 //фабрика в которой создаются все зависимости, фабрику будем предоставлять через di (AppModule)
 class SettingsViewModelFactory(
