@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setLanguageInAppConfiguration()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
@@ -27,4 +27,12 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
+    private fun setLanguageInAppConfiguration() {
+        val res = resources
+        val dm = res.displayMetrics
+        val conf = res.configuration
+        //I should get data by di
+        conf.setLocale(Locale(SharedPrefsLanguageStorage(context = applicationContext).get().language))
+        res.updateConfiguration(conf, dm)
+    }
 }

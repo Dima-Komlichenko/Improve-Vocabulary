@@ -14,7 +14,6 @@ import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentSettingsBinding
 import com.example.improvevocabulary.presentation.main.MainActivity
-import java.util.*
 import javax.inject.Inject
 
 class SettingsFragment : Fragment() {
@@ -70,22 +69,13 @@ class SettingsFragment : Fragment() {
                 var languages = resources.getStringArray(R.array.app_languages)
                 var lang = languages[position]
                 viewModel.language.value = LanguageConverter.convertLangToCode(Language(lang)).language
-                setLanguageInAppConfiguration()
+                recreateApp()
             }
 
             override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {}
 
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
-    }
-
-    private fun setLanguageInAppConfiguration() {
-        val res = resources
-        val dm = res.displayMetrics
-        val conf = res.configuration
-        conf.setLocale(Locale(viewModel.language.value))
-        res.updateConfiguration(conf, dm)
-        recreateApp()
     }
 
     private fun recreateApp() {
