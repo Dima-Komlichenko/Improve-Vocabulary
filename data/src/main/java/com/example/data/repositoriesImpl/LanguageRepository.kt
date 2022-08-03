@@ -15,10 +15,10 @@ class LanguageRepository(var languageStorage: LanguageStorage) : LanguageReposit
     }
 
     private fun mapToData(domainModel: Language): com.example.data.storage.Language {
-        return com.example.data.storage.Language(domainModel.language)
+        return com.example.data.storage.Language(domainModel.value)
     }
 
     private fun mapToDomain(dataModel: com.example.data.storage.Language): Language {
-        return  Language(dataModel.language)
+        return  Language(dataModel.value)
     }
 }

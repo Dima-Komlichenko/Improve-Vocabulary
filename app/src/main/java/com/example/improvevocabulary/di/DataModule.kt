@@ -1,9 +1,17 @@
 package com.example.improvevocabulary.di
 
 import android.content.Context
-import com.example.data.storage.LanguageStorage
-import com.example.data.storage.SharedPrefsLanguageStorage
+
+import com.example.domain.repositoriesI.ThemeRepository
 import com.example.domain.repositoriesI.LanguageRepository
+
+import com.example.data.storage.LanguageStorage
+import com.example.data.storage.ThemeStorage
+
+import com.example.data.storage.SharedPrefsLanguageStorage
+import com.example.data.storage.SharedPrefsThemeStorage
+
+
 import dagger.Module
 import dagger.Provides
 
@@ -11,12 +19,22 @@ import dagger.Provides
 class DataModule {
 
     @Provides
-    fun provideDataStorage(context: Context): LanguageStorage {
+    fun provideLanguageStorage(context: Context): LanguageStorage {
         return SharedPrefsLanguageStorage(context = context)
     }
 
     @Provides
-    fun provideDataRepository(languageStorage: LanguageStorage): LanguageRepository {
+    fun provideLanguageRepository(languageStorage: LanguageStorage): LanguageRepository {
         return com.example.data.repositoriesImpl.LanguageRepository(languageStorage = languageStorage)
+    }
+
+    @Provides
+    fun provideThemeStorage(context: Context): ThemeStorage {
+        return SharedPrefsThemeStorage(context = context)
+    }
+
+    @Provides
+    fun provideThemeRepository(themeStorage: ThemeStorage): ThemeRepository {
+        return com.example.data.repositoriesImpl.ThemeRepository(themeStorage = themeStorage)
     }
 }

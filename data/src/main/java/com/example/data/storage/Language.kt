@@ -1,3 +1,3 @@
 package com.example.data.storage
 
-class Language(var language: String)
+class Language(var value: String)

@@ -7,5 +7,4 @@ class SaveLanguageUseCase(private val languageRepository: LanguageRepository) {
     fun execute(language: Language) {
         languageRepository.save(language)
     }
-
 }

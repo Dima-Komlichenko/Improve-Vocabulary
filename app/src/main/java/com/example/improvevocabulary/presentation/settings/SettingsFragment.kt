@@ -9,7 +9,9 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.LanguageConverter
+//import com.example.domain.ThemeManager
 import com.example.domain.models.Language
+import com.example.domain.models.Theme
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentSettingsBinding
@@ -24,7 +26,8 @@ class SettingsFragment : Fragment() {
     @Inject
     lateinit var settingsViewModelFactory: SettingsViewModelFactory
 
-    var wasViewShown = false
+    var langSpinnerWasShown = false // allows to change spinners value
+    var themeSpinnerWasShown = false // allows to change spinners value
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,26 +40,51 @@ class SettingsFragment : Fragment() {
 
         viewModel.load() // load data from storage to viewModel
 
-
-        setSpinnerLanguageValue()
+        changeAppThemeHandler()
         changeAppLanguageHandler()
 
-        viewModel.language.observe(viewLifecycleOwner) {
-            viewModel.saveLanguage((it))
-        }
+        viewModel.language.observe(viewLifecycleOwner) { viewModel.saveLanguage((it)) }
+
+        viewModel.theme.observe(viewLifecycleOwner) { viewModel.saveTheme(it) }
         return binding.root
     }
 
+
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        wasViewShown = false
+        //langSpinnerWasShown = false
+        //themeSpinnerWasShown = false
         setSpinnerLanguageValue()
+        setSpinnerThemeValue()
+    }
+
+    private fun setSpinnerThemeValue() {
+        var themes = resources.getStringArray(R.array.app_themes)
+        var theme = viewModel.theme.value
+        binding.spAppTheme.setSelection(themes.indexOf(theme?.value))
     }
 
     private fun setSpinnerLanguageValue() {
         var languages = resources.getStringArray(R.array.app_languages)
-        var lang = LanguageConverter.convertCodeToLang(viewModel.language.value.toString())
-        binding.spLanguage.setSelection(languages.indexOf(lang.language))
+        var lang = LanguageConverter.convertCodeToLang(viewModel.language.value!!)
+        binding.spLanguage.setSelection(languages.indexOf(lang.value))
+    }
+
+    private fun changeAppThemeHandler() {
+        binding.spAppTheme.onItemSelectedListener = object : AdapterView.OnItemClickListener,
+            AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (!themeSpinnerWasShown) { themeSpinnerWasShown = true; return }
+
+                var themes = resources.getStringArray(R.array.app_themes)
+                var theme = Theme(themes[position])
+                viewModel.theme.value = theme
+                recreateApp()
+            }
+            override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {}
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
     }
 
     private fun changeAppLanguageHandler() {
@@ -64,16 +92,14 @@ class SettingsFragment : Fragment() {
             AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (!wasViewShown) { wasViewShown = true; return }
+                if (!langSpinnerWasShown) { langSpinnerWasShown = true; return }
 
                 var languages = resources.getStringArray(R.array.app_languages)
                 var lang = languages[position]
-                viewModel.language.value = LanguageConverter.convertLangToCode(Language(lang)).language
+                viewModel.language.value = LanguageConverter.convertLangToCode(Language(lang))
                 recreateApp()
             }
-
             override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {}
-
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
     }

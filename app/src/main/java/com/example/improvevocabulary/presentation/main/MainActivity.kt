@@ -1,16 +1,15 @@
 package com.example.improvevocabulary.presentation.main
 
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.DisplayMetrics
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.data.storage.SharedPrefsLanguageStorage
+import com.example.data.storage.SharedPrefsThemeStorage
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setThemeInApp()
         super.onCreate(savedInstanceState)
         setLanguageInAppConfiguration()
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -32,7 +32,16 @@ class MainActivity : AppCompatActivity() {
         val dm = res.displayMetrics
         val conf = res.configuration
         //I should get data by di
-        conf.setLocale(Locale(SharedPrefsLanguageStorage(context = applicationContext).get().language))
+        conf.setLocale(Locale(SharedPrefsLanguageStorage(context = applicationContext).get().value))
         res.updateConfiguration(conf, dm)
+    }
+
+    private fun setThemeInApp() {
+        var theme = SharedPrefsThemeStorage(context = applicationContext).get()
+        when (theme.value) {
+            "System", "Системная", "Системна" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            "Light", "Светлая", "Світла" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "Dark", "Темная", "Темна" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 }

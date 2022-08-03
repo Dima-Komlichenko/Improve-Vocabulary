@@ -13,7 +13,7 @@ class SharedPrefsLanguageStorage(private val context: Context) : LanguageStorage
         context.getSharedPreferences(SHARED_PREFS_LANGUAGE, Context.MODE_PRIVATE)
 
     override fun save(lang: Language): Boolean {
-        sharedPreferences.edit().putString(LANGUAGE, lang.language).apply()
+        sharedPreferences.edit().putString(LANGUAGE, lang.value).apply()
         return true
     }
 
