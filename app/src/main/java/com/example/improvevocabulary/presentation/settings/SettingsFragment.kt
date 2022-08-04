@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.LanguageConverter
-//import com.example.domain.ThemeManager
 import com.example.domain.models.Language
 import com.example.domain.models.Theme
 import com.example.improvevocabulary.R
@@ -43,7 +42,9 @@ class SettingsFragment : Fragment() {
         changeAppThemeHandler()
         changeAppLanguageHandler()
 
-        viewModel.language.observe(viewLifecycleOwner) { viewModel.saveLanguage((it)) }
+        viewModel.language.observe(viewLifecycleOwner) {
+            viewModel.saveLanguage((it))
+        }
 
         viewModel.theme.observe(viewLifecycleOwner) { viewModel.saveTheme(it) }
         return binding.root
@@ -52,8 +53,8 @@ class SettingsFragment : Fragment() {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        //langSpinnerWasShown = false
-        //themeSpinnerWasShown = false
+        langSpinnerWasShown = false
+        themeSpinnerWasShown = false
         setSpinnerLanguageValue()
         setSpinnerThemeValue()
     }
