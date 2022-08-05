@@ -12,6 +12,8 @@ import com.example.improvevocabulary.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
+val STARTFRAGMENT = "STARTFRAGMENR"
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -20,11 +22,23 @@ class MainActivity : AppCompatActivity() {
         setThemeInApp()
         super.onCreate(savedInstanceState)
         setLanguageInAppConfiguration()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        savedInstanceState.putInt("SelectedItemId", binding.navView.selectedItemId)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val selectedItemId = savedInstanceState.getInt("SelectedItemId")
+        binding.navView.selectedItemId = selectedItemId
     }
 
     private fun setLanguageInAppConfiguration() {

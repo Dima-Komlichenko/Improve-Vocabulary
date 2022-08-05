@@ -31,4 +31,7 @@
         <item>Російська</item>
         <item>Українська</item>
     </string-array>
+
+    <string name="clear_dictionary_button">Очистити</string>
+
 </resources>

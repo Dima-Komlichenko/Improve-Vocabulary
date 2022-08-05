@@ -1,6 +1,7 @@
 package com.example.domain
 
 import com.example.domain.models.Language
+import java.util.*
 
 class LanguageConverter {
     companion object {
@@ -15,11 +16,12 @@ class LanguageConverter {
 
         fun convertCodeToLang(langCode: Language): Language {
             return when (langCode.value) {
-                "Default" -> Language("English")
+                "English" -> Language("Default")
                 "RU" -> Language("Русский")
                 "UK" -> Language("Українська")
                 else -> Language("Default")
             }
         }
+
     }
 }

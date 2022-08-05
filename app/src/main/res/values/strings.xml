@@ -15,7 +15,7 @@
     <string name="app_theme">App theme</string>
     <string name="language_interface">Language interface</string>
     <string name="suggest_repetition_of_words">Suggest repetition of words</string>
-    <string name="clear_dictionary">Delete all words</string>
+    <string name="clear_dictionary">Clear dictionary</string>
 
     <!-- Light modes -->
     <string-array name="app_themes">
@@ -31,4 +31,6 @@
         <item>Russian</item>
         <item>Ukrainian</item>
     </string-array>
+
+    <string name="clear_dictionary_button">Clear</string>
 </resources>

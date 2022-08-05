@@ -1,5 +1,6 @@
 package com.example.improvevocabulary.presentation.settings
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.Language
@@ -17,6 +18,11 @@ class SettingsViewModel(
 ) : ViewModel() {
     val language = MutableLiveData<Language>()
     val theme = MutableLiveData<Theme>()
+
+    init {
+        load()
+    }
+
 
     fun saveTheme(theme: Theme) {
         saveThemeUseCase.execute(theme)
