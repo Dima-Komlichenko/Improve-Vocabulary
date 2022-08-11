@@ -3,6 +3,8 @@
     <style name="Theme.ImproveVocabulary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand -->
         <item name="colorPrimary">@color/orange</item>
+        <!-- Secondary brand -->
+        <item name="colorSecondary">@color/orange</item>
         <!-- Status bar -->
         <item name="android:statusBarColor">@color/status_bar_dark</item>
         <!-- Background -->
@@ -12,14 +14,33 @@
         <!-- Font -->
         <item name="fontFamily">@font/roboto</item>
 
+
     </style>
 
     <style name="neumorph_CardButton" parent="@style/Widget.Neumorph.Button">
         <item name="neumorph_lightSource">leftTop</item>
         <item name="neumorph_shadowColorLight">@color/light_shadow_on_light_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_light_theme</item>
-        <item name="neumorph_backgroundColor">@color/background_button_on_light_theme</item>
+        <!--<item name="neumorph_backgroundColor">@color/background_button_on_light_theme</item>
+-->
 
     </style>
+
+    <style name="gradient_background">
+        <item name="android:background">@drawable/light_gradient</item>
+    </style>
+
+    <style name="additional_menu"  parent="neumorph_CardButton">
+        <item name="neumorph_backgroundColor">@color/additional_background_light</item>
+    </style>
+
+    <style name="additional_view_button" parent="@style/Widget.Neumorph.Button">
+        <item name="neumorph_backgroundColor">@color/background_little_btn</item>
+        <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_light_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_light_theme</item>
+        <!--<item name="neumorph_shapeType">pressed</item>-->
+
+    </style>
+
 
 </resources>

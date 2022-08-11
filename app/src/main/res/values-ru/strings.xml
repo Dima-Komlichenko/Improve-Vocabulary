@@ -33,4 +33,7 @@
     </string-array>
 
     <string name="clear_dictionary_button">Очистить</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Повторение слов включено</string>
+    <string name="switch_suggest_repetition_of_words_off">Повторения слов включено</string>
 </resources>

@@ -33,4 +33,14 @@
     </string-array>
 
     <string name="clear_dictionary_button">Clear</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Repetition of words switched on</string>
+    <string name="switch_suggest_repetition_of_words_off">Repetition of words switched off</string>
+
+    <string name="btn_back_desc" translatable="false">Button back</string>
+    <string name="btn_filter_desc" translatable="false">Button filter</string>
+    <string name="btn_search_desc" translatable="false">Button search</string>
+    <string name="btn_add_desc" translatable="false">Button add</string>
+
+
 </resources>

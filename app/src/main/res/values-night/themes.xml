@@ -3,10 +3,10 @@
     <style name="Theme.ImproveVocabulary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand -->
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryDark">@color/black</item>
-
+        <!-- Secondary brand -->
+        <item name="colorSecondary">@color/orange</item>
         <!-- Status bar -->
-        <item name="android:statusBarColor" >@color/status_bar_light</item>
+        <item name="android:statusBarColor">@color/status_bar_light</item>
         <!-- Background -->
         <item name="android:colorBackground">@color/background_dark</item>
         <!-- Text -->
@@ -20,8 +20,24 @@
         <item name="neumorph_lightSource">leftTop</item>
         <item name="neumorph_shadowColorLight">@color/light_shadow_on_dark_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
-        <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
+        <!-- <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>-->
 
+        <item name="android:background">@drawable/dark_gradient</item>
+
+    </style>
+
+    <style name="gradient_background">
+        <item name="android:background">@drawable/dark_gradient</item>
+    </style>
+
+    <style name="additional_menu" parent="neumorph_CardButton">
+        <item name="neumorph_backgroundColor">@color/additional_background_dark</item>
+    </style>
+
+    <style name="additional_view_button" parent="@style/Widget.Neumorph.Button">
+        <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
+        <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_dark_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_dark_theme</item>
     </style>
 
 </resources>

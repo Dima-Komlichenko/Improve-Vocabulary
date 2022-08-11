@@ -3,7 +3,8 @@
     <style name="Theme.ImproveVocabulary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand -->
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryDark">@color/black</item>
+        <!-- Secondary brand -->
+        <item name="colorSecondary">@color/orange</item>
         <!-- Status bar -->
         <item name="android:statusBarColor">@color/status_bar_light</item>
         <!-- Background -->
@@ -22,5 +23,10 @@
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
         <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
 
+       <!-- <item name="neumorph_backgroundColor">@drawable/dark_gradient</item>-->
+    </style>
+
+    <style name="gradient_background">
+        <item name="android:background">@drawable/dark_gradient</item>
     </style>
 </resources>

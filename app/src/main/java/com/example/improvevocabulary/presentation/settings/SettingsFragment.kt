@@ -1,11 +1,11 @@
 package com.example.improvevocabulary.presentation.settings
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.LanguageConverter
@@ -15,24 +15,40 @@ import com.example.domain.models.Theme
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentSettingsBinding
-import com.example.improvevocabulary.presentation.main.MainActivity
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
+
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var viewModel: SettingsViewModel
+
     @Inject
     lateinit var settingsViewModelFactory: SettingsViewModelFactory
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         (activity?.applicationContext as App).appComponent.inject(this)
         viewModel = ViewModelProvider(this, settingsViewModelFactory)[SettingsViewModel::class.java]
+
         changeAppThemeHandler()
         changeAppLanguageHandler()
+
         viewModel.language.observe(viewLifecycleOwner) { viewModel.saveLanguage((it)) }
         viewModel.theme.observe(viewLifecycleOwner) { viewModel.saveTheme(it) }
+
+        binding.swSuggestRepetitionOfWords.setOnCheckedChangeListener { _, isChecked ->
+            val message =
+                if (isChecked) R.string.switch_suggest_repetition_of_words_on
+                else R.string.switch_suggest_repetition_of_words_off
+            Snackbar.make(binding.clSettings, message, Snackbar.LENGTH_LONG).setAction("Ok") {}.show()
+        }
+
         return binding.root
     }
 
@@ -60,16 +76,29 @@ class SettingsFragment : Fragment() {
         binding.spAppTheme.onItemSelectedListener = object : AdapterView.OnItemClickListener,
             AdapterView.OnItemSelectedListener {
 
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val themes = resources.getStringArray(R.array.app_themes)
                 val theme = ThemeConverter.convertThemeNameToEnglish(Theme(themes[position]))
 
-                if(viewModel.theme.value?.value == theme.value) return
+                if (viewModel.theme.value?.value == theme.value) return
 
                 viewModel.theme.value = theme
                 recreateApp()
             }
-            override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {}
+
+            override fun onItemClick(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+            }
+
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
     }
@@ -78,16 +107,29 @@ class SettingsFragment : Fragment() {
         binding.spLanguage.onItemSelectedListener = object : AdapterView.OnItemClickListener,
             AdapterView.OnItemSelectedListener {
 
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val languages = resources.getStringArray(R.array.app_languages)
                 val lang = LanguageConverter.convertLangToCode((Language(languages[position])))
 
-                if(viewModel.language.value?.value == lang.value) return
+                if (viewModel.language.value?.value == lang.value) return
 
                 viewModel.language.value = lang
                 recreateApp()
             }
-            override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {}
+
+            override fun onItemClick(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+            }
+
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
     }

@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_filter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.filter.FilterFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/additional_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+        app:strokeColor="@color/background_additional_view_stroke"
+        app:strokeWidth="3dp"
+       >
+        <!--  to add blur   -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/tv_alphabetically"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alphabetically"
+                android:textSize="16sp"
+
+                app:layout_constraintEnd_toEndOf="@+id/btn_alphabetically"
+                app:layout_constraintStart_toStartOf="@+id/btn_alphabetically"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btn_alphabetically"
+                style="@style/additional_view_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:text="A-z"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_newer_first"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_alphabetically" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btn_non_alphabetically"
+                style="@style/additional_view_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Z-a"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_alphabetically"
+                app:layout_constraintStart_toStartOf="@+id/btn_alphabetically"
+                app:layout_constraintTop_toBottomOf="@+id/btn_alphabetically" />
+
+
+            <TextView
+                android:id="@+id/tv_in_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="In order"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_newer_first"
+                app:layout_constraintStart_toStartOf="@+id/btn_newer_first"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btn_newer_first"
+                style="@style/additional_view_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:text="newer"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/btn_alphabetically"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_in_order" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btn_later_first"
+                style="@style/additional_view_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="older"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_newer_first"
+                app:layout_constraintStart_toStartOf="@+id/btn_newer_first"
+                app:layout_constraintTop_toBottomOf="@+id/btn_newer_first" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:id="@+id/v_guideline"
+        android:layout_width="130dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_line_300" />
+
+
+</LinearLayout>

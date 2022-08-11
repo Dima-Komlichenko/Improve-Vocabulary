@@ -34,4 +34,7 @@
 
     <string name="clear_dictionary_button">Очистити</string>
 
+    <string name="switch_suggest_repetition_of_words_on">Повторення слів увімкнено</string>
+    <string name="switch_suggest_repetition_of_words_off">Повторення слів вимкнено</string>
+
 </resources>
