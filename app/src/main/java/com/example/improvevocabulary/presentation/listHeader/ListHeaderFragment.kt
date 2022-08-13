@@ -7,26 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.improvevocabulary.R
+import com.example.improvevocabulary.databinding.FragmentListHeaderBinding
+import com.example.improvevocabulary.presentation.words.WordsViewModel
 
 class ListHeaderFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ListHeaderFragment()
-    }
-
+    private lateinit var binding: FragmentListHeaderBinding
     private lateinit var viewModel: ListHeaderViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list_header, container, false)
+        viewModel = ViewModelProvider(this)[ListHeaderViewModel::class.java]
+        binding = FragmentListHeaderBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ListHeaderViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

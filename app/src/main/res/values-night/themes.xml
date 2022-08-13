@@ -30,14 +30,29 @@
         <item name="android:background">@drawable/dark_gradient</item>
     </style>
 
-    <style name="additional_menu" parent="neumorph_CardButton">
+    <style name="additional_menu">
         <item name="neumorph_backgroundColor">@color/additional_background_dark</item>
+        <item name="strokeColor">@color/background_additional_view_stroke_on_dark_theme</item>
     </style>
 
-    <style name="additional_view_button" parent="@style/Widget.Neumorph.Button">
+    <style name="additional_button" parent="@style/Widget.Neumorph.Button">
         <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
         <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_dark_theme</item>
-        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_dark_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
+
+       <!-- <item name="neumorph_shadowElevation">4dp</item>
+        <item name="neumorph_inset">8dp</item>-->
+    </style>
+
+    <style name="add_button"  parent="@style/Widget.Neumorph.ImageButton">
+        <item name="neumorph_backgroundColor">@color/background_little_btn_on_dark_theme</item>
+        <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_light_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_light_theme</item>
+        <item name="neumorph_shadowElevation">4dp</item>
+    </style>
+
+    <style name="add_button_shape">
+        <item name="neumorph_cornerSize">4dp</item>
     </style>
 
 </resources>

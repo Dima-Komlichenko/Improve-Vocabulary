@@ -21,26 +21,33 @@
         <item name="neumorph_lightSource">leftTop</item>
         <item name="neumorph_shadowColorLight">@color/light_shadow_on_light_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_light_theme</item>
-        <!--<item name="neumorph_backgroundColor">@color/background_button_on_light_theme</item>
--->
-
     </style>
 
     <style name="gradient_background">
         <item name="android:background">@drawable/light_gradient</item>
     </style>
 
-    <style name="additional_menu"  parent="neumorph_CardButton">
-        <item name="neumorph_backgroundColor">@color/additional_background_light</item>
+    <style name="additional_menu">
+        <item name="cardBackgroundColor">@color/additional_background_light</item>
+        <item name="strokeColor">@color/background_additional_view_stroke_on_light_theme</item>
     </style>
 
-    <style name="additional_view_button" parent="@style/Widget.Neumorph.Button">
-        <item name="neumorph_backgroundColor">@color/background_little_btn</item>
+    <style name="additional_button" parent="@style/Widget.Neumorph.Button">
+        <item name="neumorph_backgroundColor">@color/background_additional_btn</item>
+        <item name="neumorph_shadowColorLight">@color/light_shadow_on_light_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_light_theme</item>
+
+    </style>
+
+    <style name="add_button"  parent="@style/Widget.Neumorph.ImageButton">
+        <item name="neumorph_backgroundColor">@color/background_little_btn_on_light_theme</item>
         <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_light_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_light_theme</item>
-        <!--<item name="neumorph_shapeType">pressed</item>-->
-
+        <item name="neumorph_shadowElevation">4dp</item>
     </style>
 
+    <style name="add_button_shape">
+        <item name="neumorph_cornerSize">4dp</item>
+    </style>
 
 </resources>

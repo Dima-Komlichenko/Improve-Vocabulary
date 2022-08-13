@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.add.AddFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/additional_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/et_firstWord"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginVertical="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="English"
+                app:layout_constraintEnd_toStartOf="@+id/btn_save"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_guideline"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_line_300"
+                app:layout_constraintEnd_toStartOf="@+id/btn_save"
+                app:layout_constraintStart_toStartOf="@+id/et_firstWord"
+                app:layout_constraintTop_toBottomOf="@+id/et_firstWord" />
+
+            <EditText
+                android:id="@+id/et_secondWord"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Russian"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_save"
+                app:layout_constraintStart_toStartOf="@+id/v_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/v_guideline" />
+
+
+            <soup.neumorphism.NeumorphImageButton
+                android:id="@+id/btn_save"
+
+                style="@style/add_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="32dp"
+                android:contentDescription="button_add"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_ok"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:neumorph_shapeAppearance="@style/add_button_shape" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

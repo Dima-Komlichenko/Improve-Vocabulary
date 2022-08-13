@@ -32,7 +32,7 @@
 
     <!-- Shadow on light theme -->
     <color name="light_shadow_on_light_theme">#E6EDEDED</color>
-    <color name="light_little_shadow_on_light_theme">#B5B5B5</color>
+    <color name="light_little_shadow_on_light_theme">#C0C0C0</color>
 
     <color name="dark_shadow_on_light_theme">#8D8D8D</color>
     <color name="dark_little_shadow_on_light_theme">#8D8D8D</color>
@@ -40,19 +40,23 @@
 
     <!-- Shadow on dark theme -->
     <color name="light_shadow_on_dark_theme">#32FFFFFF</color>
-    <color name="light_little_shadow_on_dark_theme">#E6EDEDED</color><!---->
+    <color name="light_little_shadow_on_dark_theme">#803C3C3C</color><!---->
 
     <color name="dark_shadow_on_dark_theme">#80000000</color>
-    <color name="dark_little_shadow_on_dark_theme">#222222</color><!---->
+    <color name="dark_little_shadow_on_dark_theme">#141414</color><!---->
 
 
     <color name="additional_background_light">#A8A8A8</color>
-    <color name="additional_background_dark">#090909</color>
+    <color name="additional_background_dark">#222222</color>
 
-    <color name="background_additional_view_stroke">#80777777</color>
+    <color name="background_additional_view_stroke_on_light_theme">#80777777</color>
+    <color name="background_additional_view_stroke_on_dark_theme">#3D3D3D</color>
 
 
 
-    <color name="background_little_btn">#C3C3C3</color>
+    <color name="background_additional_btn">#C3C3C3</color>
+    <color name="background_little_btn_on_light_theme">#CECECE</color>
+    <color name="background_little_btn_on_dark_theme">#3C3C3C</color>
+
 
 </resources>
