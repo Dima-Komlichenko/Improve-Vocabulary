@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--   layout="@layout/main_header"   -->
     <include
         android:id="@+id/main_header"
-        layout="@layout/fragment_list_header"
+        layout="@layout/main_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

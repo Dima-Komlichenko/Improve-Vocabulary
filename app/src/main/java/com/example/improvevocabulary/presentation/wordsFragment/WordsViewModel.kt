@@ -1,4 +1,4 @@
-package com.example.improvevocabulary.presentation.words
+package com.example.improvevocabulary.presentation.wordsFragment
 
 import androidx.lifecycle.ViewModel
 

@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:layout_margin="12dp"
         app:cardCornerRadius="16dp"
-
         app:strokeWidth="3dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,23 +23,23 @@
                 android:id="@+id/et_firstWord"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="12dp"
                 android:background="@null"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="English"
+                android:inputType="textPersonName"
                 app:layout_constraintEnd_toStartOf="@+id/btn_save"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/v_guideline"
+                android:id="@+id/dividing_line"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
                 android:layout_marginVertical="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/ic_line_300"
                 app:layout_constraintEnd_toStartOf="@+id/btn_save"
                 app:layout_constraintStart_toStartOf="@+id/et_firstWord"
@@ -50,25 +49,24 @@
                 android:id="@+id/et_secondWord"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginEnd="24dp"
                 android:background="@null"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="Russian"
+                android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_save"
-                app:layout_constraintStart_toStartOf="@+id/v_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/v_guideline" />
+                app:layout_constraintStart_toStartOf="@+id/dividing_line"
+                app:layout_constraintTop_toBottomOf="@+id/dividing_line" />
 
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/btn_save"
-
                 style="@style/add_button"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="24dp"
                 android:contentDescription="button_add"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_ok"
@@ -81,5 +79,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_width="130dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_line_300" />
 
 </LinearLayout>

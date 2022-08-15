@@ -43,7 +43,7 @@
                 android:layout_marginTop="16dp"
                 android:text="A-z"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_newer_first"
+                app:layout_constraintEnd_toStartOf="@+id/btn_newer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_alphabetically" />
 
@@ -65,12 +65,12 @@
                 android:layout_height="wrap_content"
                 android:text="In order"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_newer_first"
-                app:layout_constraintStart_toStartOf="@+id/btn_newer_first"
+                app:layout_constraintEnd_toEndOf="@+id/btn_newer"
+                app:layout_constraintStart_toStartOf="@+id/btn_newer"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <soup.neumorphism.NeumorphButton
-                android:id="@+id/btn_newer_first"
+                android:id="@+id/btn_newer"
                 style="@style/additional_button"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -82,15 +82,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_in_order" />
 
             <soup.neumorphism.NeumorphButton
-                android:id="@+id/btn_later_first"
+                android:id="@+id/btn_older"
                 style="@style/additional_button"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="older"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_newer_first"
-                app:layout_constraintStart_toStartOf="@+id/btn_newer_first"
-                app:layout_constraintTop_toBottomOf="@+id/btn_newer_first" />
+                app:layout_constraintEnd_toEndOf="@+id/btn_newer"
+                app:layout_constraintStart_toStartOf="@+id/btn_newer"
+                app:layout_constraintTop_toBottomOf="@+id/btn_newer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,7 +98,6 @@
     </com.google.android.material.card.MaterialCardView>
 
     <View
-        android:id="@+id/v_guideline"
         android:layout_width="130dp"
         android:layout_height="1dp"
         android:layout_gravity="center"
