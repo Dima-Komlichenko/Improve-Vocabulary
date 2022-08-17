@@ -2,17 +2,30 @@ package com.example.improvevocabulary.presentation.filter
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.improvevocabulary.presentation.listHeader.PressedButton
+import com.example.domain.models.FilterBy
+import com.example.domain.models.PressedSortButton
+import com.example.domain.usecase.GetFilterByUseCase
+import com.example.domain.usecase.SaveFilterByUseCase
 
-enum class PressedAlphabeticallyButton {
-    ALPHABETICALLY, NON_ALPHABETICALLY
-}
+class FilterViewModel(
+    private val getFilterByUseCase: GetFilterByUseCase,
+    private val saveFilterByUseCase: SaveFilterByUseCase
+) : ViewModel() {
 
-enum class PressedInOrderButton {
-    NEWER, OLDER
-}
+    val pressedSortButton = MutableLiveData<PressedSortButton>()
 
-class FilterViewModel : ViewModel() {
-    val pressedAlphabeticallyButton = MutableLiveData<PressedAlphabeticallyButton>()
-    val pressedInOrderButton = MutableLiveData<PressedInOrderButton>()
+
+    fun saveFilterBy(filterBy: PressedSortButton) {
+        saveFilterByUseCase.execute(FilterBy(filterBy))
+    }
+
+    fun load() {
+        //pressedSortButton.value = PressedSortButton.valueOf(getFilterByUseCase.execute().toString())
+
+        var pressedSortBtn = getFilterByUseCase.execute().value
+
+        pressedSortButton.value = pressedSortBtn
+
+
+    }
 }

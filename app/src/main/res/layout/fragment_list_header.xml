@@ -83,11 +83,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-
-    <!--
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-    -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/extra_view"
         android:layout_width="match_parent"
@@ -96,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar"/>
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

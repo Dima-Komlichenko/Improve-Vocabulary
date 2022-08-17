@@ -1,10 +1,8 @@
 package com.example.improvevocabulary.di
 
 import android.content.Context
-import com.example.domain.usecase.GetLanguageUseCase
-import com.example.domain.usecase.GetThemeUseCase
-import com.example.domain.usecase.SaveLanguageUseCase
-import com.example.domain.usecase.SaveThemeUseCase
+import com.example.domain.usecase.*
+import com.example.improvevocabulary.presentation.filter.FilterViewModelFactory
 import com.example.improvevocabulary.presentation.settings.SettingsViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -29,6 +27,17 @@ class AppModule(val context: Context) {
             saveLanguageUseCase = saveLanguageUseCase,
             getThemeUseCase = getThemeUseCase,
             saveThemeUseCase = saveThemeUseCase
+        )
+    }
+
+    @Provides
+    fun provideFilterByViewModelFactory(
+        getFilterByUseCase: GetFilterByUseCase,
+        saveFilterByUseCase: SaveFilterByUseCase
+    ): FilterViewModelFactory {
+        return FilterViewModelFactory(
+            getFilterByUseCase = getFilterByUseCase,
+            saveFilterByUseCase = saveFilterByUseCase
         )
     }
 }

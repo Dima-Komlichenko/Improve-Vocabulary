@@ -1,11 +1,9 @@
 package com.example.improvevocabulary.di
 
+import com.example.domain.repositoriesI.FilterByRepository
 import com.example.domain.repositoriesI.LanguageRepository
 import com.example.domain.repositoriesI.ThemeRepository
-import com.example.domain.usecase.GetLanguageUseCase
-import com.example.domain.usecase.GetThemeUseCase
-import com.example.domain.usecase.SaveLanguageUseCase
-import com.example.domain.usecase.SaveThemeUseCase
+import com.example.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 
@@ -30,5 +28,15 @@ class DomainModule {
     @Provides
     fun provideSaveThemeUseCase(themeRepository: ThemeRepository): SaveThemeUseCase {
         return SaveThemeUseCase(themeRepository = themeRepository)
+    }
+
+    @Provides
+    fun provideGetFilterByUseCase(filterByRepository: FilterByRepository): GetFilterByUseCase {
+        return GetFilterByUseCase(filterByRepository = filterByRepository)
+    }
+
+    @Provides
+    fun provideSaveFilterByUseCase(filterByRepository: FilterByRepository): SaveFilterByUseCase {
+        return SaveFilterByUseCase(filterByRepository = filterByRepository)
     }
 }

@@ -13,11 +13,11 @@ class ThemeRepository(var themeStorage: ThemeStorage): ThemeRepository {
         return mapToDomain(themeStorage.get())
     }
 
-    private fun mapToData(domainModel: Theme): com.example.data.storage.Theme {
-        return com.example.data.storage.Theme(domainModel.value)
+    private fun mapToData(domainModel: Theme): com.example.data.storage.models.Theme {
+        return com.example.data.storage.models.Theme(domainModel.value)
     }
 
-    private fun mapToDomain(dataModel: com.example.data.storage.Theme): Theme {
+    private fun mapToDomain(dataModel: com.example.data.storage.models.Theme): Theme {
         return  Theme(dataModel.value)
     }
 }

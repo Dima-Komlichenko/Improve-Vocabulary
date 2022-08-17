@@ -14,11 +14,11 @@ class LanguageRepository(var languageStorage: LanguageStorage) : LanguageReposit
         return mapToDomain(languageStorage.get()) // converts data.Language class to domain once
     }
 
-    private fun mapToData(domainModel: Language): com.example.data.storage.Language {
-        return com.example.data.storage.Language(domainModel.value)
+    private fun mapToData(domainModel: Language): com.example.data.storage.models.Language {
+        return com.example.data.storage.models.Language(domainModel.value)
     }
 
-    private fun mapToDomain(dataModel: com.example.data.storage.Language): Language {
+    private fun mapToDomain(dataModel: com.example.data.storage.models.Language): Language {
         return  Language(dataModel.value)
     }
 }

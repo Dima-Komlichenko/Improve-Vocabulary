@@ -29,7 +29,7 @@ class ListHeaderFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        when(viewModel.pressedButtonId.value) {
+        when (viewModel.pressedButtonId.value) {
             PressedButton.FILTER_BTN -> binding.btnFilter.setImageResource(R.drawable.ic_filter_pressed)
             PressedButton.SEARCH_BTN -> binding.btnSearch.setImageResource(R.drawable.ic_search_pressed)
             PressedButton.ADD_BTN -> binding.btnAdd.setImageResource(R.drawable.ic_add_pressed)
@@ -38,7 +38,7 @@ class ListHeaderFragment : Fragment() {
     }
 
     private fun setBtnsListeners() {
-        binding.btnBack.setOnClickListener { activity?.finish() }
+        binding.btnBack.setOnClickListener { activity?.onBackPressed() }
 
         binding.btnFilter.setOnClickListener {
             binding.btnFilter.setImageResource(R.drawable.ic_filter_pressed)
@@ -46,11 +46,15 @@ class ListHeaderFragment : Fragment() {
             binding.btnAdd.setImageResource(R.drawable.ic_add)
             viewModel.pressedButtonId.value = PressedButton.FILTER_BTN
 
+            val currentFragment =
+                activity!!.supportFragmentManager.findFragmentById(binding.extraView.id)
+
             val fragment = FilterFragment()
             activity!!.supportFragmentManager
                 .beginTransaction()
                 .replace(binding.extraView.id, fragment)
                 .commit()
+
         }
 
         binding.btnSearch.setOnClickListener {

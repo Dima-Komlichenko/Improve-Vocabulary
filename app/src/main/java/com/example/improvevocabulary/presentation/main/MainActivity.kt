@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.data.storage.SharedPrefsLanguageStorage
-import com.example.data.storage.SharedPrefsThemeStorage
+import com.example.data.storage.sharedPrefs.SharedPrefsLanguageStorage
+import com.example.data.storage.sharedPrefs.SharedPrefsThemeStorage
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
