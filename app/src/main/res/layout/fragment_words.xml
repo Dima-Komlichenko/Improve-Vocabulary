@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            style="@style/gradient_background"
+            style="@style/big_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -105,7 +105,7 @@
         app:layout_constraintVertical_bias="0.05">
 
         <LinearLayout
-            style="@style/gradient_background"
+            style="@style/big_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

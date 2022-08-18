@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/big_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -98,6 +99,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            style="@style/big_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

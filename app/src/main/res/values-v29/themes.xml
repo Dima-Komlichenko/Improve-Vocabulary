@@ -6,7 +6,7 @@
         <!-- Secondary brand -->
         <item name="colorSecondary">@color/orange</item>
         <!-- Status bar -->
-        <item name="android:statusBarColor">@color/status_bar_dark</item>
+        <item name="android:statusBarColor">@color/status_bar_light</item>
         <!-- Background -->
         <item name="android:colorBackground">@color/background_light</item>
         <!-- Text -->
@@ -27,8 +27,12 @@
         <item name="neumorph_backgroundColor">@color/background_button_on_light_theme</item>
     </style>
 
-    <style name="gradient_background">
-        <item name="android:background">@drawable/light_gradient</item>
+    <style name="big_gradient_background">
+        <item name="android:background">@drawable/big_light_gradient</item>
+    </style>
+
+    <style name="little_gradient_background">
+        <item name="android:background">@drawable/little_light_gradient</item>
     </style>
 
     <style name="additional_menu">

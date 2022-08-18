@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
-import com.example.improvevocabulary.WordsActivity
+import com.example.improvevocabulary.presentation.wordList.WordsActivity
 import com.example.improvevocabulary.databinding.FragmentWordsBinding
 import android.util.Pair
 

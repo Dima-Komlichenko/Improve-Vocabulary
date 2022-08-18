@@ -4,15 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WordsActivity">
+    tools:context=".presentation.wordList.WordsActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_header"
+        android:id="@+id/fcv_header"
         android:name="com.example.improvevocabulary.presentation.listHeader.ListHeaderFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcv_word_list"
+        android:name="com.example.improvevocabulary.presentation.wordList.WordListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fcv_header" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
