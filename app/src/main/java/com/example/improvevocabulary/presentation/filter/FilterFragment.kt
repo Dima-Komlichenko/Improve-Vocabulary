@@ -32,12 +32,17 @@ class FilterFragment : Fragment() {
         viewModel.pressedSortButton.observe(viewLifecycleOwner) { viewModel.saveFilterBy(it) }
 
         setButtonsListeners()
+        setPressedButton()
 
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
+        setPressedButton()
+    }
+
+    private fun setPressedButton() {
         when(viewModel.pressedSortButton.value) {
             PressedSortButton.ALPHABETICALLY -> binding.btnAlphabetically.setShapeType(ShapeType.PRESSED)
             PressedSortButton.NON_ALPHABETICALLY -> binding.btnNonAlphabetically.setShapeType(ShapeType.PRESSED)
@@ -46,6 +51,7 @@ class FilterFragment : Fragment() {
             else -> {}
         }
     }
+
 
     private fun setButtonsListeners() {
         binding.apply {

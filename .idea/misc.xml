@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1675" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/big_light_gradient.xml" value="0.229" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/dark_gradient.xml" value="0.239" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/extra_btn.xml" value="0.229" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/ic_add.xml" value="0.229" />
@@ -23,33 +22,26 @@
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/ic_ok.xml" value="0.229" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/ic_search.xml" value="0.229" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/ic_search_pressed.xml" value="0.229" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/ic_sound.xml" value="0.229" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/ic_tests.xml" value="0.229" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/light_gradient.xml" value="0.239" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/little_dark_gradient.xml" value="0.229" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/little_light_gradient.xml" value="0.229" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/rounded_button.xml" value="0.2295" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/shadow_little_btn.xml" value="0.239" />
+        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/slide_in_bottom.xml" value="0.2555" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/temp2.xml" value="0.239" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/drawable/temp_stroke_and_gradient.xml" value="0.239" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout-land/fragment_settings.xml" value="0.264" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout-land/fragment_tests.xml" value="0.29791666666666666" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout-land/fragment_words.xml" value="0.29791666666666666" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/activity_words.xml" value="0.2359375" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_add.xml" value="0.4" />
+        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_empty.xml" value="0.25" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_filter.xml" value="0.4" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_list_header.xml" value="0.264" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_search.xml" value="0.264" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_settings.xml" value="0.264" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_tests.xml" value="0.25" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_tool_bar.xml" value="0.25" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_word.xml" value="0.4" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_word_list.xml" value="0.2359375" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_word_list_item.xml" value="0.2359375" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/fragment_words.xml" value="0.25" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/main_header.xml" value="0.24895833333333334" />
-        <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/layout/word_item.xml" value="0.4" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/menu/tools_nav_menu.xml" value="0.24895833333333334" />
         <entry key="..\:/AS_Projects/ImproveVocabulary/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />

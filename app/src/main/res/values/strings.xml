@@ -41,6 +41,8 @@
     <string name="btn_filter_desc" translatable="false">Button filter</string>
     <string name="btn_search_desc" translatable="false">Button search</string>
     <string name="btn_add_desc" translatable="false">Button add</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
