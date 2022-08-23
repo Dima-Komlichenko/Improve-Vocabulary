@@ -1,6 +1,7 @@
 package com.example.improvevocabulary.presentation.main
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,8 +13,6 @@ import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
-
-val STARTFRAGMENT = "STARTFRAGMENR"
 
 class MainActivity : AppCompatActivity() {
 
