@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tv_translation_of_word" type="id"/>
+    <item name="dividing_line_in_extended_word" type="id"/>
+    <item name="btn_remove" type="id"/>
+</resources>

@@ -25,7 +25,7 @@
             android:paddingVertical="16dp">
 
             <ImageView
-                android:id="@+id/v_on_study_message"
+                android:id="@+id/is_opportunity_transfer_word"
                 style="@style/Theme.ImproveVocabulary"
                 android:layout_width="12dp"
                 android:layout_height="12dp"

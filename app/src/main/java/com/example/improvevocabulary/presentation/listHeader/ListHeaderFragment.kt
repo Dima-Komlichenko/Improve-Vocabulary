@@ -25,8 +25,6 @@ class ListHeaderFragment : Fragment() {
         viewModel = ViewModelProvider(this)[ListHeaderViewModel::class.java]
         binding = FragmentListHeaderBinding.inflate(inflater, container, false)
 
-        val fragment = EmptyFragment()
-        activity!!.supportFragmentManager.beginTransaction().add(binding.extraView.id, fragment).commit()
 
         setBtnsListeners()
         return binding.root
@@ -41,124 +39,6 @@ class ListHeaderFragment : Fragment() {
             else -> {}
         }
     }
-
-    /*private fun setBtnsListeners() {
-        binding.btnBack.setOnClickListener { activity?.onBackPressed() }
-
-        binding.btnFilter.setOnClickListener {
-
-            binding.btnSearch.setImageResource(R.drawable.ic_search)
-            binding.btnAdd.setImageResource(R.drawable.ic_add)
-
-            viewModel.pressedButtonId.value = PressedButton.FILTER_BTN
-
-            val currentFragment =
-                activity!!.supportFragmentManager.findFragmentById(binding.extraView.id)
-
-            if (currentFragment is FilterFragment) { // set empty fragment
-                val fragment = FilterFragment()
-                binding.btnFilter.setImageResource(R.drawable.ic_filter)
-
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                    .replace(binding.extraView.id, fragment)
-                    .commit()
-
-                Handler().postDelayed({
-                    val fragment2 = EmptyFragment()
-                    activity!!.supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                        .replace(binding.extraView.id, fragment2)
-                        .commit()
-                }, 200)
-            } else { // set filter
-                val fragment = FilterFragment()
-                binding.btnFilter.setImageResource(R.drawable.ic_filter_pressed)
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                    .replace(binding.extraView.id, fragment)
-                    .commit()
-            }
-        }
-
-        binding.btnSearch.setOnClickListener {
-            binding.btnFilter.setImageResource(R.drawable.ic_filter)
-            binding.btnAdd.setImageResource(R.drawable.ic_add)
-            viewModel.pressedButtonId.value = PressedButton.SEARCH_BTN
-
-            val currentFragment =
-                activity!!.supportFragmentManager.findFragmentById(binding.extraView.id)
-
-            if (currentFragment is SearchFragment) { // set empty fragment
-                val fragment = SearchFragment()
-                binding.btnSearch.setImageResource(R.drawable.ic_search)
-
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                    .replace(binding.extraView.id, fragment)
-                    .commit()
-
-                Handler().postDelayed({
-                    val fragment2 = EmptyFragment()
-                    activity!!.supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                        .replace(binding.extraView.id, fragment2)
-                        .commit()
-                }, 200)
-            } else { // set filter
-                val fragment = SearchFragment()
-                binding.btnFilter.setImageResource(R.drawable.ic_search_pressed)
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                    .replace(binding.extraView.id, fragment)
-                    .commit()
-            }
-        }
-
-        binding.btnAdd.setOnClickListener {
-            binding.btnFilter.setImageResource(R.drawable.ic_filter)
-            binding.btnSearch.setImageResource(R.drawable.ic_search)
-
-            viewModel.pressedButtonId.value = PressedButton.ADD_BTN
-
-            val currentFragment =
-                activity!!.supportFragmentManager.findFragmentById(binding.extraView.id)
-
-            if (currentFragment is AddFragment) { // set empty fragment
-                val fragment = AddFragment()
-                binding.btnAdd.setImageResource(R.drawable.ic_add_pressed)
-
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                    .replace(binding.extraView.id, fragment)
-                    .commit()
-
-                Handler().postDelayed({
-                    val fragment2 = EmptyFragment()
-                    activity!!.supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                        .replace(binding.extraView.id, fragment2)
-                        .commit()
-                }, 200)
-            } else { // set filter
-                val fragment = AddFragment()
-                binding.btnFilter.setImageResource(R.drawable.ic_add_pressed)
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in_bottom_delayed, R.animator.slide_in_top)
-                    .replace(binding.extraView.id, fragment)
-                    .commit()
-            }
-        }
-    }*/
 
     private fun setBtnsListeners() {
         binding.btnBack.setOnClickListener { activity?.onBackPressed() }
