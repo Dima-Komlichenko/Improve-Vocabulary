@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvItem"
     style="@style/neumorph_CardButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
-    android:id="@+id/cvItem"
     android:orientation="horizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,11 +20,11 @@
             android:layout_width="7dp"
             android:layout_height="7dp"
             android:src="@drawable/ic_btn_words_message"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/et_word"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <!-- android:visibility="invisible" -->
 
         <EditText
             android:id="@+id/et_word"
@@ -33,6 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:layout_marginStart="24dp"
+            android:ems="7"
+            android:maxLength="50"
+            android:minWidth="200dp"
             android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +51,7 @@
             app:layout_constraintBottom_toTopOf="@+id/et_translate"
             app:layout_constraintEnd_toStartOf="@id/btn_remove"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_word"/>
+            app:layout_constraintTop_toBottomOf="@+id/et_word" />
 
         <EditText
             android:id="@+id/et_translate"
@@ -57,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:layout_marginStart="24dp"
-            android:inputType="none"
+            android:ems="7"
+            android:maxLength="50"
             android:textSize="23sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -13,11 +13,16 @@ class WordListFragment : Fragment() {
     private lateinit var binding: FragmentWordListBinding
     private val adapter = WordAdapter()
     private val words = arrayListOf(
-        WordPair(0, "Hello", "Привет"),
-        WordPair(1, "Goodbye", "Пока"),
-        WordPair(2, "Window", "Окно"),
-        WordPair(3, "Stairs", "Лестница"),
-        WordPair(4, "Moon", "Луна")
+        WordPair(0, "Aware", "Осведомленный", 0),
+        WordPair(1, "Reduce", "Уменьшать", 7),
+        WordPair(2, "Impact", "Влияние", 10),
+        WordPair(3, "Complexity", "Сложность", 5),
+        WordPair(4, "Reusability", "Возможность повторного переиспользования", 2),
+        WordPair(4, "Eliminate", "Исключить", 10),
+        WordPair(4, "Redundant", "Избыточный", 10),
+        WordPair(4, "Statement", "Утверждение, оператор", 4),
+        WordPair(4, "Implicit", "Скрытый", 0),
+        WordPair(4, "Sandbox", "Песочница", 9)
     )
 
     override fun onCreateView(

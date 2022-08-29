@@ -7,6 +7,7 @@ import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnFocusChangeListener
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -16,11 +17,17 @@ import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
 
 
-data class WordPair(var id: Int, var word: String, var translate: String)
+data class WordPair(
+    var id: Int,
+    var word: String,
+    var translate: String,
+    var countRightAnswers: Int
+)
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
 
     private val words = ArrayList<WordPair>()
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -47,22 +54,23 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
         fun bind(word: WordPair) = with(binding) {
             etWord.setText(word.word)
 
-            etWord.tag = etWord.keyListener;
-            etWord.keyListener = null;
+            if (word.countRightAnswers > 9) {
+                isOpportunityTransferWord.visibility = VISIBLE
+            }
 
+            etWord.tag = etWord.keyListener
+            etWord.keyListener = null
             cvItem.setOnClickListener {
                 extendView(word)
             }
 
-            etWord.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            etWord.onFocusChangeListener = OnFocusChangeListener { _, _ ->
                 extendView(word)
-
                 Handler().postDelayed({
                     etWord.keyListener = etWord.tag as KeyListener
+                    //TODO: Issue - after setting keyListener cursor isn't showing and no option to select text
                 }, 10)
             }
-
-
         }
 
         fun extendView(word: WordPair) = with(binding) {
@@ -70,7 +78,34 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
                 isItemViewExtended = false
                 return
             } else isItemViewExtended = true
+
             etTranslate.setText(word.translate)
+
+            btnMove.setImageResource(
+                when (word.countRightAnswers) {
+                    0 -> R.drawable.ic_0_from_10
+                    1 -> R.drawable.ic_1_from_10
+                    2 -> R.drawable.ic_2_from_10
+                    3 -> R.drawable.ic_3_from_10
+                    4 -> R.drawable.ic_4_from_10
+                    5 -> R.drawable.ic_5_from_10
+                    6 -> R.drawable.ic_6_from_10
+                    7 -> R.drawable.ic_7_from_10
+                    8 -> R.drawable.ic_8_from_10
+                    9 -> R.drawable.ic_9_from_10
+                    else -> R.drawable.ic_move
+                }
+            )
+
+            etTranslate.tag = etTranslate.keyListener
+            etTranslate.keyListener = null
+            etTranslate.keyListener = etTranslate.tag as KeyListener
+
+            if (word.countRightAnswers > 9) {
+                val layoutParams = ConstraintLayout.LayoutParams(15, 60)
+                isOpportunityTransferWord.layoutParams = layoutParams
+                isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message_long)
+            }
 
             etWord.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
@@ -172,21 +207,13 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
             })
 
 
-            //TODO: show count right answers instead of image if it's less than 10
+            dividingLine.visibility = VISIBLE
+            etTranslate.visibility = VISIBLE
+            btnRemove.visibility = VISIBLE
+
+            btnMove.visibility = VISIBLE
 
 
-            //TODO:
-            //TODO: by pressed hide back extended view
-
-            dividingLine.visibility = View.VISIBLE
-            etTranslate.visibility = View.VISIBLE
-            btnRemove.visibility = View.VISIBLE
-
-            btnMove.visibility = View.VISIBLE
-
-            val layoutParams = ConstraintLayout.LayoutParams(15, 60)
-            isOpportunityTransferWord.layoutParams = layoutParams
-            isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message_long)
 
             ConstraintSet().apply {
                 clone(clWordView)

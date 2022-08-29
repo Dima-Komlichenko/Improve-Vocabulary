@@ -3,6 +3,8 @@
     <style name="Theme.ImproveVocabulary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand -->
         <item name="colorPrimary">@color/orange</item>
+        <!-- Secondary brand -->
+        <item name="colorSecondary">@color/orange</item>
         <!-- Status bar -->
         <item name="android:statusBarColor">@color/status_bar_light</item>
         <!-- Background -->
