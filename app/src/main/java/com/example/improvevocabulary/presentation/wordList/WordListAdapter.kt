@@ -1,7 +1,12 @@
 package com.example.improvevocabulary.presentation.wordList
 
+import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
+import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -37,44 +42,202 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
     inner class WordHolder(item: View) : RecyclerView.ViewHolder(item) {
 
         private val binding = WordItemBinding.bind(item)
+        private var isItemViewExtended = false
 
         fun bind(word: WordPair) = with(binding) {
-            tvWord.text = word.word
-            tvTranslate.text = word.translate
+            etWord.setText(word.word)
 
-            clWordView.setOnClickListener {
-                //TODO: set TextViews to EditTexts
-                //TODO: show count right answers instead of image if it's less than 10
-                //TODO: show btnSave if user is editing any word
-                //TODO: make "is_opportunity_transfer_word" longer
-                //TODO: by pressed hide back extended view
+            etWord.tag = etWord.keyListener;
+            etWord.keyListener = null;
 
-                dividingLine.visibility = View.VISIBLE
-                tvTranslate.visibility = View.VISIBLE
-                btnRemove.visibility = View.VISIBLE
-                btnMove.visibility = View.VISIBLE
-
-                ConstraintSet().apply {
-                    clone(clWordView)
-                    //tvWord
-                    clear(tvWord.id, ConstraintSet.BOTTOM)
-                    clear(tvWord.id, ConstraintSet.TOP)
-                    connect(tvWord.id, ConstraintSet.BOTTOM, dividingLine.id, ConstraintSet.TOP, 12)
-                    connect(tvWord.id, ConstraintSet.TOP, it.id, ConstraintSet.TOP, 12)
-                    //btnSound
-                    clear(btnSound.id, ConstraintSet.TOP)
-                    clear(btnSound.id, ConstraintSet.BOTTOM)
-                    clear(btnSound.id, ConstraintSet.START)
-                    clear(btnSound.id, ConstraintSet.END)
-                    connect(btnSound.id, ConstraintSet.TOP, tvWord.id, ConstraintSet.TOP)
-                    connect(btnSound.id, ConstraintSet.BOTTOM, tvWord.id, ConstraintSet.BOTTOM)
-                    connect(btnSound.id, ConstraintSet.RIGHT, it.id, ConstraintSet.RIGHT)
-                    connect(btnSound.id, ConstraintSet.LEFT, dividingLine.id, ConstraintSet.RIGHT)
-                    setHorizontalBias(btnSound.id, 0.5F)
-                }.applyTo(it as ConstraintLayout?)
+            cvItem.setOnClickListener {
+                extendView(word)
             }
+
+            etWord.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+                extendView(word)
+
+                Handler().postDelayed({
+                    etWord.keyListener = etWord.tag as KeyListener
+                }, 10)
+            }
+
+
+        }
+
+        fun extendView(word: WordPair) = with(binding) {
+            if (isItemViewExtended) {
+                isItemViewExtended = false
+                return
+            } else isItemViewExtended = true
+            etTranslate.setText(word.translate)
+
+            etWord.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    if (word.word == s.toString() && word.translate == etTranslate.text.toString()) {
+                        btnSave.visibility = View.GONE
+                        ConstraintSet().apply {
+                            clone(clWordView)
+                            clear(btnSound.id, ConstraintSet.START)
+                            connect(
+                                btnSound.id,
+                                ConstraintSet.LEFT,
+                                dividingLine.id,
+                                ConstraintSet.RIGHT
+                            )
+                        }.applyTo(clWordView)
+                    }
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    btnSave.visibility = View.VISIBLE
+                    ConstraintSet().apply {
+                        clone(clWordView)
+                        clear(btnSound.id, ConstraintSet.START)
+                        clear(btnSound.id, ConstraintSet.END)
+                        connect(
+                            btnSound.id,
+                            ConstraintSet.LEFT,
+                            btnSave.id,
+                            ConstraintSet.RIGHT,
+                            12
+                        )
+                        connect(
+                            btnSound.id,
+                            ConstraintSet.RIGHT,
+                            cvItem.id,
+                            ConstraintSet.RIGHT,
+                            12
+                        )
+                    }.applyTo(clWordView)
+                }
+            })
+
+            etTranslate.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    if (word.translate == s.toString() && word.word == etWord.text.toString()) {
+                        btnSave.visibility = View.GONE
+                        ConstraintSet().apply {
+                            clone(clWordView)
+                            clear(btnSound.id, ConstraintSet.START)
+                            connect(
+                                btnSound.id,
+                                ConstraintSet.LEFT,
+                                dividingLine.id,
+                                ConstraintSet.RIGHT
+                            )
+                        }.applyTo(clWordView)
+                    }
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    btnSave.visibility = View.VISIBLE
+                    ConstraintSet().apply {
+                        clone(clWordView)
+                        clear(btnSound.id, ConstraintSet.START)
+                        clear(btnSound.id, ConstraintSet.END)
+                        connect(
+                            btnSound.id,
+                            ConstraintSet.LEFT,
+                            btnSave.id,
+                            ConstraintSet.RIGHT,
+                            12
+                        )
+                        connect(
+                            btnSound.id,
+                            ConstraintSet.RIGHT,
+                            clWordView.id,
+                            ConstraintSet.RIGHT,
+                            12
+                        )
+
+                    }.applyTo(clWordView)
+                }
+            })
+
+
+            //TODO: show count right answers instead of image if it's less than 10
+
+
+            //TODO:
+            //TODO: by pressed hide back extended view
+
+            dividingLine.visibility = View.VISIBLE
+            etTranslate.visibility = View.VISIBLE
+            btnRemove.visibility = View.VISIBLE
+
+            btnMove.visibility = View.VISIBLE
+
+            val layoutParams = ConstraintLayout.LayoutParams(15, 60)
+            isOpportunityTransferWord.layoutParams = layoutParams
+            isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message_long)
+
+            ConstraintSet().apply {
+                clone(clWordView)
+                //tvWord
+                clear(etWord.id, ConstraintSet.BOTTOM)
+                clear(etWord.id, ConstraintSet.TOP)
+                connect(etWord.id, ConstraintSet.BOTTOM, dividingLine.id, ConstraintSet.TOP, 12)
+                connect(etWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 12)
+                //btnSound
+                clear(btnSound.id, ConstraintSet.TOP)
+                clear(btnSound.id, ConstraintSet.BOTTOM)
+                clear(btnSound.id, ConstraintSet.START)
+                clear(btnSound.id, ConstraintSet.END)
+                connect(btnSound.id, ConstraintSet.TOP, etWord.id, ConstraintSet.TOP)
+                connect(btnSound.id, ConstraintSet.BOTTOM, etWord.id, ConstraintSet.BOTTOM)
+                connect(btnSound.id, ConstraintSet.RIGHT, btnMove.id, ConstraintSet.RIGHT)
+                connect(btnSound.id, ConstraintSet.LEFT, btnRemove.id, ConstraintSet.LEFT)
+                //isOpportunityTransferWord
+                clear(isOpportunityTransferWord.id, ConstraintSet.TOP)
+                clear(isOpportunityTransferWord.id, ConstraintSet.BOTTOM)
+                clear(isOpportunityTransferWord.id, ConstraintSet.START)
+                clear(isOpportunityTransferWord.id, ConstraintSet.END)
+                clear(isOpportunityTransferWord.id, ConstraintSet.BOTTOM)
+                connect(
+                    isOpportunityTransferWord.id,
+                    ConstraintSet.TOP,
+                    dividingLine.id,
+                    ConstraintSet.TOP
+                )
+                connect(
+                    isOpportunityTransferWord.id,
+                    ConstraintSet.BOTTOM,
+                    dividingLine.id,
+                    ConstraintSet.BOTTOM
+                )
+                connect(
+                    isOpportunityTransferWord.id,
+                    ConstraintSet.LEFT,
+                    clWordView.id,
+                    ConstraintSet.LEFT
+                )
+                connect(
+                    isOpportunityTransferWord.id,
+                    ConstraintSet.RIGHT,
+                    dividingLine.id,
+                    ConstraintSet.LEFT
+                )
+            }.applyTo(clWordView)
         }
     }
+
 
     fun init(words: ArrayList<WordPair>) {
         words.forEach { addWord(it) }

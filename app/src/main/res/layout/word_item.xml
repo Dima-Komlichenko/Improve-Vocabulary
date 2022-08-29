@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
+    android:id="@+id/cvItem"
     android:orientation="horizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,17 +17,18 @@
         <ImageView
             android:id="@+id/is_opportunity_transfer_word"
             style="@style/Theme.ImproveVocabulary"
-            android:layout_width="6dp"
-            android:layout_height="6dp"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
             android:src="@drawable/ic_btn_words_message"
-            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-
+            app:layout_constraintEnd_toStartOf="@+id/et_word"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <!-- app:layout_constraintEnd_toStartOf="@+id/tv_word"-->
-        <TextView
-            android:id="@+id/tv_word"
+        <!-- android:visibility="invisible" -->
+
+        <EditText
+            android:id="@+id/et_word"
+            style="@style/edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -43,18 +45,19 @@
             android:layout_marginStart="24dp"
             android:background="@drawable/ic_line_300"
             android:visibility="gone"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintBottom_toTopOf="@+id/tv_translate"
+            app:layout_constraintBottom_toTopOf="@+id/et_translate"
             app:layout_constraintEnd_toStartOf="@id/btn_remove"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_word" />
+            app:layout_constraintTop_toBottomOf="@+id/et_word"/>
 
-        <TextView
-            android:id="@+id/tv_translate"
+        <EditText
+            android:id="@+id/et_translate"
+            style="@style/edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:layout_marginStart="24dp"
+            android:inputType="none"
             android:textSize="23sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,8 +65,22 @@
             app:layout_constraintTop_toTopOf="@id/dividing_line" />
 
         <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/btn_save"
+            style="@style/little_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:contentDescription="ImageButtonSave"
+            android:src="@drawable/ic_ok"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_sound"
+            app:layout_constraintEnd_toEndOf="@+id/btn_remove"
+            app:layout_constraintTop_toTopOf="@+id/btn_sound"
+            app:neumorph_shapeAppearance="@style/add_button_shape" />
+
+        <soup.neumorphism.NeumorphImageButton
             android:id="@+id/btn_sound"
-            style="@style/add_button"
+            style="@style/little_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
@@ -76,7 +93,7 @@
 
         <soup.neumorphism.NeumorphImageButton
             android:id="@+id/btn_remove"
-            style="@style/add_button"
+            style="@style/little_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
@@ -89,12 +106,12 @@
 
         <soup.neumorphism.NeumorphImageButton
             android:id="@+id/btn_move"
-            style="@style/add_button"
+            style="@style/little_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
             android:contentDescription="ImageButtonMove"
-            android:src="@drawable/ic_move"
+            android:src="@drawable/ic_0_from_10"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

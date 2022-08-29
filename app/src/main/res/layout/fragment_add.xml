@@ -63,7 +63,7 @@
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/btn_save"
-                style="@style/add_button"
+                style="@style/little_button"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginEnd="24dp"
