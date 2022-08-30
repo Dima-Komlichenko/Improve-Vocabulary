@@ -1,5 +1,6 @@
 package com.example.improvevocabulary.presentation.wordList
 
+import android.content.Context
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.DiffUtil
@@ -27,13 +29,14 @@ data class WordPair(
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
 
     private val words = ArrayList<WordPair>()
-
+    private var context: Context? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): WordHolder { // создает холдера
         val view = LayoutInflater.from(parent.context).inflate(R.layout.word_item, parent, false)
+        context = parent.context
         return WordHolder(view)
     }
 
@@ -46,7 +49,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
     }
 
 
-    inner class WordHolder(item: View) : RecyclerView.ViewHolder(item) {
+    inner class WordHolder(var item: View) : RecyclerView.ViewHolder(item) {
 
         private val binding = WordItemBinding.bind(item)
         private var isItemViewExtended = false
@@ -69,13 +72,14 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
                 Handler().postDelayed({
                     etWord.keyListener = etWord.tag as KeyListener
                     //TODO: Issue - after setting keyListener cursor isn't showing and no option to select text
-                }, 10)
+                }, 100)
             }
         }
 
+
+
         fun extendView(word: WordPair) = with(binding) {
             if (isItemViewExtended) {
-                isItemViewExtended = false
                 return
             } else isItemViewExtended = true
 
@@ -102,6 +106,10 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
             etTranslate.keyListener = etTranslate.tag as KeyListener
 
             if (word.countRightAnswers > 9) {
+                val animOrangeDot = TranslateAnimation(0F, 0F, -50F, 0F)
+                animOrangeDot.duration = 500
+                animOrangeDot.fillAfter = true
+                isOpportunityTransferWord.startAnimation(animOrangeDot)
                 val layoutParams = ConstraintLayout.LayoutParams(15, 60)
                 isOpportunityTransferWord.layoutParams = layoutParams
                 isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message_long)
@@ -119,55 +127,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
                 override fun afterTextChanged(s: Editable?) {
                     if (word.word == s.toString() && word.translate == etTranslate.text.toString()) {
                         btnSave.visibility = View.GONE
-                        ConstraintSet().apply {
-                            clone(clWordView)
-                            clear(btnSound.id, ConstraintSet.START)
-                            connect(
-                                btnSound.id,
-                                ConstraintSet.LEFT,
-                                dividingLine.id,
-                                ConstraintSet.RIGHT
-                            )
-                        }.applyTo(clWordView)
-                    }
-                }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    btnSave.visibility = View.VISIBLE
-                    ConstraintSet().apply {
-                        clone(clWordView)
-                        clear(btnSound.id, ConstraintSet.START)
-                        clear(btnSound.id, ConstraintSet.END)
-                        connect(
-                            btnSound.id,
-                            ConstraintSet.LEFT,
-                            btnSave.id,
-                            ConstraintSet.RIGHT,
-                            12
-                        )
-                        connect(
-                            btnSound.id,
-                            ConstraintSet.RIGHT,
-                            cvItem.id,
-                            ConstraintSet.RIGHT,
-                            12
-                        )
-                    }.applyTo(clWordView)
-                }
-            })
-
-            etTranslate.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    if (word.translate == s.toString() && word.word == etWord.text.toString()) {
-                        btnSave.visibility = View.GONE
                         ConstraintSet().apply {
                             clone(clWordView)
                             clear(btnSound.id, ConstraintSet.START)
@@ -201,7 +161,59 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
                             ConstraintSet.RIGHT,
                             12
                         )
+                    }.applyTo(clWordView)
+                }
+            })
 
+            etTranslate.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    if (word.translate == s.toString() && word.word == etWord.text.toString()) {
+                        btnSave.visibility = View.GONE
+
+                        ConstraintSet().apply {
+                            clone(clWordView)
+                            clear(btnSound.id, ConstraintSet.START)
+                            connect(
+                                btnSound.id,
+                                ConstraintSet.LEFT,
+                                dividingLine.id,
+                                ConstraintSet.RIGHT
+                            )
+                        }.applyTo(clWordView)
+                    }
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    btnSave.visibility = VISIBLE
+
+
+
+                    ConstraintSet().apply {
+                        clone(clWordView)
+                        clear(btnSound.id, ConstraintSet.START)
+                        clear(btnSound.id, ConstraintSet.END)
+                        connect(
+                            btnSound.id,
+                            ConstraintSet.LEFT,
+                            btnSave.id,
+                            ConstraintSet.RIGHT,
+                            12
+                        )
+                        connect(
+                            btnSound.id,
+                            ConstraintSet.RIGHT,
+                            clWordView.id,
+                            ConstraintSet.RIGHT,
+                            12
+                        )
                     }.applyTo(clWordView)
                 }
             })
@@ -212,8 +224,6 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
             btnRemove.visibility = VISIBLE
 
             btnMove.visibility = VISIBLE
-
-
 
             ConstraintSet().apply {
                 clone(clWordView)
@@ -286,7 +296,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
         override fun getNewListSize(): Int = newList.size
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].id == newList[newItemPosition].id
+            return oldList[oldItemPosition].id == newList[newItemPosition].id && oldList[oldItemPosition].word == newList[newItemPosition].word
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

@@ -1,0 +1,9 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="200"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="x"
+        android:valueFrom="-100"
+        android:valueTo="0"
+        android:valueType="floatType" />
+</set>

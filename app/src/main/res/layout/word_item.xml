@@ -10,6 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_word_view"
+        android:animateLayoutChanges="true"
         style="@style/little_gradient_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,7 +36,7 @@
             android:layout_marginStart="24dp"
             android:ems="7"
             android:maxLength="50"
-            android:minWidth="200dp"
+
             android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
