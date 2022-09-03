@@ -42,7 +42,10 @@
     <string name="btn_search_desc" translatable="false">Button search</string>
     <string name="btn_add_desc" translatable="false">Button add</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="snack_bar_removing_word">You removed a word</string>
+    <string name="snack_bar_moving_word_first_part">You moved the word</string>
+    <string name="snack_bar_moving_word_last_part">into studied list</string>
+    <string name="undo">Undo</string>
 
 
 </resources>

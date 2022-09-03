@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Improve Vocabulary</string>
 
     <string name="title_words">Слова</string>
     <string name="title_tests">Тести</string>
@@ -36,5 +35,9 @@
 
     <string name="switch_suggest_repetition_of_words_on">Повторення слів увімкнено</string>
     <string name="switch_suggest_repetition_of_words_off">Повторення слів вимкнено</string>
+    <string name="snack_bar_removing_word">Ви видалили слово</string>
+    <string name="snack_bar_moving_word_first_part">Ви перемістили слово</string>
+    <string name="snack_bar_moving_word_last_part">у вивчені</string>
+    <string name="undo">Скасувати</string>
 
 </resources>

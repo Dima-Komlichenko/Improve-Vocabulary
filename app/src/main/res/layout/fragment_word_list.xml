@@ -2,10 +2,11 @@
 <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
+    android:id="@+id/recycler_view"
     android:name="com.example.improvevocabulary.WordListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutAnimation="@anim/recycler_layout_animation"
     app:layoutManager="LinearLayoutManager"
     tools:context=".presentation.wordList.WordListFragment"
     tools:listitem="@layout/word_item" />

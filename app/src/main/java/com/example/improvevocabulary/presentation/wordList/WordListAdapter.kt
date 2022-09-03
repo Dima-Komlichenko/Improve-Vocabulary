@@ -1,22 +1,26 @@
 package com.example.improvevocabulary.presentation.wordList
 
 import android.content.Context
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.KeyListener
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnFocusChangeListener
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 data class WordPair(
@@ -52,41 +56,73 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
     inner class WordHolder(var item: View) : RecyclerView.ViewHolder(item) {
 
         private val binding = WordItemBinding.bind(item)
-        private var isItemViewExtended = false
+        private var areItemDetailsShown = false
+        private lateinit var wordPair: WordPair
+
+        fun getWordPair(): WordPair {
+            return wordPair
+        }
 
         fun bind(word: WordPair) = with(binding) {
+            wordPair = word
+
             etWord.setText(word.word)
 
             if (word.countRightAnswers > 9) {
                 isOpportunityTransferWord.visibility = VISIBLE
             }
 
-            etWord.tag = etWord.keyListener
-            etWord.keyListener = null
             cvItem.setOnClickListener {
-                extendView(word)
+                setCardForm()
+
             }
 
             etWord.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-                extendView(word)
-                Handler().postDelayed({
-                    etWord.keyListener = etWord.tag as KeyListener
-                    //TODO: Issue - after setting keyListener cursor isn't showing and no option to select text
-                }, 100)
+                if(!areItemDetailsShown) {
+                    showCardDetails()
+                    areItemDetailsShown = true
+                }
+
+            }
+
+            btnRemove.setOnClickListener {
+                removeWord(word.id)
             }
         }
 
+        private fun setCardForm() {
+            if (areItemDetailsShown) {
+                hideCardDetails()
+                areItemDetailsShown = false
+            } else {
+                showCardDetails()
+                areItemDetailsShown = true
+            }
+        }
+
+        private fun showCardDetails() = with(binding) {
+            setImageBtnMove()
+            etTranslate.setText(wordPair.translate)
+
+            setIsOpportunityTransferWordToShowCardDetails()
+
+            animateView(btnSound, 65F, 0F, 0F, 0F)
+
+            textChangingHandlerToShowCardDetails(etWord, wordPair.word)
+            textChangingHandlerToShowCardDetails(etTranslate, wordPair.translate)
 
 
-        fun extendView(word: WordPair) = with(binding) {
-            if (isItemViewExtended) {
-                return
-            } else isItemViewExtended = true
+            dividingLine.visibility = VISIBLE
+            etTranslate.visibility = VISIBLE
+            btnRemove.visibility = VISIBLE
+            btnMove.visibility = VISIBLE
 
-            etTranslate.setText(word.translate)
+            setConstraintsToShowCardDetails()
+        }
 
+        private fun setImageBtnMove() = with(binding) {
             btnMove.setImageResource(
-                when (word.countRightAnswers) {
+                when (wordPair.countRightAnswers) {
                     0 -> R.drawable.ic_0_from_10
                     1 -> R.drawable.ic_1_from_10
                     2 -> R.drawable.ic_2_from_10
@@ -100,131 +136,92 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
                     else -> R.drawable.ic_move
                 }
             )
+        }
 
-            etTranslate.tag = etTranslate.keyListener
-            etTranslate.keyListener = null
-            etTranslate.keyListener = etTranslate.tag as KeyListener
+        private fun animateView(view: View, fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float) {
+            val animation = TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta).apply {
+                duration = 200
+                fillAfter = true
+            }
+            view.startAnimation(animation)
+        }
 
-            if (word.countRightAnswers > 9) {
-                val animOrangeDot = TranslateAnimation(0F, 0F, -50F, 0F)
-                animOrangeDot.duration = 500
-                animOrangeDot.fillAfter = true
-                isOpportunityTransferWord.startAnimation(animOrangeDot)
+        private fun setIsOpportunityTransferWordToShowCardDetails() = with(binding) {
+            if (wordPair.countRightAnswers > 9) {
+                animateView(isOpportunityTransferWord, 0F, 0F, -50F, 0F)
+
                 val layoutParams = ConstraintLayout.LayoutParams(15, 60)
                 isOpportunityTransferWord.layoutParams = layoutParams
                 isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message_long)
             }
+        }
 
-            etWord.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
+        private fun textChangingHandlerToShowCardDetails(editText: EditText, word: String) =
+            with(binding) {
+                editText.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                        if (btnSave.visibility != View.GONE) return
+                        animateView(btnSound, -65F, 0F, 0F, 0F)
 
-                override fun afterTextChanged(s: Editable?) {
-                    if (word.word == s.toString() && word.translate == etTranslate.text.toString()) {
-                        btnSave.visibility = View.GONE
-
+                        if(editText.text.toString() == word) return
+                        btnSave.visibility = View.VISIBLE
                         ConstraintSet().apply {
                             clone(clWordView)
                             clear(btnSound.id, ConstraintSet.START)
+                            clear(btnSound.id, ConstraintSet.END)
                             connect(
                                 btnSound.id,
                                 ConstraintSet.LEFT,
-                                dividingLine.id,
-                                ConstraintSet.RIGHT
+                                btnSave.id,
+                                ConstraintSet.RIGHT,
+                                12
                             )
-                        }.applyTo(clWordView)
-                    }
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    btnSave.visibility = View.VISIBLE
-                    ConstraintSet().apply {
-                        clone(clWordView)
-                        clear(btnSound.id, ConstraintSet.START)
-                        clear(btnSound.id, ConstraintSet.END)
-                        connect(
-                            btnSound.id,
-                            ConstraintSet.LEFT,
-                            btnSave.id,
-                            ConstraintSet.RIGHT,
-                            12
-                        )
-                        connect(
-                            btnSound.id,
-                            ConstraintSet.RIGHT,
-                            clWordView.id,
-                            ConstraintSet.RIGHT,
-                            12
-                        )
-                    }.applyTo(clWordView)
-                }
-            })
-
-            etTranslate.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    if (word.translate == s.toString() && word.word == etWord.text.toString()) {
-                        btnSave.visibility = View.GONE
-
-                        ConstraintSet().apply {
-                            clone(clWordView)
-                            clear(btnSound.id, ConstraintSet.START)
                             connect(
                                 btnSound.id,
-                                ConstraintSet.LEFT,
-                                dividingLine.id,
-                                ConstraintSet.RIGHT
+                                ConstraintSet.RIGHT,
+                                clWordView.id,
+                                ConstraintSet.RIGHT,
+                                12
                             )
                         }.applyTo(clWordView)
                     }
-                }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    btnSave.visibility = VISIBLE
+                    override fun afterTextChanged(s: Editable?) {
+                        if (wordPair.word == s.toString() && wordPair.translate == etTranslate.text.toString()) {
+                            animateView(btnSound, 65F, 0F, 0F, 0F)
 
+                            btnSave.visibility = View.GONE
 
+                            ConstraintSet().apply {
+                                clone(clWordView)
+                                clear(btnSound.id, ConstraintSet.START)
+                                connect(
+                                    btnSound.id,
+                                    ConstraintSet.LEFT,
+                                    dividingLine.id,
+                                    ConstraintSet.RIGHT
+                                )
+                            }.applyTo(clWordView)
+                        }
+                    }
 
-                    ConstraintSet().apply {
-                        clone(clWordView)
-                        clear(btnSound.id, ConstraintSet.START)
-                        clear(btnSound.id, ConstraintSet.END)
-                        connect(
-                            btnSound.id,
-                            ConstraintSet.LEFT,
-                            btnSave.id,
-                            ConstraintSet.RIGHT,
-                            12
-                        )
-                        connect(
-                            btnSound.id,
-                            ConstraintSet.RIGHT,
-                            clWordView.id,
-                            ConstraintSet.RIGHT,
-                            12
-                        )
-                    }.applyTo(clWordView)
-                }
-            })
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
 
+                    }
+                })
+            }
 
-            dividingLine.visibility = VISIBLE
-            etTranslate.visibility = VISIBLE
-            btnRemove.visibility = VISIBLE
-
-            btnMove.visibility = VISIBLE
-
+        private fun setConstraintsToShowCardDetails() = with(binding) {
             ConstraintSet().apply {
                 clone(clWordView)
                 //tvWord
@@ -273,7 +270,65 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
                 )
             }.applyTo(clWordView)
         }
+
+
+        private fun hideCardDetails() = with(binding) {
+            dividingLine.visibility = View.GONE
+            etTranslate.visibility = View.GONE
+            btnRemove.visibility = View.GONE
+            btnMove.visibility = View.GONE
+            btnSave.visibility = View.GONE
+
+            setIsOpportunityTransferWordToHideCardDetails()
+            animateView(btnSound, -65F, 0F, 0F, 0F)
+            textChangingHandlerToHideCardDetails()
+
+            setConstraintsToHideCardDetails()
+        }
+
+        private fun setIsOpportunityTransferWordToHideCardDetails() = with(binding) {
+            if (wordPair.countRightAnswers > 9) {
+                animateView(isOpportunityTransferWord, 0F, 0F, 50F, 0F)
+
+                val layoutParams = ConstraintLayout.LayoutParams(19, 19)
+                isOpportunityTransferWord.layoutParams = layoutParams
+                isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message)
+            }
+        }
+
+        private fun textChangingHandlerToHideCardDetails() = with(binding) {
+            etWord.clearFocus()
+            etWord.tag = etWord.keyListener
+            etWord.keyListener = null
+            //TODO: убрать фокус с etWord, курсор и клавиатуру
+        }
+
+        private fun setConstraintsToHideCardDetails() = with(binding) {
+            ConstraintSet().apply {
+                clone(clWordView)
+
+                //btnSound
+                clear(btnSound.id, ConstraintSet.TOP)
+                clear(btnSound.id, ConstraintSet.BOTTOM)
+                clear(btnSound.id, ConstraintSet.LEFT)
+                clear(btnSound.id, ConstraintSet.RIGHT)
+                connect(btnSound.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 10)
+                connect(btnSound.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 10)
+                connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT, 10)
+                //isOpportunityTransferWord
+                clear(isOpportunityTransferWord.id, ConstraintSet.TOP)
+                clear(isOpportunityTransferWord.id, ConstraintSet.BOTTOM)
+                clear(isOpportunityTransferWord.id, ConstraintSet.START)
+                clear(isOpportunityTransferWord.id, ConstraintSet.END)
+                connect(isOpportunityTransferWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP)
+                connect(isOpportunityTransferWord.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM)
+                connect(isOpportunityTransferWord.id, ConstraintSet.LEFT, clWordView.id, ConstraintSet.LEFT)
+                connect(isOpportunityTransferWord.id, ConstraintSet.RIGHT, etWord.id, ConstraintSet.LEFT)
+            }.applyTo(clWordView)
+        }
+
     }
+
 
 
     fun init(words: ArrayList<WordPair>) {
@@ -285,6 +340,33 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         words.add(word)
         diffResult.dispatchUpdatesTo(this)
+    }
+
+    fun addWordAtPosition(word: WordPair, index: Int) {
+        val diffUtil = MyDiffUtil(words, words + word)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        words.add(index, word)
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    fun getWordPairIndexById(id: Int): Int {
+        return words.indexOf(words.find { word -> word.id == id })
+    }
+
+    fun removeWord(id: Int) : Int {
+        val index = words.indexOf(words.find { word -> word.id == id })
+
+        val newList = arrayListOf<WordPair>()
+        words.forEach { word ->
+            if(word.id != id)
+                newList.add(word)
+        }
+        val diffUtil = MyDiffUtil(words, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        words.remove(words.find { word -> word.id == id })
+        diffResult.dispatchUpdatesTo(this)
+
+        return index
     }
 
     class MyDiffUtil(

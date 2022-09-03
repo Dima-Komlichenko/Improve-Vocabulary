@@ -61,5 +61,7 @@
     <color name="yellow">#C9C100</color>
     <color name="blue">#0033E7</color>
 
+    <!-- <color name="item_swap_background_icon">#535353</color> -->
+
 
 </resources>
