@@ -39,4 +39,7 @@
     <string name="snack_bar_moving_word_first_part">Вы переместили слово</string>
     <string name="snack_bar_moving_word_last_part">в изученные</string>
     <string name="undo">Отменить</string>
+    <string name="new_word_created">Вы создали слово</string>
+    <string name="ok">Ок</string>
+    <string name="word_not_enteted">Слово не введено</string>
 </resources>

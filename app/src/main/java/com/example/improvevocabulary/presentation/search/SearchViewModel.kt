@@ -1,7 +1,8 @@
 package com.example.improvevocabulary.presentation.search
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SearchViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val searchingWord = MutableLiveData<String>()
 }

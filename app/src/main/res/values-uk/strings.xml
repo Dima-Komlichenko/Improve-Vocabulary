@@ -39,5 +39,8 @@
     <string name="snack_bar_moving_word_first_part">Ви перемістили слово</string>
     <string name="snack_bar_moving_word_last_part">у вивчені</string>
     <string name="undo">Скасувати</string>
+    <string name="new_word_created">Ви створили слово</string>
+    <string name="ok">Ок</string>
+    <string name="word_not_enteted">Слово не введено</string>
 
 </resources>

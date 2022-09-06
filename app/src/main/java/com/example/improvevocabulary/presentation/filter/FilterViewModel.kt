@@ -20,12 +20,6 @@ class FilterViewModel(
     }
 
     fun load() {
-        //pressedSortButton.value = PressedSortButton.valueOf(getFilterByUseCase.execute().toString())
-
-        var pressedSortBtn = getFilterByUseCase.execute().value
-
-        pressedSortButton.value = pressedSortBtn
-
-
+        pressedSortButton.value = getFilterByUseCase.execute().value
     }
 }

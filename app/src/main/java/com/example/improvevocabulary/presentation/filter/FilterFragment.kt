@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.models.PressedSortButton
 import com.example.improvevocabulary.app.App
@@ -16,19 +17,14 @@ import javax.inject.Inject
 class FilterFragment : Fragment() {
 
     private lateinit var binding: FragmentFilterBinding
-    private lateinit var viewModel: FilterViewModel
-
-    @Inject
-    lateinit var filterViewModelFactory: FilterViewModelFactory
+    private val viewModel: FilterViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFilterBinding.inflate(inflater, container, false)
-        (activity?.applicationContext as App).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, filterViewModelFactory)[FilterViewModel::class.java]
-        viewModel.load()
+
         viewModel.pressedSortButton.observe(viewLifecycleOwner) { viewModel.saveFilterBy(it) }
 
         setButtonsListeners()

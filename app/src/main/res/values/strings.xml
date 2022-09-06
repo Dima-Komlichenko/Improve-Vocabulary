@@ -46,6 +46,9 @@
     <string name="snack_bar_moving_word_first_part">You moved the word</string>
     <string name="snack_bar_moving_word_last_part">into studied list</string>
     <string name="undo">Undo</string>
+    <string name="new_word_created">You created the word</string>
+    <string name="ok">Ok</string>
+    <string name="word_not_enteted">Word not entered</string>
 
 
 </resources>

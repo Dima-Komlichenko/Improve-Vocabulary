@@ -27,12 +27,12 @@ data class WordPair(
     var id: Int,
     var word: String,
     var translate: String,
-    var countRightAnswers: Int
+    var countRightAnswers: Int = 0
 )
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
 
-    private val words = ArrayList<WordPair>()
+    private var words = ArrayList<WordPair>()
     private var context: Context? = null
 
     override fun onCreateViewHolder(
@@ -300,7 +300,10 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
             etWord.clearFocus()
             etWord.tag = etWord.keyListener
             etWord.keyListener = null
-            //TODO: убрать фокус с etWord, курсор и клавиатуру
+            //TODO: добавить tvWord что б  они сменяли etWord когда слово открыто и закрыто
+            //TODO: если добавлять/удалять слова из списка то вылетает activity не понятно где и когда и почему
+            //TODO: если удалить/перенести слово то кнопка звука на тех словах которые были открыты/закрыты ранее сьезжает влево
+            //TODO: свайп переноса должен быть не доступен если countRightAnswers < 10
         }
 
         private fun setConstraintsToHideCardDetails() = with(binding) {
@@ -367,6 +370,20 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordHolder>() {
         diffResult.dispatchUpdatesTo(this)
 
         return index
+    }
+
+    fun sort(sortedList: ArrayList<WordPair>){
+        val diffUtil = MyDiffUtil(words, sortedList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        words = sortedList
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    fun setNewList(newList: ArrayList<WordPair>) {
+        val diffUtil = MyDiffUtil(words, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        words = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class MyDiffUtil(
