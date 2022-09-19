@@ -15,9 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+      android:name="com.example.improvevocabulary.presentation.lists.baseList.WordListFragment"
+    -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_word_list"
-        android:name="com.example.improvevocabulary.presentation.wordList.WordListFragment"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

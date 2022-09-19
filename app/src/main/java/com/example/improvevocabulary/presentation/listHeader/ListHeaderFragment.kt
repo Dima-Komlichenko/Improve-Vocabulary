@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentListHeaderBinding
 import com.example.improvevocabulary.presentation.add.AddFragment
 import com.example.improvevocabulary.presentation.filter.FilterFragment
+import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
 import com.example.improvevocabulary.presentation.search.SearchFragment
+import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -20,6 +23,7 @@ class ListHeaderFragment : Fragment() {
 
     private lateinit var binding: FragmentListHeaderBinding
     private lateinit var viewModel: ListHeaderViewModel
+    private val wordListViewModel: WordListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,15 +33,20 @@ class ListHeaderFragment : Fragment() {
         binding = FragmentListHeaderBinding.inflate(inflater, container, false)
 
         setBtnsListeners()
+
+        if(wordListViewModel.wordListInfo.value == WordListInfo.Practice) {
+            binding.btnAdd.visibility = View.GONE
+        }
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        when (viewModel.pressedButtonId.value) {
-            PressedButton.FILTER_BTN -> binding.btnFilter.setImageResource(R.drawable.ic_filter_pressed)
-            PressedButton.SEARCH_BTN -> binding.btnSearch.setImageResource(R.drawable.ic_search_pressed)
-            PressedButton.ADD_BTN -> binding.btnAdd.setImageResource(R.drawable.ic_add_pressed)
+        when (viewModel.pressedFilterButtonId.value) {
+            PressedFilterButton.FILTER_BTN -> binding.btnFilter.setImageResource(R.drawable.ic_filter_pressed)
+            PressedFilterButton.SEARCH_BTN -> binding.btnSearch.setImageResource(R.drawable.ic_search_pressed)
+            PressedFilterButton.ADD_BTN -> binding.btnAdd.setImageResource(R.drawable.ic_add_pressed)
             else -> {}
         }
     }
@@ -49,7 +58,7 @@ class ListHeaderFragment : Fragment() {
             var isFragmentTarger: Boolean =
                 requireActivity().supportFragmentManager.findFragmentById(binding.extraView.id) is FilterFragment
 
-            viewModel.pressedButtonId.value = PressedButton.FILTER_BTN
+            viewModel.pressedFilterButtonId.value = PressedFilterButton.FILTER_BTN
 
             fragmentAction(
                 binding.btnFilter,
@@ -63,7 +72,7 @@ class ListHeaderFragment : Fragment() {
             var isFragmentTarger: Boolean =
                 requireActivity().supportFragmentManager.findFragmentById(binding.extraView.id) is SearchFragment
 
-            viewModel.pressedButtonId.value = PressedButton.SEARCH_BTN
+            viewModel.pressedFilterButtonId.value = PressedFilterButton.SEARCH_BTN
 
             fragmentAction(
                 binding.btnSearch,
@@ -77,7 +86,7 @@ class ListHeaderFragment : Fragment() {
             var isFragmentTarger: Boolean =
                 requireActivity().supportFragmentManager.findFragmentById(binding.extraView.id) is AddFragment
 
-            viewModel.pressedButtonId.value = PressedButton.ADD_BTN
+            viewModel.pressedFilterButtonId.value = PressedFilterButton.ADD_BTN
 
             fragmentAction(
                 binding.btnAdd,

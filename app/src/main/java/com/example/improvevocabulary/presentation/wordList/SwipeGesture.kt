@@ -13,7 +13,7 @@ abstract class SwipeGesture(context: Context?): ItemTouchHelper.SimpleCallback(0
 
     private val removeIcon = R.drawable.ic_remove_gray
     private val moveIcon = R.drawable.ic_move_gray
-
+    private lateinit var  simpleItemTouchCallback: ItemTouchHelper.SimpleCallback
 
     override fun onMove(
         recyclerView: RecyclerView,
@@ -32,7 +32,6 @@ abstract class SwipeGesture(context: Context?): ItemTouchHelper.SimpleCallback(0
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-
         RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             .addSwipeLeftActionIcon(removeIcon)
             .addSwipeRightActionIcon(moveIcon)
@@ -40,32 +39,4 @@ abstract class SwipeGesture(context: Context?): ItemTouchHelper.SimpleCallback(0
             .decorate()
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

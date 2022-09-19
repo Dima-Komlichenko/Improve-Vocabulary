@@ -13,17 +13,21 @@ import com.example.improvevocabulary.presentation.wordList.WordsActivity
 import com.example.improvevocabulary.databinding.FragmentWordsBinding
 import android.util.Pair
 
+const val WordListInfoConst = "WordListInfo"
+
+enum class WordListInfo {
+    OnStudy, Practice
+}
+
 class WordsFragment : Fragment() {
 
     private lateinit var binding: FragmentWordsBinding
-    private lateinit var viewModel: WordsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[WordsViewModel::class.java]
         binding = FragmentWordsBinding.inflate(inflater, container, false)
 
         binding.btnOnStudy.setOnClickListener {
@@ -32,6 +36,17 @@ class WordsFragment : Fragment() {
                 activity,
                 Pair(binding.root.rootView.findViewById(R.id.logo), "logo")
             )
+            intent.putExtra(WordListInfoConst, WordListInfo.OnStudy)
+            startActivity(intent, options.toBundle())
+        }
+
+        binding.btnPractice.setOnClickListener {
+            val intent = Intent(activity, WordsActivity::class.java)
+            var options = ActivityOptions.makeSceneTransitionAnimation(
+                activity,
+                Pair(binding.root.rootView.findViewById(R.id.logo), "logo")
+            )
+            intent.putExtra(WordListInfoConst, WordListInfo.Practice)
             startActivity(intent, options.toBundle())
         }
 

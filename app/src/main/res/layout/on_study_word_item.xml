@@ -15,6 +15,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/is_opportunity_transfer_word"
+            style="@style/Theme.ImproveVocabulary"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:src="@drawable/ic_btn_words_message"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <TextView
             android:id="@+id/tv_word"
             style="@style/edit_text"
@@ -29,6 +42,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/et_word"
+            style="@style/edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="24dp"
+            android:maxEms="7"
+            android:maxLength="50"
+            android:textSize="23sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/dividing_line"
@@ -40,9 +67,9 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_translate"
             app:layout_constraintEnd_toStartOf="@id/btn_remove"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_word" />
+            app:layout_constraintTop_toBottomOf="@+id/et_word" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_translate"
             style="@style/edit_text"
             android:layout_width="wrap_content"
@@ -56,7 +83,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dividing_line" />
-
 
         <soup.neumorphism.NeumorphImageButton
             android:id="@+id/btn_save"
@@ -105,7 +131,7 @@
             android:layout_height="60dp"
             android:layout_margin="4dp"
             android:contentDescription="ImageButtonMove"
-            android:src="@drawable/ic_move"
+            android:src="@drawable/ic_0_from_10"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
