@@ -1,17 +1,12 @@
-package com.example.improvevocabulary.presentation.lists.practiceList
+package com.example.improvevocabulary.presentation.lists.studiedList
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
-import com.example.improvevocabulary.presentation.lists.baseList.WordAdapter
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordPair
-import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyWordAdapter
-import com.example.improvevocabulary.utlis.TextToSpeech
-import kotlinx.coroutines.launch
 
 class StudiedListFragment : WordListFragment() {
 
@@ -20,9 +15,10 @@ class StudiedListFragment : WordListFragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    private fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+    override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+        if(words.isNotEmpty()) return
         binding = FragmentWordListBinding.inflate(inflater, container, false)
-        adapter = StudiedWordAdapter()
+        adapter = StudiedWordAdapter(tts)
 
         binding.recyclerView.adapter = adapter
         initWordList()

@@ -18,9 +18,9 @@
     <!--
       android:name="com.example.improvevocabulary.presentation.lists.baseList.WordListFragment"
     -->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_word_list"
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,10 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recycler_view"
-    android:name="com.example.improvevocabulary.WordListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutAnimation="@anim/recycler_layout_animation"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".presentation.lists.baseList.WordListFragment"
     tools:listitem="@layout/word_item" />
+
+
+
+
+
+<!--
+
+
+ android:name="com.example.improvevocabulary.TempOnStudyList"
+
+ android:name="com.example.improvevocabulary.WordListFragment"
+ tools:context=".presentation.lists.baseList.WordListFragment"
+-->

@@ -21,7 +21,7 @@
             android:layout_width="7dp"
             android:layout_height="7dp"
             android:src="@drawable/ic_btn_words_message"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_word"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,13 +30,14 @@
 
         <TextView
             android:id="@+id/tv_word"
-            style="@style/edit_text"
+            style="@style/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:layout_marginStart="24dp"
             android:maxEms="7"
             android:maxLength="50"
+            android:maxLines="5"
             android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,16 +45,17 @@
 
         <EditText
             android:id="@+id/et_word"
-            style="@style/edit_text"
+            style="@style/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="16dp"
             android:layout_marginStart="24dp"
             android:maxEms="7"
             android:maxLength="50"
+            android:maxLines="5"
             android:textSize="23sp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/dividing_line"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,20 +66,21 @@
             android:layout_marginStart="24dp"
             android:background="@drawable/ic_line_300"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/tv_translate"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_remove"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_word" />
+            app:layout_constraintTop_toBottomOf="parent" />
 
         <EditText
             android:id="@+id/tv_translate"
-            style="@style/edit_text"
+            style="@style/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="16dp"
             android:layout_marginStart="24dp"
             android:maxEms="7"
             android:maxLength="50"
+            android:maxLines="5"
             android:textSize="23sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

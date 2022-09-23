@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordPair
-import com.example.improvevocabulary.presentation.lists.practiceList.StudiedWordAdapter
-import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
 
 open class OnStudyListFragment : WordListFragment() {
 
@@ -26,9 +22,10 @@ open class OnStudyListFragment : WordListFragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    private fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+    override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+        if(words.isNotEmpty()) return
         binding = FragmentWordListBinding.inflate(inflater, container, false)
-        adapter = OnStudyWordAdapter()
+        adapter = OnStudyWordAdapter(tts)
 
         binding.recyclerView.adapter = adapter
         initWordList()
@@ -66,7 +63,17 @@ open class OnStudyListFragment : WordListFragment() {
                 WordPair(6, "Redundant", "Избыточный", 10),
                 WordPair(7, "Statement", "Утверждение, оператор", 4),
                 WordPair(8, "Implicit", "Скрытый", 0),
-                WordPair(9, "Sandbox", "Песочница", 9)
+                WordPair(9, "Sandbox", "Песочница", 9),
+                WordPair(10, "10", "Песочница", 9),
+                WordPair(11, "11", "Песочница", 9),
+                WordPair(12, "12", "Песочница", 9),
+                WordPair(13, "13", "Песочница", 9),
+                WordPair(14, "14", "Песочница", 9),
+                WordPair(15, "15", "Песочница", 9),
+                WordPair(16, "16", "Песочница", 9),
+                WordPair(17, "17", "Песочница", 9),
+                WordPair(18, "18", "Песочница", 9),
+                WordPair(19, "19", "Песочница", 9)
             )
         )
     }

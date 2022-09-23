@@ -33,6 +33,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.example.improvevocabulary'
 }
 
 var daggerVersion = "2.43.1"

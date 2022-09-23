@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.presentation.wordList.WordsActivity
 import com.example.improvevocabulary.databinding.FragmentWordsBinding
@@ -16,7 +15,7 @@ import android.util.Pair
 const val WordListInfoConst = "WordListInfo"
 
 enum class WordListInfo {
-    OnStudy, Practice
+    OnStudy, Studied
 }
 
 class WordsFragment : Fragment() {
@@ -46,7 +45,7 @@ class WordsFragment : Fragment() {
                 activity,
                 Pair(binding.root.rootView.findViewById(R.id.logo), "logo")
             )
-            intent.putExtra(WordListInfoConst, WordListInfo.Practice)
+            intent.putExtra(WordListInfoConst, WordListInfo.Studied)
             startActivity(intent, options.toBundle())
         }
 

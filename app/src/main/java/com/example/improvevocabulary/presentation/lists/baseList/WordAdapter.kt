@@ -2,7 +2,6 @@ package com.example.improvevocabulary.presentation.lists.baseList
 
 import android.content.Context
 import android.speech.tts.TextToSpeech.SUCCESS
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -14,38 +13,36 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
-import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
+data class WordPair(
+    var id: Int,
+    var word: String,
+    var translate: String,
+    var countRightAnswers: Int = 0,
+    var areItemDetailsShown: Boolean = false
+)
 
-open class WordAdapter :
+open class WordAdapter(private val tts: TextToSpeech) :
     RecyclerView.Adapter<WordAdapter.WordHolder>() {
 
     protected var words = ArrayList<WordPair>()
     protected var context: Context? = null
-    private lateinit var tts: TextToSpeech
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): WordHolder { // создает холдера
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.word_item, parent, false)
-        context = parent.context
 
-        //tts = TextToSpeech(context!!)
-
-        return WordHolder(view)
+        return WordHolder(view, tts)
     }
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
         super.onDetachedFromRecyclerView(recyclerView)
-        //tts.destroy()
+        tts.destroy()
+
     }
 
-    override fun onBindViewHolder(holder: WordHolder, position: Int) { // вызывает bind холдера
+    override fun onBindViewHolder(holder: WordHolder, position: Int) {
         holder.bind(words[position])
     }
 
@@ -54,88 +51,104 @@ open class WordAdapter :
     }
 
 
-    open inner class WordHolder(open var item: View) :
+    open inner class WordHolder(open var item: View, private val tts: TextToSpeech) :
         RecyclerView.ViewHolder(item) {
 
-
-
-        protected open lateinit var binding: WordItemBinding/* = WordItemBinding.bind(item)*/
-        private var areItemDetailsShown = false
+        protected open lateinit var binding: WordItemBinding
         protected lateinit var wordPair: WordPair
-
+        protected var areItemDetailsShown: Boolean = false
 
         open fun bind(word: WordPair) = with(binding) {
             wordPair = word
 
+            if(!word.areItemDetailsShown && areItemDetailsShown) {
+                hideCardDetails()
+            }
+            if(word.areItemDetailsShown && !areItemDetailsShown) {
+                showCardDetails()
+            }
+
+            binding = WordItemBinding.bind(item)
+
             tvWord.text = word.word
-            if(0 == word.id) Log.d("time", "WordHolder binding finished")
-            //cvItem.setOnClickListener { setCardForm() }
-            //tvWord.onFocusChangeListener = View.OnFocusChangeListener { _, _ -> setCardForm() }
-//
-            //btnRemove.setOnClickListener {
-//
-            //    val index = getWordPairIndexById(wordPair.id)
-            //    removeWord(word.id)
-//
-            //    Snackbar.make(
-            //        item.parent as RecyclerView,
-            //        context!!.resources.getString(R.string.snack_bar_removing_word) + " \"" + wordPair.word + "\"",
-            //        Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-            //    )
-            //        .setAction(context!!.resources.getString(R.string.undo)) {
-            //            addWordAtPosition(wordPair, index)
-            //        }.show()
-//
-            //}
-//
-//
-            //btnSound.setOnClickListener {
-            //    //var tts = TextToSpeech(context!!)
-            //    //tts.setText(tvWord.text.toString())
-            //    //tts.onInit(SUCCESS)
-            //}
-//
-            //if (wordPair.countRightAnswers > 9)
-            //    btnMove.setOnClickListener {
-//
-            //        val index = getWordPairIndexById(wordPair.id)
-            //        moveWordToAnotherList(wordPair)
-//
-            //        Snackbar.make(
-            //            item.parent as RecyclerView,
-            //            context!!.resources.getString(R.string.snack_bar_moving_word_first_part) + " \"" + wordPair.word + "\" "
-            //                    + context!!.resources.getString(R.string.snack_bar_moving_word_last_part),
-            //            Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-            //        )
-            //            .setAction(context!!.resources.getString(R.string.undo)) {
-            //                addWordAtPosition(wordPair, index)
-            //                //TODO: remove WordPair from studiedWordList
-            //            }.show()
-            //    }
+
+            clWordView.setOnClickListener { setCardForm() }
+
+            tvWord.setOnClickListener{
+                setCardForm()
+            }
+
+            btnRemove.setOnClickListener {
+
+                val index = getWordPairIndexById(wordPair.id)
+                removeWord(word.id)
+
+                Snackbar.make(
+                    item.parent as RecyclerView,
+                    context!!.resources.getString(R.string.snack_bar_removing_word) + " \"" + wordPair.word + "\"",
+                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                )
+                    .setAction(context!!.resources.getString(R.string.undo)) {
+                        addWordAtPosition(wordPair, index)
+                    }.show()
+
+            }
+
+            btnSound.setOnClickListener {
+                tts.setText(tvWord.text.toString())
+                tts.onInit(SUCCESS)
+            }
+
+            if (wordPair.countRightAnswers > 9)
+                btnMove.setOnClickListener {
+
+                    val index = getWordPairIndexById(wordPair.id)
+                    moveWordToAnotherList(wordPair)
+
+                    Snackbar.make(
+                        item.parent as RecyclerView,
+                        context!!.resources.getString(R.string.snack_bar_moving_word_first_part) + " \"" + wordPair.word + "\" "
+                                + context!!.resources.getString(R.string.snack_bar_moving_word_last_part),
+                        Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                    )
+                        .setAction(context!!.resources.getString(R.string.undo)) {
+                            addWordAtPosition(wordPair, index)
+                            //TODO: remove WordPair from studiedWordList
+                        }.show()
+                }
         }
 
 
-        private fun setCardForm() {
-            if (areItemDetailsShown) {
-                hideCardDetails()
-                areItemDetailsShown = false
+        fun setCardForm() {
+            if (wordPair.areItemDetailsShown) {
+                hideCardDetailsAnimated()
+                wordPair.areItemDetailsShown = false
             } else {
-                showCardDetails()
-                areItemDetailsShown = true
+                showCardDetailsAnimated()
+                wordPair.areItemDetailsShown = true
             }
         }
 
         protected open fun showCardDetails() = with(binding) {
             tvTranslate.text = wordPair.translate
             tvTranslate.visibility = VISIBLE
-
-            animateView(btnSound, 65F, 0F, 0F, 0F)
-
             dividingLine.visibility = VISIBLE
             btnRemove.visibility = VISIBLE
             btnMove.visibility = VISIBLE
 
+            tvTranslate.setOnClickListener {
+                hideCardDetailsAnimated()
+                wordPair.areItemDetailsShown = false
+            }
+
             setConstraintsToShowCardDetails()
+
+            areItemDetailsShown = true
+        }
+
+        protected open fun showCardDetailsAnimated() {
+            showCardDetails()
+            animateView(binding.btnSound, 65F, 0F, 0F, 0F)
         }
 
         protected fun animateView(view: View, fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float) {
@@ -150,8 +163,15 @@ open class WordAdapter :
             ConstraintSet().apply {
                 clone(clWordView)
                 //tvWord
+                clear(tvWord.id, ConstraintSet.TOP)
                 clear(tvWord.id, ConstraintSet.BOTTOM)
-                connect(tvWord.id, ConstraintSet.BOTTOM, dividingLine.id, ConstraintSet.TOP)
+                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 48)
+                connect(tvWord.id, ConstraintSet.BOTTOM, dividingLine.id, ConstraintSet.TOP, 48)
+                //tvTranslate
+                clear(tvTranslate.id, ConstraintSet.TOP)
+                clear(tvTranslate.id, ConstraintSet.BOTTOM)
+                connect(tvTranslate.id, ConstraintSet.TOP, dividingLine.id, ConstraintSet.BOTTOM, 48)
+                connect(tvTranslate.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 48)
                 //btnSound
                 clear(btnSound.id, ConstraintSet.TOP)
                 clear(btnSound.id, ConstraintSet.BOTTOM)
@@ -165,17 +185,22 @@ open class WordAdapter :
         }
 
 
-        protected open fun hideCardDetails() = with(binding) {
-            tvTranslate.visibility = View.GONE
-            dividingLine.visibility = View.GONE
-            btnRemove.visibility = View.GONE
-            btnMove.visibility = View.GONE
-            btnSave.visibility = View.GONE
-
-            animateView(btnSound, -65F, 0F, 0F, 0F)
+        public open fun hideCardDetails() = with(binding) {
+            tvTranslate.visibility = GONE
+            dividingLine.visibility = GONE
+            btnRemove.visibility = GONE
+            btnMove.visibility = GONE
             setConstraintsToHideCardDetails()
+
+            areItemDetailsShown = false
         }
 
+
+        protected open fun hideCardDetailsAnimated() {
+            hideCardDetails()
+            animateView(binding.btnSound, -65F, 0F, 0F, 0F)
+            binding.tvTranslate.onFocusChangeListener = null
+        }
 
         protected open fun setConstraintsToHideCardDetails() = with(binding) {
             ConstraintSet().apply {
@@ -184,17 +209,17 @@ open class WordAdapter :
                 //tvWord
                 clear(tvWord.id, ConstraintSet.TOP)
                 clear(tvWord.id, ConstraintSet.BOTTOM)
-                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP)
-                connect(tvWord.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM)
+                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 24)
+                connect(tvWord.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 24)
 
                 //btnSound
                 clear(btnSound.id, ConstraintSet.TOP)
                 clear(btnSound.id, ConstraintSet.BOTTOM)
                 clear(btnSound.id, ConstraintSet.LEFT)
                 clear(btnSound.id, ConstraintSet.RIGHT)
-                connect(btnSound.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 10)
-                connect(btnSound.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 10)
-                connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT, 10)
+                connect(btnSound.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP)
+                connect(btnSound.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM)
+                connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT)
             }.applyTo(clWordView)
         }
 
@@ -218,8 +243,8 @@ open class WordAdapter :
     }
 
     fun addWordAtPosition(word: WordPair, index: Int) {
-        val wordsclone = (words.clone() as ArrayList<WordPair>).apply { add(index, word) }
-        val diffUtil = MyDiffUtil(words, wordsclone)
+        val newList = (words.clone() as ArrayList<WordPair>).apply { add(index, word) }
+        val diffUtil = MyDiffUtil(words, newList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         words.add(index, word)
         diffResult.dispatchUpdatesTo(this)
@@ -233,16 +258,22 @@ open class WordAdapter :
         val index = words.indexOf(words.find { word -> word.id == id })
 
         val newList = arrayListOf<WordPair>()
-        words.forEach { word ->
-            if (word.id != id)
-                newList.add(word)
-        }
+        newList.addAll(words.filter { word -> word.id != id })
+        //words.forEach { word ->
+        //    if (word.id != id)
+        //        newList.add(word)
+        //}
         val diffUtil = MyDiffUtil(words, newList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         words.remove(words.find { word -> word.id == id })
+
         diffResult.dispatchUpdatesTo(this)
 
         return index
+    }
+
+    fun getList(): ArrayList<WordPair> {
+        return words
     }
 
     fun editWord(word: WordPair, editedWord: String, editedTranslate: String) {

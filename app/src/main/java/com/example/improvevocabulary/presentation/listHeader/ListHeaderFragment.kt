@@ -34,7 +34,7 @@ class ListHeaderFragment : Fragment() {
 
         setBtnsListeners()
 
-        if(wordListViewModel.wordListInfo.value == WordListInfo.Practice) {
+        if(wordListViewModel.wordListInfo.value == WordListInfo.Studied) {
             binding.btnAdd.visibility = View.GONE
         }
 
