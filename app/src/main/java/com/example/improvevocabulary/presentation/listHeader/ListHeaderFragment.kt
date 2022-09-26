@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentListHeaderBinding
 import com.example.improvevocabulary.presentation.add.AddFragment
+import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.filter.FilterFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
 import com.example.improvevocabulary.presentation.search.SearchFragment
@@ -24,6 +25,7 @@ class ListHeaderFragment : Fragment() {
     private lateinit var binding: FragmentListHeaderBinding
     private lateinit var viewModel: ListHeaderViewModel
     private val wordListViewModel: WordListViewModel by activityViewModels()
+    private val addViewModel: AddViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,12 +99,7 @@ class ListHeaderFragment : Fragment() {
         }
     }
 
-    private fun fragmentAction(
-        imageButton: ImageButton,
-        nonPressedDrawable: Int,
-        pressedDrawable: Int,
-        isFragmentTarger: Boolean
-    ) {
+    private fun fragmentAction(imageButton: ImageButton, nonPressedDrawable: Int, pressedDrawable: Int, isFragmentTarger: Boolean) {
         binding.btnFilter.setImageResource(R.drawable.ic_filter)
         binding.btnSearch.setImageResource(R.drawable.ic_search)
         binding.btnAdd.setImageResource(R.drawable.ic_add)

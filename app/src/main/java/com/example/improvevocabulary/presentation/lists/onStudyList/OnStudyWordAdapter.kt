@@ -41,6 +41,12 @@ class OnStudyWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts) {
                 textWatchers.clear()
             }
 
+            if (!word.areItemDetailsShown && areItemDetailsShown) {
+                setIsOpportunityTransferWordToHideCardDetails()
+            }
+            //if(wordPair.countRightAnswers < 9)
+            //    isOpportunityTransferWord.visibility = View.GONE
+
             super.bind(word)
 
             etWord.setText(word.word)
@@ -51,9 +57,7 @@ class OnStudyWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts) {
 
 
 
-            if (!word.areItemDetailsShown && areItemDetailsShown) {
-                setIsOpportunityTransferWordToHideCardDetails()
-            }
+
 
             if(areItemDetailsShown && word.areItemDetailsShown && word.countRightAnswers > 9) {
                 //TODO: вынести переиспользуемую логику в 2 метода
@@ -135,11 +139,18 @@ class OnStudyWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts) {
         }
 
         override fun hideCardDetails() = with(bindingOnStudy) {
+
             setIsOpportunityTransferWordToHideCardDetails()
             super.hideCardDetails()
+
             btnSave.visibility = View.GONE
             tvWord.visibility = View.VISIBLE
             etWord.visibility = View.GONE
+        }
+
+        override fun hideCardDetailsAnimated() {
+            animateView(bindingOnStudy.isOpportunityTransferWord, 0F, 0F, 50F, 0F)
+            super.hideCardDetailsAnimated()
         }
 
         override fun setConstraintsToHideCardDetails() = with(bindingOnStudy) {
@@ -186,7 +197,7 @@ class OnStudyWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts) {
 
         private fun setIsOpportunityTransferWordToHideCardDetails() = with(bindingOnStudy) {
             if (wordPair.countRightAnswers < 10) return
-            animateView(isOpportunityTransferWord, 0F, 0F, 50F, 0F)
+
             val layoutParams = ConstraintLayout.LayoutParams(23, 23)
             isOpportunityTransferWord.layoutParams = layoutParams
             isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message)

@@ -52,18 +52,12 @@ class AddFragment : Fragment() {
                     resources.getString(R.string.word_not_enteted),
                     Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
                 ).show()
-
-
-
-
-
-                //return@setOnClickListener
             }
+
+            binding.etFirstWord.setText("")
+            binding.etSecondWord.setText("")
+
             viewModel.clickBtnSave.value = true
-
-
-            // фрагмент (listHeader) который хранит фрагменты должен следить за btnSave.setOnClickListener
-            // и закрывать AddFragment по нажатию на кнопку
         }
 
         return binding.root
