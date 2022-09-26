@@ -8,6 +8,8 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
+import android.widget.EditText
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +34,6 @@ open class WordAdapter(private val tts: TextToSpeech) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.word_item, parent, false)
-
         return WordHolder(view, tts)
     }
 
@@ -72,14 +73,13 @@ open class WordAdapter(private val tts: TextToSpeech) :
 
             tvWord.text = word.word
 
-            clWordView.setOnClickListener { setCardForm() }
-
+            clWordView.setOnClickListener {
+                setCardForm()
+            }
             tvWord.setOnClickListener{
                 setCardForm()
             }
-
             btnRemove.setOnClickListener {
-
                 val index = getWordPairIndexById(wordPair.id)
                 removeWord(word.id)
 
@@ -118,8 +118,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
                 }
         }
 
-
-        fun setCardForm() {
+        private fun setCardForm() {
             if (wordPair.areItemDetailsShown) {
                 hideCardDetailsAnimated()
                 wordPair.areItemDetailsShown = false
@@ -130,6 +129,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
         }
 
         protected open fun showCardDetails() = with(binding) {
+            setConstraintsToShowCardDetails()
             tvTranslate.text = wordPair.translate
             tvTranslate.visibility = VISIBLE
             dividingLine.visibility = VISIBLE
@@ -138,11 +138,9 @@ open class WordAdapter(private val tts: TextToSpeech) :
 
             tvTranslate.setOnClickListener {
                 hideCardDetailsAnimated()
-                wordPair.areItemDetailsShown = false
+                    wordPair.areItemDetailsShown = false
             }
-
-            setConstraintsToShowCardDetails()
-
+            wordPair.areItemDetailsShown = true
             areItemDetailsShown = true
         }
 
@@ -165,13 +163,8 @@ open class WordAdapter(private val tts: TextToSpeech) :
                 //tvWord
                 clear(tvWord.id, ConstraintSet.TOP)
                 clear(tvWord.id, ConstraintSet.BOTTOM)
-                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 48)
-                connect(tvWord.id, ConstraintSet.BOTTOM, dividingLine.id, ConstraintSet.TOP, 48)
-                //tvTranslate
-                clear(tvTranslate.id, ConstraintSet.TOP)
-                clear(tvTranslate.id, ConstraintSet.BOTTOM)
-                connect(tvTranslate.id, ConstraintSet.TOP, dividingLine.id, ConstraintSet.BOTTOM, 48)
-                connect(tvTranslate.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 48)
+                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 52)
+                connect(tvWord.id, ConstraintSet.BOTTOM, dividingLine.id, ConstraintSet.TOP)
                 //btnSound
                 clear(btnSound.id, ConstraintSet.TOP)
                 clear(btnSound.id, ConstraintSet.BOTTOM)
@@ -181,45 +174,47 @@ open class WordAdapter(private val tts: TextToSpeech) :
                 connect(btnSound.id, ConstraintSet.BOTTOM, tvWord.id, ConstraintSet.BOTTOM)
                 connect(btnSound.id, ConstraintSet.RIGHT, btnMove.id, ConstraintSet.RIGHT)
                 connect(btnSound.id, ConstraintSet.LEFT, btnRemove.id, ConstraintSet.LEFT)
-            }.applyTo(clWordView)
+           }.applyTo(clWordView)
         }
 
 
-        public open fun hideCardDetails() = with(binding) {
+
+
+        protected open fun hideCardDetails() = with(binding) {
             tvTranslate.visibility = GONE
             dividingLine.visibility = GONE
             btnRemove.visibility = GONE
             btnMove.visibility = GONE
             setConstraintsToHideCardDetails()
-
             areItemDetailsShown = false
+            wordPair.areItemDetailsShown = false
         }
+
 
 
         protected open fun hideCardDetailsAnimated() {
             hideCardDetails()
             animateView(binding.btnSound, -65F, 0F, 0F, 0F)
-            binding.tvTranslate.onFocusChangeListener = null
+
         }
 
         protected open fun setConstraintsToHideCardDetails() = with(binding) {
             ConstraintSet().apply {
                 clone(clWordView)
-
                 //tvWord
                 clear(tvWord.id, ConstraintSet.TOP)
                 clear(tvWord.id, ConstraintSet.BOTTOM)
-                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 24)
-                connect(tvWord.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 24)
+                connect(tvWord.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP, 52)
+                connect(tvWord.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM, 52)
 
                 //btnSound
                 clear(btnSound.id, ConstraintSet.TOP)
                 clear(btnSound.id, ConstraintSet.BOTTOM)
-                clear(btnSound.id, ConstraintSet.LEFT)
-                clear(btnSound.id, ConstraintSet.RIGHT)
+                clear(btnSound.id, ConstraintSet.START)
+                clear(btnSound.id, ConstraintSet.END)
                 connect(btnSound.id, ConstraintSet.TOP, clWordView.id, ConstraintSet.TOP)
                 connect(btnSound.id, ConstraintSet.BOTTOM, clWordView.id, ConstraintSet.BOTTOM)
-                connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT)
+                connect(btnSound.id, ConstraintSet.END, clWordView.id, ConstraintSet.END, 8)
             }.applyTo(clWordView)
         }
 
@@ -242,7 +237,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
         diffResult.dispatchUpdatesTo(this)
     }
 
-    fun addWordAtPosition(word: WordPair, index: Int) {
+    protected open fun addWordAtPosition(word: WordPair, index: Int) {
         val newList = (words.clone() as ArrayList<WordPair>).apply { add(index, word) }
         val diffUtil = MyDiffUtil(words, newList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
@@ -259,10 +254,6 @@ open class WordAdapter(private val tts: TextToSpeech) :
 
         val newList = arrayListOf<WordPair>()
         newList.addAll(words.filter { word -> word.id != id })
-        //words.forEach { word ->
-        //    if (word.id != id)
-        //        newList.add(word)
-        //}
         val diffUtil = MyDiffUtil(words, newList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         words.remove(words.find { word -> word.id == id })

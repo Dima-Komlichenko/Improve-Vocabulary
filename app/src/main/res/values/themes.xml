@@ -18,11 +18,10 @@
 
     </style>
 
-   <!-- <style name="neumorph_CardButton" parent="@style/Widget.Neumorph.CardView">-->
-    <style name="neumorph_CardButton" parent="CardView">
-       <!-- <item name="neumorph_lightSource">leftTop</item>-->
-       <!-- <item name="neumorph_shadowColorLight">@color/light_shadow_on_light_theme</item>-->
-       <!-- <item name="neumorph_shadowColorDark">@color/dark_shadow_on_light_theme</item>-->
+    <style name="neumorph_CardButton" parent="@style/Widget.Neumorph.CardView">
+        <item name="neumorph_lightSource">leftTop</item>
+        <item name="neumorph_shadowColorLight">@color/light_shadow_on_light_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_light_theme</item>
     </style>
 
     <style name="big_gradient_background">

@@ -45,7 +45,8 @@ class StudiedListFragment : WordListFragment() {
                 WordPair(14, "Flow", "Поток", 10),
                 WordPair(15, "Inheritance", "Наследование", 10),
                 WordPair(16, "Property", "Свойство, имущество", 10),
-                WordPair(17, "Enviropment", "Окружающая среда", 10)
+                WordPair(17, "Enviropment", "Окружающая среда", 10),
+                WordPair(18, "Reusability", "Возможность повторного переиспользования", 2)
             )
         )
     }

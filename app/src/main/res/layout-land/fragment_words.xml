@@ -90,7 +90,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/btn_practice"
+        android:id="@+id/btn_studied"
         style="@style/neumorph_CardButton"
         android:layout_width="280dp"
         android:layout_height="wrap_content"

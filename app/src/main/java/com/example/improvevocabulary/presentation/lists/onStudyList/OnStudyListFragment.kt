@@ -30,6 +30,7 @@ open class OnStudyListFragment : WordListFragment() {
         binding.recyclerView.adapter = adapter
         initWordList()
         adapter.init(words)
+
     }
 
     private fun addWordHandler() {

@@ -23,7 +23,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="12dp"
             android:background="@null"
-            android:ems="10"
+            android:maxLength="50"
             android:hint="Enter search terms"
             android:inputType="textPersonName" />
 

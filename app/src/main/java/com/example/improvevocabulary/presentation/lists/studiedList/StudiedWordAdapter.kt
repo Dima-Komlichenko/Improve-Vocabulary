@@ -23,6 +23,8 @@ class StudiedWordAdapter(private val tts: TextToSpeech): WordAdapter(tts) {
 
         override fun bind(word: WordPair) {
             super.bind(word)
+
+            binding.tvTranslate.text = word.translate
         }
     }
 }

@@ -5,19 +5,8 @@
     android:id="@+id/recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:name="com.example.improvevocabulary.WordListFragment"
+    tools:context=".presentation.lists.baseList.WordListFragment"
     android:layoutAnimation="@anim/recycler_layout_animation"
     app:layoutManager="LinearLayoutManager"
     tools:listitem="@layout/word_item" />
-
-
-
-
-
-<!--
-
-
- android:name="com.example.improvevocabulary.TempOnStudyList"
-
- android:name="com.example.improvevocabulary.WordListFragment"
- tools:context=".presentation.lists.baseList.WordListFragment"
--->

@@ -27,9 +27,15 @@ class WordsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentWordsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onResume() {
+        super.onResume()
         binding.btnOnStudy.setOnClickListener {
+            binding.btnOnStudy.setOnClickListener {  }
             val intent = Intent(activity, WordsActivity::class.java)
             var options = ActivityOptions.makeSceneTransitionAnimation(
                 activity,
@@ -39,7 +45,8 @@ class WordsFragment : Fragment() {
             startActivity(intent, options.toBundle())
         }
 
-        binding.btnPractice.setOnClickListener {
+        binding.btnStudied.setOnClickListener {
+            binding.btnStudied.setOnClickListener {  }
             val intent = Intent(activity, WordsActivity::class.java)
             var options = ActivityOptions.makeSceneTransitionAnimation(
                 activity,
@@ -48,9 +55,8 @@ class WordsFragment : Fragment() {
             intent.putExtra(WordListInfoConst, WordListInfo.Studied)
             startActivity(intent, options.toBundle())
         }
-
-        return binding.root
     }
+
 }
 
 

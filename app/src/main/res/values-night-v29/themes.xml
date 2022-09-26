@@ -25,7 +25,6 @@
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
         <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
 
-        <!-- <item name="neumorph_backgroundColor">@drawable/dark_gradient</item>-->
     </style>
 
     <style name="big_gradient_background">
@@ -45,8 +44,6 @@
         <item name="neumorph_backgroundColor">@color/background_little_btn_on_dark_theme</item>
         <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_dark_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
-        <!--<item name="neumorph_shadowElevation">4dp</item>
-        <item name="neumorph_inset">8dp</item>-->
     </style>
 
     <style name="little_button" parent="@style/Widget.Neumorph.ImageButton">

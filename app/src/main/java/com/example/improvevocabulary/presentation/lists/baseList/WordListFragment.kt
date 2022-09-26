@@ -1,6 +1,7 @@
 package com.example.improvevocabulary.presentation.lists.baseList
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech.SUCCESS
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,33 +40,22 @@ open class WordListFragment : Fragment() {
     }
 
 
-    protected open fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
-        //binding = FragmentWordListBinding.inflate(inflater, container, false)
-        //adapter = WordAdapter()
-
-        //binding.recyclerView.adapter = adapter
-        //adapter.init(words)
-    }
-
+    protected open fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //initAdapter(inflater, container)
 
         (binding.recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
 
         filterViewModel.pressedSortButton.observe(viewLifecycleOwner) {
             words = adapter.getList()
-            var sortedList = sortByFilter()
+            val sortedList = sortByFilter()
             adapter.sort(sortedList)
         }
 
         searchViewModel.searchingWord.observe(viewLifecycleOwner) {
-            //if(searchViewModel.searchingWord.value == "") {
-                adapter.setNewList(words)
-                //return@observe
-            //}
-            var searchingText = searchViewModel.searchingWord.value
-            var foundedWords = arrayListOf<WordPair>()
+            adapter.setNewList(words)
+            val searchingText = searchViewModel.searchingWord.value
+            val foundedWords = arrayListOf<WordPair>()
 
 
             foundedWords.addAll(
