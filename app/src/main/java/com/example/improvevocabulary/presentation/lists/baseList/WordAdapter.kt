@@ -8,23 +8,14 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
-import android.widget.EditText
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
+import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
-
-data class WordPair(
-    var id: Int,
-    var word: String,
-    var translate: String,
-    var countRightAnswers: Int = 0,
-    var areItemDetailsShown: Boolean = false
-)
 
 open class WordAdapter(private val tts: TextToSpeech) :
     RecyclerView.Adapter<WordAdapter.WordHolder>() {
@@ -62,10 +53,10 @@ open class WordAdapter(private val tts: TextToSpeech) :
         open fun bind(word: WordPair) = with(binding) {
             wordPair = word
 
-            if(!word.areItemDetailsShown && areItemDetailsShown) {
+            if (!word.areItemDetailsShown && areItemDetailsShown) {
                 hideCardDetails()
             }
-            if(word.areItemDetailsShown && !areItemDetailsShown) {
+            if (word.areItemDetailsShown && !areItemDetailsShown) {
                 showCardDetails()
             }
 
@@ -76,7 +67,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
             clWordView.setOnClickListener {
                 setCardForm()
             }
-            tvWord.setOnClickListener{
+            tvWord.setOnClickListener {
                 setCardForm()
             }
             btnRemove.setOnClickListener {
@@ -99,23 +90,22 @@ open class WordAdapter(private val tts: TextToSpeech) :
                 tts.onInit(SUCCESS)
             }
 
-            if (wordPair.countRightAnswers > 9)
-                btnMove.setOnClickListener {
+            btnMove.setOnClickListener {
 
-                    val index = getWordPairIndexById(wordPair.id)
-                    moveWordToAnotherList(wordPair)
+                val index = getWordPairIndexById(wordPair.id)
+                moveWordToAnotherList(wordPair)//TODO: переопределить этот метод для каждого адаптера
 
-                    Snackbar.make(
-                        item.parent as RecyclerView,
-                        context!!.resources.getString(R.string.snack_bar_moving_word_first_part) + " \"" + wordPair.word + "\" "
-                                + context!!.resources.getString(R.string.snack_bar_moving_word_last_part),
-                        Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                    )
-                        .setAction(context!!.resources.getString(R.string.undo)) {
-                            addWordAtPosition(wordPair, index)
-                            //TODO: remove WordPair from studiedWordList
-                        }.show()
-                }
+                Snackbar.make(
+                    item.parent as RecyclerView,
+                    context!!.resources.getString(R.string.snack_bar_moving_word_first_part) + " \"" + wordPair.word + "\" "
+                            + context!!.resources.getString(R.string.snack_bar_moving_word_last_part),
+                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                )
+                    .setAction(context!!.resources.getString(R.string.undo)) {
+                        addWordAtPosition(wordPair, index)
+                        //TODO: remove WordPair from studiedWordList
+                    }.show()
+            }
         }
 
         private fun setCardForm() {
@@ -138,7 +128,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
 
             tvTranslate.setOnClickListener {
                 hideCardDetailsAnimated()
-                    wordPair.areItemDetailsShown = false
+                wordPair.areItemDetailsShown = false
             }
             wordPair.areItemDetailsShown = true
             areItemDetailsShown = true
@@ -149,7 +139,13 @@ open class WordAdapter(private val tts: TextToSpeech) :
             animateView(binding.btnSound, 65F, 0F, 0F, 0F)
         }
 
-        protected fun animateView(view: View, fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float) {
+        protected fun animateView(
+            view: View,
+            fromXDelta: Float,
+            toXDelta: Float,
+            fromYDelta: Float,
+            toYDelta: Float
+        ) {
             val animation = TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta).apply {
                 duration = 200
                 fillAfter = true
@@ -174,10 +170,8 @@ open class WordAdapter(private val tts: TextToSpeech) :
                 connect(btnSound.id, ConstraintSet.BOTTOM, tvWord.id, ConstraintSet.BOTTOM)
                 connect(btnSound.id, ConstraintSet.RIGHT, btnMove.id, ConstraintSet.RIGHT)
                 connect(btnSound.id, ConstraintSet.LEFT, btnRemove.id, ConstraintSet.LEFT)
-           }.applyTo(clWordView)
+            }.applyTo(clWordView)
         }
-
-
 
 
         protected open fun hideCardDetails() = with(binding) {
@@ -189,7 +183,6 @@ open class WordAdapter(private val tts: TextToSpeech) :
             areItemDetailsShown = false
             wordPair.areItemDetailsShown = false
         }
-
 
 
         protected open fun hideCardDetailsAnimated() {

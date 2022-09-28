@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.OnStudyWordItemBinding
 import com.example.improvevocabulary.databinding.WordItemBinding
+import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordAdapter
-import com.example.improvevocabulary.presentation.lists.baseList.WordPair
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
@@ -149,7 +149,8 @@ class OnStudyWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts) {
         }
 
         override fun hideCardDetailsAnimated() {
-            animateView(bindingOnStudy.isOpportunityTransferWord, 0F, 0F, 50F, 0F)
+            if (wordPair.countRightAnswers > 9)
+                animateView(bindingOnStudy.isOpportunityTransferWord, 0F, 0F, 50F, 0F)
             super.hideCardDetailsAnimated()
         }
 

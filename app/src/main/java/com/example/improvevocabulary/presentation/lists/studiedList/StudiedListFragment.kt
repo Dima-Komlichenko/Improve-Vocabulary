@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
+import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
-import com.example.improvevocabulary.presentation.lists.baseList.WordPair
 
 class StudiedListFragment : WordListFragment() {
 

@@ -1,4 +1,4 @@
-package com.example.improvevocabulary.presentation.lists.onStudyList
+package com.example.improvevocabulary.presentation.lists.pendingList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,10 @@ import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
+import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyWordAdapter
 import com.google.android.material.snackbar.Snackbar
 
-open class OnStudyListFragment : WordListFragment() {
+class PendingListFragment: WordListFragment() {
 
     private val addViewModel: AddViewModel by activityViewModels()
 
@@ -25,12 +26,11 @@ open class OnStudyListFragment : WordListFragment() {
     override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
         if(words.isNotEmpty()) return
         binding = FragmentWordListBinding.inflate(inflater, container, false)
-        adapter = OnStudyWordAdapter(tts)
+        adapter = PendingWordAdapter(tts)
 
         binding.recyclerView.adapter = adapter
         initWordList()
         adapter.init(words)
-
     }
 
     private fun addWordHandler() {
@@ -55,28 +55,30 @@ open class OnStudyListFragment : WordListFragment() {
     private fun initWordList() {
         words.addAll(
             arrayListOf(
-                WordPair(0, "Aware", "Осведомленный", 0),
-                WordPair(1, "Reduce", "Уменьшать", 7),
-                WordPair(2, "Impact", "Влияние", 10),
-                WordPair(3, "Complexity", "Сложность", 5),
-                WordPair(4, "Reusability", "Возможность повторного переиспользования", 2),
-                WordPair(5, "Eliminate", "Исключить", 10),
-                WordPair(6, "Redundant", "Избыточный", 10),
-                WordPair(7, "Statement", "Утверждение, оператор", 4),
-                WordPair(8, "Implicit", "Скрытый", 0),
-                WordPair(9, "Sandbox", "Песочница", 9),
-                WordPair(10, "10", "Песочница", 9),
-                WordPair(11, "11", "Песочница", 9),
-                WordPair(12, "12", "Песочница", 9),
-                WordPair(13, "13", "Песочница", 9),
-                WordPair(14, "14", "Песочница", 9),
-                WordPair(15, "15", "Песочница", 9),
-                WordPair(16, "16", "Песочница", 9),
-                WordPair(17, "17", "Песочница", 9),
-                WordPair(18, "18", "Песочница", 9),
-                WordPair(19, "19", "Песочница", 9)
+                WordPair(0, "Beyond", "Вне", 0),
+                WordPair(1, "Belong", "Принадлежать", 0),
+                WordPair(2, "Pretty much", "Довольно много", 0),
+                WordPair(3, "Therefore", "Следовательно", 0),
+                WordPair(4, "Layer", "Слой", 0),
+                WordPair(5, "Perform", "Выполнять", 0),
+                WordPair(6, "Sensitive", "Чувствительный, конфиденциальный", 0),
+                WordPair(7, "Explicit", "Явный, точный", 0),
+                WordPair(8, "Tool", "Инструмент", 0),
+                WordPair(9, "Above", "Выше", 0),
+                WordPair(10, "Foreground", "Передний план", 0),
+                WordPair(11, "Observe", "Наблюдать", 0),
+                WordPair(12, "Aware", "Осведомленный", 0),
+                WordPair(13, "Within", "В пределах", 0),
+                WordPair(14, "Correspond", "Соответствовать", 0),
+                WordPair(15, "Therefore", " Следовательно", 0),
+                WordPair(16, "Tend", "Иметь тенденцию", 0),
+                WordPair(17, "Serve", "Обслуживать", 0),
+                WordPair(18, "Assign", "Назначить", 0),
+                WordPair(19, "Hold on", "Подождать", 0),
+                WordPair(19, "Detect", "Обнаружить", 0),
+                WordPair(19, "Decline", "Отклонить", 0),
+                WordPair(19, "Necessary", "Необходимый", 0)
             )
         )
     }
-
 }

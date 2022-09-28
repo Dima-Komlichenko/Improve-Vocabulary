@@ -1,29 +1,18 @@
 package com.example.improvevocabulary.presentation.lists.baseList
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech.SUCCESS
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.domain.models.PressedSortButton
-import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
-import com.example.improvevocabulary.presentation.add.AddViewModel
+import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.filter.FilterViewModel
-import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyWordAdapter
-import com.example.improvevocabulary.presentation.lists.studiedList.StudiedWordAdapter
 import com.example.improvevocabulary.presentation.search.SearchViewModel
-import com.example.improvevocabulary.presentation.wordList.SwipeGesture
-import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
 import com.example.improvevocabulary.utlis.TextToSpeech
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 
 open class WordListFragment : Fragment() {

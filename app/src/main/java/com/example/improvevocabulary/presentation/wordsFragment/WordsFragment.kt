@@ -11,22 +11,19 @@ import com.example.improvevocabulary.R
 import com.example.improvevocabulary.presentation.wordList.WordsActivity
 import com.example.improvevocabulary.databinding.FragmentWordsBinding
 import android.util.Pair
+import soup.neumorphism.NeumorphCardView
 
 const val WordListInfoConst = "WordListInfo"
 
 enum class WordListInfo {
-    OnStudy, Studied
+    Pending, OnStudy, Studied
 }
 
 class WordsFragment : Fragment() {
 
     private lateinit var binding: FragmentWordsBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentWordsBinding.inflate(inflater, container, false)
         return binding.root
@@ -34,25 +31,20 @@ class WordsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        binding.btnOnStudy.setOnClickListener {
-            binding.btnOnStudy.setOnClickListener {  }
-            val intent = Intent(activity, WordsActivity::class.java)
-            var options = ActivityOptions.makeSceneTransitionAnimation(
-                activity,
-                Pair(binding.root.rootView.findViewById(R.id.logo), "logo")
-            )
-            intent.putExtra(WordListInfoConst, WordListInfo.OnStudy)
-            startActivity(intent, options.toBundle())
-        }
+        setOnClickListener(binding.btnPending!!, WordListInfo.Pending)
+        setOnClickListener(binding.btnOnStudy, WordListInfo.OnStudy)
+        setOnClickListener(binding.btnStudied, WordListInfo.Studied)
+    }
 
-        binding.btnStudied.setOnClickListener {
-            binding.btnStudied.setOnClickListener {  }
+    private fun setOnClickListener(view: NeumorphCardView, wordListInfo: WordListInfo) {
+        view.setOnClickListener {
+            view.setOnClickListener {  }
             val intent = Intent(activity, WordsActivity::class.java)
-            var options = ActivityOptions.makeSceneTransitionAnimation(
+            val options = ActivityOptions.makeSceneTransitionAnimation(
                 activity,
                 Pair(binding.root.rootView.findViewById(R.id.logo), "logo")
             )
-            intent.putExtra(WordListInfoConst, WordListInfo.Studied)
+            intent.putExtra(WordListInfoConst, wordListInfo)
             startActivity(intent, options.toBundle())
         }
     }

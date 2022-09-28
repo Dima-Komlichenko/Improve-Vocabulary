@@ -42,5 +42,6 @@
     <string name="new_word_created">Ви створили слово</string>
     <string name="ok">Ок</string>
     <string name="word_not_enteted">Слово не введено</string>
+    <string name="pending">В очікуванні</string>
 
 </resources>

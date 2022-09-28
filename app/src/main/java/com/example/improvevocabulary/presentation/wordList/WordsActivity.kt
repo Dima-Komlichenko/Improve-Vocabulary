@@ -1,7 +1,7 @@
 package com.example.improvevocabulary.presentation.wordList
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
@@ -9,8 +9,10 @@ import com.example.improvevocabulary.databinding.ActivityWordsBinding
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.filter.FilterViewModel
 import com.example.improvevocabulary.presentation.filter.FilterViewModelFactory
+import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
 import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyListFragment
+import com.example.improvevocabulary.presentation.lists.pendingList.PendingListFragment
 import com.example.improvevocabulary.presentation.lists.studiedList.StudiedListFragment
 import com.example.improvevocabulary.presentation.search.SearchViewModel
 import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
@@ -49,37 +51,23 @@ class WordsActivity : AppCompatActivity() {
             intent.getSerializableExtra(WordListInfoConst) as WordListInfo
 
         when (wordListViewModel.wordListInfo.value) {
-            WordListInfo.OnStudy -> {
-                val currentFragment =
-                    supportFragmentManager.findFragmentById(binding.fcvWordList.id)
-
-                if (currentFragment != null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fcv_word_list, OnStudyListFragment())
-                        .commit()
-                } else {
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.fcv_word_list, OnStudyListFragment())
-                        .commit()
-                }
-
-            }
-            WordListInfo.Studied -> {
-                val currentFragment =
-                    supportFragmentManager.findFragmentById(binding.fcvWordList.id)
-
-                if (currentFragment != null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fcv_word_list, StudiedListFragment())
-                        .commit()
-                } else {
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.fcv_word_list, StudiedListFragment())
-                        .commit()
-                }
-
-            }
+            WordListInfo.Pending -> setExtraFragment(PendingListFragment())
+            WordListInfo.OnStudy -> setExtraFragment(OnStudyListFragment())
+            WordListInfo.Studied -> setExtraFragment(StudiedListFragment())
             else -> {}
+        }
+    }
+
+    private fun setExtraFragment(fragment: WordListFragment) {
+        val currentFragment =
+            supportFragmentManager.findFragmentById(binding.fcvWordList.id)
+
+        if (currentFragment != null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fcv_word_list, fragment).commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fcv_word_list, fragment).commit()
         }
     }
 }

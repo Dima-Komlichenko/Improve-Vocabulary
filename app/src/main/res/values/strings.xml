@@ -49,6 +49,7 @@
     <string name="new_word_created">You created the word</string>
     <string name="ok">Ok</string>
     <string name="word_not_enteted">Word not entered</string>
+    <string name="pending">Pending</string>
 
 
 </resources>
