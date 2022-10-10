@@ -1,6 +1,7 @@
 package com.example.improvevocabulary.app
 
 import android.app.Application
+import android.content.Context
 import com.example.improvevocabulary.di.AppComponent
 import com.example.improvevocabulary.di.AppModule
 import com.example.improvevocabulary.di.DaggerAppComponent

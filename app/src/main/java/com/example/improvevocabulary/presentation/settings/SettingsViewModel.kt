@@ -1,26 +1,27 @@
 package com.example.improvevocabulary.presentation.settings
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.models.Language
-import com.example.domain.models.Theme
-import com.example.domain.usecase.GetLanguageUseCase
-import com.example.domain.usecase.GetThemeUseCase
-import com.example.domain.usecase.SaveLanguageUseCase
-import com.example.domain.usecase.SaveThemeUseCase
+import com.example.domain.model.Language
+import com.example.domain.model.Theme
+import com.example.domain.usecase.appLanguage.GetAppLanguageUseCase
+import com.example.domain.usecase.theme.GetThemeUseCase
+import com.example.domain.usecase.appLanguage.SaveAppLanguageUseCase
+import com.example.domain.usecase.theme.SaveThemeUseCase
 
 class SettingsViewModel(
-    private val getLanguageUseCase: GetLanguageUseCase,
-    private val saveLanguageUseCase: SaveLanguageUseCase,
+    private val getAppLanguageUseCase: GetAppLanguageUseCase,
+    private val saveAppLanguageUseCase: SaveAppLanguageUseCase,
     private val getThemeUseCase: GetThemeUseCase,
-    private val saveThemeUseCase: SaveThemeUseCase
+    private val saveThemeUseCase: SaveThemeUseCase,
 ) : ViewModel() {
     val language = MutableLiveData<Language>()
     val theme = MutableLiveData<Theme>()
 
+
     init {
-        load()
+        language.value = getAppLanguageUseCase.execute()
+        theme.value = getThemeUseCase.execute()
     }
 
 
@@ -29,12 +30,6 @@ class SettingsViewModel(
     }
 
     fun saveLanguage(language: Language) {
-        saveLanguageUseCase.execute(language)
+        saveAppLanguageUseCase.execute(language)
     }
-
-    fun load() {
-        language.value = getLanguageUseCase.execute()
-        theme.value = getThemeUseCase.execute()
-    }
-
 }

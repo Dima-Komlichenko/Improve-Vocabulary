@@ -2,7 +2,7 @@ package com.example.data.storage.sharedPrefs
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.data.storage.ThemeStorage
+import com.example.data.storage.interfaces.ThemeStorage
 import com.example.data.storage.models.Theme
 
 private const val SHARED_PREFS_THEME = "SHARED_PREFS_THEME"

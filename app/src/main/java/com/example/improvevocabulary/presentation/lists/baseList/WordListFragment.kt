@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.example.domain.models.PressedSortButton
+import com.example.domain.model.OnStudyWordPair
+import com.example.domain.model.PressedSortButton
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.filter.FilterViewModel
@@ -21,6 +22,7 @@ open class WordListFragment : Fragment() {
 
     protected val filterViewModel: FilterViewModel by activityViewModels()
     protected val searchViewModel: SearchViewModel by activityViewModels()
+    protected val wordListViewModel: WordListViewModel by activityViewModels()
 
     protected lateinit var adapter : WordAdapter
     protected var words: ArrayList<WordPair> = ArrayList()
@@ -29,11 +31,22 @@ open class WordListFragment : Fragment() {
     }
 
 
-    protected open fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {}
+    protected open fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+        wordListViewModel.words.observe(viewLifecycleOwner) {
+            words = wordListViewModel.words.value!!
+            adapter.init(words)
+        }
+        wordListViewModel.init()
+    }
+
+    private fun mapToDomain(dataModel: com.example.data.storage.models.OnStudyWordPair): WordPair {
+        return WordPair(dataModel.id, dataModel.word, dataModel.translate, dataModel.countRightAnswers)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         (binding.recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+
+        //words = wordListViewModel.getList()
 
         filterViewModel.pressedSortButton.observe(viewLifecycleOwner) {
             words = adapter.getList()

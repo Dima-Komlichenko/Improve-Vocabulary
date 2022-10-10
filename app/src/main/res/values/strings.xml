@@ -22,14 +22,14 @@
         <item>System</item>
         <item>Light</item>
         <item>Dark</item>
-
     </string-array>
 
     <!-- App languages -->
-    <string-array name="app_languages">
+    <string-array name="languages">
         <item>English</item>
-        <item>Russian</item>
+        <item>Spanish</item>
         <item>Ukrainian</item>
+        <item>Russian</item>
     </string-array>
 
     <string name="clear_dictionary_button">Clear</string>
@@ -50,6 +50,14 @@
     <string name="ok">Ok</string>
     <string name="word_not_enteted">Word not entered</string>
     <string name="pending">Pending</string>
-
+    <string name="data_is_not_valid">You entered invalid characters. Proper use of inputs and inputs.</string>
+    <string name="learning_from_language">Learning language</string>
+    <string name="language_to_learn">Language to learn</string>
+    <string name="attention">Attention!</string>
+    <string name="after_changing_language">After changing the language, all words in your dictionary will be permanently deleted. Are you sure you want to change the language?</string>
+    <string name="confirm">Confirm</string>
+    <string name="language_replaced">The language has been changed. Dictionary cleared.</string>
+    <string name="cancel">Cancel</string>
+    <string name="impossible_choose">Unable to select specified language</string>
 
 </resources>

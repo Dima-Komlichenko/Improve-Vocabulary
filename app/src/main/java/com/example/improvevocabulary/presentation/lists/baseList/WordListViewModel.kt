@@ -1,9 +1,138 @@
 package com.example.improvevocabulary.presentation.lists.baseList
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.data.storage.repositoriesImpl.WordPairRepository
+import com.example.domain.model.OnStudyWordPair
+import com.example.domain.model.PendingWordPair
+import com.example.domain.usecase.onStudy.GetOnStudyWordPairsUseCase
+import com.example.domain.usecase.pending.GetPendingWordPairsUseCase
+import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
+import com.example.domain.usecase.pending.SavePendingWordPairUseCase
+import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
+import kotlinx.coroutines.launch
 
-class WordListViewModel: ViewModel() {
+open class WordListViewModel(
+    var application: Application
+) : ViewModel() {
     var wordListInfo: MutableLiveData<WordListInfo> = MutableLiveData(WordListInfo.OnStudy)
+
+    //var words = arrayListOf<WordPair>()
+    var emptyList = listOf<WordPair>()
+    var words = MutableLiveData<ArrayList<WordPair>>()
+
+    private var getPendingWordPairsUseCase: GetPendingWordPairsUseCase? = null
+    private var getOnStudyWordPairsUseCase: GetOnStudyWordPairsUseCase? = null
+    //private  var getStudiedWordPairsUseCase: GetStudiedWordPairsUseCase = null
+
+    private var savePendingWordPairsUseCase: SavePendingWordPairUseCase? = null
+    private var saveOnStudyWordPairsUseCase: SaveOnStudyWordPairUseCase? = null
+    //private var saveStudiedWordPairsUseCase: SaveStudiedWordPairUseCase? = null
+
+    protected var repository = WordPairRepository(application)
+
+    fun init() {
+
+        when (wordListInfo.value) {
+            WordListInfo.Pending -> {
+                getPendingWordPairsUseCase = GetPendingWordPairsUseCase(repository)
+                savePendingWordPairsUseCase = SavePendingWordPairUseCase(repository)
+                viewModelScope.launch {
+                    var temp: ArrayList<WordPair> = arrayListOf()
+                    getPendingWordPairsUseCase?.execute()?.forEach { temp.add(mapToWordPair(it)) }
+                    words.value = temp
+                }
+            }
+
+            WordListInfo.OnStudy -> {
+                getOnStudyWordPairsUseCase = GetOnStudyWordPairsUseCase(repository)
+                saveOnStudyWordPairsUseCase = SaveOnStudyWordPairUseCase(repository)
+                viewModelScope.launch {
+                    var temp: ArrayList<WordPair> = arrayListOf()
+                     getOnStudyWordPairsUseCase?.execute()?.forEach { temp.add(mapToWordPair(it)) }
+                    words.value = temp
+                }
+            }
+
+            WordListInfo.Studied -> {
+                //var repository = StudiedWordPairRepository(application)
+                //getStudiedWordPairsUseCase = GetStudiedWordPairsUseCase(repository)
+                //saveStudiedWordPairsUseCase = SaveStudiedWordPairUseCase(repository)
+                //getStudiedWordPairsUseCase.execute().forEach { wordPair -> words.add(mapToData(wordPair)) }
+            }
+            else -> {}
+        }
+        //dataList = repository.dataList
+
+    }
+
+    fun save(wordPair: WordPair) {
+        savePendingWordPairsUseCase?.execute(mapToPending(wordPair))
+        saveOnStudyWordPairsUseCase?.execute(mapToOnStudy(wordPair))
+        //saveStudiedWordPairsUseCase?.execute(mapToStudiedDomain(wordPair))
+    }
+
+    //private fun mapToPendingDomain(dataModel: WordPair): PendingWordPair {
+    //    return PendingWordPair(dataModel.id, dataModel.word, dataModel.translate)
+    //}
+
+    private fun mapToOnStudy(dataModel: WordPair): OnStudyWordPair {
+        return OnStudyWordPair(dataModel.id, dataModel.word, dataModel.translate)
+    }
+
+    private fun mapToPending(dataModel: WordPair): PendingWordPair {
+        return PendingWordPair(dataModel.id, dataModel.word, dataModel.translate)
+    }
+
+    private fun mapToWordPair(dataModel: OnStudyWordPair): WordPair {
+        return WordPair(
+            dataModel.id,
+            dataModel.word,
+            dataModel.translate,
+            dataModel.countRightAnswers
+        )
+    }
+
+    private fun mapToWordPair(dataModel: PendingWordPair): WordPair {
+        return WordPair(
+            dataModel.id,
+            dataModel.word,
+            dataModel.translate
+        )
+    }
+
+    //private fun mapToStudiedDomain(dataModel: WordPair): StudiedWordPair {
+    //    return StudiedWordPair(dataModel.id, dataModel.word, dataModel.translate)
+    //}
+
+    // private fun mapToData(domainModel: PendingWordPair): WordPair {
+    //     return WordPair(
+    //         id = domainModel.id,
+    //         word = domainModel.word,
+    //         translate = domainModel.translate,
+    //     )
+    // }
+
+    private fun mapToData(domainModel: OnStudyWordPair): WordPair {
+        return WordPair(
+            id = domainModel.id,
+            word = domainModel.word,
+            translate = domainModel.translate,
+            countRightAnswers = domainModel.countRightAnswers
+        )
+    }
+
+    //private fun mapToData(domainModel: StudiedWordPair): WordPair {
+    //    return WordPair(
+    //        id = domainModel.id,
+    //        word = domainModel.word,
+    //        translate = domainModel.translate
+    //    )
+    //}
+
+
+
 }

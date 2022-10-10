@@ -6,13 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.domain.models.PressedSortButton
-import com.example.improvevocabulary.app.App
+import com.example.domain.model.PressedSortButton
 import com.example.improvevocabulary.databinding.FragmentFilterBinding
-import com.example.improvevocabulary.presentation.settings.SettingsViewModel
 import soup.neumorphism.ShapeType
-import javax.inject.Inject
 
 class FilterFragment : Fragment() {
 

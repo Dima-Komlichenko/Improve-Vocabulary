@@ -2,7 +2,7 @@ package com.example.data.storage.sharedPrefs
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.data.storage.FilterByStorage
+import com.example.data.storage.interfaces.FilterByStorage
 import com.example.data.storage.models.FilterBy
 import com.example.data.storage.models.PressedSortButton
 
@@ -23,7 +23,8 @@ class SharedPrefsFilterByStorage(private val context: Context) : FilterByStorage
     override fun get(): FilterBy {
         return FilterBy(
             PressedSortButton.valueOf(
-                sharedPreferences.getString(FILTER_BY, PressedSortButton.NEWER.toString()) ?: PressedSortButton.NEWER.toString()
+                sharedPreferences.getString(FILTER_BY, PressedSortButton.NEWER.toString())
+                    ?: PressedSortButton.NEWER.toString()
             )
         )
     }

@@ -1,6 +1,6 @@
 package com.example.domain.repositoriesI
 
-import com.example.domain.models.Theme
+import com.example.domain.model.Theme
 
 interface ThemeRepository {
     fun save(theme: Theme): Boolean

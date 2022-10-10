@@ -3,7 +3,12 @@ package com.example.improvevocabulary.di
 import com.example.domain.repositoriesI.FilterByRepository
 import com.example.domain.repositoriesI.LanguageRepository
 import com.example.domain.repositoriesI.ThemeRepository
-import com.example.domain.usecase.*
+import com.example.domain.usecase.filter.GetFilterByUseCase
+import com.example.domain.usecase.filter.SaveFilterByUseCase
+import com.example.domain.usecase.appLanguage.GetAppLanguageUseCase
+import com.example.domain.usecase.appLanguage.SaveAppLanguageUseCase
+import com.example.domain.usecase.theme.GetThemeUseCase
+import com.example.domain.usecase.theme.SaveThemeUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -11,17 +16,17 @@ import dagger.Provides
 class DomainModule {
 
     @Provides
-    fun provideGetLanguageUseCase(languageRepository: LanguageRepository): GetLanguageUseCase{
-        return GetLanguageUseCase(languageRepository = languageRepository)
+    fun provideGetLanguageUseCase(languageRepository: LanguageRepository): GetAppLanguageUseCase {
+        return GetAppLanguageUseCase(languageRepository = languageRepository)
     }
 
     @Provides
-    fun provideSaveLanguageUseCase(languageRepository: LanguageRepository): SaveLanguageUseCase{
-        return SaveLanguageUseCase(languageRepository = languageRepository)
+    fun provideSaveLanguageUseCase(languageRepository: LanguageRepository): SaveAppLanguageUseCase {
+        return SaveAppLanguageUseCase(languageRepository = languageRepository)
     }
 
     @Provides
-    fun provideGetThemeUseCase(themeRepository: ThemeRepository): GetThemeUseCase{
+    fun provideGetThemeUseCase(themeRepository: ThemeRepository): GetThemeUseCase {
         return GetThemeUseCase(themeRepository = themeRepository)
     }
 

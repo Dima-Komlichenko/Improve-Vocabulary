@@ -2,10 +2,10 @@ package com.example.improvevocabulary.presentation.filter
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.models.FilterBy
-import com.example.domain.models.PressedSortButton
-import com.example.domain.usecase.GetFilterByUseCase
-import com.example.domain.usecase.SaveFilterByUseCase
+import com.example.domain.model.FilterBy
+import com.example.domain.model.PressedSortButton
+import com.example.domain.usecase.filter.GetFilterByUseCase
+import com.example.domain.usecase.filter.SaveFilterByUseCase
 
 class FilterViewModel(
     private val getFilterByUseCase: GetFilterByUseCase,

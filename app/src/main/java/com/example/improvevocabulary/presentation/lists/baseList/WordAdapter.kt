@@ -50,8 +50,10 @@ open class WordAdapter(private val tts: TextToSpeech) :
         protected lateinit var wordPair: WordPair
         protected var areItemDetailsShown: Boolean = false
 
-        open fun bind(word: WordPair) = with(binding) {
+        open fun bind(word: WordPair) /*= with(binding)*/ {
             wordPair = word
+
+            binding = WordItemBinding.bind(item)
 
             if (!word.areItemDetailsShown && areItemDetailsShown) {
                 hideCardDetails()
@@ -60,52 +62,62 @@ open class WordAdapter(private val tts: TextToSpeech) :
                 showCardDetails()
             }
 
-            binding = WordItemBinding.bind(item)
 
-            tvWord.text = word.word
 
-            clWordView.setOnClickListener {
+            binding.tvWord.text = word.word
+
+            binding.clWordView.setOnClickListener {
                 setCardForm()
             }
-            tvWord.setOnClickListener {
+            binding.tvWord.setOnClickListener {
                 setCardForm()
             }
-            btnRemove.setOnClickListener {
-                val index = getWordPairIndexById(wordPair.id)
-                removeWord(word.id)
-
-                Snackbar.make(
-                    item.parent as RecyclerView,
-                    context!!.resources.getString(R.string.snack_bar_removing_word) + " \"" + wordPair.word + "\"",
-                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                )
-                    .setAction(context!!.resources.getString(R.string.undo)) {
-                        addWordAtPosition(wordPair, index)
-                    }.show()
-
+            binding.btnRemove.setOnClickListener {
+                btnRemoveHandler()
             }
 
-            btnSound.setOnClickListener {
-                tts.setText(tvWord.text.toString())
+            binding.btnSound.setOnClickListener {
+                tts.setText(binding.tvTranslate.text.toString())
                 tts.onInit(SUCCESS)
             }
 
-            btnMove.setOnClickListener {
-
-                val index = getWordPairIndexById(wordPair.id)
-                moveWordToAnotherList(wordPair)//TODO: переопределить этот метод для каждого адаптера
-
-                Snackbar.make(
-                    item.parent as RecyclerView,
-                    context!!.resources.getString(R.string.snack_bar_moving_word_first_part) + " \"" + wordPair.word + "\" "
-                            + context!!.resources.getString(R.string.snack_bar_moving_word_last_part),
-                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                )
-                    .setAction(context!!.resources.getString(R.string.undo)) {
-                        addWordAtPosition(wordPair, index)
-                        //TODO: remove WordPair from studiedWordList
-                    }.show()
+            binding.btnMove.setOnClickListener {
+                btnMoveHandler()
             }
+        }
+
+        protected fun btnMoveHandler() {
+            val index = getWordPairIndexById(wordPair.id)
+            moveWordToAnotherList(wordPair)
+
+            Snackbar.make(
+                item.parent as RecyclerView,
+                context!!.resources.getString(R.string.snack_bar_moving_word_first_part) + " \"" + wordPair.word + "\" "
+                        + context!!.resources.getString(R.string.snack_bar_moving_word_last_part),
+                Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(context!!.resources.getString(R.string.undo)) {
+                    undoMoveHandler(index)
+                }.show()
+        }
+
+        protected open fun undoMoveHandler(index: Int) {
+            addWordAtPosition(wordPair, index)
+        }
+
+        protected fun btnRemoveHandler() {
+
+            val index = getWordPairIndexById(wordPair.id)
+            removeWord(wordPair.id)
+
+            Snackbar.make(
+                item.parent as RecyclerView,
+                context!!.resources.getString(R.string.snack_bar_removing_word) + " \"" + wordPair.word + "\"",
+                Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(context!!.resources.getString(R.string.undo)) {
+                    addWordAtPosition(wordPair, index)
+                }.show()
         }
 
         private fun setCardForm() {
@@ -236,6 +248,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         words.add(index, word)
         diffResult.dispatchUpdatesTo(this)
+        //переопределить с логикой бд
     }
 
     fun getWordPairIndexById(id: Int): Int {

@@ -2,7 +2,7 @@ package com.example.data.storage.sharedPrefs
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.data.storage.LanguageStorage
+import com.example.data.storage.interfaces.LanguageStorage
 import com.example.data.storage.models.Language
 
 private const val SHARED_PREFS_LANGUAGE = "SHARED_PREFS_LANGUAGE"

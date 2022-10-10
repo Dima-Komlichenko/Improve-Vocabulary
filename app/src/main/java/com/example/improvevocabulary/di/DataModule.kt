@@ -2,9 +2,9 @@ package com.example.improvevocabulary.di
 
 
 import android.content.Context
-import com.example.data.storage.FilterByStorage
-import com.example.data.storage.LanguageStorage
-import com.example.data.storage.ThemeStorage
+import com.example.data.storage.interfaces.FilterByStorage
+import com.example.data.storage.interfaces.LanguageStorage
+import com.example.data.storage.interfaces.ThemeStorage
 import com.example.data.storage.sharedPrefs.SharedPrefsFilterByStorage
 import com.example.data.storage.sharedPrefs.SharedPrefsLanguageStorage
 import com.example.data.storage.sharedPrefs.SharedPrefsThemeStorage
@@ -24,7 +24,9 @@ class DataModule {
 
     @Provides
     fun provideLanguageRepository(languageStorage: LanguageStorage): LanguageRepository {
-        return com.example.data.repositoriesImpl.LanguageRepository(languageStorage = languageStorage)
+        return com.example.data.storage.repositoriesImpl.LanguageRepository(
+            languageStorage = languageStorage
+        )
     }
 
     @Provides
@@ -34,7 +36,7 @@ class DataModule {
 
     @Provides
     fun provideThemeRepository(themeStorage: ThemeStorage): ThemeRepository {
-        return com.example.data.repositoriesImpl.ThemeRepository(themeStorage = themeStorage)
+        return com.example.data.storage.repositoriesImpl.ThemeRepository(themeStorage = themeStorage)
     }
 
     @Provides
@@ -44,6 +46,8 @@ class DataModule {
 
     @Provides
     fun provideFilterByRepository(filterByStorage: FilterByStorage): FilterByRepository {
-        return com.example.data.repositoriesImpl.FilterByRepository(filterByStorage = filterByStorage)
+        return com.example.data.storage.repositoriesImpl.FilterByRepository(
+            filterByStorage = filterByStorage
+        )
     }
 }

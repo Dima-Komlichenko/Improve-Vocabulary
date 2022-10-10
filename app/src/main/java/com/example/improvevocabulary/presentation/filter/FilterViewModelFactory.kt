@@ -2,7 +2,8 @@ package com.example.improvevocabulary.presentation.filter
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.domain.usecase.*
+import com.example.domain.usecase.filter.GetFilterByUseCase
+import com.example.domain.usecase.filter.SaveFilterByUseCase
 
 class FilterViewModelFactory (
     private val getFilterByUseCase: GetFilterByUseCase,

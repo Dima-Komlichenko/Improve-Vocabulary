@@ -1,14 +1,30 @@
 package com.example.improvevocabulary.presentation.lists.studiedList
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.data.storage.repositoriesImpl.WordPairRepository
+import com.example.domain.usecase.onStudy.RemoveOnStudyWordPairUseCase
+import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
+import com.example.domain.usecase.pending.RemovePendingWordPairUseCase
+import com.example.domain.usecase.pending.UpdatePendingWordPairUseCase
+import com.example.domain.usecase.studied.RemoveStudiedWordPairUseCase
+import com.example.domain.usecase.studied.SaveStudiedWordPairUseCase
+import com.example.domain.usecase.studied.UpdateStudiedWordPairUseCase
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
 
 class StudiedListFragment : WordListFragment() {
+
+    private lateinit var removeStudiedWordPairUseCase: RemoveStudiedWordPairUseCase
+    private lateinit var saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase
+    private lateinit var saveStudiedWordPairUseCase: SaveStudiedWordPairUseCase
+    private lateinit var removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase
+
+    private var repository = WordPairRepository(Application())
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initAdapter(inflater, container)
@@ -16,13 +32,22 @@ class StudiedListFragment : WordListFragment() {
     }
 
     override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+        super.initAdapter(inflater, container)
         if(words.isNotEmpty()) return
         binding = FragmentWordListBinding.inflate(inflater, container, false)
-        adapter = StudiedWordAdapter(tts)
 
+        removeStudiedWordPairUseCase = RemoveStudiedWordPairUseCase(repository)
+        saveOnStudyWordPairUseCase = SaveOnStudyWordPairUseCase(repository)
+        saveStudiedWordPairUseCase = SaveStudiedWordPairUseCase(repository)
+        removeOnStudyWordPairUseCase = RemoveOnStudyWordPairUseCase(repository)
+
+        adapter = StudiedWordAdapter(tts,
+            removeStudiedWordPairUseCase,
+            saveOnStudyWordPairUseCase,
+            saveStudiedWordPairUseCase,
+            removeOnStudyWordPairUseCase
+        )
         binding.recyclerView.adapter = adapter
-        initWordList()
-        adapter.init(words)
     }
 
     private fun initWordList() {

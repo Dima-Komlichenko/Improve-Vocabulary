@@ -1,21 +1,35 @@
 package com.example.improvevocabulary.presentation.lists.pendingList
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.data.storage.repositoriesImpl.WordPairRepository
+import com.example.domain.usecase.onStudy.RemoveOnStudyWordPairUseCase
+import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
+import com.example.domain.usecase.pending.RemovePendingWordPairUseCase
+import com.example.domain.usecase.pending.SavePendingWordPairUseCase
+import com.example.domain.usecase.pending.UpdatePendingWordPairUseCase
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
-import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyWordAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class PendingListFragment: WordListFragment() {
 
     private val addViewModel: AddViewModel by activityViewModels()
+
+    private lateinit var updatePendingWordPairUseCase: UpdatePendingWordPairUseCase
+    private lateinit var removePendingWordPairUseCase: RemovePendingWordPairUseCase
+    private lateinit var savePendingWordPairUseCase: SavePendingWordPairUseCase
+    private lateinit var saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase
+    private lateinit var removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase
+
+    private var repository = WordPairRepository(Application())
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initAdapter(inflater, container)
@@ -24,24 +38,36 @@ class PendingListFragment: WordListFragment() {
     }
 
     override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
+        super.initAdapter(inflater, container)
         if(words.isNotEmpty()) return
         binding = FragmentWordListBinding.inflate(inflater, container, false)
-        adapter = PendingWordAdapter(tts)
 
+        updatePendingWordPairUseCase = UpdatePendingWordPairUseCase(repository)
+        removePendingWordPairUseCase = RemovePendingWordPairUseCase(repository)
+        savePendingWordPairUseCase = SavePendingWordPairUseCase(repository)
+        saveOnStudyWordPairUseCase = SaveOnStudyWordPairUseCase(repository)
+        removeOnStudyWordPairUseCase = RemoveOnStudyWordPairUseCase(repository)
+
+        adapter = PendingWordAdapter(tts,
+            updatePendingWordPairUseCase,
+            removePendingWordPairUseCase,
+            savePendingWordPairUseCase,
+            saveOnStudyWordPairUseCase,
+            removeOnStudyWordPairUseCase)
         binding.recyclerView.adapter = adapter
-        initWordList()
-        adapter.init(words)
+
     }
 
     private fun addWordHandler() {
         addViewModel.clickBtnSave.observe(viewLifecycleOwner) {
             //создаем новое слово
             var newWordPair = WordPair(
-                words.last().id + 1,
+                0,
                 addViewModel.firstFieldText.value!!,
                 addViewModel.secondFieldText.value!!
             )
             adapter.addWord(newWordPair)
+            wordListViewModel.save(newWordPair)
 
             Snackbar.make(
                 binding.recyclerView,
@@ -52,7 +78,7 @@ class PendingListFragment: WordListFragment() {
         }
     }
 
-    private fun initWordList() {
+    /*private fun initWordList() {
         words.addAll(
             arrayListOf(
                 WordPair(0, "Beyond", "Вне", 0),
@@ -80,5 +106,5 @@ class PendingListFragment: WordListFragment() {
                 WordPair(19, "Necessary", "Необходимый", 0)
             )
         )
-    }
+    }*/
 }

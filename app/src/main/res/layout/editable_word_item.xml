@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvItem"
+    style="@style/neumorph_CardButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp">
+
+    <!-- android:animateLayoutChanges="true" -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_word_view"
+        style="@style/little_gradient_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_word"
+            style="@style/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:maxEms="7"
+            android:maxLength="50"
+            android:maxLines="5"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/et_word"
+            style="@style/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:maxEms="7"
+            android:maxLength="50"
+            android:maxLines="5"
+            android:textSize="23sp"
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--
+        android:layout_marginVertical="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/dividing_line"
+        -->
+        <View
+            android:id="@+id/dividing_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/ic_line_300"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tv_translate"
+            app:layout_constraintEnd_toStartOf="@id/btn_remove"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_word" />
+
+        <EditText
+            android:id="@+id/tv_translate"
+            style="@style/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="16dp"
+            android:maxEms="7"
+            android:maxLength="50"
+            android:maxLines="5"
+            android:textSize="23sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividing_line" />
+
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/btn_save"
+            style="@style/little_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:contentDescription="ImageButtonSave"
+            android:src="@drawable/ic_ok"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_sound"
+            app:layout_constraintEnd_toEndOf="@+id/btn_remove"
+            app:layout_constraintTop_toTopOf="@+id/btn_sound"
+            app:neumorph_shapeAppearance="@style/add_button_shape" />
+
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/btn_sound"
+            style="@style/little_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:contentDescription="ImageButtonSound"
+            android:src="@drawable/ic_sound"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:neumorph_shapeAppearance="@style/add_button_shape" />
+
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/btn_remove"
+            style="@style/little_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:contentDescription="ImageButtonSound"
+            android:src="@drawable/ic_remove"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_move"
+            app:neumorph_shapeAppearance="@style/add_button_shape" />
+
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/btn_move"
+            style="@style/little_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:contentDescription="ImageButtonMove"
+            android:src="@drawable/ic_move"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:neumorph_shapeAppearance="@style/add_button_shape" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</soup.neumorphism.NeumorphCardView>
