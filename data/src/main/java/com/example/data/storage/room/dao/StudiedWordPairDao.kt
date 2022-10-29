@@ -11,6 +11,9 @@ interface StudiedWordPairDao {
     @Query("SELECT * FROM studied_word_pair_table ORDER BY id ASC")
     suspend fun readAll() :  List<StudiedWordPair>
 
+    @Query("SELECT COUNT(id) FROM studied_word_pair_table")
+    suspend fun getCount() : Int
+
     @Update
     suspend fun updateWordPair(wordPair: StudiedWordPair)
 

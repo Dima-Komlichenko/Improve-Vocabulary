@@ -9,20 +9,31 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.data.storage.sharedPrefs.*
 import com.example.domain.model.Language
 import com.example.domain.utils.LanguageConverter
 import com.example.improvevocabulary.R
+import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.ActivityMainBinding
+import com.example.improvevocabulary.presentation.filter.FilterViewModel
+import com.example.improvevocabulary.presentation.filter.FilterViewModelFactory
+import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
+import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModelFactory
+import com.example.improvevocabulary.presentation.wordsFragment.WordsFragmentViewModel
+import com.example.improvevocabulary.presentation.wordsFragment.WordsFragmentViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setThemeInApp()
@@ -31,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)

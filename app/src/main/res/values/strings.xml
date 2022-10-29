@@ -59,5 +59,17 @@
     <string name="language_replaced">The language has been changed. Dictionary cleared.</string>
     <string name="cancel">Cancel</string>
     <string name="impossible_choose">Unable to select specified language</string>
+    <string name="title_activity_test" translatable="false">TestActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
+
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="limit_20">It is impossible to add a word, the maximum of words on study is 20.</string>
 
 </resources>

@@ -15,6 +15,7 @@ import com.example.domain.usecase.studied.SaveStudiedWordPairUseCase
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.OnStudyWordItemBinding
 import com.example.improvevocabulary.models.WordPair
+import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseEditableList.EditableWordAdapter
 import com.example.improvevocabulary.utlis.TextToSpeech
 
@@ -23,7 +24,8 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
                          val removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase,
                          val saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
                          val saveStudiedWordPairUseCase: SaveStudiedWordPairUseCase,
-                         val removeStudiedWordPairUseCase: RemoveStudiedWordPairUseCase
+                         val removeStudiedWordPairUseCase: RemoveStudiedWordPairUseCase,
+                         val addViewModel: AddViewModel
 ) : EditableWordAdapter(tts) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnStudyWordHolder {
@@ -80,6 +82,7 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
             btnRemove.setOnClickListener {
                 btnRemoveHandler()
                 removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
+                addViewModel.updateOnStudyCount()
             }
 
             btnMove.setOnClickListener {

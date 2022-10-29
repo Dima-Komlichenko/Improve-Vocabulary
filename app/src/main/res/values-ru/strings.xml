@@ -53,4 +53,5 @@
     <string name="language_replaced">"Язык заменен. Словарь очищен. "</string>
     <string name="cancel">Отмена</string>
     <string name="impossible_choose">Невозможно выбрать указанный язык</string>
+    <string name="limit_20">Невозможно добавить слово, максимум слов на изучении - 20.</string>
 </resources>

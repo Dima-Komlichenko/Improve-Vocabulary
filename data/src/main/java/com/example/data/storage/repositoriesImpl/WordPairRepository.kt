@@ -1,6 +1,7 @@
 package com.example.data.storage.repositoriesImpl
 
-import android.app.Application
+import android.content.Context
+import android.util.Log
 import com.example.data.storage.room.dao.OnStudyWordPairDao
 import com.example.data.storage.room.dao.PendingWordPairDao
 import com.example.data.storage.room.dao.StudiedWordPairDao
@@ -12,22 +13,27 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class WordPairRepository(var application: Application) :
+class WordPairRepository(var context: Context) :
     com.example.domain.repositoriesI.WordPairRepository {
 
     private var onStudyWordPairDao: OnStudyWordPairDao =
-        WordPairDB.getDB(application).onStudyWordPairDao()
+        WordPairDB.getDB(context).onStudyWordPairDao()
 
     private var pendingWordPairDao: PendingWordPairDao =
-        WordPairDB.getDB(application).pendingWordPairDao()
+        WordPairDB.getDB(context).pendingWordPairDao()
 
     private var studiedWordPairDao: StudiedWordPairDao =
-        WordPairDB.getDB(application).studiedWordPairDao()
+        WordPairDB.getDB(context).studiedWordPairDao()
 
 
     override fun save(wordPair: OnStudyWordPair) {
         GlobalScope.launch(Dispatchers.Default) {
-            onStudyWordPairDao.addWordPair(mapToData(wordPair))
+        //    try {
+                onStudyWordPairDao.addWordPair(mapToData(wordPair))
+        //    }
+        //    catch (e: Exception) {
+        //        Log.i("save StudiedWordPair", e.message.toString())
+        //    }
         }
     }
 
@@ -46,6 +52,7 @@ class WordPairRepository(var application: Application) :
     override suspend fun getOnStudy(): List<OnStudyWordPair> {
         var temp = arrayListOf<OnStudyWordPair>()
         onStudyWordPairDao.readAll().forEach { temp.add(mapToDomain(it)) }
+
         return temp
     }
 
@@ -59,6 +66,18 @@ class WordPairRepository(var application: Application) :
         var temp = arrayListOf<StudiedWordPair>()
         studiedWordPairDao.readAll().forEach { temp.add(mapToDomain(it)) }
         return temp
+    }
+
+    override suspend fun getOnStudyCount(): Int {
+        return onStudyWordPairDao.getCount()
+    }
+
+    override suspend fun getPendingCount(): Int {
+        return pendingWordPairDao.getCount()
+    }
+
+    override suspend fun getStudiedCount(): Int {
+        return studiedWordPairDao.getCount()
     }
 
     override fun update(wordPair: OnStudyWordPair) {
@@ -93,7 +112,12 @@ class WordPairRepository(var application: Application) :
 
     override fun delete(wordPair: StudiedWordPair) {
         GlobalScope.launch(Dispatchers.Default) {
-            studiedWordPairDao.deleteWordPair(mapToData(wordPair))
+            try {
+                studiedWordPairDao.deleteWordPair(mapToData(wordPair))
+            }
+            catch (e: Exception) {
+                Log.i("delete StudiedWordPair", e.message.toString())
+            }
         }
     }
 
@@ -135,7 +159,8 @@ class WordPairRepository(var application: Application) :
         return OnStudyWordPair(
             dataModel.id,
             dataModel.word,
-            dataModel.translate
+            dataModel.translate,
+            dataModel.countRightAnswers
         )
     }
 

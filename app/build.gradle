@@ -32,7 +32,10 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding false
     }
+
+
     namespace 'com.example.improvevocabulary'
 }
 

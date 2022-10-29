@@ -1,16 +1,17 @@
 package com.example.improvevocabulary.presentation.wordList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.ActivityWordsBinding
 import com.example.improvevocabulary.presentation.add.AddViewModel
+import com.example.improvevocabulary.presentation.add.AddViewModelFactory
 import com.example.improvevocabulary.presentation.filter.FilterViewModel
 import com.example.improvevocabulary.presentation.filter.FilterViewModelFactory
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
@@ -38,20 +39,21 @@ class WordsActivity : AppCompatActivity() {
     @Inject
     lateinit var wordListViewModelFactory: WordListViewModelFactory
 
-
+    @Inject
+    lateinit var addViewModelFactory: AddViewModelFactory
 
     private lateinit var binding: ActivityWordsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_words)
+
 
         binding = ActivityWordsBinding.inflate(layoutInflater)
-
+        setContentView(binding.root)
         (applicationContext as App).appComponent.inject(this)
         filterViewModel =
             ViewModelProvider(this, filterViewModelFactory)[FilterViewModel::class.java]
-        addViewModel = ViewModelProvider(this)[AddViewModel::class.java]
+        addViewModel = ViewModelProvider(this, addViewModelFactory)[AddViewModel::class.java]
         searcViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
 
         wordListViewModel =
@@ -69,6 +71,7 @@ class WordsActivity : AppCompatActivity() {
             WordListInfo.Studied -> setExtraFragment(StudiedListFragment())
             else -> {}
         }
+
     }
 
     private fun setExtraFragment(fragment: WordListFragment) {

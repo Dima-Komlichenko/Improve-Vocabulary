@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_fragment_words"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.wordsFragment.WordsFragment">
@@ -175,7 +176,7 @@
                 android:background="@drawable/ic_line_300" />
 
             <TextView
-                android:id="@+id/tv_practice_count"
+                android:id="@+id/tv_studied_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"

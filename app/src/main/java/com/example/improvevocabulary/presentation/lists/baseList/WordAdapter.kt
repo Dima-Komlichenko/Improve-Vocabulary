@@ -11,9 +11,11 @@ import android.view.animation.TranslateAnimation
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.data.storage.sharedPrefs.SharedPrefsLanguageFromLearning
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
 import com.example.improvevocabulary.models.WordPair
+import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
@@ -50,7 +52,7 @@ open class WordAdapter(private val tts: TextToSpeech) :
         protected lateinit var wordPair: WordPair
         protected var areItemDetailsShown: Boolean = false
 
-        open fun bind(word: WordPair) /*= with(binding)*/ {
+        open fun bind(word: WordPair) {
             wordPair = word
 
             binding = WordItemBinding.bind(item)
@@ -77,7 +79,8 @@ open class WordAdapter(private val tts: TextToSpeech) :
             }
 
             binding.btnSound.setOnClickListener {
-                tts.setText(binding.tvTranslate.text.toString())
+                tts.setLanguage(SharedPrefsLanguageFromLearning(context!!).get())
+                tts.setText(binding.tvWord.text.toString())
                 tts.onInit(SUCCESS)
             }
 

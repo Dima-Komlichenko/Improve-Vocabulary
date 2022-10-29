@@ -6,12 +6,28 @@ import com.example.domain.repositoriesI.LanguageRepository
 
 class LanguageRepository(var languageStorage: LanguageStorage) : LanguageRepository {
 
-    override fun save(language: Language): Boolean {
+    override fun saveAppLanguage(language: Language): Boolean {
         return languageStorage.save(mapToData(language))
     }
 
-    override fun get(): Language {
+    override fun saveLanguageFrom(language: Language): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun saveLanguageTo(language: Language): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun getAppLanguage(): Language {
         return mapToDomain(languageStorage.get()) // converts data.Language class to domain once
+    }
+
+    override fun getLanguageFrom(): Language {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLanguageTo(): Language {
+        TODO("Not yet implemented")
     }
 
     private fun mapToData(domainModel: Language): com.example.data.storage.models.Language {

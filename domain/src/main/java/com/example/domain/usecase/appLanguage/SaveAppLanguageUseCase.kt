@@ -5,6 +5,6 @@ import com.example.domain.repositoriesI.LanguageRepository
 
 class SaveAppLanguageUseCase(private val languageRepository: LanguageRepository) {
     fun execute(language: Language) {
-        languageRepository.save(language)
+        languageRepository.saveAppLanguage(language)
     }
 }

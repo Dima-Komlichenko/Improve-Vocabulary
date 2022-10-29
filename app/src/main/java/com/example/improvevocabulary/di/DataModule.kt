@@ -1,6 +1,7 @@
 package com.example.improvevocabulary.di
 
 
+import android.app.Application
 import android.content.Context
 import com.example.data.storage.interfaces.FilterByStorage
 import com.example.data.storage.interfaces.LanguageStorage
@@ -11,6 +12,7 @@ import com.example.data.storage.sharedPrefs.SharedPrefsThemeStorage
 import com.example.domain.repositoriesI.FilterByRepository
 import com.example.domain.repositoriesI.LanguageRepository
 import com.example.domain.repositoriesI.ThemeRepository
+import com.example.data.storage.repositoriesImpl.WordPairRepository
 import dagger.Module
 import dagger.Provides
 
@@ -49,5 +51,10 @@ class DataModule {
         return com.example.data.storage.repositoriesImpl.FilterByRepository(
             filterByStorage = filterByStorage
         )
+    }
+
+    @Provides
+    fun provideWordPairRepository(context: Context): WordPairRepository {
+        return WordPairRepository(context = context)
     }
 }

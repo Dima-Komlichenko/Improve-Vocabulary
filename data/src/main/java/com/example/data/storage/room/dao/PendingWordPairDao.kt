@@ -11,6 +11,9 @@ interface PendingWordPairDao {
      @Query("SELECT * FROM pending_word_pair_table ORDER BY id ASC")
      suspend fun readAll() : List<PendingWordPair>
 
+    @Query("SELECT COUNT(id) FROM pending_word_pair_table")
+    suspend fun getCount() : Int
+
     @Update
     suspend fun updateWordPair(wordPair: PendingWordPair)
 

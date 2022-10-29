@@ -23,8 +23,14 @@
         <item name="neumorph_lightSource">leftTop</item>
         <item name="neumorph_shadowColorLight">@color/light_shadow_on_dark_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
-        <item name="neumorph_backgroundColor">@color/background_button_on_dark_theme</item>
+        <item name="android:background">@drawable/big_dark_gradient</item>
+    </style>
 
+    <style name="neumorph_CardView" parent="@style/Widget.Neumorph.CardView">
+        <item name="neumorph_lightSource">leftTop</item>
+        <item name="neumorph_shadowColorLight">@color/light_shadow_on_dark_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
+        <item name="android:background">@drawable/big_dark_gradient</item>
     </style>
 
     <style name="big_gradient_background">
@@ -33,6 +39,10 @@
 
     <style name="little_gradient_background">
         <item name="android:background">@drawable/little_dark_gradient</item>
+    </style>
+
+    <style name="right_answer_background">
+        <item name="android:background">@drawable/dark_gradient_right_answer</item>
     </style>
 
     <style name="additional_menu">

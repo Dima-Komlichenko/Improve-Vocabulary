@@ -53,5 +53,6 @@
     <string name="language_replaced">Мова замінена. Словник очищений.</string>
     <string name="cancel">Скасувати</string>
     <string name="impossible_choose">Неможливо вибрати вказану мову</string>
+    <string name="limit_20">Неможливо додати слово, максимум слів на вивченні – 20.</string>
 
 </resources>

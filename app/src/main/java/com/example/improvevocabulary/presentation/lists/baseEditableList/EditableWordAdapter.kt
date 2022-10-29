@@ -10,13 +10,15 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import com.example.data.storage.sharedPrefs.SharedPrefsLanguageFromLearning
 import com.example.data.storage.sharedPrefs.SharedPrefsLanguageOfLearning
+import com.example.domain.utils.DataValidator
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.EditableWordItemBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordAdapter
-import com.example.domain.utils.DataValidator
+import com.example.improvevocabulary.utlis.DataConverter
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 open class EditableWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts) {
 
@@ -33,7 +35,7 @@ open class EditableWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts)
         private lateinit var bindingEditable: EditableWordItemBinding
         var textWatchers: ArrayList<TextWatcher> = arrayListOf()
 
-        override fun bind(word: WordPair) /*= with(bindingEditable)*/ {
+        override fun bind(word: WordPair) {
 
             bindingEditable = EditableWordItemBinding.bind(item)
 
@@ -43,12 +45,16 @@ open class EditableWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts)
                 textWatchers.clear()
             }
 
-
-
             super.bind(word)
 
             bindingEditable.etWord.setText(word.word)
             bindingEditable.tvTranslate.setText(word.translate)
+
+            bindingEditable.etWord.hint =
+                DataConverter.capitalize(SharedPrefsLanguageFromLearning(context!!).get().toString())
+
+            bindingEditable.tvTranslate.hint =
+                DataConverter.capitalize(SharedPrefsLanguageOfLearning(context!!).get().toString())
 
             textChangingHandlerToShowCardDetails(bindingEditable.etWord, wordPair.word)
             textChangingHandlerToShowCardDetails(bindingEditable.tvTranslate, wordPair.translate)
@@ -60,12 +66,13 @@ open class EditableWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts)
 
         protected fun btnSaveHandler(): Boolean = with(bindingEditable) {
 
-            //TODO: обратится к sharedPrefs за двумя языками
+            //TODO: вынести sharedPrefs в domain и пользоваться usecase
             var onStudyLanguage = SharedPrefsLanguageFromLearning(context = context!!).get()
             var studiedLanguage = SharedPrefsLanguageOfLearning(context = context!!).get()
 
-            if(!DataValidator.isDataValid(wordPair.word, onStudyLanguage) ||
-                !DataValidator.isDataValid(wordPair.translate, studiedLanguage)) {
+            if (!DataValidator.isDataValid(wordPair.word, onStudyLanguage) ||
+                !DataValidator.isDataValid(wordPair.translate, studiedLanguage)
+            ) {
 
                 Snackbar.make(
                     item.parent as RecyclerView,
@@ -75,7 +82,17 @@ open class EditableWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts)
                 return false
             }
 
-            editWord(wordPair, etWord.text.toString(), tvTranslate.text.toString())
+            etWord.setText(
+                DataConverter.convert(etWord.text.toString())
+            )
+
+            tvTranslate.setText(
+                DataConverter.convert(tvTranslate.text.toString())
+            )
+
+            editWord(
+                wordPair, etWord.text.toString(), tvTranslate.text.toString()
+            )
             tvWord.text = wordPair.word
             Snackbar.make(
                 item.parent as RecyclerView,
@@ -115,55 +132,54 @@ open class EditableWordAdapter(private val tts: TextToSpeech) : WordAdapter(tts)
         }
 
 
+        protected fun textChangingHandlerToShowCardDetails(editText: EditText, word: String) =
+            with(bindingEditable) {
+                val textWatcher = object : TextWatcher {
 
-        protected fun textChangingHandlerToShowCardDetails(editText: EditText, word: String) = with(bindingEditable) {
-            val textWatcher = object : TextWatcher {
+                    private var wasTextChanged: Boolean = false
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-                private var wasTextChanged: Boolean = false
+                    override fun afterTextChanged(s: Editable?) {
+                        if (wordPair.word == etWord.text.toString() && wordPair.translate == tvTranslate.text.toString()) {
+                            if (wasTextChanged) return
 
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                            animateView(btnSound, 65F, 0F, 0F, 0F)
 
-                override fun afterTextChanged(s: Editable?) {
-                    if (wordPair.word == etWord.text.toString() && wordPair.translate == tvTranslate.text.toString()) {
-                        if (wasTextChanged) return
+                            btnSave.visibility = View.GONE
 
-                        animateView(btnSound, 65F, 0F, 0F, 0F)
+                            ConstraintSet().apply {
+                                clone(clWordView)
+                                clear(btnSound.id, ConstraintSet.START)
+                                connect(btnSound.id, ConstraintSet.LEFT, dividingLine.id, ConstraintSet.RIGHT)
+                            }.applyTo(clWordView)
+                            wasTextChanged = false
+                        }
+                    }
 
-                        btnSave.visibility = View.GONE
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                        if (btnSave.visibility == View.VISIBLE) return
 
+                        if (wordPair.word == etWord.text.toString() && wordPair.translate == tvTranslate.text.toString()) return
+
+                        if (editText.text.toString() == word) return
+                        animateView(btnSound, -65F, 0F, 0F, 0F)
+
+
+                        btnSave.visibility = android.view.View.VISIBLE
                         ConstraintSet().apply {
                             clone(clWordView)
                             clear(btnSound.id, ConstraintSet.START)
-                            connect(btnSound.id, ConstraintSet.LEFT, dividingLine.id, ConstraintSet.RIGHT)
+                            clear(btnSound.id, ConstraintSet.END)
+                            connect(btnSound.id, ConstraintSet.LEFT, btnSave.id, ConstraintSet.RIGHT, 12)
+                            connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT, 12)
                         }.applyTo(clWordView)
-                        wasTextChanged = false
+
+                        wasTextChanged = true
                     }
                 }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (btnSave.visibility == View.VISIBLE) return
-
-                    if (wordPair.word == etWord.text.toString() && wordPair.translate == tvTranslate.text.toString()) return
-
-                    if (editText.text.toString() == word) return
-                    animateView(btnSound, -65F, 0F, 0F, 0F)
-
-
-                    btnSave.visibility = android.view.View.VISIBLE
-                    ConstraintSet().apply {
-                        clone(clWordView)
-                        clear(btnSound.id, ConstraintSet.START)
-                        clear(btnSound.id, ConstraintSet.END)
-                        connect(btnSound.id, ConstraintSet.LEFT, btnSave.id, ConstraintSet.RIGHT, 12)
-                        connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT, 12)
-                    }.applyTo(clWordView)
-
-                    wasTextChanged = true
-                }
+                textWatchers.add(textWatcher)
+                editText.addTextChangedListener(textWatcher)
             }
-            textWatchers.add(textWatcher)
-            editText.addTextChangedListener(textWatcher)
-        }
 
     }
 }

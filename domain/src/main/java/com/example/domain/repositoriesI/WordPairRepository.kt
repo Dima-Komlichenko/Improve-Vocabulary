@@ -4,6 +4,7 @@ import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.PendingWordPair
 import com.example.domain.model.StudiedWordPair
 
+
 interface WordPairRepository {
     fun save(wordPair: OnStudyWordPair)
     fun save(wordPair: PendingWordPair)
@@ -12,6 +13,11 @@ interface WordPairRepository {
     suspend fun getOnStudy(): List<OnStudyWordPair>
     suspend fun getPending(): List<PendingWordPair>
     suspend fun getStudied(): List<StudiedWordPair>
+
+
+    suspend fun getOnStudyCount(): Int
+    suspend fun getPendingCount(): Int
+    suspend fun getStudiedCount(): Int
 
     fun update(wordPair: OnStudyWordPair)
     fun update(wordPair: PendingWordPair)

@@ -1,9 +1,7 @@
 package com.example.data.storage.room.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.data.storage.models.OnStudyWordPair
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OnStudyWordPairDao {
@@ -12,6 +10,9 @@ interface OnStudyWordPairDao {
 
     @Query("SELECT * FROM on_study_word_pair_table ORDER BY id ASC")
     suspend fun readAll() : List<OnStudyWordPair>
+
+    @Query("SELECT COUNT(id) FROM on_study_word_pair_table")
+    suspend fun getCount() : Int
 
     @Update
     suspend fun updateWordPair(wordPair: OnStudyWordPair)

@@ -54,7 +54,6 @@ class TextToSpeech(context: Context) : OnInitListener {
 
     override fun onInit(status: Int) {
         if (status == SUCCESS) {
-            tts.language = Locale("ukr")
             tts.speak(_text, QUEUE_ADD, null, null)
         }
     }

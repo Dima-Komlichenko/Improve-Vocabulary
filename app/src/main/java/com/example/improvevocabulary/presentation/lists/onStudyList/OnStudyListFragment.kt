@@ -53,7 +53,8 @@ open class OnStudyListFragment : WordListFragment() {
             removeOnStudyWordPairUseCase,
             saveOnStudyWordPairUseCase,
             saveStudiedWordPairUseCase,
-            removeStudiedWordPairUseCase)
+            removeStudiedWordPairUseCase,
+            addViewModel)
 
         binding.recyclerView.adapter = adapter
     }

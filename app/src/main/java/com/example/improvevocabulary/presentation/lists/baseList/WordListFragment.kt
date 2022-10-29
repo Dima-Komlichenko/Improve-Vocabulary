@@ -11,6 +11,7 @@ import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.PressedSortButton
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.models.WordPair
+import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.filter.FilterViewModel
 import com.example.improvevocabulary.presentation.search.SearchViewModel
 import com.example.improvevocabulary.utlis.TextToSpeech
@@ -23,7 +24,6 @@ open class WordListFragment : Fragment() {
     protected val filterViewModel: FilterViewModel by activityViewModels()
     protected val searchViewModel: SearchViewModel by activityViewModels()
     protected val wordListViewModel: WordListViewModel by activityViewModels()
-
     protected lateinit var adapter : WordAdapter
     protected var words: ArrayList<WordPair> = ArrayList()
     protected val tts: TextToSpeech by lazy {
@@ -46,7 +46,6 @@ open class WordListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (binding.recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
 
-        //words = wordListViewModel.getList()
 
         filterViewModel.pressedSortButton.observe(viewLifecycleOwner) {
             words = adapter.getList()
@@ -63,7 +62,7 @@ open class WordListFragment : Fragment() {
             foundedWords.addAll(
                 words.filter { word ->
                     word.word.lowercase().contains(searchingText!!)
-                            || word.translate.lowercase().contains(searchingText!!)
+                            || word.translate.lowercase().contains(searchingText)
                 })
             adapter.setNewList(foundedWords)
         }
