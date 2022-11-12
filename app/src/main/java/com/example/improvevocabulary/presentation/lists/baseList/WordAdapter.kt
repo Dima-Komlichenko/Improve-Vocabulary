@@ -11,11 +11,9 @@ import android.view.animation.TranslateAnimation
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.data.storage.sharedPrefs.SharedPrefsLanguageFromLearning
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
 import com.example.improvevocabulary.models.WordPair
-import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
@@ -79,7 +77,8 @@ open class WordAdapter(private val tts: TextToSpeech) :
             }
 
             binding.btnSound.setOnClickListener {
-                tts.setLanguage(SharedPrefsLanguageFromLearning(context!!).get())
+
+                //tts.setLanguage(SharedPrefsLanguageFromLearning(context!!).get())
                 tts.setText(binding.tvWord.text.toString())
                 tts.onInit(SUCCESS)
             }
@@ -101,7 +100,8 @@ open class WordAdapter(private val tts: TextToSpeech) :
             )
                 .setAction(context!!.resources.getString(R.string.undo)) {
                     undoMoveHandler(index)
-                }.show()
+                }.setAction(R.string.ok) {}
+                .show()
         }
 
         protected open fun undoMoveHandler(index: Int) {
@@ -120,7 +120,8 @@ open class WordAdapter(private val tts: TextToSpeech) :
             )
                 .setAction(context!!.resources.getString(R.string.undo)) {
                     addWordAtPosition(wordPair, index)
-                }.show()
+                }.setAction(R.string.ok) {}
+                .show()
         }
 
         private fun setCardForm() {
@@ -150,17 +151,11 @@ open class WordAdapter(private val tts: TextToSpeech) :
         }
 
         protected open fun showCardDetailsAnimated() {
-            showCardDetails()
+                showCardDetails()
             animateView(binding.btnSound, 65F, 0F, 0F, 0F)
         }
 
-        protected fun animateView(
-            view: View,
-            fromXDelta: Float,
-            toXDelta: Float,
-            fromYDelta: Float,
-            toYDelta: Float
-        ) {
+        protected fun animateView(view: View, fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float) {
             val animation = TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta).apply {
                 duration = 200
                 fillAfter = true

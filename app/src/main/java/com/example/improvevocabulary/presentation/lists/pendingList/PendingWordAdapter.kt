@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.model.Language
 import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.PendingWordPair
 import com.example.domain.usecase.onStudy.RemoveOnStudyWordPairUseCase
@@ -27,7 +28,9 @@ class PendingWordAdapter(private val tts: TextToSpeech,
                          val savePendingWordPairUseCase: SavePendingWordPairUseCase,
                          val saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
                          val removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase,
-                         ) : EditableWordAdapter(tts) {
+                         val languageFromLearning: Language,
+                         val languageOfLearning: Language,
+                         ) : EditableWordAdapter(tts, languageFromLearning, languageOfLearning) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingWordHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.editable_word_item, parent, false)
@@ -35,7 +38,7 @@ class PendingWordAdapter(private val tts: TextToSpeech,
         return PendingWordHolder(view, tts)
     }
 
-    inner class PendingWordHolder(override var item: View, tts: TextToSpeech) : EditableWordHolder(item, tts) {
+    inner class PendingWordHolder(override var item: View, tts: TextToSpeech) : EditableWordHolder(item, tts, languageFromLearning, languageOfLearning) {
 
         private lateinit var bindingPending: EditableWordItemBinding
 

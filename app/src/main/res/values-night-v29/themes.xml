@@ -61,6 +61,15 @@
         <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_dark_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_dark_theme</item>
         <item name="neumorph_shadowElevation">4dp</item>
+
+        <!--
+        Возможно из-за верхнего кода у Андрея не работали тени на маленьких кнпоках
+        -->
+
+        <!--<item name="neumorph_backgroundColor">@color/background_little_btn_on_dark_theme</item>
+        <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_light_theme</item>
+        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_light_theme</item>
+        <item name="neumorph_shadowElevation">4dp</item>-->
     </style>
 
     <style name="add_button_shape">

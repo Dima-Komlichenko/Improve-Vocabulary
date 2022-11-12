@@ -57,7 +57,7 @@ class WordsActivity : AppCompatActivity() {
         searcViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
 
         wordListViewModel =
-            ViewModelProvider(this, WordListViewModelFactory(application))[WordListViewModel::class.java]
+            ViewModelProvider(this, wordListViewModelFactory)[WordListViewModel::class.java]
 
         filterViewModel.load()
 
@@ -66,9 +66,18 @@ class WordsActivity : AppCompatActivity() {
 
 
         when (wordListViewModel.wordListInfo.value) {
-            WordListInfo.Pending -> setExtraFragment(PendingListFragment())
-            WordListInfo.OnStudy -> setExtraFragment(OnStudyListFragment())
-            WordListInfo.Studied -> setExtraFragment(StudiedListFragment())
+            WordListInfo.Pending -> {
+                addViewModel.initListType("PendingListFragment")
+                setExtraFragment(PendingListFragment())
+            }
+            WordListInfo.OnStudy -> {
+                addViewModel.initListType("OnStudyListFragment")
+                setExtraFragment(OnStudyListFragment())
+            }
+            WordListInfo.Studied -> {
+                addViewModel.initListType("StudiedListFragment")
+                setExtraFragment(StudiedListFragment())
+            }
             else -> {}
         }
 

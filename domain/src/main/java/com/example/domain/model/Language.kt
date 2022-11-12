@@ -1,3 +1,3 @@
 package com.example.domain.model
 
-data class Language(var value: String)
+enum class Language { ENGLISH, SPANISH, UKRAINIAN, RUSSIAN }

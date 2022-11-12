@@ -27,7 +27,7 @@ open class WordListFragment : Fragment() {
     protected lateinit var adapter : WordAdapter
     protected var words: ArrayList<WordPair> = ArrayList()
     protected val tts: TextToSpeech by lazy {
-            TextToSpeech(requireContext())
+            TextToSpeech(requireContext(), wordListViewModel.languageFromLearning.value!!)
     }
 
 
@@ -37,10 +37,6 @@ open class WordListFragment : Fragment() {
             adapter.init(words)
         }
         wordListViewModel.init()
-    }
-
-    private fun mapToDomain(dataModel: com.example.data.storage.models.OnStudyWordPair): WordPair {
-        return WordPair(dataModel.id, dataModel.word, dataModel.translate, dataModel.countRightAnswers)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,8 +62,6 @@ open class WordListFragment : Fragment() {
                 })
             adapter.setNewList(foundedWords)
         }
-
-
 
         return binding.root
     }

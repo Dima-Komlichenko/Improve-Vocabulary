@@ -1,6 +1,7 @@
 package com.example.improvevocabulary.presentation.test
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.domain.utils.Language
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentTestBinding
 import com.example.improvevocabulary.presentation.tests.TypeOfTestInfo
@@ -16,7 +16,6 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import soup.neumorphism.NeumorphCardView
-import java.util.regex.Pattern
 
 
 class TestFragment : Fragment() {
@@ -25,26 +24,11 @@ class TestFragment : Fragment() {
     private val viewModel: TestViewModel by activityViewModels()
     var testIndex = 0
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentTestBinding.inflate(inflater, container, false)
         viewModel.tests.observe(viewLifecycleOwner) {
-
-
             if (viewModel.tests.value!!.isNotEmpty()) showTest()
-
-            //for (i in 0 until viewModel.tests.value!!.count()) {
-            //получаем список перемешанных тестов, отображаем первый, ждем клика и за ним отображаем следующий
-            //showTest(i)
-            //TODO: ждать клика
-            //TODO: показать верно \ не верно
-            //TODO: отобразить новый тест
-            //}
         }
         viewModel.initTests()
 
@@ -61,14 +45,13 @@ class TestFragment : Fragment() {
 
     private fun showTest() = with(binding) {
 
-        //TODO: баг - последний тест скипается
-        // if (testIndex == viewModel.tests.value!!.count() && viewModel.typeOfTestInfo == TypeOfTestInfo.Practice) {
-        //     testIndex = 0
-        //     viewModel.initTests()
-        // }
+        viewModel.tts.setLanguage(viewModel.tests.value!![testIndex].questionLang)
+        viewModel.tts.setText(viewModel.tests.value!![testIndex].question)
+        Log.i("tts", "Question language: " + viewModel.tests.value!![testIndex].questionLang + "\n"
+         + "Question: " + viewModel.tests.value!![testIndex].question)
+        viewModel.tts.onInit(android.speech.tts.TextToSpeech.SUCCESS)
 
         pbProgress.max = viewModel.tests.value!!.count() * 40
-
         tvQuestionNumber.text = (testIndex + 1).toString()
         tvQuestionsCount.text = viewModel.tests.value!!.count().toString()
         tvQuestion.text = viewModel.tests.value!![testIndex].question
@@ -82,14 +65,9 @@ class TestFragment : Fragment() {
         setOnClickAnswerButton(2, binding.cvAnswer3, binding.clAnswer3)
         setOnClickAnswerButton(3, binding.cvAnswer4, binding.clAnswer4)
 
-
-
         binding.btnSound.setOnClickListener {
-            viewModel.tts.setLanguage(viewModel.tests.value!![testIndex].questionLang)
-            viewModel.tts.setText(viewModel.tests.value!![testIndex].question)
             viewModel.tts.onInit(android.speech.tts.TextToSpeech.SUCCESS)
         }
-
     }
 
     private fun setOnClickAnswerButton(position: Int, cardView: NeumorphCardView, constraintLayout: ConstraintLayout) {
@@ -119,10 +97,27 @@ class TestFragment : Fragment() {
                         viewModel.updateOnStudy(wordPair)
                     }
                     TypeOfTestInfo.Practice -> {
-                        //TODO moveStudiedToOnStudy if it's 'studied' but not 'onStudy'
+                        if (viewModel.words.value!!.count() >= 30) {
+                            Snackbar.make(
+                                binding.root,
+                                resources.getString(R.string.limit_30),
+                                Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                            ).setAction(R.string.ok) {}
+                                .show()
+                            return@setOnClickListener
+                        }
                         viewModel.moveStudiedToOnStudy(wordPair!!)
                     }
                     TypeOfTestInfo.Repetition -> {
+                        if (viewModel.words.value!!.count() >= 30) {
+                            Snackbar.make(
+                                binding.root,
+                                resources.getString(R.string.limit_30),
+                                Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                            ).setAction(R.string.ok) {}
+                                .show()
+                            return@setOnClickListener
+                        }
                         viewModel.moveStudiedToOnStudy(wordPair!!)
                     }
                 }
@@ -143,7 +138,8 @@ class TestFragment : Fragment() {
                                 binding.root,
                                 "The end of test",
                                 Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                            ).show()
+                            ).setAction(R.string.ok) {}
+                                .show()
                         }
                         TypeOfTestInfo.Repetition -> {
                             //выдаем результат
@@ -151,7 +147,7 @@ class TestFragment : Fragment() {
                                 binding.root,
                                 "The end of repetition",
                                 Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                            ).show()
+                            ).setAction(R.string.ok) {}.show()
                         }
                         TypeOfTestInfo.Practice -> {
                             testIndex = 0

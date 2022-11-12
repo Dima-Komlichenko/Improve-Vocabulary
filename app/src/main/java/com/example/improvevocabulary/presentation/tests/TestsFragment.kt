@@ -7,18 +7,13 @@ import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentTestsBinding
 import com.example.improvevocabulary.presentation.test.TestActivity
-import com.example.improvevocabulary.presentation.wordList.WordsActivity
-import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
-import com.example.improvevocabulary.presentation.wordsFragment.WordListInfoConst
-import com.example.improvevocabulary.presentation.wordsFragment.WordsFragmentViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import soup.neumorphism.NeumorphCardView
 import javax.inject.Inject
 
@@ -38,23 +33,32 @@ class TestsFragment : Fragment() {
         (activity?.applicationContext as App).appComponent.inject(this)
         viewModel = ViewModelProvider(this, testsViewModelFactory)[TestsViewModel::class.java]
 
-        viewModel.onStudyCount.observe(viewLifecycleOwner) {
-            binding.tvTestCount.text = it.toString()
+        viewModel.studiedCount.observe(viewLifecycleOwner) {
+            binding.tvTestCount.text = viewModel.onStudyCount.value!!.toString()
+            setOnClickListener(binding.btnTest, TypeOfTestInfo.Test, viewModel.onStudyCount.value!!)
+            setOnClickListener(binding.btnPractice!!, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
         }
+        viewModel.init()
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.init()
-        setOnClickListener(binding.btnTest, TypeOfTestInfo.Test)
-        setOnClickListener(binding.btnPractice!!, TypeOfTestInfo.Practice)
-        binding.tvTestCount.text = viewModel.onStudyCount.value?.toString()
     }
 
-    private fun setOnClickListener(view: NeumorphCardView, typeOfTestInfo: TypeOfTestInfo) {
+    private fun setOnClickListener(view: NeumorphCardView, typeOfTestInfo: TypeOfTestInfo, wordsCount: Int) {
         view.setOnClickListener {
             view.setOnClickListener {  }
+            if(wordsCount < 5) {
+                Snackbar.make(
+                    binding.root,
+                    resources.getString(R.string.unable_start_test),
+                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                ).setAction(R.string.ok) {}
+                    .show()
+                return@setOnClickListener
+            }
             val intent = Intent(activity, TestActivity::class.java)
             val options = ActivityOptions.makeSceneTransitionAnimation(
                 activity,

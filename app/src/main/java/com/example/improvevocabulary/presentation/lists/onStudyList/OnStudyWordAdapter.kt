@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import com.example.domain.model.Language
 import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.StudiedWordPair
 import com.example.domain.usecase.onStudy.RemoveOnStudyWordPairUseCase
@@ -25,8 +26,10 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
                          val saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
                          val saveStudiedWordPairUseCase: SaveStudiedWordPairUseCase,
                          val removeStudiedWordPairUseCase: RemoveStudiedWordPairUseCase,
+                         val languageFromLearning: Language,
+                         val languageOfLearning: Language,
                          val addViewModel: AddViewModel
-) : EditableWordAdapter(tts) {
+) : EditableWordAdapter(tts, languageFromLearning, languageOfLearning) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnStudyWordHolder {
         val view =
@@ -36,7 +39,7 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
     }
 
     inner class OnStudyWordHolder(override var item: View, tts: TextToSpeech) :
-        EditableWordHolder(item, tts) {
+        EditableWordHolder(item, tts, languageFromLearning, languageOfLearning) {
 
         private var bindingOnStudy = OnStudyWordItemBinding.bind(item)
 

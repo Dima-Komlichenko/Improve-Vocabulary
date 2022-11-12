@@ -4,12 +4,11 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.*
 import android.util.Log
-import com.example.data.storage.sharedPrefs.SharedPrefsLanguageOfLearning
-import com.example.domain.utils.Language
+import com.example.domain.model.Language
 import java.util.*
 
 
-class TextToSpeech(context: Context) : OnInitListener {
+class TextToSpeech(context: Context, language: Language) : OnInitListener {
 
     private var tts: TextToSpeech
     private var _text: String? = null
@@ -17,7 +16,7 @@ class TextToSpeech(context: Context) : OnInitListener {
     init {
         tts = TextToSpeech(context, this@TextToSpeech)
         setVolume(0.8F)
-        setLanguage(SharedPrefsLanguageOfLearning(context).get())
+        setLanguage(language)
     }
 
 

@@ -45,14 +45,27 @@
     <string name="word_not_enteted">Слово не введено</string>
     <string name="pending">В очікуванні</string>
     <string name="data_is_not_valid">Ви ввели неприпустимі символи. Правильне використання вхідних даних та вхідних даних.</string>
-    <string name="language_to_learn">Язик котрий вчимо</string>
-    <string name="learning_from_language">Язик з якого вчимо</string>
+    <string name="language_to_learn">Мова яку вчимо</string>
+    <string name="learning_from_language">Мова з якої вчимо</string>
     <string name="attention">Увага!</string>
     <string name="after_changing_language">Після зміни мови всі слова у вашому словнику будуть видалені безповоротно. Ви впевнені, що хочете змінити мову?</string>
     <string name="confirm">Підтвердити</string>
     <string name="language_replaced">Мова замінена. Словник очищений.</string>
     <string name="cancel">Скасувати</string>
     <string name="impossible_choose">Неможливо вибрати вказану мову</string>
-    <string name="limit_20">Неможливо додати слово, максимум слів на вивченні – 20.</string>
+    <string name="limit_20">Неможливо додати слово, максимум можна додати 20 слів.</string>
+    <string name="cannot_choose_language">Ви не можете вибрати ту саму мову</string>
+    <string name="choose_languages_to_study">Виберіть мови для вивчення</string>
+    <string name="language_from">З цього</string>
+    <string name="language_of">Цей</string>
+    <string name="no_language">Якщо мови, яку ви хочете вивчати, немає у списку, то ви можете зв\'язатися з розробником через вкладку \'Контакти\' у розділі \'Налаштування\'</string>
+    <string name="choose">Обрати</string>
+    <string name="unable_start_test">Неможливо розпочати тест. Повинно бути не менше 5 слів</string>
+    <string name="limit_30">Слово не може бути переміщене в вивчаємі, максимум – 30 слів.</string>
+    <string name="empty_field">Ви не ввели слово.</string>
+    <string name="repetition">Повторення</string>
+    <string name="repetition_description">Ви хочете почати повторювання слів? Для цього типу тесту відбирається до 20 вивчених вами слів. Усі слова, на які ви відповіли неправильно, будуть переміщені до списку «на вивченні» якщо там є місце.</string>
+    <string name="start">Розпочати</string>
+    <string name="back">Назад</string>
 
 </resources>

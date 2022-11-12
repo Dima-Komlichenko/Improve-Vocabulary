@@ -1,18 +1,14 @@
 package com.example.improvevocabulary.di
 
 
-import android.app.Application
 import android.content.Context
-import com.example.data.storage.interfaces.FilterByStorage
-import com.example.data.storage.interfaces.LanguageStorage
-import com.example.data.storage.interfaces.ThemeStorage
-import com.example.data.storage.sharedPrefs.SharedPrefsFilterByStorage
-import com.example.data.storage.sharedPrefs.SharedPrefsLanguageStorage
-import com.example.data.storage.sharedPrefs.SharedPrefsThemeStorage
+import com.example.data.storage.interfaces.*
+import com.example.data.storage.repositoriesImpl.LanguageFromLearningRepository
 import com.example.domain.repositoriesI.FilterByRepository
-import com.example.domain.repositoriesI.LanguageRepository
+import com.example.domain.repositoriesI.AppLanguageRepository
 import com.example.domain.repositoriesI.ThemeRepository
 import com.example.data.storage.repositoriesImpl.WordPairRepository
+import com.example.data.storage.sharedPrefs.*
 import dagger.Module
 import dagger.Provides
 
@@ -20,16 +16,28 @@ import dagger.Provides
 class DataModule {
 
     @Provides
-    fun provideLanguageStorage(context: Context): LanguageStorage {
-        return SharedPrefsLanguageStorage(context = context)
+    fun provideAppLanguageStorage(context: Context): AppLanguageStorage {
+        return SharedPrefsAppLanguageStorage(context = context)
     }
 
     @Provides
-    fun provideLanguageRepository(languageStorage: LanguageStorage): LanguageRepository {
-        return com.example.data.storage.repositoriesImpl.LanguageRepository(
-            languageStorage = languageStorage
+    fun provideLanguageFromLearningStorage(context: Context): LanguageFromLearningStorage {
+        return SharedPrefsLanguageFromLearning(context = context)
+    }
+
+    @Provides
+    fun provideLanguageOfLearningStorage(context: Context): LanguageOfLearningStorage {
+        return SharedPrefsLanguageOfLearning(context = context)
+    }
+
+    @Provides
+    fun provideAppLanguageRepository(appLanguageStorage: AppLanguageStorage): AppLanguageRepository {
+        return com.example.data.storage.repositoriesImpl.AppLanguageRepository(
+            appLanguageStorage = appLanguageStorage
         )
     }
+
+
 
     @Provides
     fun provideThemeStorage(context: Context): ThemeStorage {

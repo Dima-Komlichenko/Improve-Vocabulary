@@ -1,6 +1,7 @@
 package com.example.domain.utils
 
-enum class Language { ENGLISH, SPANISH, UKRAINIAN, RUSSIAN }
+import com.example.domain.model.Language
+
 
 class DataValidator {
 

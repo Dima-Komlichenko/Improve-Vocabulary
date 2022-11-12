@@ -1,6 +1,5 @@
 package com.example.domain.usecase.pending
 
-import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.PendingWordPair
 import com.example.domain.repositoriesI.WordPairRepository
 

@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
@@ -41,7 +40,12 @@ class WordsFragment : Fragment() {
 
         (activity?.applicationContext as App).appComponent.inject(this)
         viewModel =
-            ViewModelProvider(this, wordsFragmentViewModelFactory)[WordsFragmentViewModel::class.java]
+            ViewModelProvider(
+                this,
+                wordsFragmentViewModelFactory
+            )[WordsFragmentViewModel::class.java]
+
+        viewModel.init()
 
         viewModel.onStudyCount.observe(viewLifecycleOwner) {
             binding.tvOnStudyCount.text = it.toString()
@@ -53,6 +57,13 @@ class WordsFragment : Fragment() {
 
         viewModel.studiedCount.observe(viewLifecycleOwner) {
             binding.tvStudiedCount.text = it.toString()
+        }
+
+        viewModel.isOnStudyListContainsStudiedWords.observe(viewLifecycleOwner) {
+            viewModel.isOnStudyListContainsStudiedWords.value?.let {
+                if (it)
+                    binding.isOpportunityTransferWord.visibility = View.VISIBLE
+            }
         }
 
         return binding.root
@@ -68,6 +79,11 @@ class WordsFragment : Fragment() {
         binding.tvOnStudyCount.text = viewModel.onStudyCount.value?.toString()
         binding.tvPedningCount!!.text = viewModel.pendingCount.value?.toString()
         binding.tvStudiedCount.text = viewModel.studiedCount.value?.toString()
+
+        viewModel.isOnStudyListContainsStudiedWords.value?.let {
+            binding.isOpportunityTransferWord.visibility =
+                if (it) View.VISIBLE else View.GONE
+        }
     }
 
 

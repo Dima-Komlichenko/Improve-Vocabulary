@@ -2,20 +2,20 @@ package com.example.data.storage.sharedPrefs
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.data.storage.interfaces.LanguageStorage
+import com.example.data.storage.interfaces.AppLanguageStorage
 import com.example.data.storage.models.Language
 
 private const val SHARED_PREFS_LANGUAGE = "SHARED_PREFS_LANGUAGE"
 private const val LANGUAGE = "LANGUAGE"
 private const val NO_DATA = "NO_DATA"
 
-class SharedPrefsLanguageStorage(private val context: Context) : LanguageStorage {
+class SharedPrefsAppLanguageStorage(context: Context) : AppLanguageStorage {
 
     private var sharedPreferences: SharedPreferences =
         context.getSharedPreferences(SHARED_PREFS_LANGUAGE, Context.MODE_PRIVATE)
 
-    override fun save(lang: Language): Boolean {
-        sharedPreferences.edit().putString(LANGUAGE, lang.value).apply()
+    override fun save(data: Language): Boolean {
+        sharedPreferences.edit().putString(LANGUAGE, data.value).apply()
         return true
     }
 

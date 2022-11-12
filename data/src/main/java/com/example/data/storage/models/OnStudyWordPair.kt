@@ -11,3 +11,4 @@ data class OnStudyWordPair(
     var translate: String,
     var countRightAnswers: Int = 0,
 )
+

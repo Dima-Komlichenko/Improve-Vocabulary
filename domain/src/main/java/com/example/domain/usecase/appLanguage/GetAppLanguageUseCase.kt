@@ -1,10 +1,10 @@
 package com.example.domain.usecase.appLanguage
 
 import com.example.domain.model.Language
-import com.example.domain.repositoriesI.LanguageRepository
+import com.example.domain.repositoriesI.AppLanguageRepository
 
-class GetAppLanguageUseCase(private val languageRepository: LanguageRepository) {
+class GetAppLanguageUseCase(private val languageRepository: AppLanguageRepository) {
     fun execute(): Language {
-        return languageRepository.getAppLanguage()
+        return languageRepository.getLanguage()
     }
 }

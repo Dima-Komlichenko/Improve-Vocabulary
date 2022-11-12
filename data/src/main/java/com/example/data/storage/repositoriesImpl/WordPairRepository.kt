@@ -26,14 +26,15 @@ class WordPairRepository(var context: Context) :
         WordPairDB.getDB(context).studiedWordPairDao()
 
 
+
     override fun save(wordPair: OnStudyWordPair) {
         GlobalScope.launch(Dispatchers.Default) {
-        //    try {
+            try {
                 onStudyWordPairDao.addWordPair(mapToData(wordPair))
-        //    }
-        //    catch (e: Exception) {
-        //        Log.i("save StudiedWordPair", e.message.toString())
-        //    }
+            }
+            catch (e: Exception) {
+                Log.i("save StudiedWordPair", e.message.toString())
+            }
         }
     }
 
@@ -66,6 +67,10 @@ class WordPairRepository(var context: Context) :
         var temp = arrayListOf<StudiedWordPair>()
         studiedWordPairDao.readAll().forEach { temp.add(mapToDomain(it)) }
         return temp
+    }
+
+    override suspend fun IsOnStudyListContainsStudiedWords(): Boolean {
+        return onStudyWordPairDao.isOnStudyListContainsStudiedWords()
     }
 
     override suspend fun getOnStudyCount(): Int {

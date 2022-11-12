@@ -92,8 +92,8 @@
             <ImageView
                 android:id="@+id/is_opportunity_transfer_word"
                 style="@style/Theme.ImproveVocabulary"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
                 android:layout_marginEnd="14dp"
                 android:src="@drawable/ic_btn_words_message"
                 android:visibility="invisible"

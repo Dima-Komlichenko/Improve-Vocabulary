@@ -24,7 +24,7 @@ class FilterFragment : Fragment() {
         viewModel.pressedSortButton.observe(viewLifecycleOwner) { viewModel.saveFilterBy(it) }
 
         setButtonsListeners()
-        setPressedButton()
+        //setPressedButton()
 
         return binding.root
     }

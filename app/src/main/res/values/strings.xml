@@ -28,8 +28,8 @@
     <string-array name="languages">
         <item>English</item>
         <item>Spanish</item>
-        <item>Ukrainian</item>
         <item>Russian</item>
+        <item>Ukrainian</item>
     </string-array>
 
     <string name="clear_dictionary_button">Clear</string>
@@ -70,6 +70,19 @@
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="limit_20">It is impossible to add a word, the maximum of words on study is 20.</string>
+    <string name="limit_20">Unable to add word, maximum 20 words can be added.</string>
+    <string name="cannot_choose_language">You can\'t choose the same language</string>
+    <string name="choose_languages_to_study">Choose learning languages</string>
+    <string name="language_from">From this one</string>
+    <string name="language_of">This one</string>
+    <string name="no_language">If the language you want to learn is not in the list, then you can contact the developer through the \'Contacts\' tab in the \'Settings\' section</string>
+    <string name="choose">Choose</string>
+    <string name="unable_start_test">There are unable to start test. Must be at least 5 words</string>
+    <string name="limit_30">The word cannot be moved to the studied ones, the maximum is 30 words.</string>
+    <string name="empty_field">You didn\'t enter a word.</string>
+    <string name="repetition">Repetition</string>
+    <string name="start">Start</string>
+    <string name="back">Back</string>
+    <string name="repetition_description">Do you want to start repeating words? Up to 20 words you have studied are selected for this type of test. All words that you answered incorrectly will be moved to the \'on study\' list if there is room.</string>
 
 </resources>

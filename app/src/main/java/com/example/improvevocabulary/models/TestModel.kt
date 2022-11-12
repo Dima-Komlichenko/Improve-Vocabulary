@@ -1,6 +1,6 @@
 package com.example.improvevocabulary.models
 
-import com.example.domain.utils.Language
+import com.example.domain.model.Language
 
 class TestModel(
     var id: Int,

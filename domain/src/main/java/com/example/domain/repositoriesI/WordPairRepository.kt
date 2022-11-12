@@ -14,6 +14,7 @@ interface WordPairRepository {
     suspend fun getPending(): List<PendingWordPair>
     suspend fun getStudied(): List<StudiedWordPair>
 
+    suspend fun IsOnStudyListContainsStudiedWords(): Boolean
 
     suspend fun getOnStudyCount(): Int
     suspend fun getPendingCount(): Int

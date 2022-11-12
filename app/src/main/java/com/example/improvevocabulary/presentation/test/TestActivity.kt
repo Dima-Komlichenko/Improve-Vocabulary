@@ -35,54 +35,10 @@ class TestActivity : AppCompatActivity() {
         binding = ActivityTestBinding.inflate(layoutInflater)
 
         (applicationContext as App).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, TestViewModelFactory(application))[TestViewModel::class.java]
-
+        viewModel = ViewModelProvider(this, testViewModelFactory)[TestViewModel::class.java]
 
         setContentView(binding.root)
 
         viewModel.typeOfTestInfo = intent.getSerializableExtra(TypeOfTestInfoConst) as TypeOfTestInfo
-
-        //when (typeOfTestInfo) {
-        //    TypeOfTestInfo.Test -> {
-        //        lifecycleScope.launch {
-        //            GetOnStudyWordPairsUseCase(repository).execute()
-        //                .forEach { tempWords.add(mapToWordPair(it)) }
-        //        }
-        //            viewModel.words.value = tempWords
-
-        //    }
-        //    TypeOfTestInfo.Practice -> {
-        //        lifecycleScope.launch {
-        //            GetOnStudyWordPairsUseCase(repository).execute()
-        //                .forEach { viewModel.words.value?.add(mapToWordPair(it)) }
-        //            GetStudiedWordPairsUseCase(repository).execute()
-        //                .forEach { viewModel.words.value?.add(mapToWordPair(it)) }
-        //        }
-        //    }
-        //    TypeOfTestInfo.Repetition -> {
-        //        lifecycleScope.launch {
-        //            GetStudiedWordPairsUseCase(repository).execute()
-        //                .forEach { viewModel.words.value?.add(mapToWordPair(it)) }
-        //        }
-        //    }
-        //}
-
     }
-
-    /*private fun mapToWordPair(dataModel: OnStudyWordPair): WordPair {
-        return WordPair(
-            dataModel.id,
-            dataModel.word,
-            dataModel.translate,
-            dataModel.countRightAnswers
-        )
-    }
-
-    private fun mapToWordPair(dataModel: StudiedWordPair): WordPair {
-        return WordPair(
-            dataModel.id,
-            dataModel.word,
-            dataModel.translate
-        )
-    }*/
 }

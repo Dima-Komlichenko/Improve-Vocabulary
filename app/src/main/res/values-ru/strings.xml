@@ -53,5 +53,18 @@
     <string name="language_replaced">"Язык заменен. Словарь очищен. "</string>
     <string name="cancel">Отмена</string>
     <string name="impossible_choose">Невозможно выбрать указанный язык</string>
-    <string name="limit_20">Невозможно добавить слово, максимум слов на изучении - 20.</string>
+    <string name="limit_20">Невозможно добавить слово, максимум можно добавить 20 слов.</string>
+    <string name="cannot_choose_language">Вы не можете выбрать один и тот же язык</string>
+    <string name="choose_languages_to_study">Выберите языки для изучения</string>
+    <string name="language_from">С этого</string>
+    <string name="language_of">Этот</string>
+    <string name="no_language">Если языка который вы хотите изучать нет в списке то вы можете связаться с разработчиком через вкладку \'Контакты\' в разделе \'Настройки\'</string>
+    <string name="choose">Выбрать</string>
+    <string name="unable_start_test">Невозможно начать тест. Должно быть не менее 5 слов</string>
+    <string name="limit_30">Слово не может быть перемещено в изучаемые, максимум - 30 слов.</string>
+    <string name="empty_field">Вы не ввели слово.</string>
+    <string name="repetition">Повторение</string>
+    <string name="repetition_description">Хотите начать повторение слов? Для этого типа теста отбирается до 20 изученных вами слов. Все слова, на которые вы ответили неправильно, будут перемещены в список «на изучении» если там есть место.</string>
+    <string name="start">Начать</string>
+    <string name="back">Назад</string>
 </resources>
