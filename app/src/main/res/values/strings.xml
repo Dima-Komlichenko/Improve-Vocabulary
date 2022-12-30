@@ -15,7 +15,7 @@
     <string name="app_theme">App theme</string>
     <string name="language_interface">Language interface</string>
     <string name="suggest_repetition_of_words">Suggest repetition of words</string>
-    <string name="clear_dictionary">Clear dictionary</string>
+    <string name="clear_dictionary">Clear the dictionary</string>
 
     <!-- Light modes -->
     <string-array name="app_themes">
@@ -27,9 +27,23 @@
     <!-- App languages -->
     <string-array name="languages">
         <item>English</item>
+        <item>Arabic</item>
+        <item>Czech</item>
+        <item>German</item>
         <item>Spanish</item>
+        <item>French</item>
+        <item>Hindi</item>
+        <item>Italian</item>
+        <item>Hebrew</item>
+        <item>Japanese</item>
+        <item>Kazakh</item>
+        <item>Korean</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
         <item>Russian</item>
+        <item>Turkish</item>
         <item>Ukrainian</item>
+        <item>Chinese</item>
     </string-array>
 
     <string name="clear_dictionary_button">Clear</string>
@@ -41,48 +55,73 @@
     <string name="btn_filter_desc" translatable="false">Button filter</string>
     <string name="btn_search_desc" translatable="false">Button search</string>
     <string name="btn_add_desc" translatable="false">Button add</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="snack_bar_removing_word">You removed a word</string>
-    <string name="snack_bar_moving_word_first_part">You moved the word</string>
-    <string name="snack_bar_moving_word_last_part">into studied list</string>
     <string name="undo">Undo</string>
-    <string name="new_word_created">You created the word</string>
+    <string name="new_word_created">You have created the word</string>
     <string name="ok">Ok</string>
-    <string name="word_not_enteted">Word not entered</string>
+    <string name="word_not_enteted">The word isn\'t entered</string>
     <string name="pending">Pending</string>
-    <string name="data_is_not_valid">You entered invalid characters. Proper use of inputs and inputs.</string>
-    <string name="learning_from_language">Learning language</string>
-    <string name="language_to_learn">Language to learn</string>
+    <string name="data_is_not_valid">You have entered invalid characters</string>
+    <string name="learning_from_language">Language to learn from</string>
+    <string name="language_to_learn">Learning language</string>
     <string name="attention">Attention!</string>
-    <string name="after_changing_language">After changing the language, all words in your dictionary will be permanently deleted. Are you sure you want to change the language?</string>
+    <string name="after_changing_language">After changing the language, all words in your vocabulary will be deleted. Are you sure you want to change the language?</string>
     <string name="confirm">Confirm</string>
-    <string name="language_replaced">The language has been changed. Dictionary cleared.</string>
+    <string name="language_replaced">The language has been changed. Dictionary has been cleared.</string>
     <string name="cancel">Cancel</string>
-    <string name="impossible_choose">Unable to select specified language</string>
+    <string name="impossible_choose">Unable to select the specified language</string>
     <string name="title_activity_test" translatable="false">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label" translatable="false">First Fragment</string>
-    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next" translatable="false">Next</string>
     <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
-    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="limit_20">Unable to add word, maximum 20 words can be added.</string>
+    <string name="limit_20">Unable to move the word to the \"on study\" list, the maximal of 20 words has been reached.</string>
     <string name="cannot_choose_language">You can\'t choose the same language</string>
     <string name="choose_languages_to_study">Choose learning languages</string>
     <string name="language_from">From this one</string>
     <string name="language_of">This one</string>
-    <string name="no_language">If the language you want to learn is not in the list, then you can contact the developer through the \'Contacts\' tab in the \'Settings\' section</string>
+    <string name="no_language">If the language you want to learn is not in the list, then you can contact the developer through \'Settings\' section</string>
     <string name="choose">Choose</string>
-    <string name="unable_start_test">There are unable to start test. Must be at least 5 words</string>
-    <string name="limit_30">The word cannot be moved to the studied ones, the maximum is 30 words.</string>
+    <string name="unable_start_test">Unable to start test. There must be at least 5 words in the \'under study\' list</string>
+    <string name="limit_30">Unable to move the word to the list, the maximum of 30 words has been reached</string>
     <string name="empty_field">You didn\'t enter a word.</string>
     <string name="repetition">Repetition</string>
     <string name="start">Start</string>
     <string name="back">Back</string>
+    <string name="later">Later</string>
     <string name="repetition_description">Do you want to start repeating words? Up to 20 words you have studied are selected for this type of test. All words that you answered incorrectly will be moved to the \'on study\' list if there is room.</string>
+    <string name="word_is_removed">You have removed the word</string>
+    <string name="word_is_moved">You have moved the word</string>
+    <string name="into_studied_ist">into studied list</string>
+    <string name="into_on_study_list">into on study list</string>
+    <string name="into_pending_list">into pending list</string>
+    <string name="exit_test">Do you want to leave the test? All progress will be lost.</string>
+    <string name="exit">Exit</string>
+
+    <string name="empty_list_on_study_start">"The 'on study' words will be displayed here. When you answer 10 times in a row for one word in tests, a button will appear "</string>
+    <string name="empty_list_on_study_end"> with which you can move the word to the list \'learned\'</string>
+
+    <string name="empty_list_studied_start">"The 'learned' words will be displayed here. If you change them or click the button "</string>
+    <string name="empty_list_studied_end"> then the word will be moved to the list \'on study\'</string>
+
+    <string name="empty_list_pending_start">"The 'pending' words will be displayed here. With button "</string>
+    <string name="empty_list_pending_end"> you can move the word to the list \'on study\'</string>
+
+    <string name="btn_repeat" translatable="false">Button repeat</string>
+    <string name="btn_save_desc" translatable="false">Button save</string>
+    <string name="btn_sound_desc" translatable="false">Button sound</string>
+    <string name="btn_remove_desc" translatable="false">Button remove</string>
+    <string name="btn_move_desc" translatable="false">Button move</string>
+    <string name="alphabetically">Alphabetically</string>
+    <string name="az">A-z</string>
+    <string name="za">Z-a</string>
+    <string name="in_order">In order</string>
+    <string name="newer">Newer</string>
+    <string name="older">Older</string>
+    <string name="enter_search_terms">Enter a search term</string>
+    <string name="gmail" translatable="false">komlychenkodev@gmail.com</string>
+
+    <string name="test_description">The words \'on study\' were selected for the test. When you answer 10 times in a row for each word correctly, you will be able to transfer it to the \'learned\' list.</string>
+    <string name="practice_description">The words \'on study\' and \'studied\' were selected for practice. If you answer a word incorrectly, it will either be transferred to the \'under study\' list or the counter of correct answers will be reset to zero.</string>
 
 </resources>

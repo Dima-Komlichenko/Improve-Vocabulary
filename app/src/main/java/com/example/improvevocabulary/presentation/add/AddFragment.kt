@@ -12,6 +12,7 @@ import com.example.domain.utils.DataValidator
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentAddBinding
 import com.example.improvevocabulary.utlis.DataConverter
+import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
 class AddFragment : Fragment() {
@@ -19,20 +20,17 @@ class AddFragment : Fragment() {
     private val viewModel: AddViewModel by activityViewModels()
     private lateinit var binding: FragmentAddBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentAddBinding.inflate(inflater, container, false)
 
         binding.etFirstWord.hint =
-            DataConverter.capitalize(viewModel.languageOfLearning.value!!.toString())
+            DataConverter.capitalize(viewModel.languageOfLearning.value!!.value.toString())
 
 
         binding.etSecondWord.hint =
-            DataConverter.capitalize(viewModel.languageFromLearning.value!!.toString())
+            DataConverter.capitalize(viewModel.languageFromLearning.value!!.value.toString())
 
         binding.etFirstWord.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
@@ -63,8 +61,8 @@ class AddFragment : Fragment() {
                     Snackbar.make(
                         binding.root,
                         resources.getString(R.string.limit_20),
-                        Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                    ).setAction(R.string.ok) {}
+                        Snackbar.LENGTH_SHORT
+                    )
                         .show()
                     return@setOnClickListener
                 }
@@ -80,7 +78,8 @@ class AddFragment : Fragment() {
                     binding.root,
                     resources.getString(R.string.word_not_enteted),
                     Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                ).setAction(R.string.ok) {}.show()
+                )
+                    .show()
                 return@setOnClickListener
             }
 
@@ -89,7 +88,7 @@ class AddFragment : Fragment() {
             ) {
                 Snackbar.make(
                     binding.root,
-                    requireContext().resources.getString(R.string.data_is_not_valid),
+                    resources.getString(R.string.data_is_not_valid),
                     Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
                 ).show()
                 return@setOnClickListener
@@ -112,5 +111,4 @@ class AddFragment : Fragment() {
         binding.etSecondWord.setText(viewModel.secondFieldText.value)
 
     }
-
 }

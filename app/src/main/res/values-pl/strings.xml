@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Słowa</string>
+    <string name="title_tests">Testy</string>
+    <string name="title_settings">Ustawienia</string>
+
+    <string name="on_study">Do wyuczenia</string>
+    <string name="studied">Wyuczone</string>
+
+    <string name="test">"Test "</string>
+    <string name="practice">Ćwiczenia</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Temat aplikacji</string>
+    <string name="language_interface">Język interfejsu</string>
+    <string name="suggest_repetition_of_words">Zaproponuj powtórzenie wyrazów</string>
+    <string name="clear_dictionary">Oczyść słownik</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>System</item>
+        <item>Jasny</item>
+        <item>Ciemny</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Angielski</item>
+        <item>Arabski</item>
+        <item>Czeski</item>
+        <item>Niemiecki</item>
+        <item>Hiszpański</item>
+        <item>Francuski</item>
+        <item>Hindi</item>
+        <item>Włoski</item>
+        <item>Hebrajski</item>
+        <item>Japoński</item>
+        <item>Kazachski</item>
+        <item>Koreański</item>
+        <item>Polski</item>
+        <item>Portugalski</item>
+        <item>Rosyjski</item>
+        <item>Turecki</item>
+        <item>Ukraiński</item>
+        <item>Chiński</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Oczyść</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Powtórzenie słów jest włączone</string>
+    <string name="switch_suggest_repetition_of_words_off">Powtórzenie słów jest wyłączone</string>
+    <string name="undo">Anuluj</string>
+    <string name="new_word_created">Stworzyłeś słowo</string>
+    <string name="ok">Ok</string>
+    <string name="word_not_enteted">Słowo nie zostało wprowadzone</string>
+    <string name="pending">W oczekiwaniu</string>
+    <string name="data_is_not_valid">Wprowadziłeś nieprawidłowe znaki</string>
+    <string name="language_to_learn">"Język, którego się uczymy "</string>
+    <string name="learning_from_language">"Język, z którego się uczymy "</string>
+    <string name="attention">Uwaga!</string>
+    <string name="after_changing_language">"Gdy zmienisz język, wszystkie słowa z Twojego słownika zostaną bezpowrotnie usunięte. Czy na pewno chcesz zmienić język? "</string>
+    <string name="confirm">"Potwierdź "</string>
+    <string name="language_replaced">"Język został zmieniony. Słownik wyczyszczony. "</string>
+    <string name="cancel">Anuluj</string>
+    <string name="impossible_choose">Nie można wybrać określonego języka</string>
+    <string name="cannot_choose_language">"Nie można wybrać tego samego języka "</string>
+    <string name="choose_languages_to_study">Wybierz języki do nauczania</string>
+    <string name="language_from">Z tego</string>
+    <string name="language_of">Ten</string>
+    <string name="no_language">"Jeśli języka, którego chcesz się nauczyć, nie ma na liście, możesz skontaktować się z programistami za pośrednictwem sekcji „Ustawienia” "</string>
+    <string name="choose">Wybierz</string>
+    <string name="unable_start_test">Nie można rozpocząć testu. Lista \"do wyuczenia\" musi zawierać co najmniej 5 słów</string>
+    <string name="limit_30">Nie można przenieść słowa na listę, maksymalnie 30 słów</string>
+    <string name="empty_field">Nie wpisałeś słowa</string>
+    <string name="repetition">Powtórzenie</string>
+    <string name="repetition_description">Chcesz zacząć powtarzać słowa? Do tego rodzaju testu wybieranych jest do 20 słów, których się nauczyłeś. Wszelkie słowa, na które odpowiedziałeś niepoprawnie, zostaną przeniesione na listę „w trakcie nauki”, jeśli będzie miejsce.</string>
+    <string name="start">Rozpocznij</string>
+    <string name="back">Z powrotem</string>
+    <string name="word_is_removed">Usunąłeś słowo</string>
+    <string name="word_is_moved">Przesunąłeś słowo</string>
+    <string name="into_studied_ist">"do listy \"wyuczone\" "</string>
+    <string name="into_on_study_list">do listy \"do wyuczenia\"</string>
+    <string name="into_pending_list">do listy \"w oczekiwaniu\"</string>
+    <string name="limit_20">Nie można przenieść słowa na listę wyuczonych słów, maksymalnie 20 słów</string>
+    <string name="exit_test">Czy chcesz wyjść z testu? Cały postęp zostanie utracony.</string>
+    <string name="exit">Wyjdź</string>
+
+    <string name="empty_list_on_study_start">W tym miejscu zostaną wyświetlone słowa „do wyuczenia”. Gdy odpowiesz 10 razy z rzędu na jedno słowo w testach, pojawi się przycisk.</string>
+    <string name="empty_list_on_study_end">za pomocą którego możesz przenieść słowo na listę „wyuczone”</string>
+
+    <string name="empty_list_studied_start">Tutaj zostaną wyświetlone „wyuczone” słowa. Jeśli je zmienisz lub klikniesz przycisk</string>
+    <string name="empty_list_studied_end">słowo zostanie przeniesione na listę „do wyuczenia”.</string>
+
+    <string name="empty_list_pending_start">W tym miejscu zostaną wyświetlone słowa „w oczekiwaniu”. Za pomocą przycisku</string>
+    <string name="empty_list_pending_end">Możesz przenieść słowa na listę \"do wyuczenia\"</string>
+
+    <string name="alphabetically">Alfabetycznie</string>
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">W porządku</string>
+    <string name="newer">Nowsze</string>
+    <string name="older">Starsze</string>
+    <string name="enter_search_terms">Wpisz hasło wyszukiwania</string>
+    <string name="later">Później</string>
+
+    <string name="test_description">Do testu wybrano słowa „do wyuczenia”. Gdy odpowiesz poprawnie 10 razy z rzędu na każde słowo, będziesz mógł przenieść je na listę „wyuczone”.</string>
+    <string name="practice_description">Słowa z list „do wyuczenia” i „wyuczone” zostały wybrane do ćwiczeń. Jeśli odpowiesz niepoprawnie na słowo, zostanie ono przeniesione na listę „do wyuczenia” lub licznik poprawnych odpowiedzi zostanie wyzerowany.</string>
+</resources>

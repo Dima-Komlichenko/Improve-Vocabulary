@@ -7,17 +7,17 @@ import com.example.domain.usecase.languages.GetLanguageFromLearningUseCase
 import com.example.domain.usecase.languages.GetLanguageOfLearningUseCase
 import com.example.domain.usecase.onStudy.GetOnStudyWordPairCountUseCase
 import com.example.domain.model.Language
+import com.example.improvevocabulary.utlis.TextToSpeech
 import kotlinx.coroutines.launch
 
 class AddViewModel(
     val getOnStudyWordPairCountUseCase: GetOnStudyWordPairCountUseCase,
     val getLanguageFromLearningUseCase: GetLanguageFromLearningUseCase,
     val getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase,
-
     ) : ViewModel() {
 
     var onStudyCount: MutableLiveData<Int> =
-        MutableLiveData() // property type is optional since it can be inferred from the getter's return type
+        MutableLiveData()
 
     var languageFromLearning: MutableLiveData<Language> =
         MutableLiveData()

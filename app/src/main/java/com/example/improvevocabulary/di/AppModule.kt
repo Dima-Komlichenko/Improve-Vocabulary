@@ -2,20 +2,27 @@ package com.example.improvevocabulary.di
 
 import android.app.Application
 import android.content.Context
-import com.example.domain.model.Language
 import com.example.domain.usecase.appLanguage.GetAppLanguageUseCase
 import com.example.domain.usecase.appLanguage.SaveAppLanguageUseCase
 import com.example.domain.usecase.filter.GetFilterByUseCase
 import com.example.domain.usecase.filter.SaveFilterByUseCase
+import com.example.domain.usecase.isFirstTimeLaunch.GetIsFirstTimeLaunchUseCase
+import com.example.domain.usecase.isFirstTimeLaunch.LaunchFirstTimeUseCase
 import com.example.domain.usecase.languages.GetLanguageFromLearningUseCase
 import com.example.domain.usecase.languages.GetLanguageOfLearningUseCase
 import com.example.domain.usecase.languages.SaveLanguageFromLearningUseCase
 import com.example.domain.usecase.languages.SaveLanguageOfLearningUseCase
 import com.example.domain.usecase.onStudy.*
 import com.example.domain.usecase.pending.*
+import com.example.domain.usecase.languages.repetitionWasOffered.GetRepetitionWasOfferedUseCase
+import com.example.domain.usecase.languages.repetitionWasOffered.UpdateRepetitionWasOfferedUseCase
 import com.example.domain.usecase.studied.*
 import com.example.domain.usecase.theme.GetThemeUseCase
 import com.example.domain.usecase.theme.SaveThemeUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.GetWasPracticeDescriptionShownUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.GetWasTestDescriptionShownUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasPracticeDescriptionShownUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasTestDescriptionShownUseCase
 import com.example.improvevocabulary.presentation.add.AddViewModelFactory
 import com.example.improvevocabulary.presentation.filter.FilterViewModelFactory
 import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModelFactory
@@ -30,6 +37,7 @@ import com.example.improvevocabulary.presentation.wordsFragment.WordsFragmentVie
 import com.example.improvevocabulary.utlis.TextToSpeech
 import dagger.Module
 import dagger.Provides
+import org.w3c.dom.Text
 
 @Module
 class AppModule(val context: Context) {
@@ -91,7 +99,12 @@ class AppModule(val context: Context) {
         getAppLanguageUseCase: GetAppLanguageUseCase,
         saveLanguageFromLearningUseCase: SaveLanguageFromLearningUseCase,
         saveLanguageOfLearningUseCase: SaveLanguageOfLearningUseCase,
-        getStudiedWordPairCountUseCase: GetStudiedWordPairCountUseCase
+        getStudiedWordPairCountUseCase: GetStudiedWordPairCountUseCase,
+        getRepetitionWasOfferedUseCase: GetRepetitionWasOfferedUseCase,
+        updateRepetitionWasOfferedUseCase: UpdateRepetitionWasOfferedUseCase,
+        getIsFirstTimeLaunchUseCase: GetIsFirstTimeLaunchUseCase,
+        launchFirstTimeUseCase: LaunchFirstTimeUseCase,
+        isOnStudyListContainsStudiedWordsUseCase: IsOnStudyListContainsStudiedWordsUseCase,
     ): MainViewModelFactory {
         return MainViewModelFactory(
             getLanguageFromLearningUseCase = getLanguageFromLearningUseCase,
@@ -100,6 +113,11 @@ class AppModule(val context: Context) {
             saveLanguageFromLearningUseCase = saveLanguageFromLearningUseCase,
             saveLanguageOfLearningUseCase = saveLanguageOfLearningUseCase,
             getStudiedWordPairCountUseCase = getStudiedWordPairCountUseCase,
+            getRepetitionWasOfferedUseCase = getRepetitionWasOfferedUseCase,
+            updateRepetitionWasOfferedUseCase = updateRepetitionWasOfferedUseCase,
+            getIsFirstTimeLaunchUseCase = getIsFirstTimeLaunchUseCase,
+            launchFirstTimeUseCase = launchFirstTimeUseCase,
+            isOnStudyListContainsStudiedWordsUseCase = isOnStudyListContainsStudiedWordsUseCase,
         )
     }
 
@@ -109,12 +127,16 @@ class AppModule(val context: Context) {
         getOnStudyWordPairsUseCase: GetOnStudyWordPairsUseCase,
         getStudiedWordPairsUseCase: GetStudiedWordPairsUseCase,
         getLanguageFromLearningUseCase: GetLanguageFromLearningUseCase,
+        getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase,
+        tts: TextToSpeech
     ): WordListViewModelFactory {
         return WordListViewModelFactory(
             getPendingWordPairsUseCase = getPendingWordPairsUseCase,
             getOnStudyWordPairsUseCase = getOnStudyWordPairsUseCase,
             getStudiedWordPairsUseCase = getStudiedWordPairsUseCase,
             getLanguageFromLearningUseCase = getLanguageFromLearningUseCase,
+            getLanguageOfLearningUseCase = getLanguageOfLearningUseCase,
+            tts = tts
         )
     }
 
@@ -126,7 +148,10 @@ class AppModule(val context: Context) {
         saveStudiedWordPairUseCase: SaveStudiedWordPairUseCase,
         removeStudiedWordPairUseCase: RemoveStudiedWordPairUseCase,
         getLanguageFromLearningUseCase: GetLanguageFromLearningUseCase,
-        getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase
+        getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase,
+        getPendingMaxIdUseCase: GetPendingMaxIdUseCase,
+        getOnStudyMaxIdUseCase: GetOnStudyMaxIdUseCase,
+        getStudMaxIdUseCase: GetPendingMaxIdUseCase,
     ): OnStudyListViewModelFactory {
         return OnStudyListViewModelFactory(
             updateOnStudyWordPairUseCase = updateOnStudyWordPairUseCase,
@@ -135,7 +160,10 @@ class AppModule(val context: Context) {
             saveStudiedWordPairUseCase = saveStudiedWordPairUseCase,
             removeStudiedWordPairUseCase = removeStudiedWordPairUseCase,
             getLanguageFromLearningUseCase = getLanguageFromLearningUseCase,
-            getLanguageOfLearningUseCase = getLanguageOfLearningUseCase
+            getLanguageOfLearningUseCase = getLanguageOfLearningUseCase,
+            getPendingMaxIdUseCase = getPendingMaxIdUseCase,
+            getOnStudyMaxIdUseCase = getOnStudyMaxIdUseCase,
+            getStudMaxIdUseCase = getStudMaxIdUseCase,
         )
     }
 
@@ -146,8 +174,12 @@ class AppModule(val context: Context) {
         savePendingWordPairUseCase: SavePendingWordPairUseCase,
         saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
         removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase,
+        getOnStudyWordPairCountUseCase: GetOnStudyWordPairCountUseCase,
         getLanguageFromLearningUseCase: GetLanguageFromLearningUseCase,
         getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase,
+        getPendingMaxIdUseCase: GetPendingMaxIdUseCase,
+        getOnStudyMaxIdUseCase: GetOnStudyMaxIdUseCase,
+        getStudMaxIdUseCase: GetPendingMaxIdUseCase,
     ): PendingListViewModelFactory {
         return PendingListViewModelFactory(
             updatePendingWordPairUseCase = updatePendingWordPairUseCase,
@@ -155,8 +187,12 @@ class AppModule(val context: Context) {
             savePendingWordPairUseCase = savePendingWordPairUseCase,
             saveOnStudyWordPairUseCase = saveOnStudyWordPairUseCase,
             removeOnStudyWordPairUseCase = removeOnStudyWordPairUseCase,
+            getOnStudyWordPairCountUseCase = getOnStudyWordPairCountUseCase,
             getLanguageFromLearningUseCase = getLanguageFromLearningUseCase,
             getLanguageOfLearningUseCase = getLanguageOfLearningUseCase,
+            getPendingMaxIdUseCase = getPendingMaxIdUseCase,
+            getOnStudyMaxIdUseCase = getOnStudyMaxIdUseCase,
+            getStudMaxIdUseCase = getStudMaxIdUseCase,
         )
     }
 
@@ -166,14 +202,17 @@ class AppModule(val context: Context) {
         saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
         saveStudiedWordPairUseCase: SaveStudiedWordPairUseCase,
         removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase,
+        getOnStudyWordPairCountUseCase: GetOnStudyWordPairCountUseCase,
     ): StudiedListViewModelFactory {
         return StudiedListViewModelFactory(
             removeStudiedWordPairUseCase = removeStudiedWordPairUseCase,
             saveOnStudyWordPairUseCase = saveOnStudyWordPairUseCase,
             saveStudiedWordPairUseCase = saveStudiedWordPairUseCase,
             removeOnStudyWordPairUseCase = removeOnStudyWordPairUseCase,
+            getOnStudyWordPairCountUseCase = getOnStudyWordPairCountUseCase,
         )
     }
+
     @Provides
     fun provideTestViewModelFactory(
         getOnStudyWordPairsUseCase: GetOnStudyWordPairsUseCase,
@@ -183,6 +222,11 @@ class AppModule(val context: Context) {
         saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
         getLanguageFromLearningUseCase: GetLanguageFromLearningUseCase,
         getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase,
+        getOnStudyWordPairCountUseCase: GetOnStudyWordPairCountUseCase,
+        getWasTestDescriptionShownUseCase: GetWasTestDescriptionShownUseCase,
+        launchWasTestDescriptionShownUseCase: LaunchWasTestDescriptionShownUseCase,
+        getWasPracticeDescriptionShownUseCase: GetWasPracticeDescriptionShownUseCase,
+        launchWasPracticeDescriptionShownUseCase: LaunchWasPracticeDescriptionShownUseCase,
         tts: TextToSpeech
     ): TestViewModelFactory {
         return TestViewModelFactory(
@@ -193,16 +237,18 @@ class AppModule(val context: Context) {
             saveOnStudyWordPairUseCase = saveOnStudyWordPairUseCase,
             getLanguageFromLearningUseCase = getLanguageFromLearningUseCase,
             getLanguageOfLearningUseCase = getLanguageOfLearningUseCase,
-            tts = tts
+            getOnStudyWordPairCountUseCase = getOnStudyWordPairCountUseCase,
+            getWasTestDescriptionShownUseCase = getWasTestDescriptionShownUseCase,
+            launchWasTestDescriptionShownUseCase = launchWasTestDescriptionShownUseCase,
+            getWasPracticeDescriptionShownUseCase = getWasPracticeDescriptionShownUseCase,
+            launchWasPracticeDescriptionShownUseCase = launchWasPracticeDescriptionShownUseCase,
+            tts = tts,
         )
     }
 
     @Provides
-    fun provideTextToSpeech(context: Context, language: Language): TextToSpeech {
-        return TextToSpeech(
-            context = context,
-            language = language,
-        )
+    fun provideTextToSpeech(context: Context): TextToSpeech {
+        return TextToSpeech(context = context,)
     }
 
 

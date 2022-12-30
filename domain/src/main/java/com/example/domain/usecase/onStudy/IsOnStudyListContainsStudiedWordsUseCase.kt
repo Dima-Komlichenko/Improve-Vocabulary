@@ -4,6 +4,6 @@ import com.example.domain.repositoriesI.WordPairRepository
 
 class IsOnStudyListContainsStudiedWordsUseCase(private val wordPairRepository: WordPairRepository) {
     suspend fun execute(): Boolean {
-        return wordPairRepository.IsOnStudyListContainsStudiedWords()
+        return wordPairRepository.isOnStudyListContainsStudiedWords()
     }
 }

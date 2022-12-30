@@ -5,46 +5,38 @@ import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.*
 import android.util.Log
 import com.example.domain.model.Language
+import com.example.domain.utils.LanguageConverter
 import java.util.*
 
 
-class TextToSpeech(context: Context, language: Language) : OnInitListener {
+class TextToSpeech(context: Context) : OnInitListener {
 
     private var tts: TextToSpeech
     private var _text: String? = null
 
     init {
-        tts = TextToSpeech(context, this@TextToSpeech)
+        tts = TextToSpeech(context, this)
         setVolume(0.8F)
-        setLanguage(language)
+        Log.i("TTS", "init")
     }
-
 
     fun setText(text: String) {
         _text = text
     }
 
     fun destroy() {
+        Log.i("TTS", "destroy")
         tts.stop()
         tts.shutdown()
     }
 
-    fun setLanguage(language: Language) {
-        val result = tts.setLanguage(getLocale(language))
-        if (result == LANG_MISSING_DATA
-            || result == LANG_NOT_SUPPORTED
-        ) {
-            Log.e("TTS", "This Language is not supported")
-        }
+    fun isLanguageAvailable(language: Language): Int {
+        return tts.isLanguageAvailable(Locale(LanguageConverter.convertLangToCode(language)))
     }
 
-    private fun getLocale(language: Language): Locale {
-        return when (language) {
-            Language.ENGLISH -> Locale("en")
-            Language.SPANISH -> Locale("es")
-            Language.UKRAINIAN -> Locale("uk")
-            Language.RUSSIAN -> Locale("ru")
-        }
+    fun setLanguage(language: Language): Boolean {
+        tts.language = Locale(LanguageConverter.convertLangToCode(language))
+        return true
     }
 
     fun setVolume(volumeLevel: Float) { // 1 default
@@ -52,7 +44,10 @@ class TextToSpeech(context: Context, language: Language) : OnInitListener {
     }
 
     override fun onInit(status: Int) {
+        if (tts.isSpeaking) tts.stop()
+        Log.i("TTS", "onInit " + status)
         if (status == SUCCESS) {
+            Log.i("TTS", "onInit SUCCESS " + status)
             tts.speak(_text, QUEUE_ADD, null, null)
         }
     }

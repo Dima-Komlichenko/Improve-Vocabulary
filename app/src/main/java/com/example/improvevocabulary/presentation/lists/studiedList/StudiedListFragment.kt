@@ -9,6 +9,8 @@ import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
+import com.example.improvevocabulary.presentation.lists.pendingList.PendingWordAdapter
+import com.example.improvevocabulary.utlis.TextToSpeech
 import javax.inject.Inject
 
 class StudiedListFragment : WordListFragment() {
@@ -31,16 +33,14 @@ class StudiedListFragment : WordListFragment() {
     override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
         super.initAdapter(inflater, container)
         if (words.isNotEmpty()) return
+        words.reverse()
         binding = FragmentWordListBinding.inflate(inflater, container, false)
 
 
-        adapter = StudiedWordAdapter(
-            tts,
-            viewModel.removeStudiedWordPairUseCase,
-            viewModel.saveOnStudyWordPairUseCase,
-            viewModel.saveStudiedWordPairUseCase,
-            viewModel.removeOnStudyWordPairUseCase
-        )
+        adapter = StudiedWordAdapter(tts, viewModel)
         binding.recyclerView.adapter = adapter
+        viewModel.onStudyCount.observe(viewLifecycleOwner) {
+            (adapter as StudiedWordAdapter).getOnStudyCount(viewModel.onStudyCount.value!!)
+        }
     }
 }

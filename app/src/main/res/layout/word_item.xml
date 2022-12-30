@@ -4,9 +4,9 @@
     style="@style/neumorph_CardButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
     android:layout_marginHorizontal="10dp">
 
-    <!-- android:animateLayoutChanges="true" -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_word_view"

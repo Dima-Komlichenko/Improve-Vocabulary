@@ -1,3 +1,5 @@
 package com.example.data.storage.models
 
-class Language(var value: String)
+import com.example.domain.model.Languages
+
+class Language(var value: Languages)

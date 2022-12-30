@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp">
-
     <!-- android:animateLayoutChanges="true" -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +28,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <EditText
             android:id="@+id/et_word"
             style="@style/text_view"
@@ -45,10 +43,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--
-        android:layout_marginVertical="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/dividing_line"
-        -->
         <View
             android:id="@+id/dividing_line"
             android:layout_width="0dp"
@@ -84,7 +78,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
-            android:contentDescription="ImageButtonSave"
+            android:contentDescription="@string/btn_save_desc"
             android:src="@drawable/ic_ok"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/btn_sound"
@@ -98,7 +92,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
-            android:contentDescription="ImageButtonSound"
+            android:contentDescription="@string/btn_sound_desc"
             android:src="@drawable/ic_sound"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +105,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
-            android:contentDescription="ImageButtonSound"
+            android:contentDescription="@string/btn_remove_desc"
             android:src="@drawable/ic_remove"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +118,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
-            android:contentDescription="ImageButtonMove"
+            android:contentDescription="@string/btn_move_desc"
             android:src="@drawable/ic_move"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

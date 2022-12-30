@@ -22,4 +22,7 @@ interface PendingWordPairDao {
 
     @Query("DELETE FROM pending_word_pair_table")
     suspend fun deleteAll()
+
+    @Query("Select max(id) from pending_word_pair_table")
+    suspend fun getMaxId(): Int
 }

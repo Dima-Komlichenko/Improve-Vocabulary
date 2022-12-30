@@ -6,19 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".presentation.wordList.WordsActivity">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_header"
-        android:name="com.example.improvevocabulary.presentation.listHeader.ListHeaderFragment"
+        android:name="com.example.improvevocabulary.presentation.lists.listHeader.ListHeaderFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--
-      android:name="com.example.improvevocabulary.presentation.lists.baseList.WordListFragment"
-    -->
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_word_list"
@@ -28,6 +23,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fcv_header" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

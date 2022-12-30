@@ -28,5 +28,4 @@ class SharedPrefsFilterByStorage(private val context: Context) : FilterByStorage
             )
         )
     }
-
 }

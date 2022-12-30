@@ -1,5 +1,6 @@
 package com.example.improvevocabulary.presentation.settings
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -42,6 +43,7 @@ class SettingsViewModel(
 
     fun init() {
         language.value = getAppLanguageUseCase.execute()
+        Log.i("appLang",  "viewmodel.init() language.value = " + language.value!!.value.name)
         theme.value = getThemeUseCase.execute()
         languageFromLearning.value = getLanguageFromLearningUseCase.execute()
         languageOfLearning.value = getLanguageOfLearningUseCase.execute()
@@ -53,6 +55,7 @@ class SettingsViewModel(
 
     fun saveLanguage(language: Language) {
         saveAppLanguageUseCase.execute(language)
+        Log.i("appLang",  "saveLanguage " + language.value)
     }
 
     fun saveLanguageFromLearning(language: Language) {
@@ -74,5 +77,4 @@ class SettingsViewModel(
     fun clearStudied() {
         clearStudiedWordPairsUseCase.execute()
     }
-
 }

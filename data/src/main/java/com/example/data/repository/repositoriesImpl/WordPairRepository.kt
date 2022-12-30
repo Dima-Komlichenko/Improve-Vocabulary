@@ -1,4 +1,4 @@
-package com.example.data.storage.repositoriesImpl
+package com.example.data.repository.repositoriesImpl
 
 import android.content.Context
 import android.util.Log
@@ -9,9 +9,7 @@ import com.example.data.storage.room.database.WordPairDB
 import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.PendingWordPair
 import com.example.domain.model.StudiedWordPair
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class WordPairRepository(var context: Context) :
     com.example.domain.repositoriesI.WordPairRepository {
@@ -26,34 +24,25 @@ class WordPairRepository(var context: Context) :
         WordPairDB.getDB(context).studiedWordPairDao()
 
 
-
-    override fun save(wordPair: OnStudyWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
-            try {
-                onStudyWordPairDao.addWordPair(mapToData(wordPair))
-            }
-            catch (e: Exception) {
-                Log.i("save StudiedWordPair", e.message.toString())
-            }
+    override suspend fun save(wordPair: OnStudyWordPair) {
+        try {
+            onStudyWordPairDao.addWordPair(mapToData(wordPair))
+        } catch (e: Exception) {
+            Log.i("saving StudiedWordPair", e.message.toString())
         }
     }
 
-    override fun save(wordPair: PendingWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
-            pendingWordPairDao.addWordPair(mapToData(wordPair))
-        }
+    override suspend fun save(wordPair: PendingWordPair) {
+        pendingWordPairDao.addWordPair(mapToData(wordPair))
     }
 
-    override fun save(wordPair: StudiedWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
-            studiedWordPairDao.addWordPair(mapToData(wordPair))
-        }
+    override suspend fun save(wordPair: StudiedWordPair) {
+        studiedWordPairDao.addWordPair(mapToData(wordPair))
     }
 
     override suspend fun getOnStudy(): List<OnStudyWordPair> {
         var temp = arrayListOf<OnStudyWordPair>()
         onStudyWordPairDao.readAll().forEach { temp.add(mapToDomain(it)) }
-
         return temp
     }
 
@@ -69,7 +58,7 @@ class WordPairRepository(var context: Context) :
         return temp
     }
 
-    override suspend fun IsOnStudyListContainsStudiedWords(): Boolean {
+    override suspend fun isOnStudyListContainsStudiedWords(): Boolean {
         return onStudyWordPairDao.isOnStudyListContainsStudiedWords()
     }
 
@@ -86,48 +75,64 @@ class WordPairRepository(var context: Context) :
     }
 
     override fun update(wordPair: OnStudyWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
+
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             onStudyWordPairDao.updateWordPair(mapToData(wordPair))
         }
+
+        /*GlobalScope.launch(Dispatchers.Default) {
+            onStudyWordPairDao.updateWordPair(mapToData(wordPair))
+        }*/
     }
 
     override fun update(wordPair: PendingWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             pendingWordPairDao.updateWordPair(mapToData(wordPair))
         }
     }
 
     override fun update(wordPair: StudiedWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             studiedWordPairDao.updateWordPair(mapToData(wordPair))
         }
     }
 
     override fun delete(wordPair: OnStudyWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             onStudyWordPairDao.deleteWordPair(mapToData(wordPair))
         }
     }
 
     override fun delete(wordPair: PendingWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             pendingWordPairDao.deleteWordPair(mapToData(wordPair))
         }
     }
 
     override fun delete(wordPair: StudiedWordPair) {
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             try {
                 studiedWordPairDao.deleteWordPair(mapToData(wordPair))
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 Log.i("delete StudiedWordPair", e.message.toString())
             }
         }
     }
 
+    override suspend fun getPendingMaxId(): Int {
+        return pendingWordPairDao.getMaxId()
+    }
+
+    override suspend fun getOnStudyMaxId(): Int {
+        return onStudyWordPairDao.getMaxId()
+    }
+
+    override suspend fun getStudiedMaxId(): Int {
+        return studiedWordPairDao.getMaxId()
+    }
+
     override fun deleteAll() {
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(SupervisorJob() + Dispatchers.Default).launch(Job()) {
             onStudyWordPairDao.deleteAll()
             pendingWordPairDao.deleteAll()
             studiedWordPairDao.deleteAll()

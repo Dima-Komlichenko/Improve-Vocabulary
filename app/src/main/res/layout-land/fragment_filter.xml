@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_filter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.filter.FilterFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/additional_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+        app:strokeColor="@color/background_additional_view_stroke_on_light_theme"
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_alphabetically"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:text="@string/alphabetically"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <soup.neumorphism.NeumorphImageButton
+                android:id="@+id/btn_alphabetically"
+                style="@style/additional_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_arrow_down"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_alphabetically"
+                app:layout_constraintStart_toEndOf="@+id/tv_alphabetically"
+                app:layout_constraintTop_toTopOf="@+id/tv_alphabetically" />
+
+            <soup.neumorphism.NeumorphImageButton
+                android:id="@+id/btn_non_alphabetically"
+                style="@style/additional_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_arrow_up"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/btn_alphabetically"
+                app:layout_constraintTop_toTopOf="@+id/btn_alphabetically" />
+
+            <TextView
+                android:id="@+id/tv_in_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/in_order"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_non_alphabetically"
+                app:layout_constraintStart_toEndOf="@+id/btn_non_alphabetically"
+                app:layout_constraintTop_toTopOf="@+id/btn_non_alphabetically" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btn_newer"
+                style="@style/additional_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/newer"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_in_order"
+                app:layout_constraintStart_toEndOf="@+id/tv_in_order"
+                app:layout_constraintTop_toTopOf="@+id/tv_in_order" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btn_older"
+                style="@style/additional_button"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/older"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_newer"
+                app:layout_constraintStart_toEndOf="@+id/btn_newer"
+                app:layout_constraintTop_toTopOf="@+id/btn_newer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_width="130dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_line_300" />
+
+</LinearLayout>

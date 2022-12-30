@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Mots</string>
+    <string name="title_tests">Tests</string>
+    <string name="title_settings">Paramètres</string>
+
+    <string name="on_study">Sur l\'étude</string>
+    <string name="studied">étudiés</string>
+
+    <string name="test">"Test "</string>
+    <string name="practice">Pratique</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Thème de l\'application</string>
+    <string name="language_interface">Langue de l\'interface</string>
+    <string name="suggest_repetition_of_words">Proposer la répétition de mots</string>
+    <string name="clear_dictionary">Effacer le dictionnaire</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>Système</item>
+        <item>Lumière</item>
+        <item>Noir</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Anglais</item>
+        <item>Arabe</item>
+        <item>Tchèque</item>
+        <item>Allemand</item>
+        <item>Espagnol</item>
+        <item>Français</item>
+        <item>Hindi</item>
+        <item>Italien</item>
+        <item>Hébreu</item>
+        <item>Japonais</item>
+        <item>Kazakh</item>
+        <item>Coréen</item>
+        <item>Polonais</item>
+        <item>Portugais</item>
+        <item>Russe</item>
+        <item>Russe</item>
+        <item>Ukrainien</item>
+        <item>Chinois</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Clair</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Répétition de mots activés</string>
+    <string name="switch_suggest_repetition_of_words_off">Répétition de mots désactivée</string>
+    <string name="undo">Annuler</string>
+    <string name="new_word_created">Vous avez créé le mot</string>
+    <string name="ok">Ok</string>
+    <string name="word_not_enteted">Le mot n\'est pas saisi</string>
+    <string name="pending">En attente</string>
+    <string name="data_is_not_valid">Vous avez saisi des caractères non valides</string>
+    <string name="language_to_learn">Apprendre la langue</string>
+    <string name="learning_from_language">Une langue à apprendre</string>
+    <string name="attention">Attention!</string>
+    <string name="after_changing_language">Après le changement de langue, tous les mots de votre vocabulaire seront supprimés. Êtes-vous sûr de vouloir changer de langue?</string>
+    <string name="confirm">Confirmer</string>
+    <string name="language_replaced">La langue a été changée. Le dictionnaire a été clarifié.</string>
+    <string name="cancel">Annuler</string>
+    <string name="impossible_choose">Impossible de sélectionner la langue spécifiée</string>
+    <string name="cannot_choose_language">On ne peut pas choisir la même langue</string>
+    <string name="choose_languages_to_study">Choisir les langues à apprendre</string>
+    <string name="language_from">De celui-ci</string>
+    <string name="language_of">Celui-ci</string>
+    <string name="choose">Choisissez</string>
+    <string name="unable_start_test">Il n\'est pas possible de commencer un test. Il doit y avoir au moins 5 mots dans la liste \"Sur l\'étude\"</string>
+    <string name="limit_30">Impossible de déplacer un mot dans une liste, 30 mots au maximum</string>
+    <string name="empty_field">Vous n\'avez pas saisi un mot</string>
+    <string name="repetition">Répétition</string>
+    <string name="start">Début</string>
+    <string name="back">Retour</string>
+    <string name="word_is_removed">Vous avez supprimé le mot</string>
+    <string name="word_is_moved">Vous avez déplacé le mot</string>
+    <string name="into_studied_ist">vers la liste \"étudiés\"</string>
+    <string name="into_on_study_list">vers la liste \"Sur l\'étude\"</string>
+    <string name="into_pending_list">vers la liste \"En attente\"</string>
+    <string name="limit_20">Impossible de déplacer le mot vers la liste Sur l\'étude, le maximum de 20 mots a été atteint</string>
+    <string name="exit_test">Voulez-vous quitter le test ? Toute progression sera perdue.</string>
+    <string name="exit">Déconnectez-vous</string>
+
+    <string name="empty_list_on_study_start">Les mots \"Sur l\'étude\" seront affichés ici. Lorsque vous répondez 10 fois de suite à un mot dans les tests, un bouton apparaîtra.</string>
+    <string name="empty_list_on_study_end">pour vous permettre de déplacer le mot dans la liste des mots \"étudiés\"</string>
+
+    <string name="empty_list_studied_start">Les mots \"étudiés\" seront affichés ici. Si vous les modifiez ou si vous cliquez sur le bouton</string>
+    <string name="empty_list_studied_end">" le mot sera déplacé vers la liste \"Sur l'étude\""</string>
+
+    <string name="empty_list_pending_start">"Les mots \"En attente\" seront affichés ici. Avec le bouton "</string>
+    <string name="empty_list_pending_end">vous pouvez déplacer le mot vers la liste \"Sur l\'étude\"</string>
+
+    <string name="alphabetically">Dans l\'ordre alphabétique</string>
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">Dans l\'ordre</string>
+    <string name="newer">Plus récent</string>
+    <string name="older">Plus ancien</string>
+    <string name="enter_search_terms">Entrez un terme de recherche</string>
+    <string name="later">Plus tard</string>
+
+    <string name="test_description">Les mots choisis pour le test étaient des mots \"Sur l\'étude\". Lorsque vous répondez correctement à chaque mot 10 fois de suite, vous pouvez le déplacer dans la liste \"étudiés\".</string>
+    <string name="practice_description">Les mots des listes \"Sur l\'étude\" et \"étudiés\" ont été sélectionnés pour la pratique. Si vous répondez incorrectement à un mot, celui-ci sera déplacé dans la liste  \"Sur l\'étude\" ou le compteur de bonnes réponses sera remis à zéro.</string>
+    <string name="no_language">Si la langue que vous souhaitez apprendre ne figure pas dans la liste, vous pouvez contacter les développeurs via la section \"Paramètres\"</string>
+    <string name="repetition_description">"Voulez-vous commencer à répéter des mots ? Pour ce type de test, jusqu'à 20 mots que vous avez étudiés sont sélectionnés. Tous les mots auxquels vous avez répondu de manière incorrecte seront déplacés vers la liste \"Sur l'étude\", dans la limite des places disponibles. "</string>
+    </resources>

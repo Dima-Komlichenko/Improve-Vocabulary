@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="title_words">Слова</string>
     <string name="title_tests">Тесты</string>
     <string name="title_settings">Настройки</string>
@@ -27,44 +26,83 @@
     <!-- Язык приложения -->
     <string-array name="languages">
         <item>Английский</item>
+        <item>Арабский</item>
+        <item>Чешский</item>
+        <item>Немецкий</item>
         <item>Испанский</item>
+        <item>Французский</item>
+        <item>Хинди</item>
+        <item>Итальянский</item>
+        <item>Иврит</item>
+        <item>Японский</item>
+        <item>Казахский</item>
+        <item>Корейский</item>
+        <item>Польский</item>
+        <item>Португальский</item>
         <item>Русский</item>
+        <item>Турецкий</item>
         <item>Украинский</item>
+        <item>Китайский</item>
     </string-array>
 
     <string name="clear_dictionary_button">Очистить</string>
 
     <string name="switch_suggest_repetition_of_words_on">Повторение слов включено</string>
-    <string name="switch_suggest_repetition_of_words_off">Повторения слов включено</string>
-    <string name="snack_bar_removing_word">Вы удалили слово</string>
-    <string name="snack_bar_moving_word_first_part">Вы переместили слово</string>
-    <string name="snack_bar_moving_word_last_part">в изученные</string>
+    <string name="switch_suggest_repetition_of_words_off">Повторение слов выключено</string>
     <string name="undo">Отменить</string>
     <string name="new_word_created">Вы создали слово</string>
     <string name="ok">Ок</string>
     <string name="word_not_enteted">Слово не введено</string>
     <string name="pending">В ожидании</string>
-    <string name="data_is_not_valid">Вы ввели недопустимые символы. Правильное использование входных данных и входных данных.</string>
-    <string name="language_to_learn">Язык который учим</string>
-    <string name="learning_from_language">Язык с которого учим</string>
+    <string name="data_is_not_valid">Вы ввели недопустимые символы</string>
+    <string name="language_to_learn">Язык, который учим</string>
+    <string name="learning_from_language">Язык, с которого учим</string>
     <string name="attention">Внимание!</string>
     <string name="after_changing_language">После смены языка все слова в вашем словаре будут удалены безвозвратно. Вы уверены что хотите сменить язык?</string>
     <string name="confirm">Подтвердить</string>
     <string name="language_replaced">"Язык заменен. Словарь очищен. "</string>
     <string name="cancel">Отмена</string>
     <string name="impossible_choose">Невозможно выбрать указанный язык</string>
-    <string name="limit_20">Невозможно добавить слово, максимум можно добавить 20 слов.</string>
     <string name="cannot_choose_language">Вы не можете выбрать один и тот же язык</string>
     <string name="choose_languages_to_study">Выберите языки для изучения</string>
     <string name="language_from">С этого</string>
     <string name="language_of">Этот</string>
-    <string name="no_language">Если языка который вы хотите изучать нет в списке то вы можете связаться с разработчиком через вкладку \'Контакты\' в разделе \'Настройки\'</string>
+    <string name="no_language">Если языка который вы хотите изучать нет в списке то вы можете связаться с разработчиком через  раздел \'Настройки\'</string>
     <string name="choose">Выбрать</string>
-    <string name="unable_start_test">Невозможно начать тест. Должно быть не менее 5 слов</string>
-    <string name="limit_30">Слово не может быть перемещено в изучаемые, максимум - 30 слов.</string>
+    <string name="unable_start_test">Невозможно начать тест. В списке \'на изучении\' должно быть не менее 5 слов</string>
+    <string name="limit_30">Невозможно переместить слово в изучаемый список, максимум 30 слов.</string>
     <string name="empty_field">Вы не ввели слово.</string>
     <string name="repetition">Повторение</string>
     <string name="repetition_description">Хотите начать повторение слов? Для этого типа теста отбирается до 20 изученных вами слов. Все слова, на которые вы ответили неправильно, будут перемещены в список «на изучении» если там есть место.</string>
     <string name="start">Начать</string>
     <string name="back">Назад</string>
+    <string name="word_is_removed">Вы удалили слово</string>
+    <string name="word_is_moved">Вы переместили слово</string>
+    <string name="into_studied_ist">в список \'изученные\'</string>
+    <string name="into_on_study_list">в список \'на изучении\'</string>
+    <string name="into_pending_list">в список \'в ожидании\'</string>
+    <string name="limit_20">Невозможно переместить слово в изучаемый список, максимум 20 слов.</string>
+    <string name="exit_test">Вы хотите покинуть тест? Весь прогресс будет утерян.</string>
+    <string name="exit">Выйти</string>
+
+    <string name="empty_list_on_study_start">Здесь будут отображаться слова \'на изучении\'. Когда вы в тестах ответите 10 раз подряд на одно слово то появится кнопка </string>
+    <string name="empty_list_on_study_end"> с помощью которой вы сможете перенеси слово в список \'изученные\'</string>
+
+    <string name="empty_list_studied_start">Здесь будут отображаться \'изученные\' слова. Если вы измените их или нажмете кнопку </string>
+    <string name="empty_list_studied_end"> то слово будет перенесено в список \'на изучении\'</string>
+
+    <string name="empty_list_pending_start">Здесь будут отображаться слова \'в ожидании\'. С помощью кнопки </string>
+    <string name="empty_list_pending_end">вы можете перенести слово в список \'на изучении\'</string>
+
+    <string name="alphabetically">По алфавиту</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">По порядку</string>
+    <string name="newer">Новые</string>
+    <string name="older">Старые</string>
+    <string name="enter_search_terms">Введите слово для поиска</string>
+    <string name="later">Позже</string>
+
+    <string name="test_description">В тест отобраны слова \'на изучении\'. Когда вы ответите 10 раз подряд на каждое слово правильно - появится возможность перенести его в список \'изученные\'.</string>
+    <string name="practice_description">В практику отобраны слова \'на изучении\' и \'изученные\'. Если вы ответите на слово неправильно - оно либо перенесется в список \'на изучении\' либо счетчик правильных ответов обнулится.</string>
 </resources>

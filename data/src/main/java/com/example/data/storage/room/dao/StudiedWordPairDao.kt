@@ -22,4 +22,7 @@ interface StudiedWordPairDao {
 
     @Query("DELETE FROM studied_word_pair_table")
     suspend fun deleteAll()
+
+    @Query("Select max(id) from studied_word_pair_table")
+    suspend fun getMaxId(): Int
 }

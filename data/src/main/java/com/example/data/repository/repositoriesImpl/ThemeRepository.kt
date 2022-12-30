@@ -1,4 +1,4 @@
-package com.example.data.storage.repositoriesImpl
+package com.example.data.repository.repositoriesImpl
 
 import com.example.data.storage.interfaces.ThemeStorage
 import com.example.domain.model.Theme

@@ -5,31 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import com.example.domain.model.Language
+import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.StudiedWordPair
-import com.example.domain.usecase.onStudy.RemoveOnStudyWordPairUseCase
-import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
-import com.example.domain.usecase.onStudy.UpdateOnStudyWordPairUseCase
-import com.example.domain.usecase.studied.RemoveStudiedWordPairUseCase
-import com.example.domain.usecase.studied.SaveStudiedWordPairUseCase
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.OnStudyWordItemBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseEditableList.EditableWordAdapter
 import com.example.improvevocabulary.utlis.TextToSpeech
+import com.google.android.material.snackbar.Snackbar
 
-class OnStudyWordAdapter(private val tts: TextToSpeech,
-                         val updateOnStudyWordPairUseCase: UpdateOnStudyWordPairUseCase,
-                         val removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase,
-                         val saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
-                         val saveStudiedWordPairUseCase: SaveStudiedWordPairUseCase,
-                         val removeStudiedWordPairUseCase: RemoveStudiedWordPairUseCase,
-                         val languageFromLearning: Language,
-                         val languageOfLearning: Language,
-                         val addViewModel: AddViewModel
-) : EditableWordAdapter(tts, languageFromLearning, languageOfLearning) {
+class   OnStudyWordAdapter(
+    private val tts: TextToSpeech,
+    val addViewModel: AddViewModel,
+    val viewModel: OnStudyListViewModel,
+) : EditableWordAdapter(tts, viewModel.languageFromLearning.value!!, viewModel.languageOfLearning.value!!) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnStudyWordHolder {
         val view =
@@ -39,7 +30,7 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
     }
 
     inner class OnStudyWordHolder(override var item: View, tts: TextToSpeech) :
-        EditableWordHolder(item, tts, languageFromLearning, languageOfLearning) {
+        EditableWordHolder(item, tts) {
 
         private var bindingOnStudy = OnStudyWordItemBinding.bind(item)
 
@@ -50,8 +41,7 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
             }
 
 
-            if(areItemDetailsShown && word.areItemDetailsShown && word.countRightAnswers > 9) {
-                //TODO: вынести переиспользуемую логику в 2 метода
+            if (areItemDetailsShown && word.areItemDetailsShown && word.countRightAnswers > 9) {
                 val layoutParams = ConstraintLayout.LayoutParams(17, 60)
                 isOpportunityTransferWord.layoutParams = layoutParams
                 isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message_long)
@@ -72,40 +62,50 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
             setImageBtnMove()
 
 
-            if (wordPair.countRightAnswers > 9)
+            if (wordPair.countRightAnswers > 9) {
                 isOpportunityTransferWord.visibility = View.VISIBLE
-            else
+                btnMove.setOnClickListener {
+                    btnMoveHandler()
+                    viewModel.removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
+                    viewModel.saveStudied(wordPair)
+                }
+            } else {
                 isOpportunityTransferWord.visibility = View.GONE
+                btnMove.setOnClickListener { }
+            }
 
             btnSave.setOnClickListener {
-                if(!btnSaveHandler()) return@setOnClickListener
-                updateOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
+                if (!btnSaveHandler()) return@setOnClickListener
+                viewModel.updateOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
             }
 
             btnRemove.setOnClickListener {
                 btnRemoveHandler()
-                removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
+                viewModel.removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
                 addViewModel.updateOnStudyCount()
             }
+        }
 
-            btnMove.setOnClickListener {
-                btnMoveHandler()
-                removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
-                saveStudiedWordPairUseCase.execute(mapToStudied(wordPair))
+        override fun btnMoveHandler(): Int {
+            val index = super.btnMoveHandler()
 
-                //TODO: if "undo" we must alse removeStudiedWordPairUseCase.execute(mapToStudied(wordPair))
-            }
+            Snackbar.make(
+                item.parent as RecyclerView,
+                context!!.resources.getString(R.string.word_is_moved) + " \"" + wordPair.word + "\" "
+                        + context!!.resources.getString(R.string.into_studied_ist),
+                Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(context!!.resources.getString(R.string.undo)) {
+                    undoMoveHandler(index)
+                }
+                .show()
+            return index
         }
 
         override fun undoMoveHandler(index: Int) {
             super.undoMoveHandler(index)
-            removeStudiedWordPairUseCase.execute(mapToStudied(wordPair))
+            viewModel.undoMoveWordIntoStudiedList(wordPair)
         }
-
-
-
-        //TODO: метод который будет лазить в бд и обновлять список, вызываем его при поиске
-        // (возможно, а возможно после всех изменений слов просто их сохранять в бд сразу и обновлять списки)
 
         protected fun setImageBtnMove() = with(bindingOnStudy) {
             btnMove.setImageResource(
@@ -180,7 +180,6 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
         }
 
 
-
         private fun setIsOpportunityTransferWordToShowCardDetails() = with(bindingOnStudy) {
             if (wordPair.countRightAnswers < 10) return
             animateView(isOpportunityTransferWord, 0F, 0F, -50F, 0F)
@@ -197,19 +196,18 @@ class OnStudyWordAdapter(private val tts: TextToSpeech,
             isOpportunityTransferWord.setImageResource(R.drawable.ic_btn_words_message)
         }
 
-
     }
 
     override fun addWordAtPosition(word: WordPair, index: Int) {
         super.addWordAtPosition(word, index)
-        saveOnStudyWordPairUseCase.execute(mapToOnStudy(word))
+        viewModel.save(word)
     }
 
-    private fun mapToOnStudy(wordPair: WordPair): OnStudyWordPair{
-        return OnStudyWordPair(wordPair.id, wordPair.word, wordPair.translate, wordPair.countRightAnswers)
+    private fun mapToOnStudy(wordPair: WordPair): OnStudyWordPair {
+        return OnStudyWordPair(wordPair.id, wordPair.word, wordPair.translate, 0)
     }
 
-    private fun mapToStudied(wordPair: WordPair): StudiedWordPair{
+    private fun mapToStudied(wordPair: WordPair): StudiedWordPair {
         return StudiedWordPair(wordPair.id, wordPair.word, wordPair.translate)
     }
 }

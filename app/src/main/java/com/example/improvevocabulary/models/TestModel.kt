@@ -8,6 +8,4 @@ class TestModel(
     var answers: List<String>,
     var rightAnswerPosition: Int,
     var questionLang: Language
-) {
-
-}
+)

@@ -1,4 +1,4 @@
-package com.example.data.storage.repositoriesImpl
+package com.example.data.repository.repositoriesImpl
 
 import com.example.data.storage.interfaces.FilterByStorage
 import com.example.data.storage.models.PressedSortButton

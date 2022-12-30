@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">单词</string>
+    <string name="title_tests">测验</string>
+    <string name="title_settings">设置</string>
+
+    <string name="on_study">学习中</string>
+    <string name="studied">已学习</string>
+
+    <string name="test">测验</string>
+    <string name="practice">练习</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">应用主题</string>
+    <string name="language_interface">语言界面</string>
+    <string name="suggest_repetition_of_words">建议复习单词</string>
+    <string name="clear_dictionary">清除词典</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>系统默认</item>
+        <item>明亮模式</item>
+        <item>夜间模式</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>英语</item>
+        <item>阿拉伯语</item>
+        <item>捷克语</item>
+        <item>德语</item>
+        <item>西班牙语</item>
+        <item>法语</item>
+        <item>印地语</item>
+        <item>意大利语</item>
+        <item>希伯来语</item>
+        <item>日语</item>
+        <item>哈萨克语</item>
+        <item>韩语</item>
+        <item>波兰语</item>
+        <item>葡萄牙语</item>
+        <item>俄语</item>
+        <item>土耳其</item>
+        <item>乌克兰语</item>
+        <item>中文</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">清除</string>
+
+    <string name="switch_suggest_repetition_of_words_on">单词复习打开</string>
+    <string name="switch_suggest_repetition_of_words_off">单词复习关闭</string>
+    <string name="undo">撤销</string>
+    <string name="new_word_created">您已创建单词</string>
+    <string name="ok">好的</string>
+    <string name="word_not_enteted">该词未输入</string>
+    <string name="pending">待定</string>
+    <string name="data_is_not_valid">您输入了无效字符</string>
+    <string name="language_to_learn">正在学习的语言</string>
+    <string name="learning_from_language">学习的语言</string>
+    <string name="attention">注意！</string>
+    <string name="confirm">确认</string>
+    <string name="language_replaced">语言已修改。词典已被清除。</string>
+    <string name="cancel">取消</string>
+    <string name="impossible_choose">无法选择指定的语言</string>
+    <string name="cannot_choose_language">您无法选择同一种语言</string>
+    <string name="choose_languages_to_study">选择学习语言</string>
+    <string name="language_from">从这个开始</string>
+    <string name="language_of">这个</string>
+    <string name="choose">选择</string>
+    <string name="unable_start_test">无法开始测验。“正在学习”列表中最少应有5个单词。</string>
+    <string name="limit_30">无法将单词移动到列表中，已达到30词上限</string>
+    <string name="empty_field">您未输入单词</string>
+    <string name="repetition">重复</string>
+    <string name="repetition_description">你想开始复习单词吗？最多20个您学过的单词已被选进该类测试中。如果列表未满，您回答错误的所有单词将被移至“学习中”列表中。</string>
+    <string name="start">开始</string>
+    <string name="back">返回</string>
+    <string name="word_is_removed">您已移除了这个单词</string>
+    <string name="word_is_moved">您已移动了这个单词</string>
+    <string name="into_studied_ist">至“已学”列表</string>
+    <string name="into_on_study_list">至“学习中”列表</string>
+    <string name="into_pending_list">至“待定”列表</string>
+    <string name="limit_20">无法将单词移动到“正在学习”列表中。已达到20词上限</string>
+    <string name="exit_test">您想离开测试吗？所有进度都将丢失.</string>
+    <string name="exit">离开</string>
+
+    <string name="empty_list_on_study_end">您可以用它把这个词移到“已学”列表中</string>
+
+    <string name="empty_list_studied_start">“已学”的单词会显示在这里。如果您更改它们或单击按钮</string>
+    <string name="empty_list_studied_end">那么这个词将被移到“学习中”列表.</string>
+
+    <string name="empty_list_pending_start">“待定”的单词将显示在此处。按钮</string>
+    <string name="empty_list_pending_end">您可以将这个词移到“学习中”列表</string>
+
+    <string name="alphabetically">按字母順序排列</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">為了</string>
+    <string name="newer">新一点儿的</string>
+    <string name="older">旧一点儿的</string>
+    <string name="enter_search_terms">输入搜索词</string>
+    <string name="later">稍后</string>
+
+    <string name="test_description">测验选择了“学习中”的单词。当您连续正确回答任意单词 10 次时，该单词将移到“已学习”列表。</string>
+    <string name="after_changing_language">更改语言后，您词汇表中的所有单词都将被删除。您确定要更改语言吗？</string>
+    <string name="no_language">如果你想学习的语言不在列表中，那么你可以通过“设置”联系开发者</string>
+    <string name="empty_list_on_study_start">“学习中“的单词将会显示在这里。当您在测试中连续回答一个单词 10 次时，将出现一个按钮。</string>
+    <string name="practice_description">“学习中”和“已学习”的单词已经加入到练习中。如果您回答错误，那么或该词被移到“待定”列表，或正确答案的计数器将被重置为零。</string>
+</resources>

@@ -20,5 +20,4 @@ class TestsViewModel(
             studiedCount.value = getStudiedWordPairCountUseCase.execute()
         }
     }
-
 }

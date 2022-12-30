@@ -1,4 +1,4 @@
-package com.example.data.storage.repositoriesImpl
+package com.example.data.repository.repositoriesImpl
 
 import com.example.data.storage.interfaces.LanguageOfLearningStorage
 import com.example.domain.model.Language
@@ -15,16 +15,10 @@ class LanguageOfLearningRepository(var languageOfLearningStorage: LanguageOfLear
     }
 
     private fun mapToData(domainModel: Language): com.example.data.storage.models.Language {
-        return com.example.data.storage.models.Language(domainModel.toString())
+        return com.example.data.storage.models.Language(domainModel.value)
     }
 
     private fun mapToDomain(dataModel: com.example.data.storage.models.Language): Language {
-        return when (dataModel.value) {
-            "ENGLISH" -> Language.ENGLISH
-            "RUSSIAN" -> Language.RUSSIAN
-            "UKRAINIAN" -> Language.UKRAINIAN
-            "SPANISH" -> Language.SPANISH
-            else -> Language.ENGLISH
-        }
+        return Language(dataModel.value)
     }
 }

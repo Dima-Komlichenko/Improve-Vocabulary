@@ -1,4 +1,4 @@
-package com.example.improvevocabulary.presentation.listHeader
+package com.example.improvevocabulary.presentation.lists.listHeader
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +16,7 @@ import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.filter.FilterFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
 import com.example.improvevocabulary.presentation.search.SearchFragment
+import com.example.improvevocabulary.presentation.test.TypeOfList
 import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -23,22 +24,24 @@ import kotlinx.coroutines.launch
 class ListHeaderFragment : Fragment() {
 
     private lateinit var binding: FragmentListHeaderBinding
-    private lateinit var viewModel: ListHeaderViewModel
+    private val viewModel: ListHeaderViewModel by activityViewModels()
     private val wordListViewModel: WordListViewModel by activityViewModels()
-    private val addViewModel: AddViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        viewModel = ViewModelProvider(this)[ListHeaderViewModel::class.java]
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentListHeaderBinding.inflate(inflater, container, false)
 
         setBtnsListeners()
 
-        if(wordListViewModel.wordListInfo.value == WordListInfo.Studied) {
+        if(wordListViewModel.wordListInfo.value == WordListInfo.Studied ||
+            wordListViewModel.typeOfList.value == TypeOfList.AfterTest ) {
             binding.btnAdd.visibility = View.GONE
         }
+
+        if(wordListViewModel.wordListInfo.value == WordListInfo.OnStudy &&
+            wordListViewModel.typeOfList.value == TypeOfList.AfterTest) {
+            binding.btnRepeat.visibility = View.VISIBLE
+        }
+
 
         return binding.root
     }
@@ -96,6 +99,10 @@ class ListHeaderFragment : Fragment() {
                 R.drawable.ic_add_pressed,
                 isFragmentTarger
             )
+        }
+
+        binding.btnRepeat.setOnClickListener {
+            viewModel.pressedFilterButtonId.value = PressedFilterButton.REPEAT_BTN
         }
     }
 
@@ -183,6 +190,4 @@ class ListHeaderFragment : Fragment() {
             .add(viewId, fragment)
             .commit()
     }
-    //TODO: animate listHeader extra view's horizontal lines for closing that views
-
 }

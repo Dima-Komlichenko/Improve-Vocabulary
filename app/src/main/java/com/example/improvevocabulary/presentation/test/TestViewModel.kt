@@ -1,5 +1,6 @@
 package com.example.improvevocabulary.presentation.test
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,12 @@ import com.example.domain.usecase.onStudy.UpdateOnStudyWordPairUseCase
 import com.example.domain.usecase.studied.GetStudiedWordPairsUseCase
 import com.example.domain.usecase.studied.RemoveStudiedWordPairUseCase
 import com.example.domain.model.Language
+import com.example.domain.repositoriesI.WasTestDescriptionShownOnceRepository
+import com.example.domain.usecase.onStudy.GetOnStudyWordPairCountUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.GetWasPracticeDescriptionShownUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.GetWasTestDescriptionShownUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasPracticeDescriptionShownUseCase
+import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasTestDescriptionShownUseCase
 import com.example.improvevocabulary.models.AnswersModel
 import com.example.improvevocabulary.models.TestModel
 import com.example.improvevocabulary.models.WordPair
@@ -29,12 +36,57 @@ class TestViewModel(
     private val saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
     private val getLanguageFromLearningUseCase: GetLanguageFromLearningUseCase,
     private val getLanguageOfLearningUseCase: GetLanguageOfLearningUseCase,
+    private val getOnStudyWordPairCountUseCase: GetOnStudyWordPairCountUseCase,
+    private val getWasTestDescriptionShownUseCase: GetWasTestDescriptionShownUseCase,
+    private val launchWasTestDescriptionShownUseCase: LaunchWasTestDescriptionShownUseCase,
+    private val getWasPracticeDescriptionShownUseCase: GetWasPracticeDescriptionShownUseCase,
+    private val launchWasPracticeDescriptionShownUseCase: LaunchWasPracticeDescriptionShownUseCase,
     val tts: TextToSpeech
 ) : ViewModel() {
     lateinit var typeOfTestInfo: TypeOfTestInfo
 
     var words: MutableLiveData<ArrayList<WordPair>> = MutableLiveData<ArrayList<WordPair>>()
     var tests: MutableLiveData<ArrayList<TestModel>> = MutableLiveData<ArrayList<TestModel>>()
+    var countOnStudyWords: Int = 0
+    var testIndex = 0
+
+
+    val isFinishTest: MutableLiveData<Boolean> = MutableLiveData()
+
+    init {
+        viewModelScope.launch {
+            countOnStudyWords = getOnStudyWordPairCountUseCase.execute()
+        }
+        isFinishTest.value = false
+    }
+
+    fun setTTSLanguage(value: Language) {
+        tts.setLanguage(value)
+    }
+
+    fun setTTSText(value: String) {
+        tts.setText(value)
+    }
+
+    fun startTTS() {
+        tts.onInit(android.speech.tts.TextToSpeech.SUCCESS)
+    }
+
+    fun wasTestDescriptionShownOnce(): Boolean {
+        return getWasTestDescriptionShownUseCase.execute()
+    }
+
+    fun launchTestDescriptionOnce() {
+        launchWasTestDescriptionShownUseCase.execute()
+    }
+
+    fun wasPracticeDescriptionShownOnce(): Boolean {
+        return getWasPracticeDescriptionShownUseCase.execute()
+    }
+
+    fun launchPracticeDescriptionOnce() {
+        launchWasPracticeDescriptionShownUseCase.execute()
+    }
 
     fun initTests() {
         var tempWords = arrayListOf<WordPair>()
@@ -77,10 +129,18 @@ class TestViewModel(
                     var tempTests = arrayListOf<TestModel>()
                     tempWords.forEach { tempTests.add(getTest(it.id)) }
                     tempTests.shuffle()
-                    tests.value = tempTests
+                    var temp20Tests = arrayListOf<TestModel>()
+
+                    var size = if(tempTests.count() > 19) 20 else tempTests.count()
+
+                    for (i in 0 until size) {
+                        temp20Tests.add(tempTests[i])
+                    }
+                    tests.value = temp20Tests
                 }
             }
         }
+
     }
 
     fun shuffleTests() {
@@ -93,7 +153,10 @@ class TestViewModel(
 
     fun moveStudiedToOnStudy(wordPair: WordPair) {
         removeStudiedWordPairUseCase.execute(mapToStudiedWordPair(wordPair))
-        saveOnStudyWordPairUseCase.execute(mapToOnStudyWordPair(wordPair))
+        viewModelScope.launch {
+            saveOnStudyWordPairUseCase.execute(mapToOnStudyWordPair(wordPair))
+        }
+        countOnStudyWords++
     }
 
     private fun getTest(wordPairId: Int): TestModel {
@@ -120,7 +183,6 @@ class TestViewModel(
             rightAnswerPosition = testIds.rightAnswerPosition
             language = getLanguageFromLearningUseCase.execute()
         }
-        //TODO: проверить тот ли язык приходит в language
         return TestModel(id, question, answers, rightAnswerPosition, language)
     }
 
@@ -173,6 +235,4 @@ class TestViewModel(
             dataModel.translate
         )
     }
-
-
 }

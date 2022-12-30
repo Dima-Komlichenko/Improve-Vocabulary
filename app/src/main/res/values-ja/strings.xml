@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">言葉</string>
+    <string name="title_tests">テスト</string>
+
+    <string name="on_study">研究のため</string>
+    <string name="studied">勉強のために</string>
+
+    <string name="test">テスト</string>
+    <string name="practice">練習</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">アプリのテーマ</string>
+    <string name="language_interface">インターフェイス言語</string>
+    <string name="suggest_repetition_of_words">単語の繰り返しを提案します</string>
+    <string name="clear_dictionary">辞書をクリアします</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>全身性</item>
+        <item>光</item>
+        <item>暗いテーマ</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>英</item>
+        <item>アラビア</item>
+        <item>チェコ</item>
+        <item>ドイツ</item>
+        <item>スペイン</item>
+        <item>フランス</item>
+        <item>ヒンディー</item>
+        <item>イタリア</item>
+        <item>ヘブライ</item>
+        <item>日本</item>
+        <item>カザフ</item>
+        <item>韓国</item>
+        <item>ポーランド</item>
+        <item>ポルトガル</item>
+        <item>ロシア</item>
+        <item>ロシア</item>
+        <item>ウクライナ</item>
+        <item>中国</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">消去</string>
+
+    <string name="switch_suggest_repetition_of_words_on">単語の繰り返しをオンにする</string>
+    <string name="switch_suggest_repetition_of_words_off">単語の繰り返しをオフにする</string>
+    <string name="undo">キャンセルする</string>
+    <string name="new_word_created">あなたが言葉を作った</string>
+    <string name="ok">オケ</string>
+    <string name="word_not_enteted">単語が入力されていません</string>
+    <string name="pending">保留中</string>
+    <string name="data_is_not_valid">無効な文字を入力しました</string>
+    <string name="language_to_learn">私たちが学ぶ言語</string>
+    <string name="learning_from_language">私たちが学習する言語の媒体</string>
+    <string name="attention">注意！</string>
+    <string name="after_changing_language">言語を変更すると、辞書内のすべての単語が完全に削除されます。 本当に言語を変更したいですか?</string>
+    <string name="confirm">確認してください</string>
+    <string name="language_replaced">言語が変更されました。 辞書が消去されました。</string>
+    <string name="cancel">キャンセルしてください</string>
+    <string name="impossible_choose">指定された言語を選択できません</string>
+    <string name="cannot_choose_language">同じ言語は選択できません</string>
+    <string name="choose_languages_to_study">学習する言語を選択してください</string>
+    <string name="language_from">これから</string>
+    <string name="language_of">この</string>
+    <string name="no_language">学習したい言語がリストにない場合は、「設定」セクションから開発者に連絡できます</string>
+    <string name="choose">選択してください</string>
+    <string name="unable_start_test">テストを開始できません。 「研究中」リストには、少なくとも 5 つの単語が含まれている必要があります</string>
+    <string name="limit_30">単語をリストに移動できません。最大 30 単語です</string>
+    <string name="empty_field">単語を入力していません</string>
+    <string name="repetition">繰り返し</string>
+    <string name="start">始める</string>
+    <string name="back">戻る</string>
+    <string name="word_is_removed">あなたは単語を削除しました</string>
+    <string name="word_is_moved">あなたは言葉を動かした</string>
+    <string name="into_studied_ist">「研究済み」リストに</string>
+    <string name="into_on_study_list">「学習中」リストに</string>
+    <string name="into_pending_list">[保留]リストに</string>
+    <string name="limit_20">単語を学習済みリストに移動できません。最大 20 単語です</string>
+    <string name="exit_test">テストを終了したいですか？ すべての進行状況が失われます。</string>
+    <string name="exit">ログアウトしてください</string>
+
+    <string name="empty_list_on_study_start">ここに「勉強中」の文字が表示されます。テストで1つの単語に10回連続で答えると、ボタンが表示されます。</string>
+    <string name="empty_list_on_study_end">これを使って「学習済み」リストに単語を移動できます</string>
+
+    <string name="empty_list_studied_start">変更するかボタンをクリックすると、ここに「学んだ」単語が表示されます</string>
+    <string name="empty_list_studied_end">単語は「勉強中」リストに移動されます。</string>
+
+    <string name="empty_list_pending_start">ボタンを使って、「保留中」の文字がここに表示されます</string>
+    <string name="empty_list_pending_end">「勉強中」リストに単語を移動できます</string>
+
+    <string name="alphabetically">アルファベット順</string>
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">順番に</string>
+    <string name="newer">新しい</string>
+    <string name="older">年</string>
+    <string name="enter_search_terms">検索語を入力してください</string>
+    <string name="title_settings">設定</string>
+    <string name="repetition_description">言葉を繰り返し始めたいですか？ このタイプのテストでは、学習した単語が最大 20 個選択されます。不正解の単語はすべて、空きがある場合は「学習中」リストに移動されます。</string>
+    <string name="later">後で</string>
+
+    <string name="test_description">テストには「勉強中」という言葉が選ばれました。単語ごとに 10 回連続で正解すると、「学習済み」リストに移動できます。</string>
+    <string name="practice_description">「勉強中」と「学習済み」のリストから単語が練習用に選ばれました。単語に間違って答えると、「勉強中」リストに移動されるか、正解のカウンターがゼロにリセットされます。</string>
+</resources>

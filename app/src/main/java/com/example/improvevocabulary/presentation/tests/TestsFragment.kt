@@ -36,7 +36,7 @@ class TestsFragment : Fragment() {
         viewModel.studiedCount.observe(viewLifecycleOwner) {
             binding.tvTestCount.text = viewModel.onStudyCount.value!!.toString()
             setOnClickListener(binding.btnTest, TypeOfTestInfo.Test, viewModel.onStudyCount.value!!)
-            setOnClickListener(binding.btnPractice!!, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
+            setOnClickListener(binding.btnPractice, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
         }
         viewModel.init()
         return binding.root
@@ -55,7 +55,7 @@ class TestsFragment : Fragment() {
                     binding.root,
                     resources.getString(R.string.unable_start_test),
                     Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                ).setAction(R.string.ok) {}
+                )
                     .show()
                 return@setOnClickListener
             }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Slova</string>
+    <string name="title_tests">Testy</string>
+    <string name="title_settings">Nastavení</string>
+
+    <string name="on_study">K naučení</string>
+    <string name="studied">Naučená</string>
+
+    <string name="test">Test</string>
+    <string name="practice">Praxe</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Téma aplikace</string>
+    <string name="language_interface">Jazyk rozhraní</string>
+    <string name="suggest_repetition_of_words">Navrhovat opakování slov</string>
+    <string name="clear_dictionary">Vymazat slovník</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>Systém</item>
+        <item>Světlé</item>
+        <item>Tmavé</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Angličtina</item>
+        <item>Arabština</item>
+        <item>Čeština</item>
+        <item>Němčina</item>
+        <item>Španělština</item>
+        <item>Francouzština</item>
+        <item>Hindština</item>
+        <item>Italština</item>
+        <item>Hebrejština</item>
+        <item>Japonština</item>
+        <item>Kazaština</item>
+        <item>Korejština</item>
+        <item>Polština</item>
+        <item>Portugalština</item>
+        <item>Ruština</item>
+        <item>Turečtina</item>
+        <item>Ukrajinština</item>
+        <item>Čínština</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Vymazat</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Opakovaní slov zapnuto</string>
+    <string name="switch_suggest_repetition_of_words_off">Opakování slov vypnuto</string>
+    <string name="undo">Zrušit</string>
+    <string name="new_word_created">Vytvořili jste slovo</string>
+    <string name="ok">Ok</string>
+    <string name="word_not_enteted">Slovo není zadáno</string>
+    <string name="pending">Čekání</string>
+    <string name="data_is_not_valid">Zadali jste neplatné znaky</string>
+    <string name="language_to_learn">Jazyk, který se učíme</string>
+    <string name="learning_from_language">Jazyk, ze kterého se učíme</string>
+    <string name="attention">Pozor!</string>
+    <string name="after_changing_language">Po změně jazyka budou všechna slova ve vašem slovníku smazána. Opravdu chcete změnit jazyk?</string>
+    <string name="confirm">Potvrdit</string>
+    <string name="language_replaced">Jazyk byl změněn. Slovník byl vymazán.</string>
+    <string name="cancel">Zrušit</string>
+    <string name="impossible_choose">Nelze vybrat zadaný jazyk</string>
+    <string name="cannot_choose_language">Nemůžete vybrat stejný jazyk</string>
+    <string name="choose_languages_to_study">Vyberte si jazyky, které se chcete učit</string>
+    <string name="language_from">Z tohoto</string>
+    <string name="language_of">Tento</string>
+    <string name="no_language">Pokud jazyk, který se chcete naučit, není v seznamu, můžete vývojáře kontaktovat prostřednictvím sekce \"Nastavení\"</string>
+    <string name="choose">Vybrat</string>
+    <string name="unable_start_test">Test nelze spustit. Seznam \"k naučení\" musí obsahovat alespoň 5 slov</string>
+    <string name="limit_30">Nelze přesunout slovo do seznamu, bylo dosaženo maximálního počtu 30 slov</string>
+    <string name="empty_field">Nezadal jste ani slovo</string>
+    <string name="repetition">Opakování</string>
+    <string name="repetition_description">Chcete začít opakovat slova? Pro tento typ testu se vybírá až 20 slov, která jste se naučili. Všechna slova, na která jste odpověděli nesprávně, budou přesunuta do seznamu „k naučení“, pokud je místo.</string>
+    <string name="start">Začít</string>
+    <string name="back">Zpět</string>
+    <string name="word_is_removed">Odstranili jste slovo</string>
+    <string name="word_is_moved">Posunuli jste slovo</string>
+    <string name="into_studied_ist">do seznamu \"naučená\"</string>
+    <string name="into_on_study_list">do seznamu \"k naučení\"</string>
+    <string name="into_pending_list">do seznamu \"čekání\"</string>
+    <string name="limit_20">Nelze přesunout slovo do seznamu k naučení, bylo dosaženo maximálního počtu 20 slov</string>
+    <string name="exit_test">Chcete test opustit? Veškerý pokrok bude ztracen.</string>
+
+    <string name="empty_list_on_study_start">Zde se zobrazí slova „k naučení“. Když v testech odpovíte 10x za sebou na jedno slovo, objeví se tlačítko.</string>
+    <string name="empty_list_on_study_end">pomocí kterého můžete přesunout slovo do seznamu \"naučená\"</string>
+
+    <string name="empty_list_studied_start">Zde se zobrazí \"naučená\" slova. Pokud je změníte nebo klikněte na tlačítko</string>
+    <string name="empty_list_studied_end">slovo se přesune do seznamu \"k naučení\".</string>
+
+    <string name="empty_list_pending_start">Zde se zobrazí \"čekající\" slova. Pomoci tlačítka</string>
+    <string name="empty_list_pending_end">můžete slovo přesunout do seznamu \"k naučení\"</string>
+
+    <string name="alphabetically">Abecední</string>
+
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">V pořádku</string>
+    <string name="newer">Nový</string>
+    <string name="older">Starý</string>
+    <string name="enter_search_terms">Zadejte hledaný výraz</string>
+    <string name="exit">Výstup</string>
+    <string name="later">Později</string>
+
+    <string name="test_description">Pro test byla vybrána slova \'under study\'. Když na každé slovo odpovíte 10krát za sebou správně, budete je moci přenést do seznamu \'naučené\'.</string>
+    <string name="practice_description">Pro procvičování byla vybrána slova \'studuje\' a \'studoval\'. Pokud na slovo odpovíte nesprávně, bude buď převedeno do seznamu \'prostudováno\' nebo bude počítadlo správných odpovědí vynulováno.</string>
+</resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Worten</string>
+    <string name="title_tests">Prüfungen</string>
+    <string name="title_settings">Einstellungen</string>
+
+    <string name="on_study">Wird erlernt</string>
+    <string name="studied">Wurde erlernt</string>
+
+    <string name="test">Prüfung</string>
+    <string name="practice">Praktikum</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Anwendungsthema</string>
+    <string name="language_interface">Interface-Sprache</string>
+    <string name="suggest_repetition_of_words">Wortwiederholungen vorschlagen</string>
+    <string name="clear_dictionary">Wörterbuch löschen</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>System</item>
+        <item>Hell</item>
+        <item>Dunkel</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Englisch</item>
+        <item>Arabisch</item>
+        <item>Tschechisch</item>
+        <item>Deutsch</item>
+        <item>Spanisch</item>
+        <item>Französisch</item>
+        <item>Hindi</item>
+        <item>Italienisch</item>
+        <item>Iwrit</item>
+        <item>Japanisch</item>
+        <item>Kasachisch</item>
+        <item>Koreanisch</item>
+        <item>Polnisch</item>
+        <item>Portugiesisch</item>
+        <item>Russisch</item>
+        <item>Türkisch</item>
+        <item>Ukrainisch</item>
+        <item>Chinesisch</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Löschen</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Wortwiederholung aktiviert</string>
+    <string name="switch_suggest_repetition_of_words_off">Wortwiederholung inaktiviert</string>
+    <string name="undo">Zurücksetzen</string>
+    <string name="new_word_created">Sie haben das Wort erfunden</string>
+    <string name="ok">Оk</string>
+    <string name="word_not_enteted">Wort nicht eingegeben</string>
+    <string name="pending">Wird erwartet</string>
+    <string name="data_is_not_valid">Sie haben ungültige Zeichen eingegeben</string>
+    <string name="language_to_learn">Die Sprache, die wir lernen</string>
+    <string name="learning_from_language">Die Sprache, von der wir lernen</string>
+    <string name="attention">Achtung!</string>
+    <string name="after_changing_language">Nach dem Ändern der Sprache werden alle Wörter in Ihrem Wörterbuch dauerhaft gelöscht. Möchten Sie die Sprache wirklich ändern?</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="language_replaced">Die Sprache wurde geändert. Wörterbuch gelöscht.</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="impossible_choose">Die angegebene Sprache kann nicht ausgewählt werden</string>
+    <string name="cannot_choose_language">Sie können nicht dieselbe Sprache auswählen</string>
+    <string name="choose_languages_to_study">Wählen Sie Sprachen zum Lernen aus</string>
+    <string name="language_from">Von dieser</string>
+    <string name="language_of">Diese</string>
+    <string name="choose">Wählen</string>
+    <string name="unable_start_test">Die Prüfung kann nicht gestartet werden. Die Liste \"Wird erlernt\" muss mindestens 5 Wörter enthalten</string>
+    <string name="limit_30">Das Wort kann nicht in die Liste verschoben werden, maximal 30 Wörter</string>
+    <string name="empty_field">Sie haben kein Wort eingegeben</string>
+    <string name="repetition">Wiederholung</string>
+    <string name="repetition_description">"Möchten Sie anfangen, Wörter zu wiederholen? Für diese Prüfungsart werden bis zu 20 von Ihnen gelernte Wörter ausgewählt. Alle Wörter, die Sie falsch beantworten, werden in die Liste \"Wird erlernt\" verschoben, wenn das Raum vorhanden ist. "</string>
+    <string name="start">Starten</string>
+    <string name="back">Zurück</string>
+    <string name="word_is_removed">Sie haben das Wort gelöscht</string>
+    <string name="word_is_moved">Sie haben das Wort verschoben</string>
+    <string name="into_studied_ist">in die Liste \"Wurde erlernt\"</string>
+    <string name="into_on_study_list">in die Liste \"Wird erlernt\"</string>
+    <string name="into_pending_list">in die Liste \"Wird erwartet\"</string>
+    <string name="limit_20">Das Wort kann nicht in die Lernliste verschoben werden, maximal 20 Wörter</string>
+    <string name="exit_test">Möchten Sie die Prüfung verlassen? Jeglicher Fortschritt geht verloren.</string>
+    <string name="exit">Abmelden</string>
+
+    <string name="empty_list_on_study_start">Hier werden die Worte „Wird erlernt“ angezeigt. Wenn Sie in Prüfungen 10 Mal hintereinander für ein Wort antworten, wird eine Schaltfläche angezeigt.</string>
+    <string name="empty_list_on_study_end">mit deren Hilfe Sie das Wort in die Liste \"Wurde erlernt\" veschoben wird</string>
+
+    <string name="empty_list_studied_start">Hier werden die \"erlernten\" Wörter angezeigt. Wenn Sie sie ändern oder auf die Schaltfläche klicken</string>
+    <string name="empty_list_studied_end">wird das Wort in die Liste \"Wird erlernt\" veschoben wird.</string>
+
+    <string name="empty_list_pending_start">Hier werden die \"erwarteten\" Wörter angezeigt. Mit der Hilfe der Schalterfläche</string>
+    <string name="empty_list_pending_end">können Sie die Wörter in die Liste \"Wird erlernt\" verschieben</string>
+
+    <string name="alphabetically">Alphabetisch</string>
+
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">In Ordnung</string>
+    <string name="newer">Neuer</string>
+    <string name="older">Älter</string>
+    <string name="enter_search_terms">Geben Sie einen Suchbegriff ein</string>
+    <string name="no_language">Wenn die Sprache, die Sie lernen möchten, nicht in der Liste enthalten ist, können Sie die Entwickler über den Abschnitt \"Einstellungen\" kontaktieren</string>
+    <string name="later">Später</string>
+
+    <string name="test_description">Für die Prüfung wurden die Wörter \"wird erlernt\" gewählt. Wenn Sie jedes Wort 10 Mal hintereinander richtig beantworten, können Sie es in die Liste \"wurde erlernt\" übertragen.</string>
+    <string name="practice_description">Die Wörter aus den Listen \"wird erlernt\" und \"wurde erlernt\" wurden zum Üben gewählt. Wenn Sie ein Wort falsch beantworten, wird es entweder in die Liste \"wird erlernt\" verschoben oder der Zähler der richtigen Antworten wird auf Null zurückgesetzt.</string>
+</resources>

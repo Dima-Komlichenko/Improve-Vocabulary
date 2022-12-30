@@ -29,5 +29,11 @@ class WordsFragmentViewModel(
             isOnStudyListContainsStudiedWords.value = isOnStudyListContainsStudiedWordsUseCase.execute()
         }
     }
+
+    fun resetIsOnStudyListContainsStudiedWords() {
+        viewModelScope.launch {
+            isOnStudyListContainsStudiedWords.value = isOnStudyListContainsStudiedWordsUseCase.execute()
+        }
+    }
 }
 

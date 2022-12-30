@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Palavras</string>
+    <string name="title_tests">Testes</string>
+    <string name="title_settings">Configurações</string>
+
+    <string name="on_study">No estudo</string>
+    <string name="studied">Estudadas</string>
+
+    <string name="test">"Teste "</string>
+    <string name="practice">Prática</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Tema de aplicação web</string>
+    <string name="language_interface">Língua de interface</string>
+    <string name="suggest_repetition_of_words">Oferecer repetir as palavras</string>
+    <string name="clear_dictionary">Apagar o dicionário</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>Sistema</item>
+        <item>Clara</item>
+        <item>Escura</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Inglesa</item>
+        <item>Árabe</item>
+        <item>Tcheca</item>
+        <item>Alemã</item>
+        <item>Espanhola</item>
+        <item>Francesa</item>
+        <item>Hindi</item>
+        <item>Italiana</item>
+        <item>Hebraica</item>
+        <item>Japonesa</item>
+        <item>Cazaque</item>
+        <item>Coreana</item>
+        <item>Polaca</item>
+        <item>Portuguesa</item>
+        <item>Russa</item>
+        <item>Turco</item>
+        <item>Ucraniana</item>
+        <item>China</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Apagar</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Ativada a repetição de palavras</string>
+    <string name="switch_suggest_repetition_of_words_off">Desativada a repetição de palavras</string>
+    <string name="undo">Anular</string>
+    <string name="new_word_created">Você criou uma palavra</string>
+    <string name="ok">Ok</string>
+    <string name="word_not_enteted">A palavra não é introduzida</string>
+    <string name="pending">Em espera</string>
+    <string name="data_is_not_valid">Você introduziu os símbolos inválidos</string>
+    <string name="language_to_learn">A língua a que aprendemos</string>
+    <string name="learning_from_language">A língua da que aprendemos</string>
+    <string name="attention">Atenção!</string>
+    <string name="after_changing_language">Depois de mudar a língua todas as palavras em seu dicionário serão eliminadas sem poder recuperar. Está seguro que quer mudar a língua?</string>
+    <string name="confirm">Confirmar</string>
+    <string name="language_replaced">"A língua é mudada. O dicionário é apagado. "</string>
+    <string name="cancel">Cancelamento</string>
+    <string name="impossible_choose">É impossível escolher a língua indicada</string>
+    <string name="cannot_choose_language">Você não pode escolher a mesma língua</string>
+    <string name="choose_languages_to_study">Escolha as línguas para estudar</string>
+    <string name="language_from">Desta</string>
+    <string name="language_of">Esta</string>
+    <string name="no_language">Se a língua a que Você quer estudar não está presente na lista, pode chamar a desenvolvedores através de capítulo “Configurações”</string>
+    <string name="choose">Escolher</string>
+    <string name="unable_start_test">É impossível começar o teste. A lista “em estudo” deve ter pelo menos 5 palavras</string>
+    <string name="limit_30">É impossível mover a palavra na lista, como máximo 30 palavras</string>
+    <string name="empty_field">Você não introduziu a palavra</string>
+    <string name="repetition">Repetição</string>
+    <string name="repetition_description">"Quer começar a repetição de palavras? Para este tipo de teste são escolhidas até 20 palavras estudadas por Você. Todas as palavras às que Você contestou incorreto, serão colocadas na lista “em estudo” em caso se houver espaço. "</string>
+    <string name="start">Começar</string>
+    <string name="back">Para trás</string>
+    <string name="word_is_removed">Você eliminou a palavra</string>
+    <string name="word_is_moved">Você moveu a palavra</string>
+    <string name="into_studied_ist">"na lista “estudadas” "</string>
+    <string name="into_on_study_list">na lista “em estudo”</string>
+    <string name="into_pending_list">na lista “em espera”</string>
+    <string name="limit_20">É impossível mover a palavra na lista estudada, como máximo 20 palavras</string>
+    <string name="exit_test">"Você quer deixar o teste? Todo o progresso será perdido. "</string>
+    <string name="exit">Sair</string>
+
+    <string name="empty_list_on_study_start">Aqui serão representadas as palavras “em estudo”. Quando Você contestar 10 vezes seguidas a uma palavra nos testes, aparecerá o botão.</string>
+    <string name="empty_list_on_study_end">com ajuda do qual Você pode mover a palavra na lista “estudadas”</string>
+
+    <string name="empty_list_studied_start">Aqui serão representadas as palavras “estudadas”. Se Você as mudar ou pulsar o botão</string>
+    <string name="empty_list_studied_end">a palavra mover-se-á na lista “em estudo”.</string>
+
+    <string name="empty_list_pending_start">Aqui serão representadas as palavras “em espera”. Com ajuda de botão</string>
+    <string name="empty_list_pending_end">Você pode mover as palavras na lista “em estudo”</string>
+
+    <string name="alphabetically">Alfabética</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">Em ordem</string>
+    <string name="newer">Mais nova</string>
+    <string name="older">Mais antiga</string>
+    <string name="enter_search_terms">Introduza a consulta de busca web</string>
+    <string name="later">Mais tarde</string>
+
+    <string name="test_description">Para o teste são escolhidas as palavras “em estudo”. Quando Você contestar corretamente 10 vezes seguidos a cada palavra, poderá movê-la na lista “estudadas”.</string>
+    <string name="practice_description">As palavras das listas “em estudo” e “estudadas” foram escolhidas para a prática. Se Você contestar à palavra incorreto, esta será movida na lista “em estudo”, ou o contador de respostas corretas será reiniciado.</string>
+</resources>

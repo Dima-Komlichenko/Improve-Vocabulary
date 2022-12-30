@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.data.storage.interfaces.LanguageOfLearningStorage
 import com.example.data.storage.models.Language
+import com.example.domain.model.Languages
 
 
 private const val SHARED_PREFS_LANGUAGE_OF_LEARNING = "SHARED_PREFS_LANGUAGE_OF_LEARNING"
@@ -15,11 +16,15 @@ class SharedPrefsLanguageOfLearning(context: Context) : LanguageOfLearningStorag
         context.getSharedPreferences(SHARED_PREFS_LANGUAGE_OF_LEARNING, Context.MODE_PRIVATE)
 
     override fun save(data: Language): Boolean {
-        sharedPreferences.edit().putString(LANGUAGE_OF_LEARNING, data.value).apply()
+        sharedPreferences.edit().putString(LANGUAGE_OF_LEARNING, data.value.toString()).apply()
         return true
     }
 
     override fun get(): Language {
-        return Language(sharedPreferences.getString(LANGUAGE_OF_LEARNING, "NO_VALUE")!!)
+        return Language(mapStringLanguageToEnum(sharedPreferences.getString(LANGUAGE_OF_LEARNING, "English")?: "English"))
+    }
+
+    private fun mapStringLanguageToEnum(value: String): Languages {
+        return Languages.valueOf(value.uppercase())
     }
 }

@@ -24,7 +24,7 @@
             android:layout_marginVertical="12dp"
             android:background="@null"
             android:maxLength="50"
-            android:hint="Enter search terms"
+            android:hint="@string/enter_search_terms"
             android:inputType="textPersonName" />
 
     </com.google.android.material.card.MaterialCardView>

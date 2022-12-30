@@ -8,12 +8,74 @@
     tools:context=".presentation.wordsFragment.WordsFragment">
 
     <soup.neumorphism.NeumorphCardView
+        android:id="@+id/btn_pending"
+        style="@style/neumorph_CardButton"
+        android:layout_width="240dp"
+        app:layout_constraintTop_toTopOf="@+id/btn_on_study"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_on_study"
+        app:layout_constraintEnd_toStartOf="@+id/btn_on_study"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/big_gradient_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="24dp">
+
+            <TextView
+                android:id="@+id/tv_pending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="@string/pending"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/dividing_line_penidng"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/dividing_line_penidng"
+                android:layout_width="320dp"
+                android:layout_height="1dp"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/ic_line_300"
+                app:layout_constraintBottom_toTopOf="@+id/tv_pedning_count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pending" />
+
+            <TextView
+                android:id="@+id/tv_pedning_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="-"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dividing_line_penidng" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </soup.neumorphism.NeumorphCardView>
+
+
+
+    <soup.neumorphism.NeumorphCardView
         android:id="@+id/btn_on_study"
         style="@style/neumorph_CardButton"
-        android:layout_width="280dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="12"
+                android:text="-"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,23 +143,15 @@
     </soup.neumorphism.NeumorphCardView>
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/btn_studied"
         style="@style/neumorph_CardButton"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="240dp"
+        app:layout_constraintTop_toTopOf="@+id/btn_on_study"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_on_study"
+        app:layout_constraintStart_toEndOf="@+id/btn_on_study"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             style="@style/big_gradient_background"
@@ -128,12 +182,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="340"
+                android:text="-"
                 android:textSize="30sp" />
 
         </LinearLayout>
 
     </soup.neumorphism.NeumorphCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

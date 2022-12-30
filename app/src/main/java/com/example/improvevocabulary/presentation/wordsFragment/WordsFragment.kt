@@ -3,6 +3,7 @@ package com.example.improvevocabulary.presentation.wordsFragment
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentWordsBinding
+import com.example.improvevocabulary.presentation.test.TypeOfList
+import com.example.improvevocabulary.presentation.test.TypeOfListConst
 import com.example.improvevocabulary.presentation.wordList.WordsActivity
 import soup.neumorphism.NeumorphCardView
 import javax.inject.Inject
@@ -52,7 +55,7 @@ class WordsFragment : Fragment() {
         }
 
         viewModel.pendingCount.observe(viewLifecycleOwner) {
-            binding.tvPedningCount!!.text = it.toString()
+            binding.tvPedningCount.text = it.toString()
         }
 
         viewModel.studiedCount.observe(viewLifecycleOwner) {
@@ -61,8 +64,9 @@ class WordsFragment : Fragment() {
 
         viewModel.isOnStudyListContainsStudiedWords.observe(viewLifecycleOwner) {
             viewModel.isOnStudyListContainsStudiedWords.value?.let {
-                if (it)
-                    binding.isOpportunityTransferWord.visibility = View.VISIBLE
+                binding.isOpportunityTransferWord.visibility =
+                    if (it) View.VISIBLE
+                    else View.GONE
             }
         }
 
@@ -72,17 +76,19 @@ class WordsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.init()
-        setOnClickListener(binding.btnPending!!, WordListInfo.Pending)
+        viewModel.resetIsOnStudyListContainsStudiedWords()
+        setOnClickListener(binding.btnPending, WordListInfo.Pending)
         setOnClickListener(binding.btnOnStudy, WordListInfo.OnStudy)
         setOnClickListener(binding.btnStudied, WordListInfo.Studied)
 
         binding.tvOnStudyCount.text = viewModel.onStudyCount.value?.toString()
-        binding.tvPedningCount!!.text = viewModel.pendingCount.value?.toString()
+        binding.tvPedningCount.text = viewModel.pendingCount.value?.toString()
         binding.tvStudiedCount.text = viewModel.studiedCount.value?.toString()
 
         viewModel.isOnStudyListContainsStudiedWords.value?.let {
             binding.isOpportunityTransferWord.visibility =
-                if (it) View.VISIBLE else View.GONE
+                if (it) View.VISIBLE
+                else View.GONE
         }
     }
 
@@ -96,10 +102,11 @@ class WordsFragment : Fragment() {
                 Pair(binding.root.rootView.findViewById(R.id.logo), "logo")
             )
             intent.putExtra(WordListInfoConst, wordListInfo)
+                .putExtra(TypeOfListConst, TypeOfList.Base)
+            Log.i("wordListPerform", "startActivity()")
             startActivity(intent, options.toBundle())
         }
     }
-
 }
 
 

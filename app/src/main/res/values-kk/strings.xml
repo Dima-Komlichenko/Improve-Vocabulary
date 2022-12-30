@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Сөздер</string>
+    <string name="title_tests">Тесттер</string>
+    <string name="title_settings">Баптаулар</string>
+
+    <string name="on_study">Оқылуда</string>
+    <string name="studied">Оқылған</string>
+
+    <string name="test">Тест</string>
+    <string name="practice">Тәжірибе</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Қолданба тақырыбы</string>
+    <string name="language_interface">Интерфейс тілі</string>
+    <string name="suggest_repetition_of_words">Сөздерді қайталауды ұсыну</string>
+    <string name="clear_dictionary">Сөздікті тазалау</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>Жүйе</item>
+        <item>Ашық</item>
+        <item>Қараңғы</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Ағылшын</item>
+        <item>Араб</item>
+        <item>Чех</item>
+        <item>Неміс</item>
+        <item>Испан</item>
+        <item>Француз</item>
+        <item>Хинди</item>
+        <item>Итальян</item>
+        <item>Иврит</item>
+        <item>Жапон</item>
+        <item>Қазақ</item>
+        <item>Кәріс</item>
+        <item>Поляк</item>
+        <item>Португал</item>
+        <item>Орыс</item>
+        <item>Орыс</item>
+        <item>Украин</item>
+        <item>Қытай</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Тазалау</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Сөздерді қайталау қосулы</string>
+    <string name="switch_suggest_repetition_of_words_off">Сөздерді қайталау өшірулі</string>
+    <string name="undo">Болдырмау</string>
+    <string name="new_word_created">Сөзді жасадыңыз</string>
+    <string name="ok">Мақұл</string>
+    <string name="word_not_enteted">Сөз енгізілмеді</string>
+    <string name="pending">Күтілуде</string>
+    <string name="data_is_not_valid">Сіз жарамсыз таңбаларды енгіздіңіз</string>
+    <string name="language_to_learn">Оқылып жатқан тіл</string>
+    <string name="learning_from_language">Қай тілде үйренеміз</string>
+    <string name="attention">Назар аударыңыз!</string>
+    <string name="after_changing_language">Тілді өзгерткеннен кейін сөздіктегі барлық сөздер біржола жойылады. Тілді өзгерткіңіз келетініне сенімдісіз бе?</string>
+    <string name="confirm">Растау</string>
+    <string name="language_replaced">Тіл алмастырылды. Сөздік тазаланды.</string>
+    <string name="cancel">Болдырмау</string>
+    <string name="impossible_choose">Көрсетілген тілді таңдауға болмайды</string>
+    <string name="cannot_choose_language">Сіз бір тілді таңдай алмайсыз</string>
+    <string name="choose_languages_to_study">Үйрену үшін тілдерді таңдаңыз</string>
+    <string name="language_from">Осы тілден</string>
+    <string name="language_of">Осы тілге</string>
+    <string name="no_language">Егер сіз үйренгіңіз келетін тіл тізімде болмаса онда сіз «Баптаулар» бөлімі арқылы әзірлеушілерге хабарласа аласыз</string>
+    <string name="choose">Таңдау</string>
+    <string name="unable_start_test">Тестті бастау мүмкін емес. «Оқылуда» тізімінде кемінде 5 сөз болуы тиіс</string>
+    <string name="limit_30">Сөзді тізімге жылжыту мүмкін емес, ең көбі 30 сөз болуы тиіс</string>
+    <string name="empty_field">Сөздң енгізген жоқсыз</string>
+    <string name="repetition">Қайталау</string>
+    <string name="repetition_description">Сөздерді қайталауды бастағыңыз келе ме? Тесттің бұл түрі үшін сіз оқыған 20 сөзге дейін таңдалады. Сіз қате жауап берген барлық сөздер (орын болған жағдайда) «оқылуда» тізіміне жылжытылады.</string>
+    <string name="start">Бастау</string>
+    <string name="back">Артқа</string>
+    <string name="word_is_removed">Сөзді жойдыңыз</string>
+    <string name="word_is_moved">Сөзді жылжыттыңыз</string>
+    <string name="into_studied_ist">«оқылған» тізіміне</string>
+    <string name="into_on_study_list">«оқылуда» тізіміне</string>
+    <string name="into_pending_list">«күтілуде» тізіміне</string>
+    <string name="limit_20">Сөзді оқылатын сөздер тізіміне жылжыту мүмкін емес, ең көбі 20 сөз</string>
+    <string name="exit_test">Сіз тесттен шыққыңыз келе ме? Барлық прогресс жоғалады.</string>
+    <string name="exit">Шығу</string>
+
+    <string name="empty_list_on_study_start">Мұнда «оқылуда» сөздері көрсетіледі. Тесттерде бір сөзге қатарынан 10 рет жауап бергенде, батырма пайда болады.</string>
+    <string name="empty_list_on_study_end">оның көмегімен сіз сөзді «оқылған» тізіміне жылжыта аласыз</string>
+
+    <string name="empty_list_studied_start">Мұнда «оқылған» сөздер көрсетіледі. Егер сіз оларды өзгертсеңіз немесе батырманы бассаңыз</string>
+    <string name="empty_list_studied_end">бұл сөз «оқылуда» тізіміне жылжытылады.</string>
+
+    <string name="empty_list_pending_start">Мұнда «күтілуде» сөздері көрсетіледі. Батырма арқылы</string>
+    <string name="empty_list_pending_end">Сіз сөздерді «оқылуда» тізіміне жылжыта аласыз</string>
+
+    <string name="alphabetically">Алфавиттік</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">Қалпында</string>
+    <string name="newer">жаңалау</string>
+    <string name="older">ескілеу</string>
+    <string name="enter_search_terms">Іздеу сұранысын енгізіңіз</string>
+    <string name="later">Кейінірек</string>
+
+    <string name="test_description">Тест үшін «оқылуда» деген сөздер таңдалды. Әрбір сөзге қатарынан 10 рет дұрыс жауап бергенде, оны «оқылған» тізіміне жылжыта аласыз.</string>
+    <string name="practice_description">Тәжірибе үшін «оқылуда» және «оқылған» тізімдеріндегі сөздер таңдалды. Егер сіз сөзге қате жауап берсеңіз, ол «оқылуда» тізіміне жылжытылады немесе дұрыс жауаптар есептегіші нөлге айналады.</string>
+</resources>

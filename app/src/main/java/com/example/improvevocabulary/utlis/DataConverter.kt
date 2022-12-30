@@ -15,7 +15,5 @@ abstract class DataConverter {
             return data.lowercase()
                 .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
         }
-
     }
-
 }

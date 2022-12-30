@@ -25,4 +25,7 @@ interface OnStudyWordPairDao {
 
     @Query("SELECT count(id) FROM on_study_word_pair_table WHERE countRightAnswers >= 10")
     suspend fun isOnStudyListContainsStudiedWords(): Boolean
+
+    @Query("Select max(id) from on_study_word_pair_table")
+    suspend fun getMaxId(): Int
 }

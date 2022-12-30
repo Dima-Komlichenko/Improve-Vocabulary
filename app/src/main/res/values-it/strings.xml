@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Parole</string>
+    <string name="title_tests">Test</string>
+    <string name="title_settings">Impostazioni</string>
+
+    <string name="on_study">In fase di studio</string>
+    <string name="studied">Imparate</string>
+
+    <string name="test">Test</string>
+    <string name="practice">Pratica</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Tema dell\'app</string>
+    <string name="language_interface">Linguaggio dell\'interfaccia</string>
+    <string name="suggest_repetition_of_words">Suggerire ripetizioni di parole</string>
+    <string name="clear_dictionary">Cancellare vocabolario</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>Sistema</item>
+        <item>Chiaro</item>
+        <item>Scuro</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>Inglese</item>
+        <item>Arabo</item>
+        <item>Ceco</item>
+        <item>Tedesco</item>
+        <item>Spagnolo</item>
+        <item>Francese</item>
+        <item>Hindi</item>
+        <item>Italiano</item>
+        <item>Ebraico</item>
+        <item>Giapponese</item>
+        <item>Kazako</item>
+        <item>Coreano</item>
+        <item>Polacco</item>
+        <item>Portoghese</item>
+        <item>Russo</item>
+        <item>Russo</item>
+        <item>Ucraino</item>
+        <item>Cinese</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Cancellare</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Attivata la funzione di ripetizione di parole</string>
+    <string name="switch_suggest_repetition_of_words_off">Disattivata la funzione di ripetizione di parole</string>
+    <string name="undo">Annullare</string>
+    <string name="new_word_created">Hai creato la parola</string>
+    <string name="ok">Ok</string>
+    <string name="word_not_enteted">Parola non inserita</string>
+    <string name="pending">In attesa</string>
+    <string name="data_is_not_valid">Hai inserito i caratteri inesistenti</string>
+    <string name="language_to_learn">La lingua che impariamo</string>
+    <string name="learning_from_language">La lingua con cui impariamo</string>
+    <string name="attention">Attenzione!</string>
+    <string name="after_changing_language">Dopo di sostituire la lingua tutte le parole nel tuo vocabolario verranno eliminate per sempre. Sei sicuro di voler sostituire la lingua?</string>
+    <string name="confirm">Confermare</string>
+    <string name="language_replaced">La lingua è stata sostituita. Vocabulario è stato cancellato.</string>
+    <string name="cancel">Annullare</string>
+    <string name="impossible_choose">Impossibile selezionare la lingua specificata</string>
+    <string name="cannot_choose_language">Non è possibile selezionare la stessa lingua</string>
+    <string name="choose_languages_to_study">Scegli le lingue da imparare</string>
+    <string name="language_from">Con questa</string>
+    <string name="language_of">Questo</string>
+    <string name="no_language">Se la lingua che desideri imparare non è nell\'elenco, puoi contattare gli sviluppatori tramite la sezione “Impostazioni”</string>
+    <string name="choose">Scegliere</string>
+    <string name="unable_start_test">Impossibile avviare il test. L\'elenco “In fase di studio” deve includere almeno 5 parole</string>
+    <string name="limit_30">Impossibile spostare la parola nell\'elenco, massimo 30 parole</string>
+    <string name="empty_field">Non hai inserito una parola</string>
+    <string name="repetition">Ripetizione</string>
+    <string name="repetition_description">Vuoi iniziare a ripetere le parole? Per questo tipo di test vengono selezionate fino a 20 parole che hai già imparato. Tutte le parole a cui hai risposto in modo errato verranno spostate nell\'elenco “In fase di studio” se c’è spazio disponibile.</string>
+    <string name="start">Iniziare</string>
+    <string name="back">Indietro</string>
+    <string name="word_is_removed">Hai cancellato una parola</string>
+    <string name="word_is_moved">Hai spostato una parola</string>
+    <string name="into_studied_ist">All\'elenco “Imparato”</string>
+    <string name="into_on_study_list">All\'elenco “In fase di studio\"</string>
+    <string name="into_pending_list">All\'elenco “In attesa”</string>
+    <string name="limit_20">Impossibile spostare una parola nell\'elenco da imparare, sono al massimo 20 parole</string>
+    <string name="exit_test">Vuoi abbandonare il test? Tutti i progressi saranno persi.</string>
+    <string name="exit">Disconnettersi</string>
+
+    <string name="empty_list_on_study_start">Le parole “In fase di studio” verranno visualizzate qui. Se rispondi 10 volte di seguito a una parola nei test, apparirà il pulsante.</string>
+    <string name="empty_list_on_study_end">con cui puoi spostare la parola nell\'elenco “imparato”</string>
+
+    <string name="empty_list_studied_start">Le “parole imparate” verranno visualizzate qui. Se le sostituisi o fai clic sul pulsante</string>
+    <string name="empty_list_studied_end">la parola verrà spostata nell\'elenco \"in fase di studio\".</string>
+
+    <string name="empty_list_pending_start">Le parole “in attesa” verranno visualizzate qui. Con il pulsante</string>
+    <string name="empty_list_pending_end">puoi spostare le parole nell\'elenco “in fase di studio”</string>
+
+    <string name="alphabetically">Alfabetico</string>
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">In ordine</string>
+    <string name="newer">Più nuovo</string>
+    <string name="older">Più vecchio</string>
+    <string name="enter_search_terms">Inserisci una richiesta di ricerca</string>
+    <string name="later">Dopo</string>
+
+    <string name="test_description">Per il test sono state scelte le parole “in fase di studio”. Quando rispondi correttamente 10 volte di seguito a ogni parola, potrai trasferirla nell\'elenco “imparato”.</string>
+    <string name="practice_description">Le parole dagli elenchi “in fase di studio” e “imparato” sono state scelte per la pratica. Se rispondi a una parola in modo errato quest’ultima verrà spostata nell\'elenco “in fase di studio” oppure il contatore delle risposte corrette verrà azzerato.</string>
+</resources>

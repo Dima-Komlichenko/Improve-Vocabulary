@@ -6,15 +6,15 @@ import com.example.domain.model.StudiedWordPair
 
 
 interface WordPairRepository {
-    fun save(wordPair: OnStudyWordPair)
-    fun save(wordPair: PendingWordPair)
-    fun save(wordPair: StudiedWordPair)
+    suspend fun save(wordPair: OnStudyWordPair)
+    suspend fun save(wordPair: PendingWordPair)
+    suspend fun save(wordPair: StudiedWordPair)
 
     suspend fun getOnStudy(): List<OnStudyWordPair>
     suspend fun getPending(): List<PendingWordPair>
     suspend fun getStudied(): List<StudiedWordPair>
 
-    suspend fun IsOnStudyListContainsStudiedWords(): Boolean
+    suspend fun isOnStudyListContainsStudiedWords(): Boolean
 
     suspend fun getOnStudyCount(): Int
     suspend fun getPendingCount(): Int
@@ -27,6 +27,10 @@ interface WordPairRepository {
     fun delete(wordPair: OnStudyWordPair)
     fun delete(wordPair: PendingWordPair)
     fun delete(wordPair: StudiedWordPair)
+
+    suspend fun getPendingMaxId(): Int
+    suspend fun getOnStudyMaxId(): Int
+    suspend fun getStudiedMaxId(): Int
 
     fun deleteAll()
 }

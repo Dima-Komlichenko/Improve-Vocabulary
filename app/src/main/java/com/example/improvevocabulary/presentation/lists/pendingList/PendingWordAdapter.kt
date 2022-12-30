@@ -12,25 +12,20 @@ import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
 import com.example.domain.usecase.pending.RemovePendingWordPairUseCase
 import com.example.domain.usecase.pending.SavePendingWordPairUseCase
 import com.example.domain.usecase.pending.UpdatePendingWordPairUseCase
-import com.example.domain.usecase.studied.SaveStudiedWordPairUseCase
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.EditableWordItemBinding
-import com.example.improvevocabulary.databinding.WordItemBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseEditableList.EditableWordAdapter
-import com.example.improvevocabulary.presentation.lists.baseList.WordAdapter
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
-class PendingWordAdapter(private val tts: TextToSpeech,
-                         val updatePendingWordPairUseCase: UpdatePendingWordPairUseCase,
-                         val removePendingWordPairUseCase: RemovePendingWordPairUseCase,
-                         val savePendingWordPairUseCase: SavePendingWordPairUseCase,
-                         val saveOnStudyWordPairUseCase: SaveOnStudyWordPairUseCase,
-                         val removeOnStudyWordPairUseCase: RemoveOnStudyWordPairUseCase,
-                         val languageFromLearning: Language,
-                         val languageOfLearning: Language,
-                         ) : EditableWordAdapter(tts, languageFromLearning, languageOfLearning) {
+class PendingWordAdapter(
+    private val tts: TextToSpeech,
+    val viewModel: PendingListViewModel,
+) : EditableWordAdapter(tts, viewModel.languageFromLearning.value!!, viewModel.languageOfLearning.value!!) {
+
+    private var onStudyCount = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingWordHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.editable_word_item, parent, false)
@@ -38,7 +33,8 @@ class PendingWordAdapter(private val tts: TextToSpeech,
         return PendingWordHolder(view, tts)
     }
 
-    inner class PendingWordHolder(override var item: View, tts: TextToSpeech) : EditableWordHolder(item, tts, languageFromLearning, languageOfLearning) {
+    inner class PendingWordHolder(override var item: View, tts: TextToSpeech) :
+        EditableWordHolder(item, tts) {
 
         private lateinit var bindingPending: EditableWordItemBinding
 
@@ -50,25 +46,51 @@ class PendingWordAdapter(private val tts: TextToSpeech,
 
             //TODO: btnSave
             binding.btnSave.setOnClickListener {
-                if(!btnSaveHandler()) return@setOnClickListener
-                updatePendingWordPairUseCase.execute(mapToPending(wordPair))
+                if (!btnSaveHandler()) return@setOnClickListener
+                viewModel.updatePendingWordPairUseCase.execute(mapToPending(wordPair))
             }
 
             binding.btnRemove.setOnClickListener {
                 btnRemoveHandler()
-                removePendingWordPairUseCase.execute(mapToPending(wordPair))
+                viewModel.removePendingWordPairUseCase.execute(mapToPending(wordPair))
             }
 
             binding.btnMove.setOnClickListener {
                 btnMoveHandler()
-                removePendingWordPairUseCase.execute(mapToPending(wordPair))
-                saveOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
+                viewModel.removePendingWordPairUseCase.execute(mapToPending(wordPair))
+                viewModel.saveOnStudy(wordPair)
             }
         }
 
+        override fun btnMoveHandler(): Int {
+            if (onStudyCount >= 20) {
+                Snackbar.make(
+                    binding.root,
+                    R.string.limit_20,
+                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+                )
+                    .show()
+                return -1
+            }
+            val index = super.btnMoveHandler()
+
+            Snackbar.make(
+                item.parent as RecyclerView,
+                context!!.resources.getString(R.string.word_is_moved) + " \"" + wordPair.word + "\" "
+                        + context!!.resources.getString(R.string.into_on_study_list),
+                Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(context!!.resources.getString(R.string.undo)) {
+                    undoMoveHandler(index)
+                }
+                .show()
+            return index
+        }
+
+
         override fun undoMoveHandler(index: Int) {
             super.undoMoveHandler(index)
-            removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
+            viewModel.removeOnStudyWordPairUseCase.execute(mapToOnStudy(wordPair))
         }
 
         private fun mapToPending(wordPair: WordPair): PendingWordPair {
@@ -76,16 +98,21 @@ class PendingWordAdapter(private val tts: TextToSpeech,
         }
     }
 
+    fun getOnStudyCount(value: Int) {
+        onStudyCount = value
+    }
+
     override fun addWordAtPosition(word: WordPair, index: Int) {
         super.addWordAtPosition(word, index)
-        savePendingWordPairUseCase.execute(mapToPending(word))
+        viewModel.save(word)
     }
 
-    private fun mapToPending(wordPair: WordPair): PendingWordPair {
-        return PendingWordPair(wordPair.id, wordPair.word, wordPair.translate)
-    }
-
-    private fun mapToOnStudy(wordPair: WordPair): OnStudyWordPair{
-        return OnStudyWordPair(wordPair.id, wordPair.word, wordPair.translate, wordPair.countRightAnswers)
+    private fun mapToOnStudy(wordPair: WordPair): OnStudyWordPair {
+        return OnStudyWordPair(
+            wordPair.id,
+            wordPair.word,
+            wordPair.translate,
+            wordPair.countRightAnswers
+        )
     }
 }

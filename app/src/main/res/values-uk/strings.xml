@@ -27,45 +27,83 @@
     <!-- Мова інтерфейсу -->
     <string-array name="languages">
         <item>Англійська</item>
+        <item>Арабська</item>
+        <item>Чеська</item>
+        <item>Німецька</item>
         <item>Іспанська</item>
+        <item>Французька</item>
+        <item>Хінді</item>
+        <item>Італійська</item>
+        <item>Іврит</item>
+        <item>Японська</item>
+        <item>Казахська</item>
+        <item>Корейська</item>
+        <item>Польська</item>
+        <item>Португальська</item>
         <item>Російська</item>
+        <item>Турецька</item>
         <item>Українська</item>
+        <item>Китайська</item>
     </string-array>
 
     <string name="clear_dictionary_button">Очистити</string>
 
     <string name="switch_suggest_repetition_of_words_on">Повторення слів увімкнено</string>
     <string name="switch_suggest_repetition_of_words_off">Повторення слів вимкнено</string>
-    <string name="snack_bar_removing_word">Ви видалили слово</string>
-    <string name="snack_bar_moving_word_first_part">Ви перемістили слово</string>
-    <string name="snack_bar_moving_word_last_part">у вивчені</string>
     <string name="undo">Скасувати</string>
     <string name="new_word_created">Ви створили слово</string>
     <string name="ok">Ок</string>
     <string name="word_not_enteted">Слово не введено</string>
     <string name="pending">В очікуванні</string>
-    <string name="data_is_not_valid">Ви ввели неприпустимі символи. Правильне використання вхідних даних та вхідних даних.</string>
-    <string name="language_to_learn">Мова яку вчимо</string>
-    <string name="learning_from_language">Мова з якої вчимо</string>
+    <string name="data_is_not_valid">Ви ввели неприпустимі символи</string>
+    <string name="language_to_learn">Мова, яку вчимо</string>
+    <string name="learning_from_language">Мова, з якої вчимо</string>
     <string name="attention">Увага!</string>
     <string name="after_changing_language">Після зміни мови всі слова у вашому словнику будуть видалені безповоротно. Ви впевнені, що хочете змінити мову?</string>
     <string name="confirm">Підтвердити</string>
     <string name="language_replaced">Мова замінена. Словник очищений.</string>
     <string name="cancel">Скасувати</string>
     <string name="impossible_choose">Неможливо вибрати вказану мову</string>
-    <string name="limit_20">Неможливо додати слово, максимум можна додати 20 слів.</string>
+    <string name="limit_20">Неможливо перемістити слово в досліджуваний список, максимум 20 слів.</string>
     <string name="cannot_choose_language">Ви не можете вибрати ту саму мову</string>
     <string name="choose_languages_to_study">Виберіть мови для вивчення</string>
     <string name="language_from">З цього</string>
     <string name="language_of">Цей</string>
-    <string name="no_language">Якщо мови, яку ви хочете вивчати, немає у списку, то ви можете зв\'язатися з розробником через вкладку \'Контакти\' у розділі \'Налаштування\'</string>
+    <string name="no_language">Якщо мови, яку ви хочете вивчати, немає у списку, то ви можете зв\'язатися з розробником через розділ \'Налаштування\'</string>
     <string name="choose">Обрати</string>
-    <string name="unable_start_test">Неможливо розпочати тест. Повинно бути не менше 5 слів</string>
-    <string name="limit_30">Слово не може бути переміщене в вивчаємі, максимум – 30 слів.</string>
+    <string name="unable_start_test">Неможливо розпочати тест. У списку \'на вивченні\' повинно бути не менше 5 слів</string>
+    <string name="limit_30">Неможливо перемістити слово в досліджуваний список, максимум 30 слів.</string>
     <string name="empty_field">Ви не ввели слово.</string>
     <string name="repetition">Повторення</string>
     <string name="repetition_description">Ви хочете почати повторювання слів? Для цього типу тесту відбирається до 20 вивчених вами слів. Усі слова, на які ви відповіли неправильно, будуть переміщені до списку «на вивченні» якщо там є місце.</string>
     <string name="start">Розпочати</string>
     <string name="back">Назад</string>
+    <string name="word_is_removed">Ви видалили слово</string>
+    <string name="word_is_moved">Ви перемістили слово</string>
+    <string name="into_studied_ist">у лист \'вивчені\'</string>
+    <string name="into_on_study_list">у лист \'на вивченні\'</string>
+    <string name="into_pending_list">у лист \'в очікуванні\'</string>
+    <string name="exit_test">Ви хочете залишити тест? Весь прогрес буде втрачено.</string>
+    <string name="exit">Вихід</string>
 
+    <string name="empty_list_on_study_start">Тут будуть відображатися слова "на вивченні". Коли ви в тестах відповісте 10 разів поспіль на одне слово, то з\'явиться кнопка </string>
+    <string name="empty_list_on_study_end"> за допомогою якої ви зможете перенести слово до списку \'вивчені\'</string>
+
+    <string name="empty_list_studied_start"> Тут будуть відображатися \"вивчені\" слова. Якщо ви зміните їх або натисніть кнопку</string>
+    <string name="empty_list_studied_end"> то слово буде перенесено до списку \'на вивченні\'</string>
+
+    <string name="empty_list_pending_start">Тут будуть відображатися слова \'в очікуванні\'. За допомогою кнопки </string>
+    <string name="empty_list_pending_end"> ви можете перенести слово до списку \'на вивченні\'</string>
+
+    <string name="alphabetically">За алфавітом</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">По порядку</string>
+    <string name="newer">Нові</string>
+    <string name="older">Старі</string>
+    <string name="enter_search_terms">Введіть слово для пошуку</string>
+    <string name="later">Пізніше</string>
+
+    <string name="test_description">У тест відібрано слова "на вивченні". Коли ви відповісте 10 разів поспіль на кожне слово правильно - з\'явиться можливість перенести його до списку вивчених.</string>
+    <string name="practice_description">У практику відібрано слова "на вивченні" та "вивчені". Якщо ви відповісте на слово неправильно - воно або перенесеться до списку \"на вивченні\" або лічильник правильних відповідей обнулиться.</string>
 </resources>

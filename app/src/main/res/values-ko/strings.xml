@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">단어들</string>
+    <string name="title_tests">테스트들</string>
+    <string name="title_settings">설정</string>
+
+    <string name="on_study">공부 중</string>
+    <string name="studied">공부한 것</string>
+
+    <string name="test">테스트</string>
+    <string name="practice">학습</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">응용 프로그램 테마</string>
+    <string name="language_interface">인터페이스 언어</string>
+    <string name="suggest_repetition_of_words">단어 반복을 제안합니다</string>
+    <string name="clear_dictionary">사전을 지웁니다</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>시스템</item>
+        <item>밝은 테마</item>
+        <item>어두운 테마</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>영어</item>
+        <item>아랍어</item>
+        <item>체코어</item>
+        <item>독일어</item>
+        <item>스페인어</item>
+        <item>프랑스어</item>
+        <item>힌디어</item>
+        <item>이탈리아어</item>
+        <item>히브리어</item>
+        <item>일본어</item>
+        <item>카자흐어</item>
+        <item>한국어</item>
+        <item>폴란드어</item>
+        <item>포르투갈어</item>
+        <item>러시아어</item>
+        <item>터키어</item>
+        <item>우크라이나어</item>
+        <item>중국어</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">치우기</string>
+
+    <string name="switch_suggest_repetition_of_words_on">단어 반복 켜기</string>
+    <string name="switch_suggest_repetition_of_words_off">단어 반복이 꺼지기</string>
+    <string name="undo">실행 취소</string>
+    <string name="new_word_created">당신은 단어를 만들었습니다</string>
+    <string name="ok">확인</string>
+    <string name="pending">보류 중</string>
+    <string name="data_is_not_valid">잘못된 문자를 입력했습니다</string>
+    <string name="language_to_learn">학습 언어</string>
+    <string name="learning_from_language">배울 수 있는 언어</string>
+    <string name="attention">주목하세요!</string>
+    <string name="confirm">획인합니다</string>
+    <string name="language_replaced">언어가 변경되었습니다. 쓰던 단어가 있었는데 다 지워졌습니다.</string>
+    <string name="cancel">취소합니다</string>
+    <string name="impossible_choose">지정한 언어를 선택할 수 없습니다</string>
+    <string name="cannot_choose_language">같은 언어를 선택할 수 없습니다</string>
+    <string name="language_from">"여기부터 "</string>
+    <string name="language_of">이것입니다</string>
+    <string name="choose">선택하기</string>
+    <string name="unable_start_test">테스트를 시작할 수 없습니다. \"공부 중\" 목록에는 5 단어 이상이 있어야 합니다</string>
+    <string name="limit_30">단어를 목록으로 옮길 수 없으며, 최대 단어 수량의 30개에 도달했습니다</string>
+    <string name="empty_field">단어를 입력하지 않았습니다</string>
+    <string name="repetition">반복하기</string>
+    <string name="repetition_description">단어를 반복하기를 시작하시겠습니까? 본 테스트를 위해 공부한 최대 20 개의 단어가 선택됩니다. 잘못 대답한 모든 단어는 공간이 있으면 \"공부 중\" 목록으로 옮겨집니다.</string>
+    <string name="start">시작하기</string>
+    <string name="back">돌아가기</string>
+    <string name="word_is_removed">단어를 제거했습니다</string>
+    <string name="word_is_moved">단어를 옮겼습니다</string>
+    <string name="into_studied_ist">\"공부한 것\" 목록으로</string>
+    <string name="into_on_study_list">\"공부 중\" 목록으로</string>
+    <string name="into_pending_list">\"보류 중\" 목록으로</string>
+    <string name="limit_20">단어를 \"공부 중\"목록으로 옮길 수 없으며, 최대 단어 수량의 20개에 도달했습니다</string>
+    <string name="exit_test">테스트를 포기하시겠습니까? 그렇다면 진행 상황이 손실됩니다.</string>
+    <string name="exit">나가기</string>
+
+    <string name="empty_list_on_study_start">\"공부 중\" 단어들이 여기에 표시됩니다. 테스트에서 한 단어에 대해 연속으로 10 번 답변하면 다음과 같은 버튼이 나타납니다.</string>
+    <string name="empty_list_on_study_end">그것을 사용하면 단어를 \"공분한 것\" 목록으로 옮길 수 있습니다</string>
+
+    <string name="empty_list_studied_start">\"공부한\" 단어들은 여기에 표시됩니다. 변경하거나 버튼을 클릭하면</string>
+    <string name="empty_list_studied_end">단어가 \"공부 중\" 목록으로 옮겨집니다.</string>
+
+    <string name="empty_list_pending_start">\"보류 중\"  단어들이 여기에 표시됩니다. 버튼을 클릭하면</string>
+    <string name="empty_list_pending_end">단어를 \"공부 중\" 목록으로 옮길 수 있습니다</string>
+
+    <string name="alphabetically">알파벳순</string>
+    <string name="az">---</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">순서대로</string>
+    <string name="newer">더 새로운 것</string>
+    <string name="older">지난 것</string>
+    <string name="enter_search_terms">검색 단어를 입력하십시오</string>
+    <string name="word_not_enteted">단어가 입력되지 않았습니다</string>
+    <string name="after_changing_language">언어를 변경한 후에 어휘의 모든 단어가 삭제됩니다. 언어를 변경하시겠습니까?</string>
+    <string name="choose_languages_to_study">학습 언어를 선택하십시오</string>
+    <string name="no_language">배우고 싶은 언어가 목록에 있지 않으면 \"설정\" 섹션을 통해 개발자에게 연락하시기 바랍니다</string>
+    <string name="later">나중에</string>
+
+    <string name="test_description">테스트를 하기 위해 \"공부 중\"라는 단어가 선택되었습니다. 각 단어에 대해 10 번 연속으로 답변하면 \"공부한 것\" 목록으로 옮길 수 있습니다.</string>
+    <string name="practice_description">\'\"공부 중\" 및 \"공부한 것\" 목록에 등록한 단어들이 연습하기 위해 선택되었습니다. 잘못 대답하면 단어가 \"공부 중\" 목록으로 옯겨지거나 정답의 카운터가 0값으로 재설정됩니다.</string>
+</resources>

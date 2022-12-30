@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">Sözcükler</string>
+    <string name="title_tests">Testler</string>
+    <string name="title_settings">Ayarlar</string>
+
+    <string name="on_study">Ezberlenecek sözcükler</string>
+    <string name="studied">Ezberlenmiş sözcükler</string>
+
+    <string name="test">Test</string>
+    <string name="practice">Tekrar</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">Uygulama teması</string>
+    <string name="language_interface">Arayüz dili</string>
+    <string name="suggest_repetition_of_words">Yinelenen sözcükleri bildir</string>
+    <string name="clear_dictionary">Sözlüğü temizle</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>Varsayılan</item>
+        <item>Açık renk</item>
+        <item>Koyu renk</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>İngilizce</item>
+        <item>Arapça</item>
+        <item>Çekça</item>
+        <item>Almanca</item>
+        <item>İspanyolca</item>
+        <item>Fransızca</item>
+        <item>Hintçe</item>
+        <item>İtalyanca</item>
+        <item>İbranice</item>
+        <item>Japonca</item>
+        <item>Kazakça</item>
+        <item>Korece</item>
+        <item>Lehçe</item>
+        <item>Portekizce</item>
+        <item>Rusça</item>
+        <item>Türkçe</item>
+        <item>Ukraynaca</item>
+        <item>Çince</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">Temizle</string>
+
+    <string name="switch_suggest_repetition_of_words_on">Sözcük tekrarı açık</string>
+    <string name="switch_suggest_repetition_of_words_off">Sözcük tekrarı kapalı</string>
+    <string name="undo">İptal</string>
+    <string name="new_word_created">Kendi eklediğiniz sözcük</string>
+    <string name="ok">Tamam</string>
+    <string name="word_not_enteted">Sözcük girilmedi</string>
+    <string name="pending">Bekleyen sözcükler</string>
+    <string name="data_is_not_valid">Geçersiz karakter girdiniz</string>
+    <string name="language_to_learn">Hedef dil</string>
+    <string name="learning_from_language">Kaynak dil</string>
+    <string name="attention">Dikkat!</string>
+    <string name="after_changing_language">Dili değiştirdikten sonra sözlüğünüzdeki bütün sözcükler kalıcı olarak silinecektir. Dili değiştirmek istediğinizden emin misiniz?</string>
+    <string name="confirm">Evet, eminim</string>
+    <string name="language_replaced">Dil değiştirildi ve sözlük temizlendi.</string>
+    <string name="cancel">Hayır, emin değilim</string>
+    <string name="impossible_choose">Belirttiğiniz dili seçmek mümkün değil</string>
+    <string name="cannot_choose_language">Aynı dili seçemezsiniz</string>
+    <string name="choose_languages_to_study">Öğrenilecek dilleri seçin</string>
+    <string name="language_from">Kaynak dil</string>
+    <string name="language_of">Hedef dil</string>
+    <string name="no_language">Öğrenmek istediğiniz dil listede yoksa \"Ayarlar\" bölümünden geliştiricilerle iletişime geçebilirsiniz</string>
+    <string name="choose">Seç</string>
+    <string name="unable_start_test">Test başlatılamıyor. \"Ezberlenecek sözcükler\" listesi en az 5 sözcük içermelidir</string>
+    <string name="limit_30">Sözcük listeye taşınamıyor, liste en fazla 30 sözcük içerebilir</string>
+    <string name="empty_field">Sözcük eklemediniz</string>
+    <string name="repetition">Tekrar et</string>
+    <string name="repetition_description">Sözcükleri tekrar etmeye başlamak ister misiniz? Bu testte ezberlediğiniz sözcükler arasından en fazla 20 sözcük seçilir. Karşılığını yanlış işaretlediğiniz sözcükler, listede boşluk varsa \"Ezberlenecek sözcükler\" listesine taşınır.</string>
+    <string name="start">Başla</string>
+    <string name="back">Geri dön</string>
+    <string name="word_is_removed">Sözcüğü sildiniz</string>
+    <string name="word_is_moved">Sözcüğü</string>
+    <string name="into_studied_ist">\"Ezberlenmiş Sözcükler\" listesine taşıdınız</string>
+    <string name="into_on_study_list">\"Ezberlenecek Sözcükler\" listesine taşıdınız</string>
+    <string name="into_pending_list">\"Bekleyen sözcükler\" listesine taşıdınız</string>
+    <string name="limit_20">Bu sözcük ezberlenmiş sözcükler listesine taşınamıyor. Listede maksimum 20 sözcük bulunabilir</string>
+    <string name="exit_test">Testten ayrılmak istiyor musunuz? Bütün ilerlemenizi kaybedeceksiniz.</string>
+    <string name="exit">Ayrıl</string>
+
+    <string name="empty_list_on_study_start">\"Ezberlenecek sözcükler\" listesindeki sözcükler burada görüntülenecektir. Testte bir sözcük için arka arkaya 10 kez doğru yanıt verdiğinizde bir buton görüntülenecek.</string>
+    <string name="empty_list_on_study_end">Bu buton sayesinde sözcüğü \"Ezberlenmiş sözcükler\" listesine taşıyabilirsiniz</string>
+
+    <string name="empty_list_studied_start">\"Ezberlenmiş sözcükler\" listesi burada görüntülenecektir. Bu sözcükleri değiştirirseniz veya butona tıklarsanız</string>
+    <string name="empty_list_studied_end">sözcük \"Ezberlenecek sözcükler\" listesine taşınır.</string>
+
+    <string name="empty_list_pending_start">"Burada \"Bekleyen sözcükler\" listesi görüntülenir. Butona dokunduğunuzda bu listedeki sözcükleri "</string>
+    <string name="empty_list_pending_end">\"Ezberlenecek sözcükler\" listesine taşıyabilirsiniz</string>
+
+    <string name="alphabetically">По алфавиту</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">По порядку</string>
+    <string name="newer">Daha yeni sözcüklere göre</string>
+    <string name="older">Daha eski sözcüklere göre</string>
+    <string name="enter_search_terms">Sözcük ara</string>
+    <string name="later">Daha sonra</string>
+
+    <string name="test_description">Test “Ezberlenecek sözcükler” listesindeki sözcükleri içerir. Arka arkaya 10 kez doğru yanıt verdiğiniz bir sözcüğü \"Ezberlenmiş sözcükler\" listesine aktarabileceksiniz.</string>
+    <string name="practice_description">Pratik yapmak için \"Ezberlenecek sözcükler\" ve \"Ezberlenmiş sözcükler\" listelerinden sözcükler seçildi. Bir sözcüğe yanlış yanıt verirseniz sözcük ya \"Ezberlenecek sözcükler\" listesine taşınacak ya da doğru yanıt sayacı sıfırlanacaktır.</string>
+</resources>

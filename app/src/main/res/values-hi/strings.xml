@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">शब्द</string>
+    <string name="title_tests">परीक्षण</string>
+    <string name="title_settings">सेटिंग</string>
+
+    <string name="on_study">"सीखने के लिए "</string>
+    <string name="studied">"सीखा गया "</string>
+
+    <string name="test">परीक्षण</string>
+    <string name="practice">अभ्यास</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">ऐप थीम</string>
+    <string name="language_interface">इंटरफ़ेस भाषा</string>
+    <string name="suggest_repetition_of_words">शब्दों की पुनरावृत्ति का सुझाव दें</string>
+    <string name="clear_dictionary">शब्दकोश साफ़ करें</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>प्रणाली</item>
+        <item>हल्का</item>
+        <item>डार्क</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>अंग्रेज़ी</item>
+        <item>अरबी</item>
+        <item>चेक</item>
+        <item>जर्मन</item>
+        <item>स्पैनिश</item>
+        <item>फ्रेंच</item>
+        <item>हिंदी</item>
+        <item>इतालवी</item>
+        <item>हिब्रू</item>
+        <item>जापानी</item>
+        <item>कजाख</item>
+        <item>कोरियाई</item>
+        <item>पोलिश</item>
+        <item>पुर्तगाली</item>
+        <item>रूसी</item>
+        <item>रूसी</item>
+        <item>यूक्रेनी</item>
+        <item>चीनी</item>
+    </string-array>
+
+    <string name="switch_suggest_repetition_of_words_on">"शब्द पुनरावृत्ति चालू करें "</string>
+    <string name="switch_suggest_repetition_of_words_off">"शब्द पुनरावृत्ति बंद करें "</string>
+    <string name="undo">रद्द करें</string>
+    <string name="new_word_created">आपने शब्द बनाया</string>
+    <string name="ok">ठीक है</string>
+    <string name="word_not_enteted">शब्द दर्ज नहीं किया गया</string>
+    <string name="pending">"लंबित है "</string>
+    <string name="data_is_not_valid">आपने अमान्य वर्ण दर्ज किये हैं</string>
+    <string name="language_to_learn">हम जो भाषा सीखते हैं</string>
+    <string name="learning_from_language">हम जिस भाषा से सीखते हैं</string>
+    <string name="attention">ध्यान दें !</string>
+    <string name="after_changing_language">भाषा बदलने के बाद, आपके शब्दकोश के सभी शब्द स्थायी रूप से हटा दिये जायेंगे। क्या आप वाकई भाषा बदलना चाहते हैं?</string>
+    <string name="confirm">पुष्टि करें</string>
+    <string name="language_replaced">भाषा में बदलाव किया गया है। शब्दकोश साफ़ किया गया।.</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="impossible_choose">"निर्दिष्ट भाषा का चयन करने में अक्षम हैं "</string>
+    <string name="cannot_choose_language">आप एक ही भाषा का चयन नहीं कर सकते</string>
+    <string name="choose_languages_to_study">सीखने के लिए भाषाओं का चयन करें</string>
+    <string name="language_from">इस से</string>
+    <string name="language_of">यह</string>
+    <string name="no_language">यदि आप जो भाषा सीखना चाहते हैं वह सूची में नहीं है, तो आप \"सेटिंग्स\" अनुभाग के माध्यम से डेवलपर्स से संपर्क कर सकते हैं</string>
+    <string name="choose">"चुनें "</string>
+    <string name="limit_30">शब्द को सूची में ले जाने में अक्षम, अधिकतम 30 शब्द</string>
+    <string name="empty_field">आपने एक शब्द भी नहीं डाला</string>
+    <string name="repetition">पुनरावृत्ति</string>
+    <string name="repetition_description">शब्दों को दोहराना प्रारंभ करना चाहते हैं? इस प्रकार के परीक्षण के लिए, आपके द्वारा सीखे गए 20 शब्दों तक का चयन किया जाता है। आपके द्वारा गलत उत्तर दिए गए किसी भी शब्द को \"सीखने के लिए\" सूची में ले जाया जायेगा, बशर्ते कि स्थान उपलब्ध हो तो।.</string>
+    <string name="start">"चालू करें "</string>
+    <string name="back">पीछे</string>
+    <string name="word_is_removed">आपने शब्द मिटा दिया</string>
+    <string name="word_is_moved">आपने शब्द को स्थानांतरित कर दिया</string>
+    <string name="into_studied_ist">\"सीख लिया\" सूची में</string>
+    <string name="into_on_study_list">\"सीखने के लिए\" सूची में</string>
+    <string name="limit_20">किसी शब्द को सीखी हुई सूची में ले जाने में अक्षम, अधिकतम 20 शब्द</string>
+    <string name="exit_test">क्या आप परीक्षा छोड़ना चाहते हैं? सारी प्रगति खो जायेगी।.</string>
+    <string name="exit">"लॉग आउट करें "</string>
+
+    <string name="empty_list_on_study_start">\"सीखने के लिए\" शब्द यहाँ प्रदर्शित किये जायेंगे। जब आप परीक्षणों में एक शब्द के लिए लगातार 10 बार उत्तर देते हैं, तो एक बटन दिखाई देगा।.</string>
+    <string name="empty_list_on_study_end">जिसके साथ आप एक शब्द को \"सीखे हुए\" सूची में ले जा सकते हैं</string>
+
+    <string name="empty_list_studied_start">यदि आप उन्हें बदलते हैं या बटन दबाते हैं, तो \"सीखे हुए\" शब्द यहाँ प्रदर्शित होंगे।</string>
+    <string name="empty_list_studied_end">शब्द को \"सीखने के लिए\" सूची में ले जाया जायेगा।.</string>
+
+    <string name="empty_list_pending_start">बटन की मदद से, \"लंबित\" शब्द यहाँ प्रदर्शित होंगे।</string>
+    <string name="empty_list_pending_end">आप शब्दों को \"सीखने के लिए\" सूची में ले जा सकते हैं</string>
+
+    <string name="alphabetically">वर्णमाला</string>
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="in_order">क्रम में</string>
+    <string name="newer">नया</string>
+    <string name="older">पुराना</string>
+    <string name="enter_search_terms">खोजे जाने वाले तथ्यों को दर्ज करें</string>
+    <string name="later">बाद में</string>
+
+    <string name="clear_dictionary_button">साफ़ करें</string>
+    <string name="unable_start_test">परीक्षण प्रारंभ करने में अक्षम । \"सीखने के लिए\" सूची में कम से कम 5 शब्द होने चाहिए</string>
+    <string name="into_pending_list">\"लंबित\" सूची में</string>
+    <string name="test_description">\"परीक्षण के लिए \"\"सीखने के लिए\"\" शब्द चुने गये हैं।</string>
+    <string name="practice_description">अभ्यास के लिए \"सीखने के लिए\" और \"सीखे हुए\" सूचियों से शब्द चुने गये हैं। यदि आप किसी शब्द का गलत उत्तर देते हैं, तो उसे या तो \"सीखने के लिए\" सूची में ले जाया जायेगा, या सही उत्तरों के काउंटर को शून्य पर रीसेट कर दिया जायेगा।.</string>
+    </resources>

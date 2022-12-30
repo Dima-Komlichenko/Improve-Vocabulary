@@ -1,3 +1,5 @@
 package com.example.domain.model
 
-data class Theme(var value: String)
+enum class Themes { SYSTEM, DARK, LIGHT }
+
+data class Theme(var value: Themes)

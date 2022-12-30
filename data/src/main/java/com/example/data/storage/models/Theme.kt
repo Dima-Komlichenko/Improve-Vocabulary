@@ -1,3 +1,5 @@
 package com.example.data.storage.models
 
-data class Theme(var value: String)
+import com.example.domain.model.Themes
+
+data class Theme(var value: Themes)

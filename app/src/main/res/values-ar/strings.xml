@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">الكلمات</string>
+    <string name="title_tests">الاختبارات</string>
+    <string name="title_settings">الإعدادات</string>
+
+    <string name="studied">درس</string>
+
+    <string name="test">اختبار</string>
+    <string name="practice">"التدريب "</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">موضوع التطبيق</string>
+    <string name="language_interface">لغة الواجهة - الانترفيس</string>
+    <string name="clear_dictionary">مسح القاموس</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>النظام</item>
+        <item>فاتح</item>
+        <item>غامق</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>اللغة الانجليزية</item>
+        <item>اللغة العربية</item>
+        <item>اللغة التشيكية</item>
+        <item>اللغة الالمانية</item>
+        <item>اللغة الاسبانية</item>
+        <item>اللغة الفرنسية</item>
+        <item>اللغة الهندية</item>
+        <item>اللغة الايطالية</item>
+        <item>اللغة العبرية</item>
+        <item>اللغة اليابانية</item>
+        <item>اللغة الكازاخستانية</item>
+        <item>اللغة الكورية</item>
+        <item>اللغة البولندية</item>
+        <item>اللغة البرتغالية</item>
+        <item>اللغة الروسية</item>
+        <item>اللغة التركية</item>
+        <item>اللغة الاوكرانية</item>
+        <item>اللغة الصينية</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">حذف</string>
+
+    <string name="switch_suggest_repetition_of_words_off">كرر الكلمات</string>
+    <string name="undo">إلغاء</string>
+    <string name="new_word_created">قمت بإنشاء الكلمة</string>
+    <string name="ok">اوك</string>
+    <string name="word_not_enteted">لم يتم إدخال الكلمة</string>
+    <string name="pending">قيد الانتظار</string>
+    <string name="language_to_learn">اللغة التي نتعلمها</string>
+    <string name="learning_from_language">اللغة التي نتعلم منها</string>
+    <string name="confirm">تأكيد</string>
+    <string name="language_replaced">تم تغيير اللغة. تم مسح القاموس.</string>
+    <string name="cancel">الالغاء</string>
+    <string name="impossible_choose">تعذر اختيار  اللغة المرادة</string>
+    <string name="cannot_choose_language">لا يمكنك اختيار نفس اللغة</string>
+    <string name="choose_languages_to_study">اختر اللغات التي تريد تعلمها</string>
+    <string name="language_from">من هذا</string>
+    <string name="language_of">هذا</string>
+    <string name="no_language">إذا لم تكن اللغة التي تريد تعلمها موجودة في القائمة ، فيمكنك الاتصال بالمطور من خلال قسم \"الإعدادات\"</string>
+    <string name="choose">اختر</string>
+    <string name="limit_30">تعذر نقل الكلمة إلى القائمة ، بحد أقصى 30 كلمة</string>
+    <string name="empty_field">لم تدخل كلمة واحدة</string>
+    <string name="repetition">التكرار</string>
+    <string name="back">الى الخلف</string>
+    <string name="word_is_removed">قمت بحذف الكلمة</string>
+    <string name="word_is_moved">قمت بنقل الكلمة</string>
+    <string name="into_studied_ist">في قائمة \"مدروسة\"</string>
+    <string name="into_on_study_list">إلى قائمة \"قيد الدراسة\"</string>
+    <string name="into_pending_list">إلى قائمة الانتظار</string>
+    <string name="limit_20">غير قادر على نقل كلمة إلى القائمة التي تم تعلمها ، 20 كلمة كحد أقصى</string>
+    <string name="exit_test">هل تريد مغادرة الاختبار؟ سيتم انهاء كامل العملية .</string>
+    <string name="exit">خروج</string>
+
+    <string name="empty_list_on_study_start">ستُعرض هنا عبارة \"قيد الدراسة\". عندما تجيب 10 مرات متتالية عن كلمة واحدة في الاختبارات ، سيظهر زر.</string>
+    <string name="empty_list_on_study_end">التي يمكنك من خلالها نقل الكلمة إلى قائمة \"قيد التعلم\"</string>
+
+    <string name="empty_list_studied_start">سيتم عرض الكلمات \"المتعلمة\" هنا. إذا قمت بتغييرها أو انقر فوق الزر</string>
+    <string name="empty_list_studied_end">سيتم نقل الكلمة إلى قائمة \"قيد الدراسة\".</string>
+
+    <string name="empty_list_pending_start">سيتم عرض الكلمات \"قيد الانتظار\" هنا. من خلال الضغط على هذا الزر</string>
+    <string name="empty_list_pending_end">يمكنك نقل الكلمات إلى قائمة \"قيد الدراسة\"</string>
+
+    <string name="alphabetically">مرتب حسب الحروف الأبجدية</string>
+    <string name="az">---</string>
+    <string name="za">---</string>
+    <string name="later">لاحقاً</string>
+    <string name="in_order">مرتب</string>
+    <string name="newer">الأحدث</string>
+    <string name="older">الأقدم</string>
+    <string name="enter_search_terms">أدخل عبارة البحث</string>
+    <string name="on_study">أثناء الدراسة</string>
+    <string name="suggest_repetition_of_words">أقترح تكرار الكلمات</string>
+    <string name="switch_suggest_repetition_of_words_on">تكرار الكلمات قيد التشغيل</string>
+    <string name="data_is_not_valid">لقد قمت بإدخال أحرف غير صالحة</string>
+    <string name="attention">انتباه!</string>
+    <string name="after_changing_language">بعد تغيير اللغة ، سيتم حذف جميع الكلمات في قاموسك نهائيًا. هل أنت متأكد أنك تريد تغيير اللغة؟</string>
+    <string name="unable_start_test">تعذر بدء الاختبار. يجب أن يكون هناك 5 كلمات على الأقل في قائمة \"قيد التعلم\"</string>
+    <string name="start">أبدأ</string>
+    <string name="repetition_description">هل تريد البدء في تكرار الكلمات؟ لهذا النوع من الاختبار ، تم تحديد ما يصل إلى 20 كلمة تعلمتها. سيتم نقل أي كلمات أجبت عليها بشكل غير صحيح إلى قائمة \"تحت الدراسة\" ، مع مراعاة المساحة.</string>
+
+    <string name="test_description">تم اختيار عبارة \"تحت الدراسة\" للاختبار.عندما تجيب 10 مرات متتالية عن كل كلمة بشكل صحيح ، ستتمكن من نقلها إلى قائمة \"التيت م تعلمها\".</string>
+    <string name="practice_description">تم اختيار عبارتين \"قيد الدراسة\" و \"المدروسة\" للتدرب العملي إذا أجبت على كلمة بشكل غير صحيح ، فسيتم إما نقلها إلى قائمة \"قيد الدراسة\" أو سيتم إعادة تعيين عداد الإجابات الصحيحة إلى الصفر.</string>
+</resources>

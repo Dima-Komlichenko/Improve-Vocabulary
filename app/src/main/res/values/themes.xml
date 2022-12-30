@@ -42,6 +42,10 @@
         <item name="android:background">@drawable/light_gradient_right_answer</item>
     </style>
 
+    <style name="wrong_answer_background">
+        <item name="android:background">@drawable/light_gradient_wrong_answer</item>
+    </style>
+
     <style name="additional_menu">
         <item name="cardBackgroundColor">@color/additional_background_light</item>
         <item name="strokeColor">@color/background_additional_view_stroke_on_light_theme</item>
@@ -75,8 +79,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.ImproveVocabulary.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!--<style name="Theme.ImproveVocabulary.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.ImproveVocabulary.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.ImproveVocabulary.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
 
 </resources>

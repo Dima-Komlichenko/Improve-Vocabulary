@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.Language
 import com.example.domain.utils.DataValidator
@@ -22,21 +23,20 @@ import com.google.android.material.snackbar.Snackbar
 open class EditableWordAdapter(
     private val tts: TextToSpeech,
     val languageFrom: Language,
-    val languageOf: Language
+    val languageOf: Language,
 ) : WordAdapter(tts) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditableWordHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.editable_word_item, parent, false)
         context = parent.context
-        return EditableWordHolder(view, tts, languageFrom, languageOf)
+        return EditableWordHolder(view, tts)
     }
 
     open inner class EditableWordHolder(
         override var item: View,
         tts: TextToSpeech,
-        languageFrom: Language,
-        languageOf: Language
     ) :
         WordHolder(item, tts) {
 
@@ -59,10 +59,10 @@ open class EditableWordAdapter(
             bindingEditable.tvTranslate.setText(word.translate)
 
             bindingEditable.etWord.hint =
-                DataConverter.capitalize(languageOf.name)
+                DataConverter.capitalize(languageOf.value.toString())
 
             bindingEditable.tvTranslate.hint =
-                DataConverter.capitalize(languageFrom.name)
+                DataConverter.capitalize(languageFrom.value.toString())
 
             textChangingHandlerToShowCardDetails(bindingEditable.etWord, wordPair.word)
             textChangingHandlerToShowCardDetails(bindingEditable.tvTranslate, wordPair.translate)
@@ -79,7 +79,7 @@ open class EditableWordAdapter(
                     item.parent as RecyclerView,
                     context!!.resources.getString(R.string.empty_field),
                     Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                ).setAction(R.string.ok) {}
+                )
                     .show()
                 return false
             }
@@ -91,7 +91,7 @@ open class EditableWordAdapter(
                     item.parent as RecyclerView,
                     context!!.resources.getString(R.string.data_is_not_valid),
                     Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                ).setAction(R.string.ok) {}
+                )
                     .show()
                 return false
             }
@@ -106,7 +106,7 @@ open class EditableWordAdapter(
                 "The word " + " \"" + wordPair.word + "\" "
                         + " is saved",
                 Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-            ).setAction(R.string.ok) {}
+            )
                 .show()
             btnSave.visibility = View.GONE
             return true

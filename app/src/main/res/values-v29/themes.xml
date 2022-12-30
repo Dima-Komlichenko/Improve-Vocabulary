@@ -20,7 +20,7 @@
     </style>
 
 
-    <style name="neumorph_CardButton" parent="@style/Widget.Neumorph.Button">
+    <!--<style name="neumorph_CardButton" parent="@style/Widget.Neumorph.Button">
         <item name="neumorph_lightSource">leftTop</item>
         <item name="neumorph_shadowColorLight">@color/light_shadow_on_light_theme</item>
         <item name="neumorph_shadowColorDark">@color/dark_shadow_on_light_theme</item>
@@ -42,6 +42,10 @@
 
     <style name="right_answer_background">
         <item name="android:background">@drawable/light_gradient_right_answer</item>
+    </style>
+
+    <style name="wrong_answer_background">
+        <item name="android:background">@drawable/light_gradient_wrong_answer</item>
     </style>
 
     <style name="additional_menu">
@@ -69,6 +73,6 @@
     <style name="text_view" parent="Widget.AppCompat.TextView">
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/text_dark</item>
-    </style>
+    </style>-->
 
 </resources>

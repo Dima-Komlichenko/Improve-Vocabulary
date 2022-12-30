@@ -12,8 +12,12 @@ import com.example.data.storage.room.dao.PendingWordPairDao
 import com.example.data.storage.room.dao.StudiedWordPairDao
 
 
-@Database(entities = [OnStudyWordPair::class, PendingWordPair::class, StudiedWordPair::class], version = 1, exportSchema = false)
-abstract class WordPairDB: RoomDatabase() {
+@Database(
+    entities = [OnStudyWordPair::class, PendingWordPair::class, StudiedWordPair::class],
+    version = 1,
+    exportSchema = false
+)
+abstract class WordPairDB : RoomDatabase() {
 
     abstract fun pendingWordPairDao(): PendingWordPairDao
     abstract fun onStudyWordPairDao(): OnStudyWordPairDao
@@ -25,13 +29,14 @@ abstract class WordPairDB: RoomDatabase() {
 
         fun getDB(context: Context): WordPairDB {
             val tempInstance = INSTANCE
-            if(tempInstance != null) return tempInstance
+            if (tempInstance != null) return tempInstance
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WordPairDB::class.java,
                     "word_pairs_db"
                 )
+                    //.fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 return instance

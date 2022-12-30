@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="12"
+                android:text="-"
                 android:textSize="30sp" />
 
         </LinearLayout>
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/btn_studied"
+        android:id="@+id/btn_practice"
         style="@style/neumorph_CardButton"
         android:layout_width="280dp"
         android:layout_height="168dp"

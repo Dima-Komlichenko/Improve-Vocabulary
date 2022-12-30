@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_words">מילים</string>
+    <string name="title_tests">מבחנים</string>
+    <string name="title_settings">הגדרות</string>
+
+    <string name="on_study">נלמדות</string>
+    <string name="studied">נלמדו</string>
+
+    <string name="test">מבחן</string>
+    <string name="practice">תרגול</string>
+
+    <!-- Настройки -->
+    <string name="app_theme">נושא האפליקציה</string>
+    <string name="language_interface">שפת הממשק</string>
+    <string name="suggest_repetition_of_words">קבל הצעה של חזרה על מילים</string>
+    <string name="clear_dictionary">נקה את המילון</string>
+
+    <!-- Тема приложения -->
+    <string-array name="app_themes">
+        <item>מערכת</item>
+        <item>בהיר</item>
+        <item>כהה</item>
+    </string-array>
+
+    <!-- Язык приложения -->
+    <string-array name="languages">
+        <item>אנגלית</item>
+        <item>ערבית</item>
+        <item>צ\'כית</item>
+        <item>גרמנית</item>
+        <item>ספרדית</item>
+        <item>צרפתית</item>
+        <item>הינדי</item>
+        <item>איטלקית</item>
+        <item>עברית</item>
+        <item>יפנית</item>
+        <item>קזחית</item>
+        <item>קוראינית</item>
+        <item>פולנית</item>
+        <item>פורטוגלית</item>
+        <item>רוסית</item>
+        <item>רוסית</item>
+        <item>אוקראינית</item>
+        <item>סינית</item>
+    </string-array>
+
+    <string name="clear_dictionary_button">נקה</string>
+
+    <string name="switch_suggest_repetition_of_words_on">חזרה על מילים מופעלת</string>
+    <string name="switch_suggest_repetition_of_words_off">חזרה על מילים מנוטרלת</string>
+    <string name="undo">בטל</string>
+    <string name="new_word_created">יצרת מילה</string>
+    <string name="ok">או קיי</string>
+    <string name="word_not_enteted">המילה לא הוזנה</string>
+    <string name="pending">ממתינות</string>
+    <string name="data_is_not_valid">הזנת תווים לא חוקיים</string>
+    <string name="language_to_learn">שפה שנלמדת</string>
+    <string name="attention">שים לב!</string>
+    <string name="after_changing_language">לאחר שינוי שפה כל המילים תימחקנה ממילונך באופן בלתי הפיך. האם עדיין ברצונך לשנות את השפה?</string>
+    <string name="confirm">אשר</string>
+    <string name="language_replaced">השפה שונתה. המילון נוקה.</string>
+    <string name="cancel">בטל</string>
+    <string name="impossible_choose">אי אפשר לבחור את השפה המועדפת.</string>
+    <string name="cannot_choose_language">אי אפשר לבחור את אותה השפה</string>
+    <string name="choose_languages_to_study">בחר שפות שתילמדנה</string>
+    <string name="language_of">זאת</string>
+    <string name="no_language">אם השפה שברצונך ללמוד איננה ברשימה אתה מוזמן ליצור קשר עם המפתחים דרך אזור \"הגדרות\"</string>
+    <string name="unable_start_test">המבחן לא יכול להתחיל. רשימת \"נלמדות\" צריכה להכיל לפחות 5 מילים.</string>
+    <string name="empty_field">לא הזנתה מילה</string>
+    <string name="repetition">חזרה</string>
+    <string name="start">התחל</string>
+    <string name="word_is_removed">מחקת את המילה</string>
+    <string name="into_studied_ist">לרשימת \"נלמדו\"</string>
+    <string name="into_on_study_list">לרשימת \"נלמדות\"</string>
+    <string name="into_pending_list">לרשימת \"ממתינות\"</string>
+    <string name="exit_test">האם ברצונך להפסיק את המבחן? כל התוצאות תאופסנה.</string>
+    <string name="exit">צא</string>
+
+    <string name="empty_list_on_study_start">כאן תוצגנה מילים מרשימת \"נלמדות\". לאחר שבמבחנים תתן  תשובה 10 פעמים ברציפות למילה אחת יופיע כפתור.</string>
+    <string name="empty_list_on_study_end">באמצעותו תוכל להעביר את המילה לרשימת \"נלמדו\"</string>
+
+    <string name="empty_list_studied_start">כאן תוצגנה מילים מרשימת \"נלמדו\". אם תשנה אותן או אם תלחץ על הכפתור</string>
+    <string name="empty_list_studied_end">המילה תועבר לרשימת \"נלמדות\".</string>
+
+    <string name="empty_list_pending_start">כאן תוצגנה מילים מרשימת \"ממתינות\". באמצעות הכפתור</string>
+    <string name="empty_list_pending_end">תוכל להעביר מילים לרשימת \"נלמדות\"</string>
+
+    <string name="alphabetically">אָלֶף בֵּיתִי</string>
+    <string name="az">А-я</string>
+    <string name="za">Я-а</string>
+    <string name="in_order">בסדר</string>
+    <string name="newer">חדשות יותר</string>
+    <string name="older">ישנות יותר</string>
+    <string name="enter_search_terms">הזן מילת חיפוש</string>
+    <string name="later">מאוחר יותר</string>
+
+    <string name="test_description">לצורך המבחן נבחרו מילים מרשימת \"נלמדות\". לאחר שתתן תשובה נכונה 10 פעמים ברציפות לכל מילה תוכל להעביר אותה לרשימת \"נלמדו\".</string>
+    <string name="practice_description">המילים \'במחקר\' ו\'נלמד\' נבחרו לתרגול. אם תענה על מילה שגויה, היא תועבר לרשימת \'במחקר\' או שמונה התשובות הנכונות יאופס לאפס.</string>
+    <string name="learning_from_language">שפה בה לומדים</string>
+    <string name="limit_20">אי אפשר להעביר את המילה לרשימת המילים הנלמדות, המכסה של 20 מילים מוצתה</string>
+    <string name="language_from">מזאת</string>
+    <string name="choose">בחר</string>
+    <string name="limit_30">אי אפשר להעביר את המילה לרשימה, המכסה של 30 מילים מוצתה</string>
+    <string name="back">אחורה</string>
+    <string name="repetition_description">האם ברצונך להתחיל חזרה על מילים? לסוג מבחן זה תיבחרנה עד 20 מילים שלמדת. כל המילים שתתרגם לא נכון יועברו לרשימת \"נלמדות\" ככל שיש בה מקום.</string>
+    <string name="word_is_moved">העברת את המילה</string>
+</resources>
