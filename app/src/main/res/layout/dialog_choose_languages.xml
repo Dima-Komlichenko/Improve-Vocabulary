@@ -20,7 +20,6 @@
 
     <TextView
         android:layout_marginBottom="12dp"
-        android:id="@+id/tv_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/language_from"
@@ -40,7 +39,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/tv_of"
         android:layout_marginBottom="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,7 +67,6 @@
         app:layout_constraintTop_toBottomOf="@+id/sp_language_of_learning" />
 
     <TextView
-        android:id="@+id/textView1"
         android:layout_width="206dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

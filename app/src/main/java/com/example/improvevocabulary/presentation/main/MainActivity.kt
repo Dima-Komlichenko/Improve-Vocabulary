@@ -2,8 +2,6 @@ package com.example.improvevocabulary.presentation.main
 
 import android.app.ActivityOptions
 import android.content.Intent
-import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -31,6 +29,7 @@ import com.example.improvevocabulary.databinding.ActivityMainBinding
 import com.example.improvevocabulary.presentation.test.TestActivity
 import com.example.improvevocabulary.presentation.tests.TypeOfTestInfo
 import com.example.improvevocabulary.presentation.tests.TypeOfTestInfoConst
+import com.example.improvevocabulary.utlis.DataConverter
 import com.example.improvevocabulary.utlis.DateTimePicker
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -108,10 +107,18 @@ class MainActivity : AppCompatActivity() {
         dialogChooseLanguage.findViewById<Button>(R.id.btn_choose).setOnClickListener {
 
             var langFromLearning: Languages =
-                dialogChooseLanguage.findViewById<Spinner>(R.id.sp_language_from_learning).selectedItem as Languages
+                Languages.values().find {
+                    DataConverter.capitalize(it.name) == DataConverter.capitalize(
+                        dialogChooseLanguage.findViewById<Spinner>(R.id.sp_language_from_learning).selectedItem.toString()
+                    )
+                }!!
 
             var langOfLearning: Languages =
-                dialogChooseLanguage.findViewById<Spinner>(R.id.sp_language_of_learning).selectedItem as Languages
+                Languages.values().find {
+                    DataConverter.capitalize(it.name) == DataConverter.capitalize(
+                        dialogChooseLanguage.findViewById<Spinner>(R.id.sp_language_of_learning).selectedItem.toString()
+                    )
+                }!!
 
             if (langFromLearning == langOfLearning) {
                 Snackbar.make(
@@ -156,10 +163,10 @@ class MainActivity : AppCompatActivity() {
         val dm = res.displayMetrics
         val conf = res.configuration
         val langVm = viewModel.appLanguage.value!!
-        Log.i("appLang",  "MAIN. viewModel.appLanguage.value!! = " + langVm.value.name)
+        Log.i("appLang", "MAIN. viewModel.appLanguage.value!! = " + langVm.value.name)
         var locale = Locale(LanguageConverter.convertLangToCode(langVm))
         conf.setLocale(locale)
-        Log.i("appLang",  "MAIN.conf.setLocale(locale)" + locale.language)
+        Log.i("appLang", "MAIN.conf.setLocale(locale)" + locale.language)
         res.updateConfiguration(conf, dm)
     }
 

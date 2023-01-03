@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Uygulama teması</string>
     <string name="language_interface">Arayüz dili</string>
-    <string name="suggest_repetition_of_words">Yinelenen sözcükleri bildir</string>
     <string name="clear_dictionary">Sözlüğü temizle</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Temizle</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Sözcük tekrarı açık</string>
-    <string name="switch_suggest_repetition_of_words_off">Sözcük tekrarı kapalı</string>
     <string name="undo">İptal</string>
     <string name="new_word_created">Kendi eklediğiniz sözcük</string>
     <string name="ok">Tamam</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Sözcüğü</string>
     <string name="into_studied_ist">\"Ezberlenmiş Sözcükler\" listesine taşıdınız</string>
     <string name="into_on_study_list">\"Ezberlenecek Sözcükler\" listesine taşıdınız</string>
-    <string name="into_pending_list">\"Bekleyen sözcükler\" listesine taşıdınız</string>
     <string name="limit_20">Bu sözcük ezberlenmiş sözcükler listesine taşınamıyor. Listede maksimum 20 sözcük bulunabilir</string>
     <string name="exit_test">Testten ayrılmak istiyor musunuz? Bütün ilerlemenizi kaybedeceksiniz.</string>
     <string name="exit">Ayrıl</string>
@@ -95,8 +91,6 @@
     <string name="empty_list_pending_end">\"Ezberlenecek sözcükler\" listesine taşıyabilirsiniz</string>
 
     <string name="alphabetically">По алфавиту</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">По порядку</string>
     <string name="newer">Daha yeni sözcüklere göre</string>
     <string name="older">Daha eski sözcüklere göre</string>

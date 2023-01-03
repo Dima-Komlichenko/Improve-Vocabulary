@@ -74,11 +74,6 @@
         <item name="android:textColor">@color/text_dark</item>
     </style>
 
-    <style name="Theme.ImproveVocabulary.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <!--<style name="Theme.ImproveVocabulary.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ImproveVocabulary.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->

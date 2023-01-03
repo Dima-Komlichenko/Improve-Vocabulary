@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Тема приложения</string>
     <string name="language_interface">Язык интерфейса</string>
-    <string name="suggest_repetition_of_words">Предлагать повторение слов</string>
     <string name="clear_dictionary">Очистить словарь</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Очистить</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Повторение слов включено</string>
-    <string name="switch_suggest_repetition_of_words_off">Повторение слов выключено</string>
     <string name="undo">Отменить</string>
     <string name="new_word_created">Вы создали слово</string>
     <string name="ok">Ок</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Вы переместили слово</string>
     <string name="into_studied_ist">в список \'изученные\'</string>
     <string name="into_on_study_list">в список \'на изучении\'</string>
-    <string name="into_pending_list">в список \'в ожидании\'</string>
     <string name="limit_20">Невозможно переместить слово в изучаемый список, максимум 20 слов.</string>
     <string name="exit_test">Вы хотите покинуть тест? Весь прогресс будет утерян.</string>
     <string name="exit">Выйти</string>
@@ -95,8 +91,6 @@
     <string name="empty_list_pending_end">вы можете перенести слово в список \'на изучении\'</string>
 
     <string name="alphabetically">По алфавиту</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">По порядку</string>
     <string name="newer">Новые</string>
     <string name="older">Старые</string>

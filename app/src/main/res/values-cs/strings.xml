@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Téma aplikace</string>
     <string name="language_interface">Jazyk rozhraní</string>
-    <string name="suggest_repetition_of_words">Navrhovat opakování slov</string>
     <string name="clear_dictionary">Vymazat slovník</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Vymazat</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Opakovaní slov zapnuto</string>
-    <string name="switch_suggest_repetition_of_words_off">Opakování slov vypnuto</string>
     <string name="undo">Zrušit</string>
     <string name="new_word_created">Vytvořili jste slovo</string>
     <string name="ok">Ok</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Posunuli jste slovo</string>
     <string name="into_studied_ist">do seznamu \"naučená\"</string>
     <string name="into_on_study_list">do seznamu \"k naučení\"</string>
-    <string name="into_pending_list">do seznamu \"čekání\"</string>
     <string name="limit_20">Nelze přesunout slovo do seznamu k naučení, bylo dosaženo maximálního počtu 20 slov</string>
     <string name="exit_test">Chcete test opustit? Veškerý pokrok bude ztracen.</string>
 
@@ -95,8 +91,6 @@
 
     <string name="alphabetically">Abecední</string>
 
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">V pořádku</string>
     <string name="newer">Nový</string>
     <string name="older">Starý</string>

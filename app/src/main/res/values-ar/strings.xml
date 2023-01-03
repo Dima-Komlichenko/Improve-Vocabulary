@@ -45,7 +45,6 @@
 
     <string name="clear_dictionary_button">حذف</string>
 
-    <string name="switch_suggest_repetition_of_words_off">كرر الكلمات</string>
     <string name="undo">إلغاء</string>
     <string name="new_word_created">قمت بإنشاء الكلمة</string>
     <string name="ok">اوك</string>
@@ -71,7 +70,6 @@
     <string name="word_is_moved">قمت بنقل الكلمة</string>
     <string name="into_studied_ist">في قائمة \"مدروسة\"</string>
     <string name="into_on_study_list">إلى قائمة \"قيد الدراسة\"</string>
-    <string name="into_pending_list">إلى قائمة الانتظار</string>
     <string name="limit_20">غير قادر على نقل كلمة إلى القائمة التي تم تعلمها ، 20 كلمة كحد أقصى</string>
     <string name="exit_test">هل تريد مغادرة الاختبار؟ سيتم انهاء كامل العملية .</string>
     <string name="exit">خروج</string>
@@ -86,16 +84,12 @@
     <string name="empty_list_pending_end">يمكنك نقل الكلمات إلى قائمة \"قيد الدراسة\"</string>
 
     <string name="alphabetically">مرتب حسب الحروف الأبجدية</string>
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="later">لاحقاً</string>
     <string name="in_order">مرتب</string>
     <string name="newer">الأحدث</string>
     <string name="older">الأقدم</string>
     <string name="enter_search_terms">أدخل عبارة البحث</string>
     <string name="on_study">أثناء الدراسة</string>
-    <string name="suggest_repetition_of_words">أقترح تكرار الكلمات</string>
-    <string name="switch_suggest_repetition_of_words_on">تكرار الكلمات قيد التشغيل</string>
     <string name="data_is_not_valid">لقد قمت بإدخال أحرف غير صالحة</string>
     <string name="attention">انتباه!</string>
     <string name="after_changing_language">بعد تغيير اللغة ، سيتم حذف جميع الكلمات في قاموسك نهائيًا. هل أنت متأكد أنك تريد تغيير اللغة؟</string>

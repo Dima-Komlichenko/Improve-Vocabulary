@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Қолданба тақырыбы</string>
     <string name="language_interface">Интерфейс тілі</string>
-    <string name="suggest_repetition_of_words">Сөздерді қайталауды ұсыну</string>
     <string name="clear_dictionary">Сөздікті тазалау</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Тазалау</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Сөздерді қайталау қосулы</string>
-    <string name="switch_suggest_repetition_of_words_off">Сөздерді қайталау өшірулі</string>
     <string name="undo">Болдырмау</string>
     <string name="new_word_created">Сөзді жасадыңыз</string>
     <string name="ok">Мақұл</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Сөзді жылжыттыңыз</string>
     <string name="into_studied_ist">«оқылған» тізіміне</string>
     <string name="into_on_study_list">«оқылуда» тізіміне</string>
-    <string name="into_pending_list">«күтілуде» тізіміне</string>
     <string name="limit_20">Сөзді оқылатын сөздер тізіміне жылжыту мүмкін емес, ең көбі 20 сөз</string>
     <string name="exit_test">Сіз тесттен шыққыңыз келе ме? Барлық прогресс жоғалады.</string>
     <string name="exit">Шығу</string>
@@ -95,8 +91,6 @@
     <string name="empty_list_pending_end">Сіз сөздерді «оқылуда» тізіміне жылжыта аласыз</string>
 
     <string name="alphabetically">Алфавиттік</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">Қалпында</string>
     <string name="newer">жаңалау</string>
     <string name="older">ескілеу</string>

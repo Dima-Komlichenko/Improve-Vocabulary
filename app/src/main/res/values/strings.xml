@@ -14,7 +14,6 @@
     <!-- Settings -->
     <string name="app_theme">App theme</string>
     <string name="language_interface">Language interface</string>
-    <string name="suggest_repetition_of_words">Suggest repetition of words</string>
     <string name="clear_dictionary">Clear the dictionary</string>
 
     <!-- Light modes -->
@@ -48,9 +47,6 @@
 
     <string name="clear_dictionary_button">Clear</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Repetition of words switched on</string>
-    <string name="switch_suggest_repetition_of_words_off">Repetition of words switched off</string>
-
     <string name="btn_back_desc" translatable="false">Button back</string>
     <string name="btn_filter_desc" translatable="false">Button filter</string>
     <string name="btn_search_desc" translatable="false">Button search</string>
@@ -71,10 +67,7 @@
     <string name="impossible_choose">Unable to select the specified language</string>
     <string name="title_activity_test" translatable="false">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="next" translatable="false">Next</string>
-    <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="limit_20">Unable to move the word to the \"on study\" list, the maximal of 20 words has been reached.</string>
     <string name="cannot_choose_language">You can\'t choose the same language</string>
     <string name="choose_languages_to_study">Choose learning languages</string>
@@ -94,7 +87,6 @@
     <string name="word_is_moved">You have moved the word</string>
     <string name="into_studied_ist">into studied list</string>
     <string name="into_on_study_list">into on study list</string>
-    <string name="into_pending_list">into pending list</string>
     <string name="exit_test">Do you want to leave the test? All progress will be lost.</string>
     <string name="exit">Exit</string>
 
@@ -113,8 +105,6 @@
     <string name="btn_remove_desc" translatable="false">Button remove</string>
     <string name="btn_move_desc" translatable="false">Button move</string>
     <string name="alphabetically">Alphabetically</string>
-    <string name="az">A-z</string>
-    <string name="za">Z-a</string>
     <string name="in_order">In order</string>
     <string name="newer">Newer</string>
     <string name="older">Older</string>

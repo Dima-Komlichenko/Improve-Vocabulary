@@ -55,7 +55,7 @@ class WordsFragment : Fragment() {
         }
 
         viewModel.pendingCount.observe(viewLifecycleOwner) {
-            binding.tvPedningCount.text = it.toString()
+            binding.tvPendingCount.text = it.toString()
         }
 
         viewModel.studiedCount.observe(viewLifecycleOwner) {
@@ -82,7 +82,7 @@ class WordsFragment : Fragment() {
         setOnClickListener(binding.btnStudied, WordListInfo.Studied)
 
         binding.tvOnStudyCount.text = viewModel.onStudyCount.value?.toString()
-        binding.tvPedningCount.text = viewModel.pendingCount.value?.toString()
+        binding.tvPendingCount.text = viewModel.pendingCount.value?.toString()
         binding.tvStudiedCount.text = viewModel.studiedCount.value?.toString()
 
         viewModel.isOnStudyListContainsStudiedWords.value?.let {

@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="red">#80A10000</color>
 
     <color name="orange">#B06520</color>
@@ -17,8 +10,6 @@
 
 
     <!-- Background neumorph button on light theme-->
-    <color name="background_button_on_light_theme">#CBCBCB</color>
-    <color name="background_button_on_dark_theme">#2C2C2C</color>
 
     <!-- Status bar -->
     <color name="status_bar_light">#A8A8A8</color>
@@ -27,8 +18,6 @@
     <!-- Text-->
     <color name="text_light">#818181</color>
     <color name="text_dark">#515151</color>
-    <color name="non_clicable_light_string">#3F3F3F</color>
-    <color name="non_clicable_dark_string">#B5B5B5</color>
 
     <!-- Shadow on light theme -->
     <color name="light_shadow_on_light_theme">#E6EDEDED</color>
@@ -53,8 +42,6 @@
     <color name="background_additional_view_stroke_on_dark_theme">#3D3D3D</color>
 
 
-
-    <color name="background_additional_btn">#C3C3C3</color>
     <color name="background_little_btn_on_light_theme">#CECECE</color>
     <color name="background_little_btn_on_dark_theme">#3C3C3C</color>
 

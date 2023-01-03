@@ -75,14 +75,9 @@ class WordPairRepository(var context: Context) :
     }
 
     override fun update(wordPair: OnStudyWordPair) {
-
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch(Job()) {
             onStudyWordPairDao.updateWordPair(mapToData(wordPair))
         }
-
-        /*GlobalScope.launch(Dispatchers.Default) {
-            onStudyWordPairDao.updateWordPair(mapToData(wordPair))
-        }*/
     }
 
     override fun update(wordPair: PendingWordPair) {

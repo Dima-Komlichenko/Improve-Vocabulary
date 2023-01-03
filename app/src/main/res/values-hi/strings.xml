@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">ऐप थीम</string>
     <string name="language_interface">इंटरफ़ेस भाषा</string>
-    <string name="suggest_repetition_of_words">शब्दों की पुनरावृत्ति का सुझाव दें</string>
     <string name="clear_dictionary">शब्दकोश साफ़ करें</string>
 
     <!-- Тема приложения -->
@@ -45,8 +44,6 @@
         <item>चीनी</item>
     </string-array>
 
-    <string name="switch_suggest_repetition_of_words_on">"शब्द पुनरावृत्ति चालू करें "</string>
-    <string name="switch_suggest_repetition_of_words_off">"शब्द पुनरावृत्ति बंद करें "</string>
     <string name="undo">रद्द करें</string>
     <string name="new_word_created">आपने शब्द बनाया</string>
     <string name="ok">ठीक है</string>
@@ -91,8 +88,6 @@
     <string name="empty_list_pending_end">आप शब्दों को \"सीखने के लिए\" सूची में ले जा सकते हैं</string>
 
     <string name="alphabetically">वर्णमाला</string>
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">क्रम में</string>
     <string name="newer">नया</string>
     <string name="older">पुराना</string>
@@ -101,7 +96,6 @@
 
     <string name="clear_dictionary_button">साफ़ करें</string>
     <string name="unable_start_test">परीक्षण प्रारंभ करने में अक्षम । \"सीखने के लिए\" सूची में कम से कम 5 शब्द होने चाहिए</string>
-    <string name="into_pending_list">\"लंबित\" सूची में</string>
     <string name="test_description">\"परीक्षण के लिए \"\"सीखने के लिए\"\" शब्द चुने गये हैं।</string>
     <string name="practice_description">अभ्यास के लिए \"सीखने के लिए\" और \"सीखे हुए\" सूचियों से शब्द चुने गये हैं। यदि आप किसी शब्द का गलत उत्तर देते हैं, तो उसे या तो \"सीखने के लिए\" सूची में ले जाया जायेगा, या सही उत्तरों के काउंटर को शून्य पर रीसेट कर दिया जायेगा।.</string>
     </resources>

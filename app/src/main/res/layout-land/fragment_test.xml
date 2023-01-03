@@ -66,14 +66,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_slash">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/qwer"
             style="@style/little_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
             <TextView
-                android:id="@+id/tv_question"
                 style="@style/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,13 +118,11 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_answer_1"
             style="@style/little_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_answer_1"
                 style="@style/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -157,14 +153,12 @@
         app:layout_constraintTop_toBottomOf="@+id/cv_answer_1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_answer_2"
             style="@style/little_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
             <TextView
-                android:id="@+id/tv_answer_2"
                 style="@style/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -196,14 +190,12 @@
         app:layout_constraintTop_toBottomOf="@+id/ncv_word_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_answer_3"
             style="@style/little_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
             <TextView
-                android:id="@+id/tv_answer_3"
                 style="@style/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -234,13 +226,11 @@
         app:layout_constraintTop_toBottomOf="@+id/cv_answer_3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_answer_4"
             style="@style/little_gradient_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_answer_4"
                 style="@style/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

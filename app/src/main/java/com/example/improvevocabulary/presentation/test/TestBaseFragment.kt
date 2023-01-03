@@ -56,16 +56,16 @@ open class TestBaseFragment : Fragment() {
             viewModel.setTTSText(viewModel.tests.value!![viewModel.testIndex].question)
             viewModel.startTTS()
         }
-        tvQuestion.text = viewModel.tests.value!![viewModel.testIndex].question
-        tvAnswer1.text = viewModel.tests.value!![viewModel.testIndex].answers[0]
-        tvAnswer2.text = viewModel.tests.value!![viewModel.testIndex].answers[1]
-        tvAnswer3.text = viewModel.tests.value!![viewModel.testIndex].answers[2]
-        tvAnswer4.text = viewModel.tests.value!![viewModel.testIndex].answers[3]
+        tvQuestion?.text = viewModel.tests.value!![viewModel.testIndex].question
+        tvAnswer1?.text = viewModel.tests.value!![viewModel.testIndex].answers[0]
+        tvAnswer2?.text = viewModel.tests.value!![viewModel.testIndex].answers[1]
+        tvAnswer3?.text = viewModel.tests.value!![viewModel.testIndex].answers[2]
+        tvAnswer4?.text = viewModel.tests.value!![viewModel.testIndex].answers[3]
 
-        setOnClickAnswerButton(0, binding.cvAnswer1, binding.clAnswer1, binding.tvAnswer1)
-        setOnClickAnswerButton(1, binding.cvAnswer2, binding.clAnswer2, binding.tvAnswer2)
-        setOnClickAnswerButton(2, binding.cvAnswer3, binding.clAnswer3, binding.tvAnswer3)
-        setOnClickAnswerButton(3, binding.cvAnswer4, binding.clAnswer4, binding.tvAnswer4)
+        setOnClickAnswerButton(0, binding.cvAnswer1, binding.clAnswer1!!, binding.tvAnswer1!!)
+        setOnClickAnswerButton(1, binding.cvAnswer2, binding.clAnswer2!!, binding.tvAnswer2!!)
+        setOnClickAnswerButton(2, binding.cvAnswer3, binding.clAnswer3!!, binding.tvAnswer3!!)
+        setOnClickAnswerButton(3, binding.cvAnswer4, binding.clAnswer4!!, binding.tvAnswer4!!)
 
         binding.btnSound.setOnClickListener {
             viewModel.startTTS()

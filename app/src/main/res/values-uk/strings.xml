@@ -14,7 +14,6 @@
     <!-- Налаштування -->
     <string name="app_theme">Тема додатку</string>
     <string name="language_interface">Мова інтерфейсу</string>
-    <string name="suggest_repetition_of_words">Пропонувати повторення слів</string>
     <string name="clear_dictionary">Очистити словник</string>
 
     <!-- Тема додатку -->
@@ -48,8 +47,6 @@
 
     <string name="clear_dictionary_button">Очистити</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Повторення слів увімкнено</string>
-    <string name="switch_suggest_repetition_of_words_off">Повторення слів вимкнено</string>
     <string name="undo">Скасувати</string>
     <string name="new_word_created">Ви створили слово</string>
     <string name="ok">Ок</string>
@@ -82,7 +79,6 @@
     <string name="word_is_moved">Ви перемістили слово</string>
     <string name="into_studied_ist">у лист \'вивчені\'</string>
     <string name="into_on_study_list">у лист \'на вивченні\'</string>
-    <string name="into_pending_list">у лист \'в очікуванні\'</string>
     <string name="exit_test">Ви хочете залишити тест? Весь прогрес буде втрачено.</string>
     <string name="exit">Вихід</string>
 
@@ -96,8 +92,6 @@
     <string name="empty_list_pending_end"> ви можете перенести слово до списку \'на вивченні\'</string>
 
     <string name="alphabetically">За алфавітом</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">По порядку</string>
     <string name="newer">Нові</string>
     <string name="older">Старі</string>

@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Thème de l\'application</string>
     <string name="language_interface">Langue de l\'interface</string>
-    <string name="suggest_repetition_of_words">Proposer la répétition de mots</string>
     <string name="clear_dictionary">Effacer le dictionnaire</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Clair</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Répétition de mots activés</string>
-    <string name="switch_suggest_repetition_of_words_off">Répétition de mots désactivée</string>
     <string name="undo">Annuler</string>
     <string name="new_word_created">Vous avez créé le mot</string>
     <string name="ok">Ok</string>
@@ -78,7 +75,6 @@
     <string name="word_is_moved">Vous avez déplacé le mot</string>
     <string name="into_studied_ist">vers la liste \"étudiés\"</string>
     <string name="into_on_study_list">vers la liste \"Sur l\'étude\"</string>
-    <string name="into_pending_list">vers la liste \"En attente\"</string>
     <string name="limit_20">Impossible de déplacer le mot vers la liste Sur l\'étude, le maximum de 20 mots a été atteint</string>
     <string name="exit_test">Voulez-vous quitter le test ? Toute progression sera perdue.</string>
     <string name="exit">Déconnectez-vous</string>
@@ -93,8 +89,6 @@
     <string name="empty_list_pending_end">vous pouvez déplacer le mot vers la liste \"Sur l\'étude\"</string>
 
     <string name="alphabetically">Dans l\'ordre alphabétique</string>
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">Dans l\'ordre</string>
     <string name="newer">Plus récent</string>
     <string name="older">Plus ancien</string>

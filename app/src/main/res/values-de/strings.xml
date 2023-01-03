@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Anwendungsthema</string>
     <string name="language_interface">Interface-Sprache</string>
-    <string name="suggest_repetition_of_words">Wortwiederholungen vorschlagen</string>
     <string name="clear_dictionary">Wörterbuch löschen</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Löschen</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Wortwiederholung aktiviert</string>
-    <string name="switch_suggest_repetition_of_words_off">Wortwiederholung inaktiviert</string>
     <string name="undo">Zurücksetzen</string>
     <string name="new_word_created">Sie haben das Wort erfunden</string>
     <string name="ok">Оk</string>
@@ -79,7 +76,6 @@
     <string name="word_is_moved">Sie haben das Wort verschoben</string>
     <string name="into_studied_ist">in die Liste \"Wurde erlernt\"</string>
     <string name="into_on_study_list">in die Liste \"Wird erlernt\"</string>
-    <string name="into_pending_list">in die Liste \"Wird erwartet\"</string>
     <string name="limit_20">Das Wort kann nicht in die Lernliste verschoben werden, maximal 20 Wörter</string>
     <string name="exit_test">Möchten Sie die Prüfung verlassen? Jeglicher Fortschritt geht verloren.</string>
     <string name="exit">Abmelden</string>
@@ -95,8 +91,6 @@
 
     <string name="alphabetically">Alphabetisch</string>
 
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">In Ordnung</string>
     <string name="newer">Neuer</string>
     <string name="older">Älter</string>

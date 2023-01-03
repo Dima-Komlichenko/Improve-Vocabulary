@@ -34,9 +34,9 @@ class TestsFragment : Fragment() {
         viewModel = ViewModelProvider(this, testsViewModelFactory)[TestsViewModel::class.java]
 
         viewModel.studiedCount.observe(viewLifecycleOwner) {
-            binding.tvTestCount.text = viewModel.onStudyCount.value!!.toString()
+            binding.tvTestCount?.text = viewModel.onStudyCount.value!!.toString()
             setOnClickListener(binding.btnTest, TypeOfTestInfo.Test, viewModel.onStudyCount.value!!)
-            setOnClickListener(binding.btnPractice, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
+            setOnClickListener(binding.btnPractice!!, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
         }
         viewModel.init()
         return binding.root

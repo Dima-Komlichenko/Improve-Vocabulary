@@ -76,9 +76,4 @@
         <item name="android:textColor">@color/text_light</item>
     </style>
 
-    <style name="test_button" parent="@style/Widget.Neumorph.ImageButton">
-        <item name="android:textColor">@color/text_light</item>
-        <item name="android:background">@drawable/little_dark_gradient</item>
-    </style>
-
 </resources>

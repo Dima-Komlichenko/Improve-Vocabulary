@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">נושא האפליקציה</string>
     <string name="language_interface">שפת הממשק</string>
-    <string name="suggest_repetition_of_words">קבל הצעה של חזרה על מילים</string>
     <string name="clear_dictionary">נקה את המילון</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">נקה</string>
 
-    <string name="switch_suggest_repetition_of_words_on">חזרה על מילים מופעלת</string>
-    <string name="switch_suggest_repetition_of_words_off">חזרה על מילים מנוטרלת</string>
     <string name="undo">בטל</string>
     <string name="new_word_created">יצרת מילה</string>
     <string name="ok">או קיי</string>
@@ -73,7 +70,6 @@
     <string name="word_is_removed">מחקת את המילה</string>
     <string name="into_studied_ist">לרשימת \"נלמדו\"</string>
     <string name="into_on_study_list">לרשימת \"נלמדות\"</string>
-    <string name="into_pending_list">לרשימת \"ממתינות\"</string>
     <string name="exit_test">האם ברצונך להפסיק את המבחן? כל התוצאות תאופסנה.</string>
     <string name="exit">צא</string>
 
@@ -87,8 +83,6 @@
     <string name="empty_list_pending_end">תוכל להעביר מילים לרשימת \"נלמדות\"</string>
 
     <string name="alphabetically">אָלֶף בֵּיתִי</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">בסדר</string>
     <string name="newer">חדשות יותר</string>
     <string name="older">ישנות יותר</string>

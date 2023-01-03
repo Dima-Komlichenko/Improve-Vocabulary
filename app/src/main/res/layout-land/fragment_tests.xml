@@ -40,7 +40,6 @@
                 android:background="@drawable/ic_line_300" />
 
             <TextView
-                android:id="@+id/tv_test_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
@@ -63,7 +62,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/btn_practice"
         style="@style/neumorph_CardButton"
         android:layout_width="280dp"
         android:layout_height="168dp"

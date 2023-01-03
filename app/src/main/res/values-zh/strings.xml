@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">应用主题</string>
     <string name="language_interface">语言界面</string>
-    <string name="suggest_repetition_of_words">建议复习单词</string>
     <string name="clear_dictionary">清除词典</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">清除</string>
 
-    <string name="switch_suggest_repetition_of_words_on">单词复习打开</string>
-    <string name="switch_suggest_repetition_of_words_off">单词复习关闭</string>
     <string name="undo">撤销</string>
     <string name="new_word_created">您已创建单词</string>
     <string name="ok">好的</string>
@@ -78,7 +75,6 @@
     <string name="word_is_moved">您已移动了这个单词</string>
     <string name="into_studied_ist">至“已学”列表</string>
     <string name="into_on_study_list">至“学习中”列表</string>
-    <string name="into_pending_list">至“待定”列表</string>
     <string name="limit_20">无法将单词移动到“正在学习”列表中。已达到20词上限</string>
     <string name="exit_test">您想离开测试吗？所有进度都将丢失.</string>
     <string name="exit">离开</string>
@@ -92,8 +88,6 @@
     <string name="empty_list_pending_end">您可以将这个词移到“学习中”列表</string>
 
     <string name="alphabetically">按字母順序排列</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">為了</string>
     <string name="newer">新一点儿的</string>
     <string name="older">旧一点儿的</string>

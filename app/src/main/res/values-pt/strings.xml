@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Tema de aplicação web</string>
     <string name="language_interface">Língua de interface</string>
-    <string name="suggest_repetition_of_words">Oferecer repetir as palavras</string>
     <string name="clear_dictionary">Apagar o dicionário</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Apagar</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Ativada a repetição de palavras</string>
-    <string name="switch_suggest_repetition_of_words_off">Desativada a repetição de palavras</string>
     <string name="undo">Anular</string>
     <string name="new_word_created">Você criou uma palavra</string>
     <string name="ok">Ok</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Você moveu a palavra</string>
     <string name="into_studied_ist">"na lista “estudadas” "</string>
     <string name="into_on_study_list">na lista “em estudo”</string>
-    <string name="into_pending_list">na lista “em espera”</string>
     <string name="limit_20">É impossível mover a palavra na lista estudada, como máximo 20 palavras</string>
     <string name="exit_test">"Você quer deixar o teste? Todo o progresso será perdido. "</string>
     <string name="exit">Sair</string>
@@ -95,8 +91,6 @@
     <string name="empty_list_pending_end">Você pode mover as palavras na lista “em estudo”</string>
 
     <string name="alphabetically">Alfabética</string>
-    <string name="az">А-я</string>
-    <string name="za">Я-а</string>
     <string name="in_order">Em ordem</string>
     <string name="newer">Mais nova</string>
     <string name="older">Mais antiga</string>

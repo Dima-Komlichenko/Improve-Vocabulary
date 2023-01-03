@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Temat aplikacji</string>
     <string name="language_interface">Język interfejsu</string>
-    <string name="suggest_repetition_of_words">Zaproponuj powtórzenie wyrazów</string>
     <string name="clear_dictionary">Oczyść słownik</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Oczyść</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Powtórzenie słów jest włączone</string>
-    <string name="switch_suggest_repetition_of_words_off">Powtórzenie słów jest wyłączone</string>
     <string name="undo">Anuluj</string>
     <string name="new_word_created">Stworzyłeś słowo</string>
     <string name="ok">Ok</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Przesunąłeś słowo</string>
     <string name="into_studied_ist">"do listy \"wyuczone\" "</string>
     <string name="into_on_study_list">do listy \"do wyuczenia\"</string>
-    <string name="into_pending_list">do listy \"w oczekiwaniu\"</string>
     <string name="limit_20">Nie można przenieść słowa na listę wyuczonych słów, maksymalnie 20 słów</string>
     <string name="exit_test">Czy chcesz wyjść z testu? Cały postęp zostanie utracony.</string>
     <string name="exit">Wyjdź</string>
@@ -95,8 +91,6 @@
     <string name="empty_list_pending_end">Możesz przenieść słowa na listę \"do wyuczenia\"</string>
 
     <string name="alphabetically">Alfabetycznie</string>
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">W porządku</string>
     <string name="newer">Nowsze</string>
     <string name="older">Starsze</string>

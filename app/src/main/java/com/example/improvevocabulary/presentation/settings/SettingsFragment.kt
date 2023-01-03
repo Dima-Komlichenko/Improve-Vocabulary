@@ -79,16 +79,13 @@ class SettingsFragment : Fragment() {
                     }
 
                     val langRes = Languages.values().find { it.ordinal == position }!!
-                    var sharedPrefsFrom = viewModel.languageFromLearning.value!!
-
-                    if (Languages.valueOf(sharedPrefsFrom.value.name).ordinal == langRes.ordinal) return
 
                     AlertDialog.Builder(context!!)
                         .setTitle(R.string.attention)
                         .setMessage(R.string.after_changing_language)
                         .setPositiveButton(R.string.confirm) { _, _ ->
 
-                            val langVm = viewModel.language.value!!.value
+                            val langVm = viewModel.languageFromLearning.value!!.value
 
                             if (langVm == langRes) {
                                 Snackbar.make(
@@ -136,16 +133,13 @@ class SettingsFragment : Fragment() {
                     //var langRes = binding.spLanguageOfLearning.selectedItem as Languages
                     val langRes = Languages.values().find { it.ordinal == position }!!
 
-                    var sharedPrefsOf = viewModel.languageOfLearning.value!!.value
-                    if (sharedPrefsOf.ordinal ==  langRes.ordinal) return
-
                     AlertDialog.Builder(context!!)
                         .setTitle(R.string.attention)
                         .setMessage(R.string.after_changing_language)
                         .setPositiveButton(R.string.confirm) { _, _ ->
 
                             // langVm = DataConverter.capitalize(viewModel.language.value!!.value)
-                            val langVm = viewModel.language.value!!.value
+                            val langVm = viewModel.languageOfLearning.value!!.value
 
                             if (langVm == langRes) {
                                 Snackbar.make(
@@ -227,13 +221,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setSpinnerThemeValue() {
-        //val themes = resources.getStringArray(R.array.app_themes)
         val theme = viewModel.theme.value
-        //val lang = resources.configuration.locale.language
-        //val theme = ThemeConverter.convertThemeNameToCustomLang(themeEN!!, lang)
-
-
-
         binding.spAppTheme.setSelection(theme!!.value.ordinal)
     }
 

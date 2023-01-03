@@ -13,7 +13,6 @@
     <!-- Настройки -->
     <string name="app_theme">Tema dell\'app</string>
     <string name="language_interface">Linguaggio dell\'interfaccia</string>
-    <string name="suggest_repetition_of_words">Suggerire ripetizioni di parole</string>
     <string name="clear_dictionary">Cancellare vocabolario</string>
 
     <!-- Тема приложения -->
@@ -47,8 +46,6 @@
 
     <string name="clear_dictionary_button">Cancellare</string>
 
-    <string name="switch_suggest_repetition_of_words_on">Attivata la funzione di ripetizione di parole</string>
-    <string name="switch_suggest_repetition_of_words_off">Disattivata la funzione di ripetizione di parole</string>
     <string name="undo">Annullare</string>
     <string name="new_word_created">Hai creato la parola</string>
     <string name="ok">Ok</string>
@@ -80,7 +77,6 @@
     <string name="word_is_moved">Hai spostato una parola</string>
     <string name="into_studied_ist">All\'elenco “Imparato”</string>
     <string name="into_on_study_list">All\'elenco “In fase di studio\"</string>
-    <string name="into_pending_list">All\'elenco “In attesa”</string>
     <string name="limit_20">Impossibile spostare una parola nell\'elenco da imparare, sono al massimo 20 parole</string>
     <string name="exit_test">Vuoi abbandonare il test? Tutti i progressi saranno persi.</string>
     <string name="exit">Disconnettersi</string>
@@ -95,8 +91,6 @@
     <string name="empty_list_pending_end">puoi spostare le parole nell\'elenco “in fase di studio”</string>
 
     <string name="alphabetically">Alfabetico</string>
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">In ordine</string>
     <string name="newer">Più nuovo</string>
     <string name="older">Più vecchio</string>

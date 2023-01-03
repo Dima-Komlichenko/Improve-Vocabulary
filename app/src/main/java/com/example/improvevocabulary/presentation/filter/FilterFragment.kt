@@ -39,7 +39,7 @@ class FilterFragment : Fragment() {
             PressedSortButton.ALPHABETICALLY -> binding.btnAlphabetically.setShapeType(ShapeType.PRESSED)
             PressedSortButton.NON_ALPHABETICALLY -> binding.btnNonAlphabetically.setShapeType(ShapeType.PRESSED)
             PressedSortButton.NEWER -> binding.btnNewer.setShapeType(ShapeType.PRESSED)
-            PressedSortButton.OLDER -> binding.btnOlder.setShapeType(ShapeType.PRESSED)
+            PressedSortButton.OLDER -> binding.btnOlder?.setShapeType(ShapeType.PRESSED)
             else -> {}
         }
     }
@@ -51,7 +51,7 @@ class FilterFragment : Fragment() {
                 it.isPressed = true
                 btnAlphabetically.setShapeType(ShapeType.PRESSED)
                 btnNonAlphabetically.setShapeType(ShapeType.FLAT)
-                btnOlder.setShapeType(ShapeType.FLAT)
+                btnOlder?.setShapeType(ShapeType.FLAT)
                 btnNewer.setShapeType(ShapeType.FLAT)
 
                 viewModel.pressedSortButton.value = PressedSortButton.ALPHABETICALLY
@@ -60,7 +60,7 @@ class FilterFragment : Fragment() {
             btnNonAlphabetically.setOnClickListener {
                 btnAlphabetically.setShapeType(ShapeType.FLAT)
                 btnNonAlphabetically.setShapeType(ShapeType.PRESSED)
-                btnOlder.setShapeType(ShapeType.FLAT)
+                btnOlder?.setShapeType(ShapeType.FLAT)
                 btnNewer.setShapeType(ShapeType.FLAT)
 
                 viewModel.pressedSortButton.value = PressedSortButton.NON_ALPHABETICALLY
@@ -70,16 +70,16 @@ class FilterFragment : Fragment() {
                 btnAlphabetically.setShapeType(ShapeType.FLAT)
                 btnNonAlphabetically.setShapeType(ShapeType.FLAT)
                 btnNewer.setShapeType(ShapeType.PRESSED)
-                btnOlder.setShapeType(ShapeType.FLAT)
+                btnOlder?.setShapeType(ShapeType.FLAT)
 
                 viewModel.pressedSortButton.value = PressedSortButton.NEWER
             }
 
-            btnOlder.setOnClickListener {
+            btnOlder?.setOnClickListener {
                 btnAlphabetically.setShapeType(ShapeType.FLAT)
                 btnNonAlphabetically.setShapeType(ShapeType.FLAT)
                 btnNewer.setShapeType(ShapeType.FLAT)
-                btnOlder.setShapeType(ShapeType.PRESSED)
+                btnOlder?.setShapeType(ShapeType.PRESSED)
 
                 viewModel.pressedSortButton.value = PressedSortButton.OLDER
             }

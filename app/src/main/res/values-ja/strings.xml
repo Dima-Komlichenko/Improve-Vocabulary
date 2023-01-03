@@ -12,7 +12,6 @@
     <!-- Настройки -->
     <string name="app_theme">アプリのテーマ</string>
     <string name="language_interface">インターフェイス言語</string>
-    <string name="suggest_repetition_of_words">単語の繰り返しを提案します</string>
     <string name="clear_dictionary">辞書をクリアします</string>
 
     <!-- Тема приложения -->
@@ -46,8 +45,6 @@
 
     <string name="clear_dictionary_button">消去</string>
 
-    <string name="switch_suggest_repetition_of_words_on">単語の繰り返しをオンにする</string>
-    <string name="switch_suggest_repetition_of_words_off">単語の繰り返しをオフにする</string>
     <string name="undo">キャンセルする</string>
     <string name="new_word_created">あなたが言葉を作った</string>
     <string name="ok">オケ</string>
@@ -78,7 +75,6 @@
     <string name="word_is_moved">あなたは言葉を動かした</string>
     <string name="into_studied_ist">「研究済み」リストに</string>
     <string name="into_on_study_list">「学習中」リストに</string>
-    <string name="into_pending_list">[保留]リストに</string>
     <string name="limit_20">単語を学習済みリストに移動できません。最大 20 単語です</string>
     <string name="exit_test">テストを終了したいですか？ すべての進行状況が失われます。</string>
     <string name="exit">ログアウトしてください</string>
@@ -93,8 +89,6 @@
     <string name="empty_list_pending_end">「勉強中」リストに単語を移動できます</string>
 
     <string name="alphabetically">アルファベット順</string>
-    <string name="az">---</string>
-    <string name="za">---</string>
     <string name="in_order">順番に</string>
     <string name="newer">新しい</string>
     <string name="older">年</string>

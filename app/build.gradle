@@ -5,10 +5,22 @@ plugins {
 }
 
 android {
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\Dima\\Documents\\My Key Store\\Key Store Imp Voc.jks')
+            storePassword '1q2w3e4A'
+            keyAlias 'key0'
+            keyPassword '1q2w3e4A'
+        }
+    }
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.improvevocabulary"
+        applicationId "com.komlychenkodev.improvevocabulary"
         minSdk 21
         targetSdk 32
         versionCode 1
