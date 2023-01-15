@@ -99,4 +99,5 @@
     <string name="no_language">如果你想学习的语言不在列表中，那么你可以通过“设置”联系开发者</string>
     <string name="empty_list_on_study_start">“学习中“的单词将会显示在这里。当您在测试中连续回答一个单词 10 次时，将出现一个按钮。</string>
     <string name="practice_description">“学习中”和“已学习”的单词已经加入到练习中。如果您回答错误，那么或该词被移到“待定”列表，或正确答案的计数器将被重置为零。</string>
+    <string name="wrong_answer">不知道</string>
 </resources>

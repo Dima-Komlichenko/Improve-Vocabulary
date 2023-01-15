@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
-import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
-import com.example.improvevocabulary.presentation.lists.pendingList.PendingWordAdapter
-import com.example.improvevocabulary.utlis.TextToSpeech
 import javax.inject.Inject
 
 class StudiedListFragment : WordListFragment() {

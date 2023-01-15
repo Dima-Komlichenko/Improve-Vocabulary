@@ -99,4 +99,5 @@
 
     <string name="test_description">Per il test sono state scelte le parole “in fase di studio”. Quando rispondi correttamente 10 volte di seguito a ogni parola, potrai trasferirla nell\'elenco “imparato”.</string>
     <string name="practice_description">Le parole dagli elenchi “in fase di studio” e “imparato” sono state scelte per la pratica. Se rispondi a una parola in modo errato quest’ultima verrà spostata nell\'elenco “in fase di studio” oppure il contatore delle risposte corrette verrà azzerato.</string>
+    <string name="wrong_answer">non lo so</string>
 </resources>

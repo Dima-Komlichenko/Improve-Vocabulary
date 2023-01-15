@@ -25,19 +25,20 @@ class TestsFragment : Fragment() {
 
     private lateinit var binding: FragmentTestsBinding
     private lateinit var viewModel: TestsViewModel
+
     @Inject
     lateinit var testsViewModelFactory: TestsViewModelFactory
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentTestsBinding.inflate(inflater, container, false)
         (activity?.applicationContext as App).appComponent.inject(this)
         viewModel = ViewModelProvider(this, testsViewModelFactory)[TestsViewModel::class.java]
 
-        viewModel.studiedCount.observe(viewLifecycleOwner) {
-            binding.tvTestCount?.text = viewModel.onStudyCount.value!!.toString()
-            setOnClickListener(binding.btnTest, TypeOfTestInfo.Test, viewModel.onStudyCount.value!!)
-            setOnClickListener(binding.btnPractice!!, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
-        }
+
         viewModel.init()
         return binding.root
     }
@@ -45,12 +46,21 @@ class TestsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.init()
+        viewModel.studiedCount.observe(viewLifecycleOwner) {
+            binding.tvTestCount?.text = viewModel.onStudyCount.value!!.toString()
+            setOnClickListener(binding.btnTest, TypeOfTestInfo.Test, viewModel.onStudyCount.value!!)
+            setOnClickListener(binding.btnPractice!!, TypeOfTestInfo.Practice, viewModel.onStudyCount.value!! + viewModel.studiedCount.value!!)
+        }
     }
 
-    private fun setOnClickListener(view: NeumorphCardView, typeOfTestInfo: TypeOfTestInfo, wordsCount: Int) {
+    private fun setOnClickListener(
+        view: NeumorphCardView,
+        typeOfTestInfo: TypeOfTestInfo,
+        wordsCount: Int
+    ) {
         view.setOnClickListener {
-            view.setOnClickListener {  }
-            if(wordsCount < 5) {
+            view.setOnClickListener { }
+            if (wordsCount < 5) {
                 Snackbar.make(
                     binding.root,
                     resources.getString(R.string.unable_start_test),

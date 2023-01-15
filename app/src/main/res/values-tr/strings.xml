@@ -99,4 +99,5 @@
 
     <string name="test_description">Test “Ezberlenecek sözcükler” listesindeki sözcükleri içerir. Arka arkaya 10 kez doğru yanıt verdiğiniz bir sözcüğü \"Ezberlenmiş sözcükler\" listesine aktarabileceksiniz.</string>
     <string name="practice_description">Pratik yapmak için \"Ezberlenecek sözcükler\" ve \"Ezberlenmiş sözcükler\" listelerinden sözcükler seçildi. Bir sözcüğe yanlış yanıt verirseniz sözcük ya \"Ezberlenecek sözcükler\" listesine taşınacak ya da doğru yanıt sayacı sıfırlanacaktır.</string>
+    <string name="wrong_answer">bilmiyorum</string>
 </resources>

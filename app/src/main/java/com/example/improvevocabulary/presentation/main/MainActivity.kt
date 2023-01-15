@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainViewModelFactory: MainViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i("wereSpinnersInitialized", "recreateApp")
         (applicationContext as App).appComponent.inject(this)
         viewModel =
             ViewModelProvider(this, mainViewModelFactory)[MainViewModel::class.java]
@@ -106,14 +107,14 @@ class MainActivity : AppCompatActivity() {
 
         dialogChooseLanguage.findViewById<Button>(R.id.btn_choose).setOnClickListener {
 
-            var langFromLearning: Languages =
+            val langFromLearning: Languages =
                 Languages.values().find {
                     DataConverter.capitalize(it.name) == DataConverter.capitalize(
                         dialogChooseLanguage.findViewById<Spinner>(R.id.sp_language_from_learning).selectedItem.toString()
                     )
                 }!!
 
-            var langOfLearning: Languages =
+            val langOfLearning: Languages =
                 Languages.values().find {
                     DataConverter.capitalize(it.name) == DataConverter.capitalize(
                         dialogChooseLanguage.findViewById<Spinner>(R.id.sp_language_of_learning).selectedItem.toString()
@@ -135,6 +136,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         MobileAds.initialize(this)
+
+
     }
 
     private fun startRepetition() {

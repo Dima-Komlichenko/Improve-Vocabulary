@@ -31,8 +31,10 @@ open class TestFragment : TestBaseFragment() {
                     viewModel.testIndex = 0
                     binding.pbProgress.progress = 0
                 }
-                WordsActivityResult.Back ->
+                WordsActivityResult.Back -> {
+                    viewModel.tts.destroy()
                     activity?.finish()
+                }
             }
         }
 

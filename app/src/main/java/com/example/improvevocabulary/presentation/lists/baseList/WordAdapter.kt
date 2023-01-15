@@ -151,13 +151,7 @@ open class WordAdapter(
             animateView(binding.btnSound, 65F, 0F, 0F, 0F)
         }
 
-        protected fun animateView(
-            view: View,
-            fromXDelta: Float,
-            toXDelta: Float,
-            fromYDelta: Float,
-            toYDelta: Float
-        ) {
+        protected fun animateView(view: View, fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float) {
             val animation = TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta).apply {
                 duration = 200
                 fillAfter = true

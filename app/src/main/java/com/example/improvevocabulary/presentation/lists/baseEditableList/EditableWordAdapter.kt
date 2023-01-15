@@ -1,14 +1,14 @@
 package com.example.improvevocabulary.presentation.lists.baseEditableList
 
-import android.opengl.Visibility
+import android.app.Service
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.Language
 import com.example.domain.utils.DataValidator
@@ -20,10 +20,7 @@ import com.example.improvevocabulary.utlis.DataConverter
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
-open class EditableWordAdapter(
-    private val tts: TextToSpeech,
-    val languageFrom: Language,
-    val languageOf: Language,
+open class EditableWordAdapter(private val tts: TextToSpeech, val languageFrom: Language, val languageOf: Language,
 ) : WordAdapter(tts) {
 
 
@@ -73,6 +70,7 @@ open class EditableWordAdapter(
         }
 
         protected fun btnSaveHandler(): Boolean = with(bindingEditable) {
+            hideKeyboard()
 
             if (tvTranslate.text.toString() == "" || etWord.text.toString() == "") {
                 Snackbar.make(
@@ -96,8 +94,8 @@ open class EditableWordAdapter(
                 return false
             }
 
-            etWord.setText(DataConverter.convert(etWord.text.toString()))
-            tvTranslate.setText(DataConverter.convert(tvTranslate.text.toString()))
+            etWord.setText(DataConverter.validateSpaces(etWord.text.toString()))
+            tvTranslate.setText(DataConverter.validateSpaces(tvTranslate.text.toString()))
 
             editWord(wordPair, etWord.text.toString(), tvTranslate.text.toString())
             tvWord.text = wordPair.word
@@ -109,7 +107,27 @@ open class EditableWordAdapter(
             )
                 .show()
             btnSave.visibility = View.GONE
+
+            ConstraintSet().apply {
+                clone(clWordView)
+                clear(btnSound.id, ConstraintSet.START)
+                clear(btnSound.id, ConstraintSet.END)
+                connect(btnSound.id, ConstraintSet.START, etWord.id, ConstraintSet.END)
+                connect(btnSound.id, ConstraintSet.END, clWordView.id, ConstraintSet.END)
+            }.applyTo(clWordView)
+
+            animateView(btnSound, 65F, 0F, 0F, 0F)
+
             return true
+        }
+
+        private fun hideKeyboard() {
+            val imm: InputMethodManager =
+                context?.getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.tvWord.windowToken, 0);
+            imm.hideSoftInputFromWindow(binding.tvTranslate.windowToken, 0);
+            bindingEditable.etWord.clearFocus()
+            bindingEditable.tvTranslate.clearFocus()
         }
 
         override fun showCardDetails() = with(bindingEditable) {
@@ -118,7 +136,6 @@ open class EditableWordAdapter(
             etWord.visibility = View.VISIBLE
 
             tvTranslate.setOnClickListener {} // delete listener from base adapter so that don't close card on click
-
         }
 
         override fun setConstraintsToShowCardDetails() = with(bindingEditable) {
@@ -146,12 +163,7 @@ open class EditableWordAdapter(
                 val textWatcher = object : TextWatcher {
 
                     private var wasTextChanged: Boolean = false
-                    override fun beforeTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        count: Int,
-                        after: Int
-                    ) {
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                     }
 
                     override fun afterTextChanged(s: Editable?) {
@@ -165,12 +177,7 @@ open class EditableWordAdapter(
                             ConstraintSet().apply {
                                 clone(clWordView)
                                 clear(btnSound.id, ConstraintSet.START)
-                                connect(
-                                    btnSound.id,
-                                    ConstraintSet.LEFT,
-                                    dividingLine.id,
-                                    ConstraintSet.RIGHT
-                                )
+                                connect(btnSound.id, ConstraintSet.LEFT, dividingLine.id, ConstraintSet.RIGHT)
                             }.applyTo(clWordView)
                             wasTextChanged = false
                         }
@@ -190,25 +197,13 @@ open class EditableWordAdapter(
                         animateView(btnSound, -65F, 0F, 0F, 0F)
 
 
-                        btnSave.visibility = android.view.View.VISIBLE
+                        btnSave.visibility = View.VISIBLE
                         ConstraintSet().apply {
                             clone(clWordView)
                             clear(btnSound.id, ConstraintSet.START)
                             clear(btnSound.id, ConstraintSet.END)
-                            connect(
-                                btnSound.id,
-                                ConstraintSet.LEFT,
-                                btnSave.id,
-                                ConstraintSet.RIGHT,
-                                12
-                            )
-                            connect(
-                                btnSound.id,
-                                ConstraintSet.RIGHT,
-                                clWordView.id,
-                                ConstraintSet.RIGHT,
-                                12
-                            )
+                            connect(btnSound.id, ConstraintSet.LEFT, btnSave.id, ConstraintSet.RIGHT, 12)
+                            connect(btnSound.id, ConstraintSet.RIGHT, clWordView.id, ConstraintSet.RIGHT, 12)
                         }.applyTo(clWordView)
 
                         wasTextChanged = true

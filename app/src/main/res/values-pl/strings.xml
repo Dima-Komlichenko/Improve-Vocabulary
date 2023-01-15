@@ -99,4 +99,5 @@
 
     <string name="test_description">Do testu wybrano słowa „do wyuczenia”. Gdy odpowiesz poprawnie 10 razy z rzędu na każde słowo, będziesz mógł przenieść je na listę „wyuczone”.</string>
     <string name="practice_description">Słowa z list „do wyuczenia” i „wyuczone” zostały wybrane do ćwiczeń. Jeśli odpowiesz niepoprawnie na słowo, zostanie ono przeniesione na listę „do wyuczenia” lub licznik poprawnych odpowiedzi zostanie wyzerowany.</string>
+    <string name="wrong_answer">nie wiem</string>
 </resources>

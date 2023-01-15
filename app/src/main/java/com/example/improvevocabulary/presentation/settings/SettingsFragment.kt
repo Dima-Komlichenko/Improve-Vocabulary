@@ -37,20 +37,27 @@ class SettingsFragment : Fragment() {
         (activity?.applicationContext as App).appComponent.inject(this)
         viewModel = ViewModelProvider(this, settingsViewModelFactory)[SettingsViewModel::class.java]
         viewModel.init()
-        setLanguagesValue()
-        setAppLanguageSpinner()
-        changeAppThemeHandler()
-        changeAppLanguageHandler()
+
 
         setLinksHandler()
         setBtnRemoveAllHandler()
 
-        viewModel.language.observe(viewLifecycleOwner) {
-            viewModel.saveLanguage((it))
-        }
+        viewModel.language.observe(viewLifecycleOwner) { viewModel.saveLanguage((it)) }
         viewModel.theme.observe(viewLifecycleOwner) { viewModel.saveTheme(it) }
 
         return binding.root
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+
+        setLanguagesValue()
+        setAppLanguageSpinner()
+        setSpinnerThemeValue()
+
+        setLanguageSpinnersHandler()
+        changeAppThemeHandler()
+        changeAppLanguageHandler()
+        super.onViewStateRestored(savedInstanceState)
     }
 
     private fun setBtnRemoveAllHandler() {
@@ -72,30 +79,27 @@ class SettingsFragment : Fragment() {
             object : AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
 
                 override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                    Log.i("wereSpinnersInitialized", "spLanguageFromLearning - " + wereSpinnersInitialized)
                     if (wereSpinnersInitialized < 4) {
-                        ++wereSpinnersInitialized
+                        wereSpinnersInitialized++
                         return
                     }
 
                     val langRes = Languages.values().find { it.ordinal == position }!!
+                    val langVm = viewModel.languageFromLearning.value!!.value
+
+                    if (langVm == langRes) return
 
                     AlertDialog.Builder(context!!)
                         .setTitle(R.string.attention)
                         .setMessage(R.string.after_changing_language)
                         .setPositiveButton(R.string.confirm) { _, _ ->
 
-                            val langVm = viewModel.languageFromLearning.value!!.value
 
-                            if (langVm == langRes) {
-                                Snackbar.make(
-                                    binding.root,
-                                    R.string.impossible_choose,
-                                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                                )
-                                    .show()
-                                return@setPositiveButton
-                            }
+                            Log.i("wereSpinnersInitialized", "langVm - " + langVm)
+                            Log.i("wereSpinnersInitialized", "langRes - " + langRes)
+
+
                             viewModel.clearOnStudy()
                             viewModel.clearPending()
                             viewModel.clearStudied()
@@ -125,34 +129,24 @@ class SettingsFragment : Fragment() {
 
                 override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
+                    Log.i("wereSpinnersInitialized", "spLanguageOfLearning - " + wereSpinnersInitialized)
                     if (wereSpinnersInitialized < 4) {
-                        ++wereSpinnersInitialized
+                        wereSpinnersInitialized++
                         return
                     }
 
-                    //var langRes = binding.spLanguageOfLearning.selectedItem as Languages
                     val langRes = Languages.values().find { it.ordinal == position }!!
+                    val langVm = viewModel.languageOfLearning.value!!.value
+
+                    if (langVm == langRes) return
 
                     AlertDialog.Builder(context!!)
                         .setTitle(R.string.attention)
                         .setMessage(R.string.after_changing_language)
                         .setPositiveButton(R.string.confirm) { _, _ ->
 
-                            // langVm = DataConverter.capitalize(viewModel.language.value!!.value)
-                            val langVm = viewModel.languageOfLearning.value!!.value
-
-                            if (langVm == langRes) {
-                                Snackbar.make(
-                                    binding.root,
-                                    R.string.impossible_choose,
-                                    Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-                                )
-                                    .show()
-                                return@setPositiveButton
-                            }
 
                             viewModel.clearStudied()
-
                             viewModel.saveLanguageOfLearning(Language(langRes))
                             Snackbar.make(
                                 binding.root,
@@ -175,13 +169,7 @@ class SettingsFragment : Fragment() {
     }
 
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        setAppLanguageSpinner()
-        setSpinnerThemeValue()
-        setLanguagesValue()
-        setLanguageSpinnersHandler()
-    }
+
 
     private fun setAppLanguageSpinner(): Int {
         var langIndex = Languages.valueOf(viewModel.language.value!!.value.name).ordinal
@@ -196,14 +184,15 @@ class SettingsFragment : Fragment() {
             AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                Log.i("wereSpinnersInitialized", "spLanguage - " + wereSpinnersInitialized)
                 if (wereSpinnersInitialized < 4) {
-                    ++wereSpinnersInitialized
+                    wereSpinnersInitialized++
                     return
                 }
 
                 val langRes = Languages.values().find { it.ordinal == position }!!
                 if (viewModel.language.value!!.value == langRes) return
-
+                wereSpinnersInitialized = 0
                 viewModel.language.value = Language(langRes)
                 val res = resources
                 val dm = res.displayMetrics
@@ -230,16 +219,17 @@ class SettingsFragment : Fragment() {
             AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                Log.i("wereSpinnersInitialized", "spAppTheme - " + wereSpinnersInitialized)
                 if (wereSpinnersInitialized < 4) {
-                    ++wereSpinnersInitialized
+                    wereSpinnersInitialized++
                     return
                 }
 
                 val theme = Themes.values().find { it.ordinal == position }
-
+                Log.i("wereSpinnersInitialized", "viewModel.theme.value?.value - " + viewModel.theme.value?.value)
+                Log.i("wereSpinnersInitialized", "theme - " + theme)
                 if (viewModel.theme.value?.value == theme) return
-
+                wereSpinnersInitialized = 0
                 viewModel.theme.value = Theme(theme!!)
                 recreateApp()
             }

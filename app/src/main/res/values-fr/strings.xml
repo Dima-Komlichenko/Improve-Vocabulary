@@ -99,4 +99,5 @@
     <string name="practice_description">Les mots des listes \"Sur l\'étude\" et \"étudiés\" ont été sélectionnés pour la pratique. Si vous répondez incorrectement à un mot, celui-ci sera déplacé dans la liste  \"Sur l\'étude\" ou le compteur de bonnes réponses sera remis à zéro.</string>
     <string name="no_language">Si la langue que vous souhaitez apprendre ne figure pas dans la liste, vous pouvez contacter les développeurs via la section \"Paramètres\"</string>
     <string name="repetition_description">"Voulez-vous commencer à répéter des mots ? Pour ce type de test, jusqu'à 20 mots que vous avez étudiés sont sélectionnés. Tous les mots auxquels vous avez répondu de manière incorrecte seront déplacés vers la liste \"Sur l'étude\", dans la limite des places disponibles. "</string>
-    </resources>
+    <string name="wrong_answer">ne sais pas</string>
+</resources>

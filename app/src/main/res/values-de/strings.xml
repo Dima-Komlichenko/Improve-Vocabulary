@@ -100,4 +100,5 @@
 
     <string name="test_description">Für die Prüfung wurden die Wörter \"wird erlernt\" gewählt. Wenn Sie jedes Wort 10 Mal hintereinander richtig beantworten, können Sie es in die Liste \"wurde erlernt\" übertragen.</string>
     <string name="practice_description">Die Wörter aus den Listen \"wird erlernt\" und \"wurde erlernt\" wurden zum Üben gewählt. Wenn Sie ein Wort falsch beantworten, wird es entweder in die Liste \"wird erlernt\" verschoben oder der Zähler der richtigen Antworten wird auf Null zurückgesetzt.</string>
+    <string name="wrong_answer">weiß nicht</string>
 </resources>

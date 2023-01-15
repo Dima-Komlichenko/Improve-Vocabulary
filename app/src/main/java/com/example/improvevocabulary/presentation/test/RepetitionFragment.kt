@@ -20,6 +20,7 @@ class RepetitionFragment : TestBaseFragment() {
 
     val launchCheatActivity =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            viewModel.tts.destroy()
             activity?.finish()
         }
 

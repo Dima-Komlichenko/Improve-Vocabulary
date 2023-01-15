@@ -1,6 +1,5 @@
 package com.example.improvevocabulary.presentation.lists.onStudyList
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
-import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
@@ -29,11 +27,7 @@ open class OnStudyListFragment : WordListFragment() {
     lateinit var viewModelFactory: OnStudyListViewModelFactory
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity?.applicationContext as App).appComponent.inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[OnStudyListViewModel::class.java]
         initAdapter(inflater, container)

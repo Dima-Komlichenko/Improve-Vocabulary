@@ -113,5 +113,7 @@
 
     <string name="test_description">The words \'on study\' were selected for the test. When you answer 10 times in a row for each word correctly, you will be able to transfer it to the \'learned\' list.</string>
     <string name="practice_description">The words \'on study\' and \'studied\' were selected for practice. If you answer a word incorrectly, it will either be transferred to the \'under study\' list or the counter of correct answers will be reset to zero.</string>
+    <string name="wrong_answer">don\'t know</string>
+    <string name="btn_speech_desc">ImageButtonSpeech</string>
 
 </resources>

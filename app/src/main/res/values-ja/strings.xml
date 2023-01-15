@@ -99,4 +99,5 @@
 
     <string name="test_description">テストには「勉強中」という言葉が選ばれました。単語ごとに 10 回連続で正解すると、「学習済み」リストに移動できます。</string>
     <string name="practice_description">「勉強中」と「学習済み」のリストから単語が練習用に選ばれました。単語に間違って答えると、「勉強中」リストに移動されるか、正解のカウンターがゼロにリセットされます。</string>
+    <string name="wrong_answer">わからない</string>
 </resources>

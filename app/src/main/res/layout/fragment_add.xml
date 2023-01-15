@@ -27,7 +27,7 @@
                 android:background="@null"
                 android:ems="10"
                 android:hint="et_first_word"
-
+                android:inputType="text"
                 android:maxLength="50"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_save"
@@ -54,6 +54,7 @@
                 android:background="@null"
                 android:ems="10"
                 android:hint="et_second_word"
+                android:inputType="text"
                 android:maxLength="50"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"

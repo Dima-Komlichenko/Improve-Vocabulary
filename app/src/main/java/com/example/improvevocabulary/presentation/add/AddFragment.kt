@@ -1,18 +1,19 @@
 package com.example.improvevocabulary.presentation.add
 
+import android.app.Service
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.domain.utils.DataValidator
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentAddBinding
 import com.example.improvevocabulary.utlis.DataConverter
-import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
 class AddFragment : Fragment() {
@@ -39,7 +40,7 @@ class AddFragment : Fragment() {
                 if (binding.etFirstWord.text.toString() == "") return
 
                 viewModel.firstFieldText.value =
-                    DataConverter.convert(binding.etFirstWord.text.toString())
+                    DataConverter.validateSpaces(binding.etFirstWord.text.toString())
             }
         })
 
@@ -50,11 +51,12 @@ class AddFragment : Fragment() {
                 if (binding.etSecondWord.text.toString() == "") return
 
                 viewModel.secondFieldText.value =
-                    DataConverter.convert(binding.etSecondWord.text.toString())
+                    DataConverter.validateSpaces(binding.etSecondWord.text.toString())
             }
         })
 
         binding.btnSave.setOnClickListener {
+            hideKeyboard()
 
             if (viewModel.listType == "OnStudyListFragment") {
                 if (viewModel.onStudyCount.value!! >= 20) {
@@ -102,6 +104,15 @@ class AddFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun hideKeyboard() {
+        val imm: InputMethodManager =
+            activity?.getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etSecondWord.windowToken, 0);
+        imm.hideSoftInputFromWindow(binding.etFirstWord.windowToken, 0);
+        binding.etFirstWord.clearFocus()
+        binding.etSecondWord.clearFocus()
     }
 
     override fun onResume() {

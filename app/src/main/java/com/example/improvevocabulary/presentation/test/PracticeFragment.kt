@@ -11,11 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class PracticeFragment : TestBaseFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         binding.pbProgress.visibility = View.INVISIBLE
@@ -23,7 +19,7 @@ class PracticeFragment : TestBaseFragment() {
         binding.tvSlash.visibility = View.INVISIBLE
         binding.tvQuestionsCount.visibility = View.INVISIBLE
 
-        if(!viewModel.wasPracticeDescriptionShownOnce()) {
+        if (!viewModel.wasPracticeDescriptionShownOnce()) {
             context?.let {
                 AlertDialog.Builder(it)
                     .setTitle(R.string.practice)
@@ -39,14 +35,18 @@ class PracticeFragment : TestBaseFragment() {
         return view
     }
 
-    override fun wrongAnswerHandler(wordPair: WordPair){
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.tts.destroy()
+    }
+
+    override fun wrongAnswerHandler(wordPair: WordPair) {
         if (viewModel.countOnStudyWords >= 30) {
             Snackbar.make(
                 binding.root,
                 resources.getString(R.string.limit_30),
                 Snackbar.LENGTH_SHORT or Snackbar.LENGTH_INDEFINITE
-            )
-                .show()
+            ).show()
             return
         }
         viewModel.moveStudiedToOnStudy(wordPair)

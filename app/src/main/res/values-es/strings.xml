@@ -99,4 +99,5 @@
 
     <string name="test_description">Para el test están seleccionadas las palabras “en estudio”. Cuando Ud. conteste correctamente 10 veces seguidas a cada palabra, poderá moverla en la lista “estudiadas”.</string>
     <string name="practice_description">Las palabras de las listas “en estudio” y “estudiadas” fueron seleccionadas para la práctica. Si Ud. conteste a la palabra incorrecto, esta se moverá en la lista “en estudio”, o el contador de respuestas correctas se reiniciará.</string>
+    <string name="wrong_answer">no sé</string>
 </resources>

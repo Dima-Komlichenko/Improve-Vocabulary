@@ -99,4 +99,5 @@
 
     <string name="test_description">테스트를 하기 위해 \"공부 중\"라는 단어가 선택되었습니다. 각 단어에 대해 10 번 연속으로 답변하면 \"공부한 것\" 목록으로 옮길 수 있습니다.</string>
     <string name="practice_description">\'\"공부 중\" 및 \"공부한 것\" 목록에 등록한 단어들이 연습하기 위해 선택되었습니다. 잘못 대답하면 단어가 \"공부 중\" 목록으로 옯겨지거나 정답의 카운터가 0값으로 재설정됩니다.</string>
+    <string name="wrong_answer">몰라</string>
 </resources>

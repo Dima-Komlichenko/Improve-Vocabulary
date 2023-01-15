@@ -99,4 +99,5 @@
     <string name="back">אחורה</string>
     <string name="repetition_description">האם ברצונך להתחיל חזרה על מילים? לסוג מבחן זה תיבחרנה עד 20 מילים שלמדת. כל המילים שתתרגם לא נכון יועברו לרשימת \"נלמדות\" ככל שיש בה מקום.</string>
     <string name="word_is_moved">העברת את המילה</string>
+    <string name="wrong_answer">לא יודע</string>
 </resources>

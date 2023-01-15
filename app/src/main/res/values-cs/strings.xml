@@ -100,4 +100,5 @@
 
     <string name="test_description">Pro test byla vybrána slova \'under study\'. Když na každé slovo odpovíte 10krát za sebou správně, budete je moci přenést do seznamu \'naučené\'.</string>
     <string name="practice_description">Pro procvičování byla vybrána slova \'studuje\' a \'studoval\'. Pokud na slovo odpovíte nesprávně, bude buď převedeno do seznamu \'prostudováno\' nebo bude počítadlo správných odpovědí vynulováno.</string>
+    <string name="wrong_answer">nevím</string>
 </resources>

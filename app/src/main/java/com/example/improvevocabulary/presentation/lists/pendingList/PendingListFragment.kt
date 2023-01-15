@@ -1,18 +1,11 @@
 package com.example.improvevocabulary.presentation.lists.pendingList
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.data.repository.repositoriesImpl.WordPairRepository
-import com.example.domain.usecase.onStudy.RemoveOnStudyWordPairUseCase
-import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
-import com.example.domain.usecase.pending.RemovePendingWordPairUseCase
-import com.example.domain.usecase.pending.SavePendingWordPairUseCase
-import com.example.domain.usecase.pending.UpdatePendingWordPairUseCase
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.app.App
 import com.example.improvevocabulary.databinding.FragmentWordListBinding
@@ -20,9 +13,6 @@ import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.add.AddViewModel
 import com.example.improvevocabulary.presentation.lists.baseList.WordListFragment
 import com.example.improvevocabulary.presentation.lists.baseList.WordListViewModel
-import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyListViewModel
-import com.example.improvevocabulary.presentation.lists.onStudyList.OnStudyListViewModelFactory
-import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 

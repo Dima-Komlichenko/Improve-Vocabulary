@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/tv_word"
             style="@style/text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:maxEms="7"
@@ -30,9 +30,10 @@
         <EditText
             android:id="@+id/et_word"
             style="@style/text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:inputType="textMultiLine"
             android:maxEms="7"
             android:maxLength="50"
             android:maxLines="5"
@@ -53,15 +54,16 @@
             app:layout_constraintBottom_toTopOf="@id/tv_translate"
             app:layout_constraintEnd_toStartOf="@id/btn_remove"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_word" />
+            app:layout_constraintTop_toBottomOf="@id/et_word" />
 
         <EditText
             android:id="@+id/tv_translate"
             style="@style/text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="16dp"
+            android:inputType="textMultiLine"
             android:maxEms="7"
             android:maxLength="50"
             android:maxLines="5"

@@ -1,21 +1,19 @@
 package com.example.improvevocabulary.presentation.test
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.model.Language
 import com.example.domain.model.OnStudyWordPair
 import com.example.domain.model.StudiedWordPair
 import com.example.domain.usecase.languages.GetLanguageFromLearningUseCase
 import com.example.domain.usecase.languages.GetLanguageOfLearningUseCase
+import com.example.domain.usecase.onStudy.GetOnStudyWordPairCountUseCase
 import com.example.domain.usecase.onStudy.GetOnStudyWordPairsUseCase
 import com.example.domain.usecase.onStudy.SaveOnStudyWordPairUseCase
 import com.example.domain.usecase.onStudy.UpdateOnStudyWordPairUseCase
 import com.example.domain.usecase.studied.GetStudiedWordPairsUseCase
 import com.example.domain.usecase.studied.RemoveStudiedWordPairUseCase
-import com.example.domain.model.Language
-import com.example.domain.repositoriesI.WasTestDescriptionShownOnceRepository
-import com.example.domain.usecase.onStudy.GetOnStudyWordPairCountUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.GetWasPracticeDescriptionShownUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.GetWasTestDescriptionShownUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasPracticeDescriptionShownUseCase
@@ -59,6 +57,14 @@ class TestViewModel(
         }
         isFinishTest.value = false
     }
+
+    fun getAnswerLanguage(questionLanguage: Language): Language {
+        val langFrom = getLanguageFromLearningUseCase.execute()
+
+        return if (langFrom.value == questionLanguage.value) getLanguageOfLearningUseCase.execute()
+               else langFrom
+    }
+
 
     fun setTTSLanguage(value: Language) {
         tts.setLanguage(value)
@@ -131,7 +137,7 @@ class TestViewModel(
                     tempTests.shuffle()
                     var temp20Tests = arrayListOf<TestModel>()
 
-                    var size = if(tempTests.count() > 19) 20 else tempTests.count()
+                    var size = if (tempTests.count() > 19) 20 else tempTests.count()
 
                     for (i in 0 until size) {
                         temp20Tests.add(tempTests[i])
