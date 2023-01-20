@@ -2,7 +2,6 @@ package com.example.improvevocabulary.presentation.lists.baseList
 
 import android.content.Context
 import android.speech.tts.TextToSpeech.SUCCESS
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -13,12 +12,14 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.model.Language
+import com.example.domain.model.PressedSortButton
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.WordItemBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
+import kotlin.collections.ArrayList
 
 open class WordAdapter(
     private val tts: TextToSpeech,
@@ -220,17 +221,71 @@ open class WordAdapter(
     }
 
 
-    fun init(words: ArrayList<WordPair>) {
-        words.forEach { addWord(it) }
+    fun init(words: ArrayList<WordPair>, pressedSortButton: PressedSortButton) {
+        words.forEach { addWord(it, pressedSortButton) }
     }
 
 
-    fun addWord(word: WordPair) {
+    fun addWord(word: WordPair, pressedSortButton: PressedSortButton) {
         val diffUtil = MyDiffUtil(words, words + word)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
+
         words.add(word)
+        sortByFilter(pressedSortButton)
+
         diffResult.dispatchUpdatesTo(this)
         isEmptyList.value = words.isEmpty()
+    }
+
+    fun sortByFilter(pressedSortButton: PressedSortButton): ArrayList<WordPair> {
+        val sortedList = when (pressedSortButton) {
+            PressedSortButton.ALPHABETICALLY -> sortByAlphabetically()
+            PressedSortButton.NON_ALPHABETICALLY -> sortByNonAlphabetically()
+            PressedSortButton.NEWER -> sortByNewer()
+            PressedSortButton.OLDER -> sortByOlder()
+            else -> sortByOlder()
+        }
+        return sortedList
+    }
+
+    private fun sortByAlphabetically(): ArrayList<WordPair> {
+        if (words.isEmpty()) return words
+        val oldList = words.clone() as ArrayList<WordPair>
+        words.sortByDescending { word -> word.word }
+        updateShowedList(oldList, words)
+        return words
+    }
+
+    private fun sortByNonAlphabetically(): ArrayList<WordPair> {
+        if (words.isEmpty()) return words
+        val oldList = words.clone() as ArrayList<WordPair>
+        words.sortByDescending { word -> word.word }
+        words.reverse()
+        updateShowedList(oldList, words)
+        return words
+    }
+
+    private fun sortByOlder(): ArrayList<WordPair> {
+        if (words.isEmpty()) return words
+        val oldList = words.clone() as ArrayList<WordPair>
+        words.sortByDescending { word -> word.id }
+        words.reverse()
+        updateShowedList(oldList, words)
+        return words
+    }
+
+    private fun sortByNewer(): ArrayList<WordPair> {
+        if (words.isEmpty()) return words
+        val oldList = words.clone() as ArrayList<WordPair>
+        words.sortByDescending { word -> word.id }
+        updateShowedList(oldList, words)
+        return words
+    }
+
+    protected fun updateShowedList(oldList: ArrayList<WordPair>, newList: ArrayList<WordPair>) {
+        val diffUtil = MyDiffUtil(oldList, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        diffResult.dispatchUpdatesTo(this)
     }
 
     protected open fun addWordAtPosition(word: WordPair, index: Int) {
@@ -239,7 +294,6 @@ open class WordAdapter(
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         words.add(index, word)
         diffResult.dispatchUpdatesTo(this)
-        //переопределить с логикой бд
     }
 
     fun getWordPairIndexById(id: Int): Int {

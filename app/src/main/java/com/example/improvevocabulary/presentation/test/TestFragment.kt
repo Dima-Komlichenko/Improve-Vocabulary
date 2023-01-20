@@ -15,12 +15,11 @@ import com.example.improvevocabulary.presentation.wordList.WordsActivity
 import com.example.improvevocabulary.presentation.wordList.WordsActivityResult
 import com.example.improvevocabulary.presentation.wordsFragment.WordListInfo
 import com.example.improvevocabulary.presentation.wordsFragment.WordListInfoConst
-import com.example.improvevocabulary.utlis.AdMob
 import com.google.android.gms.ads.FullScreenContentCallback
 
 open class TestFragment : TestBaseFragment() {
 
-    val launchCheatActivity =
+    private val launchCheatActivity =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { res ->
             var result = res.data?.getSerializableExtra("result") as WordsActivityResult
             when (result) {
@@ -59,7 +58,6 @@ open class TestFragment : TestBaseFragment() {
 
     override fun showTest() = with(binding) {
         super.showTest()
-        pbProgress.max = viewModel.tests.value!!.count() * 40
         tvQuestionNumber.text = (viewModel.testIndex + 1).toString()
         tvQuestionsCount.text = viewModel.tests.value!!.count().toString()
     }

@@ -19,8 +19,9 @@
             android:layout_height="match_parent">
 
             <EditText
+
                 android:id="@+id/et_firstWord"
-                style="@style/text_view"
+                style="@style/text_view_ultra"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="24dp"
@@ -47,7 +48,7 @@
 
             <EditText
                 android:id="@+id/et_secondWord"
-                style="@style/text_view"
+                style="@style/text_view_ultra"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="24dp"

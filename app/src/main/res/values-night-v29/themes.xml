@@ -1,5 +1,4 @@
 <resources>
-
     <style name="Theme.ImproveVocabulary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand -->
         <item name="colorPrimary">@color/orange</item>
@@ -18,64 +17,4 @@
 
         <item name="android:windowActivityTransitions">true</item>
     </style>
-
-   <!-- <style name="neumorph_CardButton" parent="@style/Widget.Neumorph.Button">
-        <item name="neumorph_lightSource">leftTop</item>
-        <item name="neumorph_shadowColorLight">@color/light_shadow_on_dark_theme</item>
-        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
-        <item name="android:background">@drawable/big_dark_gradient</item>
-    </style>
-    &lt;!&ndash;
-
-    &ndash;&gt;
-    <style name="neumorph_CardView" parent="@style/Widget.Neumorph.CardView">
-        <item name="neumorph_lightSource">leftTop</item>
-        <item name="neumorph_shadowColorLight">@color/light_shadow_on_dark_theme</item>
-        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
-        <item name="android:background">@drawable/big_dark_gradient</item>
-    </style>
-    &lt;!&ndash;&ndash;&gt;
-    <style name="big_gradient_background">
-        <item name="android:background">@drawable/big_dark_gradient</item>
-    </style>
-
-    <style name="little_gradient_background">
-        <item name="android:background">@drawable/little_dark_gradient</item>
-    </style>
-
-    <style name="right_answer_background">
-        <item name="android:background">@drawable/dark_gradient_right_answer</item>
-    </style>
-
-    <style name="wrong_answer_background">
-        <item name="android:background">@drawable/dark_gradient_wrong_answer</item>
-    </style>
-
-    <style name="additional_menu">
-        <item name="neumorph_backgroundColor">@color/additional_background_dark</item>
-        <item name="strokeColor">@color/background_additional_view_stroke_on_dark_theme</item>
-    </style>
-
-    <style name="additional_button" parent="@style/Widget.Neumorph.Button">
-        <item name="neumorph_backgroundColor">@color/background_little_btn_on_dark_theme</item>
-        <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_dark_theme</item>
-        <item name="neumorph_shadowColorDark">@color/dark_shadow_on_dark_theme</item>
-    </style>
-
-    <style name="little_button" parent="@style/Widget.Neumorph.ImageButton">
-        <item name="neumorph_backgroundColor">@color/background_little_btn_on_dark_theme</item>
-        <item name="neumorph_shadowColorLight">@color/light_little_shadow_on_dark_theme</item>
-        <item name="neumorph_shadowColorDark">@color/dark_little_shadow_on_dark_theme</item>
-        <item name="neumorph_shadowElevation">4dp</item>
-    </style>
-
-    <style name="add_button_shape">
-        <item name="neumorph_cornerSize">4dp</item>
-    </style>
-
-    <style name="text_view" parent="Widget.AppCompat.TextView">
-        <item name="android:background">@null</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>-->
-
 </resources>

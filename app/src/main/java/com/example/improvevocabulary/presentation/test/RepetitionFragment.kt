@@ -27,7 +27,6 @@ class RepetitionFragment : TestBaseFragment() {
 
     override fun showTest() = with(binding) {
         super.showTest()
-        pbProgress.max = viewModel.tests.value!!.count() * 40
         tvQuestionNumber.text = (viewModel.testIndex + 1).toString()
         tvQuestionsCount.text = viewModel.tests.value!!.count().toString()
     }

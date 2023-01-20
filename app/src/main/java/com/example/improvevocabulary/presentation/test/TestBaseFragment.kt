@@ -43,6 +43,7 @@ open class TestBaseFragment : Fragment() {
 
         adMob = AdMob()
         adMob.loadAds(requireContext())
+        viewModel.initSTT(requireActivity())
         return binding.root
     }
 
@@ -50,8 +51,14 @@ open class TestBaseFragment : Fragment() {
         super.onStart()
         viewModel.tests.observe(viewLifecycleOwner) {
             if (viewModel.tests.value!!.isNotEmpty())
+                binding.pbProgress.max = viewModel.tests.value!!.count() * 40
                 showTest()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.pbProgress.progress = viewModel.pbProgress
     }
 
     protected open fun showTest() = with(binding) {
@@ -92,15 +99,11 @@ open class TestBaseFragment : Fragment() {
             viewModel.startTTS()
         }
 
-        var stt = SpeechToText(requireActivity())
-        var locale = Locale(
-            LanguageConverter.convertLangToCode(
-                viewModel.getAnswerLanguage(viewModel.tests.value!![viewModel.testIndex].questionLang)
-            )
-        )
-        stt.setLanguage(locale)
+        viewModel.setSTTLang(viewModel.getAnswerLanguage(viewModel.tests.value!![viewModel.testIndex].questionLang))
 
-        stt.result.observe(viewLifecycleOwner) {
+        viewModel.stt.result.observe(viewLifecycleOwner) {
+            if(viewModel.stt.isResultObserved) return@observe
+            viewModel.stt.isResultObserved = true
 
             val res1 = DataConverter.convertToLowerCaseAndNoSymbols(tvAnswer1.text.toString())
             if(res1 == it!!) {
@@ -130,11 +133,13 @@ open class TestBaseFragment : Fragment() {
         }
 
         btnSpeech.setOnClickListener {
-            stt.isRecording = if (!stt.isRecording) {
-                stt.record()
+            viewModel.stt.isRecording = if (!viewModel.stt.isRecording) {
+                viewModel.stt.record()
+                viewModel.stt.isRecording = true
                 true
             } else {
-                stt.finish()
+                viewModel.stt.finish()
+                viewModel.stt.isRecording = false
                 false
             }
         }
@@ -142,6 +147,14 @@ open class TestBaseFragment : Fragment() {
     }
 
     protected open fun answerTest(position: Int, cardView: NeumorphCardView, constraintLayout: ConstraintLayout, textView: TextView, delay: Boolean) {
+            binding.cvAnswer1.setOnClickListener {}
+            binding.cvAnswer2.setOnClickListener {}
+            binding.cvAnswer3.setOnClickListener {}
+            binding.cvAnswer4.setOnClickListener {}
+            binding.cvAnswer5.setOnClickListener {}
+            viewModel.stt.result.observe(viewLifecycleOwner) {}
+            viewModel.stt.finish()
+
             var wordPair =
                 viewModel.words.value!!.find { viewModel.tests.value!![viewModel.testIndex].id == it.id }
 
@@ -187,6 +200,7 @@ open class TestBaseFragment : Fragment() {
                 for (i in 0..40) {
                     delay(10)
                     binding.pbProgress.progress += 1 // 1
+                    viewModel.pbProgress = binding.pbProgress.progress
                 }
                 if(delay) delay(500)
 

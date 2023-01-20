@@ -1,5 +1,6 @@
 package com.example.improvevocabulary.presentation.test
 
+import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,12 +19,17 @@ import com.example.domain.usecase.wereTestsDescShownOnce.GetWasPracticeDescripti
 import com.example.domain.usecase.wereTestsDescShownOnce.GetWasTestDescriptionShownUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasPracticeDescriptionShownUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasTestDescriptionShownUseCase
+import com.example.domain.utils.LanguageConverter
 import com.example.improvevocabulary.models.AnswersModel
 import com.example.improvevocabulary.models.TestModel
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.tests.TypeOfTestInfo
+import com.example.improvevocabulary.utlis.SpeechToText
 import com.example.improvevocabulary.utlis.TextToSpeech
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 import kotlin.random.Random
 
 class TestViewModel(
@@ -39,7 +45,8 @@ class TestViewModel(
     private val launchWasTestDescriptionShownUseCase: LaunchWasTestDescriptionShownUseCase,
     private val getWasPracticeDescriptionShownUseCase: GetWasPracticeDescriptionShownUseCase,
     private val launchWasPracticeDescriptionShownUseCase: LaunchWasPracticeDescriptionShownUseCase,
-    val tts: TextToSpeech
+    val tts: TextToSpeech,
+    val stt: SpeechToText
 ) : ViewModel() {
     lateinit var typeOfTestInfo: TypeOfTestInfo
 
@@ -47,7 +54,7 @@ class TestViewModel(
     var tests: MutableLiveData<ArrayList<TestModel>> = MutableLiveData<ArrayList<TestModel>>()
     var countOnStudyWords: Int = 0
     var testIndex = 0
-
+    var pbProgress = 0
 
     val isFinishTest: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -56,6 +63,19 @@ class TestViewModel(
             countOnStudyWords = getOnStudyWordPairCountUseCase.execute()
         }
         isFinishTest.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        tts.destroy()
+    }
+    fun initSTT(activity: Activity) {
+        stt.init(activity)
+    }
+
+    fun setSTTLang(language: Language) {
+        var locale = Locale(LanguageConverter.convertLangToCode(language))
+        stt.setLanguage(locale)
     }
 
     fun getAnswerLanguage(questionLanguage: Language): Language {

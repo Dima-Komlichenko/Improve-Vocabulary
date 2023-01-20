@@ -17,6 +17,7 @@
 
     <!-- Text-->
     <color name="text_light">#818181</color>
+    <color name="text_ultra_light">#9A9A9A</color>
     <color name="text_dark">#515151</color>
 
     <!-- Shadow on light theme -->

@@ -57,9 +57,8 @@ class PendingListFragment: WordListFragment() {
             )
             viewModel.generateNewId()
 
-            adapter.addWord(newWordPair)
+            adapter.addWord(newWordPair, filterViewModel.pressedSortButton.value!!)
             viewModel.save(newWordPair)
-           // wordListViewModel.addWord(newWordPair)
 
             Snackbar.make(
                 binding.recyclerView,

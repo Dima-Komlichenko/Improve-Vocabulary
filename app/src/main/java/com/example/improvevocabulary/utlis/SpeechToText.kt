@@ -17,15 +17,16 @@ import androidx.lifecycle.MutableLiveData
 import java.util.*
 
 
-class SpeechToText(val activity: Activity) {
+class SpeechToText {
 
     private val PERMISSION_RECORD_AUDIO_REQUEST = 1
-    private var speechRecognizer: SpeechRecognizer
-    private var speechRecognizerIntent: Intent
+    private lateinit var speechRecognizer: SpeechRecognizer
+    private lateinit var speechRecognizerIntent: Intent
     var result: MutableLiveData<String?> = MutableLiveData()
     var isRecording = false
+    var isResultObserved = false
 
-    init {
+    fun init(activity: Activity) {
         if (isPermissionGranted(activity.baseContext)) {
             requestPermission(activity)
         }
@@ -45,6 +46,7 @@ class SpeechToText(val activity: Activity) {
             override fun onBufferReceived(bytes: ByteArray) {}
             override fun onEndOfSpeech() {
                 isRecording = false
+                isResultObserved = false
             }
             override fun onPartialResults(bundle: Bundle) {}
             override fun onEvent(i: Int, bundle: Bundle) {}
@@ -59,6 +61,7 @@ class SpeechToText(val activity: Activity) {
             }
         })
     }
+
     
     fun record() {
         speechRecognizer.startListening(speechRecognizerIntent)

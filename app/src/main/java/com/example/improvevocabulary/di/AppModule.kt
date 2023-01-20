@@ -1,5 +1,6 @@
 package com.example.improvevocabulary.di
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import com.example.domain.usecase.appLanguage.GetAppLanguageUseCase
@@ -34,6 +35,7 @@ import com.example.improvevocabulary.presentation.settings.SettingsViewModelFact
 import com.example.improvevocabulary.presentation.test.TestViewModelFactory
 import com.example.improvevocabulary.presentation.tests.TestsViewModelFactory
 import com.example.improvevocabulary.presentation.wordsFragment.WordsFragmentViewModelFactory
+import com.example.improvevocabulary.utlis.SpeechToText
 import com.example.improvevocabulary.utlis.TextToSpeech
 import dagger.Module
 import dagger.Provides
@@ -227,7 +229,8 @@ class AppModule(val context: Context) {
         launchWasTestDescriptionShownUseCase: LaunchWasTestDescriptionShownUseCase,
         getWasPracticeDescriptionShownUseCase: GetWasPracticeDescriptionShownUseCase,
         launchWasPracticeDescriptionShownUseCase: LaunchWasPracticeDescriptionShownUseCase,
-        tts: TextToSpeech
+        tts: TextToSpeech,
+        stt: SpeechToText
     ): TestViewModelFactory {
         return TestViewModelFactory(
             getOnStudyWordPairsUseCase = getOnStudyWordPairsUseCase,
@@ -243,12 +246,19 @@ class AppModule(val context: Context) {
             getWasPracticeDescriptionShownUseCase = getWasPracticeDescriptionShownUseCase,
             launchWasPracticeDescriptionShownUseCase = launchWasPracticeDescriptionShownUseCase,
             tts = tts,
+            stt = stt
         )
     }
 
     @Provides
     fun provideTextToSpeech(context: Context): TextToSpeech {
-        return TextToSpeech(context = context,)
+        return TextToSpeech(context = context)
+    }
+
+
+    @Provides
+    fun provideSpeechToText(): SpeechToText {
+        return SpeechToText()
     }
 
 

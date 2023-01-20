@@ -36,10 +36,10 @@ open class WordListFragment : Fragment() {
         wordListViewModel.words.observe(viewLifecycleOwner) {
             if (adapter.itemCount == 0) {
                 words = wordListViewModel.words.value!!
-                words.reverse()
                 adapter.initWordsUpdateFlag(wordListViewModel.isEmptyList)
-                adapter.init(words)
+                adapter.init(words, filterViewModel.pressedSortButton.value!!)
             }
+
         }
         wordListViewModel.init()
 
@@ -57,17 +57,14 @@ open class WordListFragment : Fragment() {
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (binding.recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
 
         filterViewModel.pressedSortButton.observe(viewLifecycleOwner) {
             words = adapter.getList()
-            val sortedList = sortByFilter()
+            val sortedList = adapter.sortByFilter(it)
             adapter.sort(sortedList)
+
         }
 
         searchViewModel.searchingWord.observe(viewLifecycleOwner) {
@@ -87,11 +84,17 @@ open class WordListFragment : Fragment() {
         }
 
         wordListViewModel.words.observe(viewLifecycleOwner) {
+            adapter.sortByFilter(filterViewModel.pressedSortButton.value!!)
             wordListViewModel.isEmptyList.value = wordListViewModel.words.value!!.isEmpty()
         }
 
         Log.i("wordListPerform", "WordListFragment onCreateView() finish")
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        tts.destroy()
     }
 
     private fun setListOrEmpty() {
@@ -133,43 +136,6 @@ open class WordListFragment : Fragment() {
         binding.recyclerView.adapter = null // for tts.destroy() in WordAdapter
     }
 
-    private fun sortByFilter(): ArrayList<WordPair> {
-        val sortedList = when (filterViewModel.pressedSortButton.value) {
-            PressedSortButton.ALPHABETICALLY -> sortByAlphabetically()
-            PressedSortButton.NON_ALPHABETICALLY -> sortByNonAlphabetically()
-            PressedSortButton.NEWER -> sortByNewer()
-            PressedSortButton.OLDER -> sortByOlder()
-            else -> sortByNewer()
-        }
-        return sortedList
-    }
 
-    private fun sortByAlphabetically(): ArrayList<WordPair> {
-        if (words.isEmpty()) return words
-        var sortedList = words.toList()
-        sortedList = sortedList.sortedBy { it.word }
-        return sortedList.toList() as ArrayList<WordPair>
-    }
-
-    private fun sortByNonAlphabetically(): ArrayList<WordPair> {
-        if (words.isEmpty()) return words
-        var sortedList = words.toList()
-        sortedList = sortedList.sortedBy { it.word }
-        return sortedList.reversed() as ArrayList<WordPair>
-    }
-
-    private fun sortByNewer(): ArrayList<WordPair> {
-        if (words.isEmpty()) return words
-        var sortedList = words.toList()
-        sortedList = sortedList.sortedBy { it.id }
-        return (sortedList.toList().reversed() as ArrayList<WordPair>)
-    }
-
-    private fun sortByOlder(): ArrayList<WordPair> {
-        if (words.isEmpty()) return words
-        var sortedList = words.toList()
-        sortedList = sortedList.sortedBy { it.id }
-        return ArrayList(sortedList)
-    }
 }
 

@@ -16,6 +16,7 @@ import com.example.domain.usecase.wereTestsDescShownOnce.GetWasPracticeDescripti
 import com.example.domain.usecase.wereTestsDescShownOnce.GetWasTestDescriptionShownUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasPracticeDescriptionShownUseCase
 import com.example.domain.usecase.wereTestsDescShownOnce.LaunchWasTestDescriptionShownUseCase
+import com.example.improvevocabulary.utlis.SpeechToText
 import com.example.improvevocabulary.utlis.TextToSpeech
 
 class TestViewModelFactory(
@@ -32,6 +33,7 @@ class TestViewModelFactory(
     val getWasPracticeDescriptionShownUseCase: GetWasPracticeDescriptionShownUseCase,
     val launchWasPracticeDescriptionShownUseCase: LaunchWasPracticeDescriptionShownUseCase,
     val tts: TextToSpeech,
+    val stt: SpeechToText
 )  : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return TestViewModel(
@@ -48,6 +50,7 @@ class TestViewModelFactory(
             getWasPracticeDescriptionShownUseCase = getWasPracticeDescriptionShownUseCase,
             launchWasPracticeDescriptionShownUseCase = launchWasPracticeDescriptionShownUseCase,
             tts = tts,
+            stt = stt
         ) as T
     }
 }

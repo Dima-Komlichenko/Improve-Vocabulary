@@ -38,7 +38,6 @@ open class OnStudyListFragment : WordListFragment() {
     override fun initAdapter(inflater: LayoutInflater, container: ViewGroup?) {
         super.initAdapter(inflater, container)
         if (words.isNotEmpty()) return
-        words.reverse()
         binding = FragmentWordListBinding.inflate(inflater, container, false)
         adapter = OnStudyWordAdapter(tts, addViewModel, viewModel)
         binding.recyclerView.adapter = adapter
@@ -54,7 +53,7 @@ open class OnStudyListFragment : WordListFragment() {
             )
             viewModel.generateNewId()
 
-            adapter.addWord(newWordPair)
+            adapter.addWord(newWordPair, filterViewModel.pressedSortButton.value!!)
             viewModel.save(newWordPair)
             Snackbar.make(
                 binding.recyclerView,

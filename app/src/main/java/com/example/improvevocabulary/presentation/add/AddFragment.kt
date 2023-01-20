@@ -14,6 +14,7 @@ import com.example.domain.utils.DataValidator
 import com.example.improvevocabulary.R
 import com.example.improvevocabulary.databinding.FragmentAddBinding
 import com.example.improvevocabulary.utlis.DataConverter
+import com.example.improvevocabulary.utlis.KeyboardHider
 import com.google.android.material.snackbar.Snackbar
 
 class AddFragment : Fragment() {
@@ -56,7 +57,7 @@ class AddFragment : Fragment() {
         })
 
         binding.btnSave.setOnClickListener {
-            hideKeyboard()
+            KeyboardHider.hideKeyboard(binding.etFirstWord, binding.etSecondWord, context)
 
             if (viewModel.listType == "OnStudyListFragment") {
                 if (viewModel.onStudyCount.value!! >= 20) {
@@ -104,15 +105,6 @@ class AddFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    private fun hideKeyboard() {
-        val imm: InputMethodManager =
-            activity?.getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.etSecondWord.windowToken, 0);
-        imm.hideSoftInputFromWindow(binding.etFirstWord.windowToken, 0);
-        binding.etFirstWord.clearFocus()
-        binding.etSecondWord.clearFocus()
     }
 
     override fun onResume() {

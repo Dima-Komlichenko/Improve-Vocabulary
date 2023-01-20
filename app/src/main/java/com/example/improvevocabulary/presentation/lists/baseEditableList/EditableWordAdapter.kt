@@ -17,6 +17,7 @@ import com.example.improvevocabulary.databinding.EditableWordItemBinding
 import com.example.improvevocabulary.models.WordPair
 import com.example.improvevocabulary.presentation.lists.baseList.WordAdapter
 import com.example.improvevocabulary.utlis.DataConverter
+import com.example.improvevocabulary.utlis.KeyboardHider
 import com.example.improvevocabulary.utlis.TextToSpeech
 import com.google.android.material.snackbar.Snackbar
 
@@ -70,7 +71,7 @@ open class EditableWordAdapter(private val tts: TextToSpeech, val languageFrom: 
         }
 
         protected fun btnSaveHandler(): Boolean = with(bindingEditable) {
-            hideKeyboard()
+            KeyboardHider.hideKeyboard(bindingEditable.etWord, bindingEditable.tvTranslate, context)
 
             if (tvTranslate.text.toString() == "" || etWord.text.toString() == "") {
                 Snackbar.make(
@@ -121,15 +122,6 @@ open class EditableWordAdapter(private val tts: TextToSpeech, val languageFrom: 
             return true
         }
 
-        private fun hideKeyboard() {
-            val imm: InputMethodManager =
-                context?.getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding.tvWord.windowToken, 0);
-            imm.hideSoftInputFromWindow(binding.tvTranslate.windowToken, 0);
-            bindingEditable.etWord.clearFocus()
-            bindingEditable.tvTranslate.clearFocus()
-        }
-
         override fun showCardDetails() = with(bindingEditable) {
             super.showCardDetails()
             tvWord.visibility = View.GONE
@@ -155,6 +147,7 @@ open class EditableWordAdapter(private val tts: TextToSpeech, val languageFrom: 
             btnSave.visibility = View.GONE
             tvWord.visibility = View.VISIBLE
             etWord.visibility = View.GONE
+            KeyboardHider.hideKeyboard(bindingEditable.etWord, bindingEditable.tvTranslate, context)
         }
 
 
